@@ -1,0 +1,81 @@
+# metadata box
+overview: "Overview"
+questions: "Questions"
+objectives: "Objectives"
+requirements: "Requirements"
+authors: "Authors"
+add-contributions: "Add Contributions!"
+
+time-estimation: "Time estimation"
+minutes: "minutes"
+hour: "hour"
+hours: "hours"
+
+level: "Level"
+introductory: "Introductory"
+intermediate: "Intermediate"
+advanced: "Advanced"
+
+supporting-materials: "Supporting Materials"
+slides: "Slides"
+datasets: "Datasets"
+workflows: "Workflows"
+supporting-galaxies: "Available on these Galaxies"
+last-modification: "Last modification"
+# Also as
+# last-modification: "Updated"
+
+
+# other boxes
+tip: "Tip"
+handson: "Hands On"
+figure: "Figure"
+
+# endmatter
+key-points: "Key points"
+faqs: "Frequently Asked Questions"
+references: "References"
+# Also as
+# references: "Funding"
+feedback: "Feedback"
+feedback-text: "Did you use this material as an instructor? Feel free to give us feedback on"
+feedback-link-text: "how it went"
+feedback-text-learner: "Did you use this material as a learner or student? Click the form below to leave feedback."
+
+glossary: "Glossary"
+citing-tutorial: "Citing this Tutorial"
+congrats: "Congratulations on successfully completing this tutorial!"
+
+want-exend-knowledge: "Want to extend your knowledge?"
+recommended-followup: "Follow one of our recommended follow-up trainings"
+
+license: "License"
+license-tutorial: "El contenido de este tutorial tiene la licencia" # "Tutorial Content is licensed under Creative Commons Attribution 4.0 International License."
+license-framework: "Tutorial Content is licensed under"
+
+# slides
+thank-you: "Thank You"
+collaborative-effort: "This material is the result of a collaborative work. Thanks to the [Galaxy Training Network](https://training.galaxyproject.org) and all the contributors!"
+edit-on-github: "Found a typo? Something is wrong in this tutorial? Edit it on GitHub"
+
+first-time-using-slides: "Use arrow keys to move between slides"
+presenter-notes: "press <kbd>P</kbd> to view the presenter notes"
+presenter-notes-explanation: |
+  Presenter notes contain extra information which might be useful if you intend to use these slides for teaching.
+
+  Press P again to switch presenter notes off
+
+  Press C to create a new window where the same presentation will be displayed.
+  This window is linked to the main window. Changing slides on one will cause the slide to change on the other.
+
+  Useful when presenting.
+plaintext-slides: "Plain-text slides"
+video-slides: "Video slides"
+before-diving-in: "Before diving into this slide deck, we recommend you to have a look at"
+
+# In the code but not in lang.yaml
+# notebooks: "Jupyter Notebook"
+# notebooks: "RMarkdown Notebook"
+# published: "Published"
+# best-in-rstudio: "Best viewed in RStudio"
+# best-in-jupyter: "Best viewed in a Jupyter Notebook"
