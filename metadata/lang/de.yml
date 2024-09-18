@@ -1,0 +1,80 @@
+# metadata box
+overview: "Übersicht"
+questions: "Fragen"
+objectives: "Ziele"
+requirements: "Anforderungen"
+authors: "Autoren"
+add-contributions: "Beiträge hinzufügen!"
+
+time-estimation: "Zeitaufwand"
+minutes: "Minuten"
+hour: "Stunde"
+hours: "Stunden"
+
+level: "Schwierigkeitsgrad"
+introductory: "Einführend"
+intermediate: "Mittelstufe"
+advanced: "Fortgeschritten"
+
+supporting-materials: "Unterstützende Materialien"
+slides: "Folien"
+datasets: "Datensätze"
+workflows: "Arbeitsabläufe"
+supporting-galaxies: "Verfügbar auf diesen Galaxies"
+last-modification: "Letzte Änderung"
+# Also as
+# last-modification: "Aktualisiert"
+
+# other boxes
+tip: "Tipp"
+handson: "Praktisch"
+figure: "Abbildung"
+
+# endmatter
+key-points: "Schlüsselthemen"
+faqs: "Häufig gestellte Fragen"
+references: "Referenzen"
+# Also as
+# references: "Finanzierung"
+feedback: "Rückmeldung"
+feedback-text: "Hast Du dieses Material als Dozent verwendet? Gib uns gerne Feedback zu"
+feedback-link-text: "wie es gelaufen ist"
+feedback-text-learner: "Hast Du dieses Material als Lernender oder Student verwendet? Klicke auf das untenstehende Formular, um Feedback zu geben."
+
+glossary: "Glossar"
+citing-tutorial: "Dieses Tutorial zitieren"
+congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
+
+want-exend-knowledge: "Möchtest Du Dein Wissen erweitern?"
+recommended-followup: "Folge einer unserer empfohlenen weiterführenden Schulungen"
+
+license: "Lizenz"
+license-tutorial: "Der Inhalt dieses Tutorials steht unter der Lizenz" # "Tutorial Content is licensed under Creative Commons Attribution 4.0 International License."
+license-framework: "Tutorial-Inhalte sind lizenziert unter"
+
+# slides
+thank-you: "Vielen Dank"
+collaborative-effort: "Dieses Material ist das Ergebnis einer kollaborativen Arbeit. Vielen Dank an das [Galaxy Training Network](https://training.galaxyproject.org) und alle Mitwirkenden!"
+edit-on-github: "Einen Tippfehler gefunden? Stimmt etwas nicht in diesem Tutorial? Bearbeite es auf GitHub"
+
+first-time-using-slides: "Verwende die Pfeiltasten, um zwischen den Folien zu wechseln"
+presenter-notes: "Drücken Sie <kbd>P</kbd>, um die Moderationsnotizen anzuzeigen"
+presenter-notes-explanation: |
+  Moderationsnotizen enthalten zusätzliche Informationen, die nützlich sein können, wenn Du diese Folien zum Unterrichten verwenden möchtest.
+
+  Drücke erneut P, um die Moderationsnotizen auszuschalten
+
+  Drücke C, um ein neues Fenster zu erstellen, in dem dieselbe Präsentation angezeigt wird.
+  Dieses Fenster ist mit dem Hauptfenster verknüpft. Das Ändern der Folien in einem Fenster führt dazu, dass die Folien im anderen Fenster ebenfalls geändert werden.
+
+  Nützlich beim Präsentieren.
+plaintext-slides: "Klartext-Folien"
+video-slides: "Video-Folien"
+before-diving-in: "Bevor Du in dieses Folienset eintauchst, empfehlen wir, einen Blick darauf zu werfen"
+
+# In the code but not in lang.yaml
+# notebooks: "Jupyter-Notebook"
+# notebooks: "RMarkdown-Notebook"
+# published: "Veröffentlicht"
+# best-in-rstudio: "Am besten in RStudio angezeigt"
+# best-in-jupyter: "Am besten in einem Jupyter-Notebook angezeigt"
