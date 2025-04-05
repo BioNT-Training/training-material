@@ -433,22 +433,22 @@ Mit dieser neuen Suche finden wir die anderen Opsine (grünes, blaues, Stäbchen
 > 
 > 2. der Erwartungswert (mit Expect oder E bezeichnet)
 > 
->    Der Erwartungswert E eines Treffers sagt aus, ob der Treffer wahrscheinlich aus einer zufälligen Ähnlichkeit zwischen Treffer und Abfrage oder aus einer gemeinsamen Abstammung von Treffer und Abfrage resultiert. ()
+>     Der Erwartungswert E eines Treffers sagt aus, ob der Treffer wahrscheinlich aus einer zufälligen Ähnlichkeit zwischen Treffer und Abfrage oder aus einer gemeinsamen Abstammung von Treffer und Abfrage resultiert. ()
 > 
-> > <comment-title>Filtern einer BLAST-Suche</comment-title>
-> > 
-> > Wenn E kleiner als $$10\mathrm{e}{-100}$$ ist, wird es manchmal als 0,0 angegeben.
-> {: .comment}
+>     > <comment-title>Filtern einer BLAST-Suche</comment-title>
+>     > 
+>     > Wenn E kleiner als $$10\mathrm{e}{-100}$$ ist, wird es manchmal als 0,0 angegeben.
+>     {: .comment}
 > 
->     The expectation value is the number of hits you would expect to occur purely by chance if you searched for your sequence in a random genome the size of the human genome. 
-> 
->      $$E = 25$$ means that you could expect to find 25 matches in a genome of this size, purely by chance. So a hit with $$E = 25$$ is probably a chance match, and does not imply that the hit sequence shares common ancestry with your search sequence. 
-> 
->      Expectation values of around 0.1 may or may not be biologically significant (other tests would be needed to decide).
-> 
->      But very small values of E mean that the hit is biologically significant. The correspondence between your search sequence and this hit must arise from common ancestry of the sequences, because the odds are are simply too low that the match could arise by chance. For example, $$E = 10\mathrm{e}{-18}$$ for a hit in the human genome means that you would expect only one chance match in one billion billion different genomes the same size of the human genome.
-> 
->      The reason we believe that we all come from common ancestors is that massive sequence similarity in all organisms is simply too unlikely to be a chance occurrence. Any family of similar sequences across many organisms must have evolved from a common sequence in a remote ancestor.
+>     Der Erwartungswert ist die Anzahl der Treffer, die man rein zufällig erwarten würde, wenn man in einem zufälligen Genom von der Größe des menschlichen Genoms nach seiner Sequenz suchen würde.
+>
+>      $$E = 25$$ bedeutet, dass man in einem Genom dieser Größe rein zufällig 25 Treffer erwarten könnte. Ein Treffer mit $$E = 25$$ ist also wahrscheinlich ein Zufallstreffer und bedeutet nicht, dass die Treffersequenz eine gemeinsame Abstammung mit Ihrer Suchsequenz hat.
+>
+>      Erwartungswerte von etwa 0,1 können biologisch signifikant sein oder auch nicht (um dies zu entscheiden, sind weitere Tests erforderlich).
+>
+>      Aber sehr kleine Werte von E bedeuten, dass der Treffer biologisch signifikant ist. Die Übereinstimmung zwischen Ihrer Suchsequenz und diesem Treffer muss auf eine gemeinsame Abstammung der Sequenzen zurückzuführen sein, denn die Wahrscheinlichkeit ist einfach zu gering, dass die Übereinstimmung zufällig zustande kommt. Zum Beispiel bedeutet $$E = 10\mathrm{e}{-18}$$ für einen Treffer im menschlichen Genom, dass man nur eine zufällige Übereinstimmung in einer Milliarde Milliarden verschiedener Genome von der gleichen Größe wie das menschliche Genom erwarten würde.
+>
+>      Der Grund, warum wir glauben, dass wir alle von gemeinsamen Vorfahren abstammen, ist, dass eine massive Sequenzähnlichkeit in allen Organismen einfach zu unwahrscheinlich ist, um ein zufälliges Ereignis zu sein. Jede Familie ähnlicher Sequenzen in vielen Organismen muss sich aus einer gemeinsamen Sequenz in einem entfernten Vorfahren entwickelt haben.
 {: .details}
 
 > <hands-on-title>Entladen </hands-on-title>

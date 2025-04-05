@@ -432,22 +432,22 @@ Con esta nueva búsqueda, encontramos las otras opsinas (verde, azul, pigmento d
 > 
 > 2. el Valor de Expectativa (etiquetado Expect o E)
 > 
->    El valor de la expectativa E de un acierto indica si el acierto es probablemente el resultado de la semejanza casual entre el acierto y la consulta, o de la ascendencia común del acierto y la consulta. ()
+>     El valor de la expectativa E de un acierto indica si el acierto es probablemente el resultado de la semejanza casual entre el acierto y la consulta, o de la ascendencia común del acierto y la consulta. ()
 > 
->    > <comment-title>Filtrar una Búsqueda BLAST</comment-title>
->    > 
->    > Si E es menor que $$10\mathrm{e}{-100}$$, a veces se da como 0.0.
->    {: .comment}
+>     > <comment-title>Filtrar una Búsqueda BLAST</comment-title>
+>     > 
+>     > Si E es menor que $$10\mathrm{e}{-100}$$, a veces se da como 0.0.
+>     {: .comment}
 > 
->    The expectation value is the number of hits you would expect to occur purely by chance if you searched for your sequence in a random genome the size of the human genome. 
-> 
->    $$E = 25$$ means that you could expect to find 25 matches in a genome of this size, purely by chance. So a hit with $$E = 25$$ is probably a chance match, and does not imply that the hit sequence shares common ancestry with your search sequence. 
-> 
->    Expectation values of around 0.1 may or may not be biologically significant (other tests would be needed to decide).
-> 
->    But very small values of E mean that the hit is biologically significant. The correspondence between your search sequence and this hit must arise from common ancestry of the sequences, because the odds are are simply too low that the match could arise by chance. For example, $$E = 10\mathrm{e}{-18}$$ for a hit in the human genome means that you would expect only one chance match in one billion billion different genomes the same size of the human genome.
-> 
->    The reason we believe that we all come from common ancestors is that massive sequence similarity in all organisms is simply too unlikely to be a chance occurrence. Any family of similar sequences across many organisms must have evolved from a common sequence in a remote ancestor.
+>     El valor de expectativa es el número de aciertos que esperarías que se produjeran por pura casualidad si buscaras tu secuencia en un genoma aleatorio del tamaño del genoma humano.
+>
+>      $$E = 25$$ significa que podría esperar encontrar 25 coincidencias en un genoma de este tamaño, puramente por azar. Por lo tanto, una coincidencia con $$E = 25$$ es probablemente una coincidencia casual, y no implica que la secuencia encontrada comparta ascendencia común con la secuencia buscada.
+>
+>      Los valores de expectativa de alrededor de 0,1 pueden o no ser biológicamente significativos (se necesitarían otras pruebas para decidirlo).
+>
+>      Pero valores muy pequeños de E significan que la coincidencia es biológicamente significativa. La correspondencia entre su secuencia de búsqueda y esta coincidencia debe surgir de la ascendencia común de las secuencias, porque las probabilidades son simplemente demasiado bajas de que la coincidencia pueda surgir por casualidad. Por ejemplo, $$E = 10\mathrm{e}{-18}$$ para una coincidencia en el genoma humano significa que sólo se esperaría una coincidencia casual en un billón de billones de genomas diferentes del mismo tamaño que el genoma humano.
+>
+>      La razón por la que creemos que todos procedemos de antepasados comunes es que la similitud masiva de secuencias en todos los organismos es sencillamente demasiado improbable para ser un hecho fortuito. Cualquier familia de secuencias similares en muchos organismos debe haber evolucionado a partir de una secuencia común en un antepasado remoto.
 > 
 {: .details}
 
