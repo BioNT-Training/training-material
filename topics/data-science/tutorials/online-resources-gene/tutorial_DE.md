@@ -35,7 +35,7 @@ contributions:
 lang: de
 tags:
   - english
-  - espanol
+  - español
   - italiano
 translations:
   - en

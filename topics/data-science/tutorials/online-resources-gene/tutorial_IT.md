@@ -37,7 +37,7 @@ contributions:
 tags:
   - deutsch
   - english
-  - espanol
+  - español
 translations:
   - de
   - en

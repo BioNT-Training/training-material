@@ -30,7 +30,7 @@ contributions:
 lang: en
 tags:
   - deutsch
-  - espanol
+  - español
   - italiano
 translations:
   - de

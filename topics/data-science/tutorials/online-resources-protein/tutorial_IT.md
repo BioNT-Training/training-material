@@ -46,7 +46,7 @@ lang: it
 tags:
   - deutsch
   - english
-  - espanol
+  - español
 translations:
   - de
   - en
