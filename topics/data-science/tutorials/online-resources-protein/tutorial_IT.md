@@ -42,6 +42,15 @@ contributions:
   - bebatut
   funding:
   - biont
+lang: it
+tags:
+  - deutsch
+  - english
+  - espanol
+translations:
+  - de
+  - en
+  - es
 ---
 
 

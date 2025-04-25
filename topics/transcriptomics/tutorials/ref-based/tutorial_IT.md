@@ -76,6 +76,15 @@ recordings:
   youtube_id: j4onRSN650A
   speakers:
   - bebatut
+lang: it
+tags:
+  - deutsch
+  - english
+  - espanol
+translations:
+  - de
+  - en
+  - es
 ---
 
 

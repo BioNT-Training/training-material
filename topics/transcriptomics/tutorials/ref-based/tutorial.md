@@ -79,6 +79,15 @@ recordings:
   speakers:
   - bebatut
 
+lang: en
+tags:
+  - deutsch
+  - espanol
+  - italiano
+translations:
+  - de
+  - es
+  - it
 ---
 
 
