@@ -64,8 +64,15 @@ recordings:
   captioners: 
   - tflowers15
   bot-timestamp: 1742268940
-
-
+lang: en
+tags:
+  - deutsch
+  - español
+  - italiano
+translations:
+  - de
+  - es
+  - it
 ---
 
 
