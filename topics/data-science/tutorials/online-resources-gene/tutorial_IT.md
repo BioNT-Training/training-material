@@ -32,8 +32,7 @@ contributions:
   - teresa-m
   funding:
   - biont
-# FIXME Uncomment when there is core support for Italian in the GTN
-# lang: it
+lang: it
 tags:
   - deutsch
   - english

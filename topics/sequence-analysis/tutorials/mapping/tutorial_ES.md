@@ -55,6 +55,15 @@ recordings:
   captioners:
   - DinithiRajapaksha
   bot-timestamp: 1725707919
+lang: es
+tags:
+  - deutsch
+  - english
+  - italiano
+translations:
+  - de
+  - en
+  - it
 ---
 
 

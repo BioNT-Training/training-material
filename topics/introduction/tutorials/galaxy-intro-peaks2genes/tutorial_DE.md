@@ -39,6 +39,15 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
+lang: de
+tags:
+  - english
+  - español
+  - italiano
+translations:
+  - en
+  - es
+  - it
 ---
 
 

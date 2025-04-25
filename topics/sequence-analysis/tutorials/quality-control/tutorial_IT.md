@@ -27,8 +27,7 @@ key_points:
 - Check the impact of the quality control
 - Different tools are available to provide additional quality metrics
 - For paired-end reads analyze the forward and reverse reads together
-# FIXME: Uncommenting the next line crashes jekyll
-# lang: it
+lang: it
 tags:
   - deutsch
   - english
