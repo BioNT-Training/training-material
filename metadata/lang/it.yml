@@ -1,0 +1,101 @@
+# metadata box
+overview: "Panoramica"
+questions: "Domande"
+objectives: "Obiettivi"
+requirements: "Requisiti"
+authors: "Autori"
+add-contributions: "Aggiungi contributi!"
+
+time-estimation: "Stima del tempo"
+minutes: "minuti"
+hour: "ora"
+hours: "ore"
+
+level: "Livello"
+introductory: "Introduttivo"
+intermediate: "Intermedio"
+advanced: "Avanzato"
+
+supporting-materials: "Materiali di supporto"
+slides: "Diapositive"
+datasets: "Set di dati"
+workflows: "Flussi di lavoro"
+supporting-galaxies: "Disponibile su queste Galassie"
+last-modification: "Ultima modifica"
+published: "Pubblicato"
+revision: "Revisione"
+
+# boxes
+tip: "Suggerimento"
+hands-on: "Pratica"
+agenda: "Agenda"
+code-in: 'Codice Iniziale'
+code-out: 'Codice Finale'
+comment: 'Commento'
+details: 'Dettagli'
+solution: 'Soluzione'
+warning: 'Avviso'
+question: 'Domanda'
+
+# contributions
+authors: "Autore(i)"
+translation: "Traduzione"
+editors: "Editore(i)"
+testers: "Tester"
+reviewers: "Revisore(i)"
+infrastructure: "Infrastruttura"
+
+instructors: "Istruttore(i)"
+organisers: "Organizzatore(i)"
+data-providers: "Fornitore(i) di dati"
+ux-designers: "Designer UX"
+
+topic: "Argomento"
+tutorial: "Tutorial"
+getting-support: "Hai domande su questo tutorial? Dai un'occhiata alle pagine FAQ disponibili e ai canali di supporto"
+
+figure: "Figura"
+
+# endmatter
+you-finished-tutorial: "Hai completato il tutorial"
+i-finished-tutorial: "Ho completato questo tutorial"
+key-points: "Punti chiave"
+faqs: "Domande Frequenti"
+references: "Riferimenti"
+feedback: "Feedback"
+feedback-text: "Hai usato questo materiale come istruttore? Sentiti libero di darci un feedback su"
+feedback-link-text: "com'è andata"
+feedback-text-learner: "Hai usato questo materiale come studente? Clicca sul modulo qui sotto per lasciare un feedback."
+feedback-none: "Non è ancora stato ricevuto alcun feedback per questa formazione. Sii il primo compilando il modulo."
+funders-ack: "Queste persone o organizzazioni hanno fornito supporto finanziario per lo sviluppo di questa risorsa"
+
+glossary: "Glossario"
+citing-tutorial: "Citare questo Tutorial"
+congrats: "Congratulazioni per aver completato con successo questo tutorial!"
+
+want-extend-knowledge: "Vuoi approfondire le tue conoscenze?"
+recommended-followup: "Segui uno dei nostri corsi di approfondimento consigliati"
+
+license: "Licenza"
+license-tutorial: "Il contenuto del tutorial è concesso in licenza"
+license-framework: "Il framework GTN è concesso in licenza"
+
+# slides
+thank-you: "Grazie"
+collaborative-effort: "Questo materiale è il risultato di un lavoro collaborativo. Grazie al [Galaxy Training Network](https://training.galaxyproject.org) e a tutti i contributori!"
+edit-on-github: "Hai trovato un errore? Qualcosa non va in questo tutorial? Modificalo su GitHub"
+
+first-time-using-slides: "Usa i tasti freccia per navigare tra le diapositive"
+presenter-notes: "premi <kbd>P</kbd> per visualizzare le note del presentatore"
+presenter-notes-explanation: |
+  Le note del presentatore contengono informazioni aggiuntive che potrebbero essere utili se intendi usare queste diapositive per insegnare.
+
+  Premi di nuovo P per disattivare le note del presentatore
+
+  Premi C per creare una nuova finestra con la stessa presentazione.
+  Questa finestra è collegata a quella principale. Cambiare slide in una cambierà anche l’altra.
+
+  Utile durante una presentazione.
+plaintext-slides: "Diapositive in testo semplice"
+video-slides: "Diapositive video"
+before-diving-in: "Prima di iniziare con queste diapositive, ti consigliamo di dare un'occhiata a"
