@@ -1613,7 +1613,7 @@ DESeq2 verlangt, dass für jeden Faktor die Anzahl der Proben in jeder Kategorie
 > 4. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} mit den folgenden Parametern:
 >    - *"Input collection "*: `all counts`
 >    - *"Wie sollten die zu entfernenden Elemente bestimmt werden "*: `Remove if identifiers are ABSENT from file`
->        - *"Filter out identifiers absent from "*: `Search in textfiles on data XXX` (Ausgabe von **Suche in Textdateien** {% Icon Tool %})
+>        - *"Filter out identifiers absent from "*: `Search in textfiles on data XXX` (Ausgabe von **Suche in Textdateien** {% icon tool %})
 > 
 > 5. Benennen Sie beide Sammlungen in `untreated` (die gefilterte Sammlung) und `treated` (die verworfene Sammlung) um.
 > 
@@ -1627,7 +1627,7 @@ DESeq2 verlangt, dass für jeden Faktor die Anzahl der Proben in jeder Kategorie
 > 7. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} mit den folgenden Parametern:
 >    - *"Input collection "*: `all counts`
 >    - *"Wie sollten die zu entfernenden Elemente bestimmt werden "*: `Remove if identifiers are ABSENT from file`
->        - *"Filter out identifiers absent from "*: `Search in textfiles on data XXX` (Ausgabe von **Suche in Textdateien** {% Icon Tool %})
+>        - *"Filter out identifiers absent from "*: `Search in textfiles on data XXX` (Ausgabe von **Suche in Textdateien** {% icon tool %})
 > 
 > 8. Benennen Sie beide Sammlungen in `single` (die gefilterte Sammlung) und `paired` (die verworfene Sammlung) um.
 > 

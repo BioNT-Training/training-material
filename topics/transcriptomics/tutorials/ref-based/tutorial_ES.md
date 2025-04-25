@@ -450,7 +450,7 @@ El archivo BAM contiene información de todas nuestras lecturas, lo que dificult
 > 
 > 1. Instale [**IGV**](https://software.broadinstitute.org/software/igv/download) (si no está ya instalado)
 > 2. Iniciar IGV localmente
-> 3. Haga clic en la colección `RNA STAR on collection N: mapped.bam` (salida de **RNA STAR** {% icono herramienta %})
+> 3. Haga clic en la colección `RNA STAR on collection N: mapped.bam` (salida de **RNA STAR** {% icon tool %})
 > 4. Expandir el {% icon param-file %} archivo `GSM461177_untreat_paired`.
 > 5. Haga clic en el icono {% icon galaxy-barchart %} visualizar en el bloque de archivo `GSM461177`.
 > 6. En el panel central haga clic en `local` en `display with IGV (local, D. melanogaster (dm6))` para cargar las lecturas en el navegador IGV
@@ -463,7 +463,7 @@ El archivo BAM contiene información de todas nuestras lecturas, lo que dificult
 > > 
 > {: .comment}
 > 
-> 6. **IGV** {% icono herramienta %}: Zoom a `chr4:540,000-560,000` (Cromosoma 4 entre 540 kb y 560 kb)
+> 6. **IGV** {% icon tool %}: Zoom a `chr4:540,000-560,000` (Cromosoma 4 entre 540 kb y 560 kb)
 > 
 >    > <question-title></question-title> (pregunta-title)
 >    > 
@@ -482,7 +482,7 @@ El archivo BAM contiene información de todas nuestras lecturas, lo que dificult
 > > 
 > {: .question}
 > 
-> 7. **IGV** {% icono herramienta %}: Inspeccione las uniones de empalme utilizando un **trazado Sashimi**
+> 7. **IGV** {% icon tool %}: Inspeccione las uniones de empalme utilizando un **trazado Sashimi**
 > 
 >    > <comment-title>Creación de un gráfico Sashimi</comment-title>
 >    > 
@@ -776,13 +776,13 @@ Hay 4 formas de estimar la estridencia a partir de los resultados de **STAR** (e
    >    > No hay problema, sólo hay que rehacer los pasos anteriores:
    >    > 
    >    > 1. Iniciar IGV localmente
-   >    > 2. Haga clic en la colección `RNA STAR on collection N: mapped.bam` (salida de **RNA STAR** {% icono herramienta %})
+   >    > 2. Haga clic en la colección `RNA STAR on collection N: mapped.bam` (salida de **RNA STAR** {% icon tool %})
    >    > 3. Expandir el {% icon param-file %} archivo `GSM461177_untreat_paired`.
    >    > 4. Haga clic en `local` en `display with IGV local D. melanogaster (dm6)` para cargar las lecturas en el navegador IGV
    >    > 
    >    {: .tip}
    > 
-   > 2. **IGV** {% icono herramienta %}
+   > 2. **IGV** {% icon tool %}
    >    1. Zoom a `chr3R:9,445,000-9,448,000` (Cromosoma 3 entre 9,445 kb a 9,448 kb), en la pista `mapped.bam`
    >    2. Haga clic con el botón derecho y seleccione `Color Aligments by` -> `first-in-pair strand`
    >    3. Haga clic con el botón derecho y seleccione `Squished`
@@ -1141,11 +1141,11 @@ Más adelante en el tutorial necesitaremos obtener el tamaño de cada gen. Esta 
 > >    > 
 > >    >    ![Icono de Scratchbook activado](../../images/ref-based/menubarWithScratchbookEnabled.png "Barra de menú con el icono de Scratchbook activado")
 > >    > 
-> >    > 3. Haga clic en el {% icono galaxy-eye %} (ojo) para ver uno de los archivos de **conteos clasificados**. En lugar de ocupar toda la barra central, la vista del conjunto de datos se muestra ahora superpuesta:
+> >    > 3. Haga clic en el {% icon galaxy-eye %} (ojo) para ver uno de los archivos de **conteos clasificados**. En lugar de ocupar toda la barra central, la vista del conjunto de datos se muestra ahora superpuesta:
 > >    > 
 > >    >    ![Scratchbook one dataset shown](../../images/ref-based/scratchbookOneDataset.png "Scratchbook muestra un conjunto de datos superpuesto")
 > >    > 
-> >    > 4. A continuación, haga clic en el {% icono galaxia-ojo %} (ojo) en el **segundo archivo de recuentos ordenados**. El segundo conjunto de datos pasa por encima del primero, pero puede mover la ventana para ver los dos conjuntos de datos uno al lado del otro:
+> >    > 4. A continuación, haga clic en el {% icon galaxy-eye %} (ojo) en el **segundo archivo de recuentos ordenados**. El segundo conjunto de datos pasa por encima del primero, pero puede mover la ventana para ver los dos conjuntos de datos uno al lado del otro:
 > >    > 
 > >    >    ![Scratchbook two datasets shown](../../images/ref-based/scratchbookTwoDatasetsShown.png "Scratchbook mostrando dos conjuntos de datos uno al lado del otro")
 > >    > 
@@ -1613,7 +1613,7 @@ DESeq2 requiere proporcionar para cada factor, recuentos de muestras en cada cat
 > 4. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} con los siguientes parámetros:
 >    - *"Colección de entrada "*: `all counts`
 >    - *"¿Cómo deben determinarse los elementos a eliminar?*: `Remove if identifiers are ABSENT from file`
->        - *"Filtrar identificadores ausentes de "*: `Search in textfiles on data XXX` (salida de **Búsqueda en archivos de texto** {% herramienta icono %})
+>        - *"Filtrar identificadores ausentes de "*: `Search in textfiles on data XXX` (salida de **Búsqueda en archivos de texto** {% icon tool %})
 > 
 > 5. Renombrar ambas colecciones `untreated` (la colección filtrada) y `treated` (la colección descartada).
 > 
@@ -1627,7 +1627,7 @@ DESeq2 requiere proporcionar para cada factor, recuentos de muestras en cada cat
 > 7. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} con los siguientes parámetros:
 >    - *"Colección de entrada "*: `all counts`
 >    - *"¿Cómo deben determinarse los elementos a eliminar?*: `Remove if identifiers are ABSENT from file`
->        - *"Filtrar identificadores ausentes de "*: `Search in textfiles on data XXX` (salida de **Búsqueda en archivos de texto** {% herramienta icono %})
+>        - *"Filtrar identificadores ausentes de "*: `Search in textfiles on data XXX` (salida de **Búsqueda en archivos de texto** {% icon tool %})
 > 
 > 8. Renombrar ambas colecciones `single` (la colección filtrada) y `paired` (la colección descartada).
 > 
@@ -2117,7 +2117,7 @@ El análisis [Gene Ontology (GO)](http://www.geneontology.org/) se utiliza ampli
 >    - *"Delimitado por "*: `Tab`
 >    - {% icon param-file %} *"De "*: la salida de **Compute** {% icon tool %}
 > 
-> 3. {% herramienta [Change Case](ChangeCase) %} con
+> 3. {% tool [Change Case](ChangeCase) %} con
 >    - {% icon param-file %} *"De "*: la salida del **Cut** anterior {% icon tool %}
 >    - *"Cambiar caso de columnas "*: `c1`
 >    - *"Delimitado por "*: `Tab`
@@ -2136,7 +2136,7 @@ Acabamos de generar la primera entrada para **goseq**. Como segunda entrada para
 > 
 > {% snippet faqs/galaxy/histories_copy_dataset.md %}
 > 
-> 2. {% herramienta [Extraer conjunto de datos](__EXTRACT_DATASET__) %} con:
+> 2. {% tool [Extraer conjunto de datos](__EXTRACT_DATASET__) %} con:
 >    - {% icon param-collection %} *"Input List "*: `featureCounts on collection N: Feature lengths`
 >    - *"¿Cómo debe seleccionarse un conjunto de datos?*: `The first dataset`
 > 
@@ -2148,7 +2148,7 @@ Acabamos de generar la primera entrada para **goseq**. Como segunda entrada para
 > {% snippet faqs/galaxy/histories_copy_dataset.md %}
 > </div>
 > 
-> 2. {% herramienta [Change Case](ChangeCase) %} con los siguientes parámetros:
+> 2. {% tool [Change Case](ChangeCase) %} con los siguientes parámetros:
 > 
 >    - {% icon param-file %} *"De "*: <span class="featureCounts" markdown="1">`GSM461177_untreat_paired` (salida de **Extract Dataset** {% icon tool %})</span><span class="STAR" markdown="1">`Gene length`</span>
 >    - *"Cambiar caso de columnas "*: `c1`
@@ -2205,7 +2205,7 @@ Ya tenemos los dos archivos de entrada necesarios para goseq.
    > > 
    > > 2. Para sobre-representados, 50 BP, 5 CC y 5 MF y para sub-representados, 5 BP, 2 CC y 0 MF
    > > 
-   > >    {% herramienta [Agrupar datos](Agrupar1) %} en la columna 7 (categoría) y recuento en la columna 1 (IDs)
+   > >    {% tool [Agrupar datos](Agrupar1) %} en la columna 7 (categoría) y recuento en la columna 1 (IDs)
    > > 
    > {: .solution} {: .question}
 
@@ -2268,9 +2268,9 @@ Por ejemplo, la ruta `dme00010` representa el proceso de glucólisis (conversió
    > > <solution-title></solution-title>
    > > 
    > > 1. El archivo tiene 128 líneas, incluida la cabecera, por lo que se han identificado 127 vías KEGG.
-   > > 2. 2 vías KEGG (2,34%) están sobrerrepresentadas, utilizando {% herramienta [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c6 (valor p ajustado para vías KEGG sobrerrepresentadas)
+   > > 2. 2 vías KEGG (2,34%) están sobrerrepresentadas, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c6 (valor p ajustado para vías KEGG sobrerrepresentadas)
    > > 3. Las dos vías KEGG sobrerrepresentadas son `01100` y `00010`. Buscándolas en la [base de datos KEGG](https://www.genome.jp/kegg/kegg2.html), podemos encontrar más información sobre estas vías: `01100` corresponde a todas las vías metabólicas y `00010` a la vía de la Glucólisis / Gluconeogénesis.
-   > > 4. Ninguna vía KEGG está infrarrepresentada, utilizando {% herramienta [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c7 (valor p ajustado para vías KEGG infrarrepresentadas) {: .solution} {: .question}
+   > > 4. Ninguna vía KEGG está infrarrepresentada, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c7 (valor p ajustado para vías KEGG infrarrepresentadas) {: .solution} {: .question}
 
 2. Una tabla con los genes expresados diferencialmente (de la lista que proporcionamos) asociados a las vías KEGG (`DE genes for categories (GO/KEGG terms)`)
 

@@ -452,7 +452,7 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 > 2. Avviare IGV localmente
 > 3. Fare clic sulla raccolta `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
 > 4. Espandere il {% icon param-file %} file `GSM461177_untreat_paired`.
-> 5. Fare clic sull'icona {% icona galaxy-barchart %} visualizza nel blocco file `GSM461177`.
+> 5. Fare clic sull'icona {% icon galaxy-barchart %} visualizza nel blocco file `GSM461177`.
 > 6. Nel pannello centrale fare clic su `local` in `display with IGV (local, D. melanogaster (dm6))` per caricare le letture nel browser IGV
 >    > <comment-title></comment-title>
 >    > 
@@ -463,7 +463,7 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 > > 
 > {: .comment}
 > 
-> 6. **IGV** {% strumento icona %}: Zoom su `chr4:540,000-560,000` (Cromosoma 4 tra 540 kb e 560 kb)
+> 6. **IGV** {% icon tool %}: Zoom su `chr4:540,000-560,000` (Cromosoma 4 tra 540 kb e 560 kb)
 > 
 >    > <question-title></question-title>
 >    > 
@@ -1141,11 +1141,11 @@ Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni 
 > >    > 
 > >    >    ![icona di Scratchbook abilitata](../../images/ref-based/menubarWithScratchbookEnabled.png "Barra del menu con icona di Scratchbook abilitata")
 > >    > 
-> >    > 3. Fare clic sull'icona {% icona galassia occhio %} (occhio) per visualizzare uno dei file dei **conti ordinati**. Invece di occupare l'intera barra centrale, la vista del set di dati viene ora mostrata in sovrimpressione:
+> >    > 3. Fare clic sull'icona {% icon galaxy-eye %} (occhio) per visualizzare uno dei file dei **conti ordinati**. Invece di occupare l'intera barra centrale, la vista del set di dati viene ora mostrata in sovrimpressione:
 > >    > 
 > >    >    ![Scratchbook one dataset shown](../../images/ref-based/scratchbookOneDataset.png "Scratchbook showing one dataset overlay")
 > >    > 
-> >    > 4. Fare quindi clic sull'icona {% icona occhio di galassia %} (occhio) sul **secondo file di conteggi ordinati**. Il secondo set di dati va a sovrapporsi al primo, ma è possibile spostare la finestra per vedere i due set di dati uno accanto all'altro:
+> >    > 4. Fare quindi clic sull'icona {% icon galaxy-eye %} (occhio) sul **secondo file di conteggi ordinati**. Il secondo set di dati va a sovrapporsi al primo, ma è possibile spostare la finestra per vedere i due set di dati uno accanto all'altro:
 > >    > 
 > >    >    ![Mostra di due set di dati](../../images/ref-based/scratchbookTwoDatasetsShown.png "Mostra di due set di dati affiancati")
 > >    > 
@@ -1533,7 +1533,7 @@ DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni cate
 >            - *"Trova schema "*: `(.*)_(.*)_(.*)`
 >            - *"Sostituisci con "*: `\1_\2_\3\tgroup:\2\tgroup:\3`
 > 
->    Questo passaggio crea 2 colonne aggiuntive con il tipo di trattamento e di sequenziamento che possono essere utilizzate con lo strumento {% strumento [Elementi tag](__TAG_FROM_FILE__) %}
+>    Questo passaggio crea 2 colonne aggiuntive con il tipo di trattamento e di sequenziamento che possono essere utilizzate con lo strumento {% tool [Elementi tag](__TAG_FROM_FILE__) %}
 > 
 > 4. Cambiare il tipo di dati in `tabular`
 > 
@@ -1547,7 +1547,7 @@ DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni cate
 > 
 >    > <tip-title>Non riuscite a vedere i cambiamenti?</tip-title>
 >    > 
->    > A prima vista non si nota perché i nomi sono gli stessi. Tuttavia, se si fa clic su uno di essi e si clicca su {% icona galaxy-tags %} **Modifica i tag del dataset**, si dovrebbero vedere 2 tag che iniziano con "group:". Questa parola chiave permetterà di usare questi tag in **DESeq2**.
+>    > A prima vista non si nota perché i nomi sono gli stessi. Tuttavia, se si fa clic su uno di essi e si clicca su {% icon galaxy-tags %} **Modifica i tag del dataset**, si dovrebbero vedere 2 tag che iniziano con "group:". Questa parola chiave permetterà di usare questi tag in **DESeq2**.
 >    > 
 > > 
 >     {: .tip}
@@ -1862,7 +1862,7 @@ Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con
 
 > <hands-on-title>Estrarre i geni più differenzialmente espressi</hands-on-title>
 > 
-> 1. {% strumento [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un cambiamento significativo nell'espressione genica (valore *p* aggiustato inferiore a 0,05) tra i campioni trattati e non trattati:
+> 1. {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un cambiamento significativo nell'espressione genica (valore *p* aggiustato inferiore a 0,05) tra i campioni trattati e non trattati:
 >    - {% icon param-file %} *"Filtro "*: `Annotated DESeq2 results`
 >    - *"Con le seguenti condizioni "*: `c7<0.05`
 >    - *"Numero di righe di intestazione da saltare "*: `1`
@@ -1891,7 +1891,7 @@ Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con
 > 
 > Selezioneremo ora solo i geni con un fold change (FC) > 2 o FC < 0,5. Si noti che il file di output di DESeq2 contiene $$log_{2} FC$$, piuttosto che FC stesso, quindi filtriamo per $$abs(log_{2} FC) > 1$$ (che implica FC > 2 o FC < 0,5).
 > 
-> 3. {% strumento [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un $$abs(log_{2} FC) > 1$$:
+> 3. {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un $$abs(log_{2} FC) > 1$$:
 >    - {% icon param-file %} *"Filtro "*: `Genes with significant adj p-value`
 >    - *"Con le seguenti condizioni "*: `abs(c3)>1`
 >    - *"Numero di righe di intestazione da saltare "*: `1`
@@ -1906,7 +1906,7 @@ Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con
 >    > > <solution-title></solution-title>
 >    > > 
 >    > > 1. Otteniamo 113 geni (114 righe compresa l'intestazione), ovvero l'11,79% dei geni significativamente espressi in modo differenziato.
->    > > 2. Il gene *Pasilla* può essere trovato con una rapida ricerca (o anche usando {% strumento [Filtra i dati su qualsiasi colonna usando semplici espressioni](Filtro1) %}) )
+>    > > 2. Il gene *Pasilla* può essere trovato con una rapida ricerca (o anche usando {% tool [Filtra i dati su qualsiasi colonna usando semplici espressioni](Filtro1) %}) )
 > > > 
 > > {: .solution}
 > > 
@@ -2117,7 +2117,7 @@ L'analisi [Gene Ontology (GO)](http://www.geneontology.org/) è ampiamente utili
 >    - *"Delimitato da "*: `Tab`
 >    - {% icon param-file %} *"Da "*: l'output di **Compute** {% icon tool %}
 > 
-> 3. {% strumento [Change Case](ChangeCase) %} con
+> 3. {% tool [Change Case](ChangeCase) %} con
 >    - {% icon param-file %} *"Da "*: l'output del precedente **Taglio** {% icon tool %}
 >    - *"Cambia il caso delle colonne "*: `c1`
 >    - *"Delimitato da "*: `Tab`
@@ -2268,9 +2268,9 @@ Per esempio, il percorso `dme00010` rappresenta il processo di glicolisi (conver
    > > <solution-title></solution-title>
    > > 
    > > 1. Il file ha 128 righe, compresa l'intestazione, quindi sono stati identificati 127 percorsi KEGG.
-   > > 2. 2 percorsi KEGG (2,34%) sono sovrarappresentati, usando lo strumento {% [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} su c6 (valore p aggiustato per i percorsi KEGG sovrarappresentati)
+   > > 2. 2 percorsi KEGG (2,34%) sono sovrarappresentati, usando lo strumento {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} su c6 (valore p aggiustato per i percorsi KEGG sovrarappresentati)
    > > 3. I 2 percorsi KEGG sovrarappresentati sono `01100` e `00010`. Effettuando una ricerca su [KEGG database] (https://www.genome.jp/kegg/kegg2.html), possiamo trovare ulteriori informazioni su questi percorsi:`01100` corrisponde a tutte le vie metaboliche e`00010` alla via della glicolisi/gluconeogenesi.
-   > > 4. Nessun percorso KEGG è sottorappresentato, usando lo strumento {% [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} su c7 (valore p aggiustato per i percorsi KEGG sottorappresentati) {: .solution} {: .question}
+   > > 4. Nessun percorso KEGG è sottorappresentato, usando lo strumento {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} su c7 (valore p aggiustato per i percorsi KEGG sottorappresentati) {: .solution} {: .question}
 
 2. Una tabella con i geni differenzialmente espressi (dall'elenco fornito) associati ai percorsi KEGG (`DE genes for categories (GO/KEGG terms)`)
 
@@ -2341,7 +2341,7 @@ Qui vorremmo visualizzare i 2 percorsi KEGG: il `00010` sovrarappresentato (Glic
 > 
 {: .question}
 
-{% commento %}
+{% comment %}
 
 # Inferenza dell'uso differenziale dell'esone
 
@@ -2472,7 +2472,7 @@ Analogamente a DESeq2, DEXSeq genera una tabella con:
 
 > <hands-on-title></hands-on-title>
 > 
-> 1. {% strumento [Filtrare i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre gli esoni con un utilizzo differenziale significativo (valore *p* aggiustato uguale o inferiore a 0,05) tra campioni trattati e non trattati
+> 1. {% tool [Filtrare i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre gli esoni con un utilizzo differenziale significativo (valore *p* aggiustato uguale o inferiore a 0,05) tra campioni trattati e non trattati
 > 
 > > <question-title></question-title>
 > > 
