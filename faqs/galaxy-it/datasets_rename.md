@@ -18,7 +18,7 @@ examples:
 ---
 
 
-- Fare clic sull'icona {% galaxy-pencil %} **icona della matita** per il set di dati per modificarne gli attributi
+- Fare clic sull'icona {% icon galaxy-pencil %} **icona della matita** per il set di dati per modificarne gli attributi
 - Nel pannello centrale, cambiare il campo **Name** {% if include.name %} in `{{ include.name }}` {% endif %}
 - Fare clic sul pulsante **Save**
 
