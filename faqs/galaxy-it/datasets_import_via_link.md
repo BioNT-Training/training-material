@@ -44,11 +44,11 @@ examples:
 
 
 * Copia la posizione del collegamento
-* Fare clic su {% icona galaxy-upload %} **Carica i dati** nella parte superiore del pannello degli strumenti {% if include.reset_form %}
+* Fare clic su {% icon galaxy-upload %} **Carica i dati** nella parte superiore del pannello degli strumenti {% if include.reset_form %}
 * Fare clic sul pulsante **Reset** in fondo al modulo. Se il pulsante è grigio -> passare al passo successivo. {% endif %} {% if include.collection %}
 * Fare clic su **Collection** in alto {% endif %} {% if include.collection_type %}
 * Fare clic su **Tipo di raccolta** e selezionare `{{ include.collection_type }}` {% endif %}
-* Selezionare {% icona galaxy-wf-edit %} **Incollare/recuperare i dati**
+* Selezionare {% icon galaxy-wf-edit %} **Incollare/recuperare i dati**
 * Incollare il/i link nel campo di testo {% if include.link %} `{{ include.link }}` {% endif %} {% if include.link2 %} `{{ include.link2 }}` {% endif %} {% if include.format %}
 * Cambiare **Type (set all):** da "Auto-detect" a `{{ include.format }}` {% endif %} {% if include.genome %}
 * Cambiare **Genome** in `{{ include.genome }}` {% endif %}

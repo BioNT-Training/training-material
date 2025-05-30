@@ -22,7 +22,7 @@ examples:
 ---
 
 
-* Cliccare sull'icona {% galaxy-pencil %} **icona della matita** per il set di dati per modificarne gli attributi
+* Cliccare sull'icona {% icon galaxy-pencil %} **icona della matita** per il set di dati per modificarne gli attributi
 * Nel pannello centrale, fare clic su {% icon galaxy-chart-select-data %} *scheda *Datipi** in alto
 * Nella sezione {% icon galaxy-chart-select-data %} **Assegna tipo di dato**, selezionare {% if include.datatype %}`{{ include.datatype }}`{% else %} il tipo di dato desiderato {% endif %} dal menu a discesa "*Nuovo tipo*"
   - Suggerimento: si può iniziare a digitare il tipo di dato nel campo per filtrare il menu a discesa
