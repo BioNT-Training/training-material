@@ -27,8 +27,8 @@ Los conjuntos de datos se pueden etiquetar. Esto simplifica el seguimiento de lo
 
 Se llaman **etiquetas de nombre**. La característica única de estas etiquetas es que se *propagan*: si un conjunto de datos se etiqueta con una etiqueta de nombre, todos los derivados (hijos) de este conjunto de datos heredarán automáticamente esta etiqueta (véase más abajo). La figura siguiente explica por qué es tan útil. Considere el siguiente análisis (los números entre paréntesis corresponden a los números de los conjuntos de datos en la siguiente figura):
 
-1. un conjunto de lecturas hacia adelante y hacia atrás (conjuntos de datos 1 y 2) se mapea contra una referencia usando {% herramienta Bowtie2 %} generando el conjunto de datos 3;
-1. dataset 3 se utiliza para calcular la cobertura de lectura utilizando {% herramienta BedTools Genome Coverage %} *por separado* para las cadenas `+` y `-`. Esto genera dos conjuntos de datos (4 y 5 para más y menos, respectivamente);
+1. un conjunto de lecturas hacia adelante y hacia atrás (conjuntos de datos 1 y 2) se mapea contra una referencia usando {% tool Bowtie2 %} generando el conjunto de datos 3;
+1. dataset 3 se utiliza para calcular la cobertura de lectura utilizando {% tool BedTools Genome Coverage %} *por separado* para las cadenas `+` y `-`. Esto genera dos conjuntos de datos (4 y 5 para más y menos, respectivamente);
 1. los conjuntos de datos 4 y 5 se utilizan como entrada para los conjuntos de datos {% tool Macs2 broadCall %} que generan los conjuntos de datos 6 y 8;
 1. los conjuntos de datos 6 y 8 son intersecados con las coordenadas de los genes (conjunto de datos 9) usando {% tool BedTools Intersect %} generando los conjuntos de datos 10 y 11.
 

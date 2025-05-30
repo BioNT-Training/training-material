@@ -11,6 +11,6 @@ contributors:
 ---
 
 
-1. Fare clic su {% icona param-files %} **Insiemi di dati multipli**
+1. Fare clic su {% icon param-files %} **Insiemi di dati multipli**
 2. Selezionare diversi file tenendo premuto il tasto <kbd>Ctrl</kbd> (o <kbd>COMMAND</kbd>) e facendo clic sui file di interesse
 

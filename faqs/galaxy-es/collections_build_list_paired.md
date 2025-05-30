@@ -11,7 +11,7 @@ contributors:
 
 
 
-* Haga clic en {% icono galaxy-selector %} **Seleccionar Items** en la parte superior del panel del historial ![Botón Seleccionar Items]({% link topics/galaxy-interface/images/historyItemControls.png %})
+* Haga clic en {% icon galaxy-selector %} **Seleccionar Items** en la parte superior del panel del historial ![Botón Seleccionar Items]({% link topics/galaxy-interface/images/historyItemControls.png %})
 * Marque {% if include.datasets_description %}{{{ include.datasets_description }}{% else %}todos los conjuntos de datos de su historial que desee incluir{% endif %}
 * Haga clic en **{% if include.n %}{{ include.n }}{% else %}n{% endif %} de N seleccionados** y elija **Crear lista de pares de conjuntos de datos**
 

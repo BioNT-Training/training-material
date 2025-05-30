@@ -12,6 +12,6 @@ Las herramientas se actualizan con frecuencia a nuevas versiones. Su Galaxy pued
 
 **Pasar a otra versión** de una herramienta:
   - Abrir la herramienta
-  - Haga clic en el logo {% icono herramienta-versiones %} versiones arriba a la derecha**
+  - Haga clic en el logo {% icon tool-versions %} versiones arriba a la derecha**
   - Seleccione la versión deseada en la lista desplegable
 

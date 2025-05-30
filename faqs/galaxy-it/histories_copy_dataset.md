@@ -18,7 +18,7 @@ Esistono 3 modi per copiare i set di dati tra le cronologie
 
 1. Dalla cronologia originale
 
-    1. Cliccare sull'icona {% icona galaxy-gear %} che si trova in cima all'elenco dei dataset nel pannello della cronologia
+    1. Cliccare sull'icona {% icon galaxy-gear %} che si trova in cima all'elenco dei dataset nel pannello della cronologia
     2. Fare clic su **Copia set di dati**
     3. Selezionare i file desiderati {% if include.history_name %}
     4. "Nuova cronologia denominata:" `{{ include.history_name }}` {% else %}
@@ -26,10 +26,10 @@ Esistono 3 modi per copiare i set di dati tra le cronologie
     5. Convalida per 'Copia elementi della cronologia'
     5. Fare clic sul nome della nuova cronologia nel riquadro verde appena visualizzato per passare a questa cronologia
 
-2. Utilizzo dell'icona {% galassia-colonne %} **Mostra le cronologie affiancate**
+2. Utilizzo dell'icona {% icon galaxy-columns %} **Mostra le cronologie affiancate**
 
-    1. Fare clic sulla freccia a discesa {% icona galaxy-dropdown %} in alto a destra del pannello della cronologia (**opzioni cronologia**)
-    2. Cliccare su {% icona galassia-colonne %} **Mostra le cronologie affiancate**
+    1. Fare clic sulla freccia a discesa {% icon galaxy-dropdown %} in alto a destra del pannello della cronologia (**opzioni cronologia**)
+    2. Cliccare su {% icon galaxy-columns %} **Mostra le cronologie affiancate**
     3. se la cronologia di destinazione non è presente
         1. Fare clic su "Seleziona cronologia"
         2. Fare clic sulla cronologia di destinazione

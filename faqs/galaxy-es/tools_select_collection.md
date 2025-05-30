@@ -11,6 +11,6 @@ contributors:
 
 
 
-1. Haga clic en {% icono param-collection %} **Dataset collection** delante del parámetro de entrada al que desea suministrar la colección.
+1. Haga clic en {% icon param-collection %} **Dataset collection** delante del parámetro de entrada al que desea suministrar la colección.
 2. Seleccione la colección que desea utilizar de la lista
 

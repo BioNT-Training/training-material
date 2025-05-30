@@ -25,12 +25,12 @@ examples:
 ---
 
 
-* Fare clic su {% icona galaxy-upload %} **Caricamento dati** nella parte superiore del pannello degli strumenti
-* Selezionare {% icona galaxy-wf-edit %} **Incolla/Recupera dati** in basso
+* Fare clic su {% icon galaxy-upload %} **Caricamento dati** nella parte superiore del pannello degli strumenti
+* Selezionare {% icon galaxy-wf-edit %} **Incolla/Recupera dati** in basso
 * Incollare il contenuto del file nel campo di testo {% if include.name %}
 * Cambiare il nome del dataset da "New File" a `{{ include.name }}` {% endif %} {%- if include.format -%}
 * Cambiare **Type** da "Auto-detect" a `{{ include.format }}` {%- endif -%} {%- if include.genome -%}
 * Cambiare **Genome** in `{{ include.genome }}` {%- endif -%} {%- if include.convertspaces -%}
-* Dal menu Impostazioni ({% icona galaxy-gear %}) selezionare **Converti spazi in tabulazioni** {%- endif -%}
+* Dal menu Impostazioni ({% icon galaxy-gear %}) selezionare **Converti spazi in tabulazioni** {%- endif -%}
 * Premere **Avvio** e **Chiudere** la finestra
 
