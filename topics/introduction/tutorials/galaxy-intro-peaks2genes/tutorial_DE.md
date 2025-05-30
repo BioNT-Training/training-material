@@ -72,7 +72,7 @@ Regionen enthält, in denen das Signal signifikant angereichert ist (so genannte
 Das Ziel dieser Übung ist es, **die Liste der genomischen Regionen in eine Liste
 möglicher Zielgene** umzuwandeln.
 
-{% snippet faqs/galaxy/analysis_results_may_vary.md %}
+{% snippet faqs/galaxy-de/analysis_results_may_vary.md %}
 
 > <agenda-title></agenda-title>
 > 
@@ -108,7 +108,7 @@ Beginnen wir mit einer neuen Geschichte.
 > 
 > 1. Stellen Sie sicher, dass Sie einen leeren Analyseverlauf haben.
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. **Benennen Sie Ihren Verlauf**, damit Sie ihn leicht erkennen können
 > 
@@ -154,7 +154,7 @@ Beginnen wir mit einer neuen Geschichte.
 >    Das direkte Hochladen von Dateien ist nicht die einzige Möglichkeit, Daten in
 >    Galaxy zu bekommen
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md format="interval" %}
+>    {% snippet faqs/galaxy-de/datasets_import_via_link.md format="interval" %}
 > 
 >    > <tip-title>Daten in Galaxy importieren</tip-title>
 >    > Es gibt [weitere Optionen]({% link topics/galaxy-interface/tutorials/get-data/slides.html %}) für fortgeschrittene Benutzer.
@@ -210,7 +210,7 @@ Beginnen wir mit einer neuen Geschichte.
 > 6. Hinzufügen eines Tags namens `#peaks` zum Datensatz, um ihn in der Historie besser
 >    verfolgen zu können
 > 
->    {% snippet faqs/galaxy/datasets_add_tag.md %}
+>    {% snippet faqs/galaxy-de/datasets_add_tag.md %}
 > 
 >    Der Datensatz sollte nun in der Historie wie folgt aussehen
 > 
@@ -257,7 +257,7 @@ von Genen in Mäusen, die wir von UCSC erhalten können.
 > 7. Warten, bis der Upload beendet ist
 > 8. Benennen Sie unseren Datensatz in etwas Erkennbareres wie `Genes` um
 > 
->    {% snippet faqs/galaxy/datasets_rename.md name="Genes" %}
+>    {% snippet faqs/galaxy-de/datasets_rename.md name="Genes" %}
 > 
 > 9. Hinzufügen eines Tags namens `#genes` zum Datensatz, um ihn in der Historie besser
 >    verfolgen zu können
@@ -570,7 +570,7 @@ verwenden.
 >       - *"in "*: `Ascending order`
 >       - *"Flavor "*: `Natural/Version sort (-V)`
 > 
->    {% snippet faqs/galaxy/tools_similar.md toolname="Daten in aufsteigender oder absteigender Reihenfolge sortieren" toolversion="1.1.1" %}
+>    {% snippet faqs/galaxy-de/tools_similar.md toolname="Daten in aufsteigender oder absteigender Reihenfolge sortieren" toolversion="1.1.1" %}
 > 
 {: .hands_on}
 
@@ -717,7 +717,7 @@ kopieren.
 > 1. Erstellen Sie einen neuen Verlauf und geben Sie ihm einen neuen Namen wie `Galaxy
 >    Introduction Part 2`
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. Klicken Sie auf die **Historienoptionen** oben rechts in Ihrer Historie. Klicken
 >    Sie auf die Option **Verläufe nebeneinander anzeigen**
@@ -772,7 +772,7 @@ Jetzt schneiden wir nur das Chromosom sowie den Anfang und das Ende des Gipfels 
 > 
 > 2. Ändern Sie das Format in `interval` (verwenden Sie das {% icon galaxy-pencil %}), da dies das ist, was das Tool **Intersect** erwartet.
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="interval" %}
+>    {% snippet faqs/galaxy-de/datasets_change_datatype.md datatype="interval" %}
 > 
 >    Die Ausgabe sollte wie folgt aussehen:
 > 
@@ -803,9 +803,9 @@ erhalten, verwenden wir eine andere BED-Datei aus den Datenbibliotheken.
 >    https://zenodo.org/record/1025586/files/mm9.RefSeq_genes_from_UCSC.bed
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md genome="mm9" %}
+>    {% snippet faqs/galaxy-de/datasets_import_via_link.md genome="mm9" %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md path='Klicken Sie auf "GTN - Material", "Introduction to Galaxy Analyses", "From peaks to genes", und dann "DOI: 10.5281/zenodo.1025586"' %}
+>    {% snippet faqs/galaxy-de/datasets_import_from_data_library.md path='Klicken Sie auf "GTN - Material", "Introduction to Galaxy Analyses", "From peaks to genes", und dann "DOI: 10.5281/zenodo.1025586"' %}
 > 
 >    Standardmäßig nimmt Galaxy den Link als Namen, also benennen Sie sie um.
 > 

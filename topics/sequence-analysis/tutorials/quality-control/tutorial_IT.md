@@ -100,9 +100,9 @@ Pertanto, è necessario comprendere, identificare ed escludere i tipi di errore 
 > 
 > 1. Creare una nuova storia per questa esercitazione e darle un nome appropriato
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-it/histories_rename.md %}
 > 
 > 2. Importare il file `female_oral2.fastq-4143.gz` da [Zenodo](https://zenodo.org/record/3977236) o dalla libreria di dati (chiedere al proprio istruttore) Questo è un campione di microbioma di un serpente {% cite StJacques2021 %}.
 > 
@@ -110,9 +110,9 @@ Pertanto, è necessario comprendere, identificare ed escludere i tipi di errore 
 >    https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md %}
 > 
 > 3. Rinominare il dataset importato in `Reads`.
 {: .hands_on}
@@ -146,7 +146,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 
 significa che il frammento denominato `@M00970` corrisponde alla sequenza di DNA `GTGCCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCCGAGCCCACGAGACCGAAGAACATCTCGTATGCCGTCTTCTGCTTGAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAGAAGCAAATGACGATTCAAGAAAGAAAAAAACACAGAATACTAACAATAAGTCATAAACATCATCAACATAAAAAAGGAAATACACTTACAACACATATCAATATCTAAAATAAATGATCAGCACACAACATGACGATTACCACACATGTGTACTACAAGTCAACTA` e questa sequenza è stata sequenziata con una qualità `GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGGGGGGGGFGGGGGGGGGGGGGGFGGG+38+35*311*6,,31=******441+++0+0++0+*1*2++2++0*+*2*02*/***1*+++0+0++38++00++++++++++0+0+2++*+*+*+*+*****+0**+0**+***+)*.***1**//*)***)/)*)))*)))*),)0(((-((((-.(4(,,))).,(())))))).)))))))-))-(`.
 
-{% snippet topics/sequence-analysis/faqs/quality_score.md %}
+{% snippet topics/sequence-analysis/faqs/quality_score_IT.md %}
 
 > <question-title></question-title>
 > 
@@ -689,7 +689,7 @@ Possiamo esaminare i nostri dati tagliati con FASTQE e/o FastQC.
 >    > 
 >    > Confrontate l'output FASTQE con quello precedente prima del trimming. La qualità della sequenza è migliorata?
 >    > 
->    > {% snippet faqs/galaxy/features_scratchbook.md %}
+>    > {% snippet faqs/galaxy-it/features_scratchbook.md %}
 >    > 
 >    > > <solution-title></solution-title>
 >    > > Sì, le emoji del punteggio di qualità hanno un aspetto migliore (più felice) ora.
@@ -795,7 +795,7 @@ I dati analizzati nella fase precedente erano single-end, quindi importeremo un 
 > 2. {% tool [FASTQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0) %} con entrambi i set di dati:
 >    - {% icon param-files %} *"Dati di lettura grezzi dalla vostra storia attuale "*: entrambi i set di dati caricati.
 > 
->    {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
+>    {% snippet faqs/galaxy-it/tools_select_multiple_datasets.md %}
 > 
 > 3. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1) %} con i seguenti parametri per aggregare i rapporti FastQC delle letture sia forward che reverse
 >      - In *"Risultati "*

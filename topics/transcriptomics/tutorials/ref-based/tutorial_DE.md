@@ -125,7 +125,7 @@ Im zweiten Teil des Tutorials werden die Read-Zahlen aller 7 Proben verwendet, u
 > 
 > 1. Erstellen Sie einen neuen Verlauf für diese RNA-Seq-Übung
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. Importieren Sie die FASTQ-Dateipaare von [Zenodo]({{ page.zenodo_link }}) oder einer Datenbibliothek:
 >    - `GSM461177` (unbehandelt): `GSM461177_1` und `GSM461177_2`
@@ -138,9 +138,9 @@ Im zweiten Teil des Tutorials werden die Read-Zahlen aller 7 Proben verwendet, u
 >    {{ page.zenodo_link }}/files/GSM461180_2.fastqsanger
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_from_data_library.md %}
 > 
 >    > <comment-title></comment-title>
 >    > 
@@ -160,11 +160,11 @@ Im zweiten Teil des Tutorials werden die Read-Zahlen aller 7 Proben verwendet, u
 > 
 > 3. Überprüfen Sie, ob der Datentyp `fastqsanger` ist (z.B. **nicht** `fastq`). Ist dies nicht der Fall, ändern Sie bitte den Datentyp in `fastqsanger`.
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="fastqsanger" %}
+>    {% snippet faqs/galaxy-de/datasets_change_datatype.md datatype="fastqsanger" %}
 > 
 > 4. Erstellen Sie eine gepaarte Sammlung mit dem Namen `2 PE fastqs`, benennen Sie Ihre Paare mit dem Probennamen, gefolgt von den Attributen:`GSM461177_untreat_paired` und `GSM461180_treat_paired`.
 > 
->    {% snippet faqs/galaxy/collections_build_list_paired.md %}
+>    {% snippet faqs/galaxy-de/collections_build_list_paired.md %}
 > 
 {: .hands_on}
 
@@ -197,7 +197,7 @@ Leider unterstützt die aktuelle Version von MultiQC (das Tool, das wir zum Komb
 > 2. {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} mit den folgenden Parametern:
 >    - {% icon param-collection %} *"Rohe Lesedaten aus Ihrer aktuellen Historie "*: Ausgabe von **Flatten collection** {% icon tool %} ausgewählt als **Dataset collection**
 > 
->    {% snippet faqs/galaxy/tools_select_collection.md %}
+>    {% snippet faqs/galaxy-de/tools_select_collection.md %}
 > 
 > 3. Untersuchen Sie die Ausgabe der Webseite von **Falco** {% icon tool %} für die Probe `GSM461177_untreat_paired` (vorwärts und rückwärts)
 > 
@@ -928,7 +928,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
    > > 
    > > 1. Ergebnisse für `GSM461177_untreat_paired`:
    > > 
-   > >    {% snippet faqs/galaxy/analysis_results_may_vary.md %}
+   > >    {% snippet faqs/galaxy-de/analysis_results_may_vary.md %}
    > > 
    > >    ```text
    > >    This is PairEnd Data
@@ -1098,7 +1098,7 @@ Im weiteren Verlauf des Tutorials werden wir die Größe der einzelnen Gene ermi
 >    > 
 >    > Dies funktioniert nur mit Version 0.1.2 oder höher
 >    > 
->    > {% snippet faqs/galaxy/tools_change_version.md %}
+>    > {% snippet faqs/galaxy-de/tools_change_version.md %}
 >    > 
 > > 
 > {: .warning}
@@ -1200,7 +1200,7 @@ Um die durch die PS-Abreicherung induzierte differentielle Genexpression identif
 > 
 > 1. Erstellen eines **neuen leeren Verlaufs**
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. Importieren Sie die sieben Zähldateien von [Zenodo]({{ page.zenodo_link }}) oder der Shared Data Bibliothek:
 > 
@@ -1519,7 +1519,7 @@ DESeq2 verlangt, dass für jeden Faktor die Anzahl der Proben in jeder Kategorie
 > 
 > 1. Erstellen Sie eine Sammelliste mit all diesen Zählungen, die Sie als `all counts` bezeichnen. Benennen Sie jedes Element so, dass es nur die GSM-ID, die Behandlung und die Bibliothek enthält, z. B. `GSM461176_untreat_single`.
 > 
->    {% snippet faqs/galaxy/collections_build_list.md %}
+>    {% snippet faqs/galaxy-de/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} mit den folgenden Parametern:
 >    - {% icon param-collection %} *"Datensatz-Sammlung "*: `all counts`
@@ -1537,7 +1537,7 @@ DESeq2 verlangt, dass für jeden Faktor die Anzahl der Proben in jeder Kategorie
 > 
 > 4. Ändern Sie den Datentyp in `tabular`
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>    {% snippet faqs/galaxy-de/datasets_change_datatype.md datatype="tabular" %}
 > 
 > 5. {% tool [Tag elements](__TAG_FROM_FILE__) %}
 >      - {% icon param-collection %} *"Eingabe-Sammlung "*: `all counts`
@@ -1598,7 +1598,7 @@ DESeq2 verlangt, dass für jeden Faktor die Anzahl der Proben in jeder Kategorie
 > 
 > 1. Erstellen Sie eine Sammelliste mit all diesen Zählungen, die Sie als `all counts` bezeichnen. Benennen Sie jedes Element so, dass es nur die GSM-ID, die Behandlung und die Bibliothek enthält, z. B. `GSM461176_untreat_single`.
 > 
->    {% snippet faqs/galaxy/collections_build_list.md %}
+>    {% snippet faqs/galaxy-de/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} mit den folgenden Parametern:
 >    - {% icon param-collection %} *"Datensatz-Sammlung "*: `all counts`
@@ -1844,7 +1844,7 @@ Die annotierte Tabelle enthält keine Spaltennamen, was die Lesbarkeit erschwert
 >    GeneID	Base mean	log2(FC)	StdErr	Wald-Stats	P-value	P-adj	Chromosome	Start	End	Strand	Feature	Gene name
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_create_new_file.md name="header" format="tabular" %}
+>    {% snippet faqs/galaxy-de/datasets_create_new_file.md name="header" format="tabular" %}
 > 
 > 2. {% tool [Concatenate datasets](cat1) %} um diese Kopfzeile zur **Annotate** Ausgabe hinzuzufügen:
 >    - {% icon param-file %} *"Concatenate Dataset "*: der `header`-Datensatz
@@ -2134,7 +2134,7 @@ Wir haben gerade die erste Eingabe für **goseq** erzeugt. Als zweite Eingabe f�
 > <div class="featureCounts" markdown="1">
 > 1. Copy the feature length collection previously generated by **featureCounts** {% icon tool %} into this history
 > 
-> {% snippet faqs/galaxy/histories_copy_dataset.md %}
+> {% snippet faqs/galaxy-de/histories_copy_dataset.md %}
 > 
 > 2. {% tool [Extract Dataset](__EXTRACT_DATASET__) %} with:
 >    - {% icon param-collection %} *"Eingabeliste "*: `featureCounts on collection N: Feature lengths`
@@ -2145,7 +2145,7 @@ Wir haben gerade die erste Eingabe für **goseq** erzeugt. Als zweite Eingabe f�
 > <div class="STAR" markdown="1">
 > 1. Copy the output of **Gene length and GC content** {% icon tool %} (`Gene length`) into this history
 > 
-> {% snippet faqs/galaxy/histories_copy_dataset.md %}
+> {% snippet faqs/galaxy-de/histories_copy_dataset.md %}
 > </div>
 > 
 > 2. {% tool [Change Case](ChangeCase) %} mit den folgenden Parametern:
@@ -2401,7 +2401,7 @@ Wie bei DESeq2 haben wir im vorherigen Schritt nur Reads gezählt, die auf Exons
 > 
 > 1. Erstellen eines **neuen leeren Verlaufs**
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. Importieren Sie die sieben Zähldateien von [Zenodo]({{ page.zenodo_link }}) oder der Shared Data Bibliothek (falls verfügbar):
 > 

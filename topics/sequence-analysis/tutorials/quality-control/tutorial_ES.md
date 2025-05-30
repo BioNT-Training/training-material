@@ -103,9 +103,9 @@ Por lo tanto, es necesario comprender, identificar y excluir los tipos de error 
 > 
 > 1. Crea un nuevo historial para este tutorial y dale un nombre apropiado
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-es/histories_create_new.md %}
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-es/histories_rename.md %}
 > 
 > 2. Importe el archivo `female_oral2.fastq-4143.gz` de [Zenodo](https://zenodo.org/record/3977236) o de la biblioteca de datos (pregunte a su instructor) Esta es una muestra de microbioma de una serpiente {% cite StJacques2021 %}.
 > 
@@ -113,9 +113,9 @@ Por lo tanto, es necesario comprender, identificar y excluir los tipos de error 
 >    https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-es/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-es/datasets_import_from_data_library.md %}
 > 
 > 3. Cambie el nombre del conjunto de datos importado a `Reads`.
 > 
@@ -151,7 +151,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGG
 
 Significa que el fragmento llamado `@M00970` corresponde a la secuencia de ADN `GTGCCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCCGAGCCCACGAGACCGAAGAACATCTCGTATGCCGTCTTCTGCTTGAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAGAAGCAAATGACGATTCAAGAAAGAAAAAAACACAGAATACTAACAATAAGTCATAAACATCATCAACATAAAAAAGGAAATACACTTACAACACATATCAATATCTAAAATAAATGATCAGCACACAACATGACGATTACCACACATGTGTACTACAAGTCAACTA` y esta secuencia ha sido secuenciada con una calidad `GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGFGGGFGGGGGGAFFGGFGGGGGGGGFGGGGGGGGGGGGGGFGGG+38+35*311*6,,31=******441+++0+0++0+*1*2++2++0*+*2*02*/***1*+++0+0++38++00++++++++++0+0+2++*+*+*+*+*****+0**+0**+***+)*.***1**//*)***)/)*)))*)))*),)0(((-((((-.(4(,,))).,(())))))).)))))))-))-(`.
 
-{% snippet topics/sequence-analysis/faqs/quality_score.md %}
+{% snippet topics/sequence-analysis/faqs/quality_score_ES.md %}
 
 > <question-title></question-title>
 > 
@@ -717,7 +717,7 @@ Podemos examinar nuestros datos recortados con FASTQE y/o FastQC.
 >    > 
 >    > Compare la salida FASTQE con la anterior antes del recorte anterior. ¿Ha mejorado la calidad de la secuencia?
 >    > 
->    > {% snippet faqs/galaxy/features_scratchbook.md %}
+>    > {% snippet faqs/galaxy-es/features_scratchbook.md %}
 >    > 
 >    > > <solution-title></solution-title> Sí, los emojis de puntuación de calidad se ven mejor (más felices) ahora.
 >    > > 
@@ -829,7 +829,7 @@ Los datos que analizamos en el paso anterior eran datos de extremo único, por l
 > 2. {% tool [FASTQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0) %} con ambos conjuntos de datos:
 >    - {% icon param-files %} *"Raw read data from your current history "*: ambos conjuntos de datos cargados.
 > 
->    {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
+>    {% snippet faqs/galaxy-es/tools_select_multiple_datasets.md %}
 > 
 > 3. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1) %} with the following parameters to aggregate the FastQC reports of both forward and reverse reads
 >      - En *"Resultados "*

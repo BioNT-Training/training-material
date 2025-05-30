@@ -125,7 +125,7 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 > 
 > 1. Creare una nuova storia per questo esercizio di RNA-Seq
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. Importare le coppie di file FASTQ da [Zenodo]({{ page.zenodo_link }}) o da una libreria di dati:
 >    - `GSM461177` (non trattato): `GSM461177_1` e `GSM461177_2`
@@ -138,9 +138,9 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 >    {{ page.zenodo_link }}/files/GSM461180_2.fastqsanger
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md %}
 > 
 >    > <comment-title></comment-title>
 >    > 
@@ -160,11 +160,11 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 > 
 > 3. Verificare che il tipo di dato sia `fastqsanger` (ad esempio **non** `fastq`). In caso contrario, modificare il tipo di dato in `fastqsanger`.
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="fastqsanger" %}
+>    {% snippet faqs/galaxy-it/datasets_change_datatype.md datatype="fastqsanger" %}
 > 
 > 4. Creare una raccolta di coppie denominata `2 PE fastqs`, nominare le coppie con il nome del campione seguito dagli attributi: `GSM461177_untreat_paired` e `GSM461180_treat_paired`.
 > 
->    {% snippet faqs/galaxy/collections_build_list_paired.md %}
+>    {% snippet faqs/galaxy-it/collections_build_list_paired.md %}
 > 
 {: .hands_on}
 
@@ -197,7 +197,7 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 > 2. {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} con i seguenti parametri:
 >    - {% icon param-collection %} *"Dati di lettura grezzi dalla cronologia corrente "*: Output della **raccolta di appiattimenti** {% icon tool %} selezionata come **raccolta di dati**
 > 
->    {% snippet faqs/galaxy/tools_select_collection.md %}
+>    {% snippet faqs/galaxy-it/tools_select_collection.md %}
 > 
 > 3. Ispezionare l'output della pagina web di **Falco** {% icon tool %} per il campione `GSM461177_untreat_paired` (forward e reverse)
 > 
@@ -928,7 +928,7 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > > 
    > > 1. Risultati per `GSM461177_untreat_paired`:
    > > 
-   > >    {% snippet faqs/galaxy/analysis_results_may_vary.md %}
+   > >    {% snippet faqs/galaxy-it/analysis_results_may_vary.md %}
    > > 
    > >    ```text
    > >    This is PairEnd Data
@@ -1098,7 +1098,7 @@ Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni 
 >    > 
 >    > Questo funziona solo con la versione 0.1.2 o superiore
 >    > 
->    > {% snippet faqs/galaxy/tools_change_version.md %}
+>    > {% snippet faqs/galaxy-it/tools_change_version.md %}
 >    > 
 > > 
 > {: .warning}
@@ -1200,7 +1200,7 @@ Per poter identificare l'espressione genica differenziale indotta dalla deplezio
 > 
 > 1. Creare una **nuova storia vuota**
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. Importare i sette file di conteggio da [Zenodo] ({{ page.zenodo_link }}) o dalla libreria Shared Data:
 > 
@@ -1519,7 +1519,7 @@ DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni cate
 > 
 > 1. Creare un elenco di raccolta con tutti questi conteggi, etichettato come `all counts`. Nominare ogni elemento in modo che contenga solo l'id GSM, il trattamento e la libreria, ad esempio, `GSM461176_untreat_single`.
 > 
->    {% snippet faqs/galaxy/collections_build_list.md %}
+>    {% snippet faqs/galaxy-it/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} con i seguenti parametri:
 >    - {% icon param-collection %} *"Raccolta di dati "*: `all counts`
@@ -1537,7 +1537,7 @@ DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni cate
 > 
 > 4. Cambiare il tipo di dati in `tabular`
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>    {% snippet faqs/galaxy-it/datasets_change_datatype.md datatype="tabular" %}
 > 
 > 5. {% tool [Tag elements](__TAG_FROM_FILE__) %}
 >      - {% icon param-collection %} *"Collezione di input "*: `all counts`
@@ -1598,7 +1598,7 @@ DESeq2 richiede di fornire per ogni fattore, i conteggi dei campioni in ogni cat
 > 
 > 1. Creare un elenco di raccolta con tutti questi conteggi, etichettato come `all counts`. Nominare ogni elemento in modo che contenga solo l'id GSM, il trattamento e la libreria, ad esempio, `GSM461176_untreat_single`.
 > 
->    {% snippet faqs/galaxy/collections_build_list.md %}
+>    {% snippet faqs/galaxy-it/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} con i seguenti parametri:
 >    - {% icon param-collection %} *"Raccolta di dati "*: `all counts`
@@ -1844,7 +1844,7 @@ La tabella annotata non contiene nomi di colonne, il che rende difficile la lett
 >    GeneID	Base mean	log2(FC)	StdErr	Wald-Stats	P-value	P-adj	Chromosome	Start	End	Strand	Feature	Gene name
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_create_new_file.md name="header" format="tabular" %}
+>    {% snippet faqs/galaxy-it/datasets_create_new_file.md name="header" format="tabular" %}
 > 
 > 2. {% tool [Concatenate datasets](cat1) %} per aggiungere questa riga di intestazione all'output **Annotate**:
 >    - {% icon param-file %} *"Concatena il set di dati "*: il set di dati `header`
@@ -2134,7 +2134,7 @@ Abbiamo appena generato il primo input per **goseq**. Come secondo input per **g
 > <div class="featureCounts" markdown="1">
 > 1. Copy the feature length collection previously generated by **featureCounts** {% icon tool %} into this history
 > 
-> {% snippet faqs/galaxy/histories_copy_dataset.md %}
+> {% snippet faqs/galaxy-it/histories_copy_dataset.md %}
 > 
 > 2. {% tool [Extract Dataset](__EXTRACT_DATASET__) %} con:
 >    - {% icon param-collection %} *"Elenco di input "*: `featureCounts on collection N: Feature lengths`
@@ -2145,7 +2145,7 @@ Abbiamo appena generato il primo input per **goseq**. Come secondo input per **g
 > <div class="STAR" markdown="1">
 > 1. Copy the output of **Gene length and GC content** {% icon tool %} (`Gene length`) into this history
 > 
-> {% snippet faqs/galaxy/histories_copy_dataset.md %}
+> {% snippet faqs/galaxy-it/histories_copy_dataset.md %}
 > </div>
 > 
 > 2. {% tool [Change Case](ChangeCase) %} con i seguenti parametri:
@@ -2401,7 +2401,7 @@ Come per DESeq2, nella fase precedente, abbiamo contato solo le letture che mapp
 > 
 > 1. Creare una **nuova storia vuota**
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. Importare i file dei sette conteggi da [Zenodo] ({{ page.zenodo_link }}) o dalla libreria Shared Data (se disponibile):
 > 

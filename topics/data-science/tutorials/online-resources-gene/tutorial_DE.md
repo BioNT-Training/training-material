@@ -467,11 +467,11 @@ Während wir in den vorangegangenen Abschnitten dieses Tutorials ausgiebig die W
 > 
 > 1. Erstellen Sie einen neuen Verlauf für diese Analyse
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
 > 2. Umbenennen der Historie
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-de/histories_rename.md %}
 > 
 > 3. Importieren Sie die Proteinsequenz über einen Link aus [Zenodo]({{ page.zenodo_link }}) oder aus gemeinsam genutzten Galaxy-Datenbibliotheken:
 > 
@@ -479,9 +479,9 @@ Während wir in den vorangegangenen Abschnitten dieses Tutorials ausgiebig die W
 >    {{ page.zenodo_link }}/files/protein.faa
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_from_data_library.md %}
 > 
 > 1. {% tool [NCBI BLAST+ blastp](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/2.10.1+galaxy2) %} mit den folgenden Parametern:
 >    - *"Protein query sequence(s) "*: `protein.faa`

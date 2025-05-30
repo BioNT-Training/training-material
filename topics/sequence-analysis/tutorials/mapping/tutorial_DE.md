@@ -109,9 +109,9 @@ Daten mit dem Programm **IGV** visualisieren.
 > 1. Erstellen Sie einen neuen Verlauf für dieses Tutorial und geben Sie ihm einen
 >    passenden Namen
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-de/histories_create_new.md %}
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-de/histories_rename.md %}
 > 
 > 2. Importieren Sie `wt_H3K4me3_read1.fastq.gz` und `wt_H3K4me3_read2.fastq.gz` von
 >    [Zenodo](https://zenodo.org/record/1324070) oder aus der Datenbibliothek (fragen
@@ -122,15 +122,15 @@ Daten mit dem Programm **IGV** visualisieren.
 >    https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-de/datasets_import_from_data_library.md %}
 > 
 >    Standardmäßig nimmt Galaxy den Link als Namen, also benennen Sie sie um.
 > 
 > 3. Benennen Sie die Dateien in `reads_1` und `reads_2` um
 > 
->    {% snippet faqs/galaxy/datasets_rename.md %}
+>    {% snippet faqs/galaxy-de/datasets_rename.md %}
 > 
 {: .hands_on}
 

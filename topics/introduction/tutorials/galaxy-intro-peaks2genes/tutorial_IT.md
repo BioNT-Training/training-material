@@ -72,7 +72,7 @@ segnale è significativamente arricchito (i cosiddetti *peaks*):
 L'obiettivo di questo esercizio è di **trasformare questo elenco di regioni genomiche in
 un elenco di possibili geni bersaglio**.
 
-{% snippet faqs/galaxy/analysis_results_may_vary.md %}
+{% snippet faqs/galaxy-it/analysis_results_may_vary.md %}
 
 > <titolo dell'agenda></titolo dell'agenda>
 > 
@@ -108,7 +108,7 @@ Cominciamo con una nuova storia.
 > 
 > 1. Assicurarsi di avere una cronologia di analisi vuota.
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. **Rename della cronologia** per facilitarne il riconoscimento
 > 
@@ -149,7 +149,7 @@ Cominciamo con una nuova storia.
 > 
 >    Il caricamento diretto dei file non è l'unico modo per inserire i dati in Galaxy
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md format="interval" %}
+>    {% snippet faqs/galaxy-it/datasets_import_via_link.md format="interval" %}
 > 
 >    > <tip-title>Importazione di dati in Galaxy</tip-title> Ci sono [ulteriori opzioni]
 >    > ({% link topics/galaxy-interface/tutorials/get-data/slides.html %}) per gli utenti avanzati.
@@ -203,7 +203,7 @@ Cominciamo con una nuova storia.
 > 6. Aggiungere un tag chiamato `#peaks` al set di dati per renderlo più facilmente
 >    rintracciabile nella cronologia
 > 
->    {% snippet faqs/galaxy/datasets_add_tag.md %}
+>    {% snippet faqs/galaxy-it/datasets_add_tag.md %}
 > 
 >    Il set di dati dovrebbe ora apparire come segue nella cronologia
 > 
@@ -249,7 +249,7 @@ elenco di geni nei topi, che possiamo ottenere dall'UCSC.
 > 7. Attendere che il caricamento sia terminato
 > 8. Rinominare il nostro set di dati in qualcosa di più riconoscibile come `Genes`
 > 
->    {% snippet faqs/galaxy/datasets_rename.md name="Genes" %}
+>    {% snippet faqs/galaxy-it/datasets_rename.md name="Genes" %}
 > 
 > 9. Aggiungere un tag chiamato `#genes` al set di dati per renderlo più facilmente rintracciabile nella cronologia
 > 
@@ -552,7 +552,7 @@ dati.
 >       - *"in "*: `Ascending order`
 >       - *"Flavor "*: `Natural/Version sort (-V)`
 > 
->    {% snippet faqs/galaxy/tools_similar.md toolname="Ordina i dati in ordine crescente o decrescente" toolversion="1.1.1" %}
+>    {% snippet faqs/galaxy-it/tools_similar.md toolname="Ordina i dati in ordine crescente o decrescente" toolversion="1.1.1" %}
 > 
 {: .hands_on}
 
@@ -689,7 +689,7 @@ cronologia.
 > 
 > 1. Creare una nuova cronologia e darle un nuovo nome come `Galaxy Introduction Part 2`
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. Fare clic su **Opzioni cronologia** in alto a destra della cronologia. Fare clic su
 >    **Mostra cronologia affiancata**
@@ -744,7 +744,7 @@ Ora tagliamo solo il cromosoma più l'inizio e la fine del vertice:
 > 
 > 2. Cambiare il formato in `interval` (usare l'icona {% icon galaxy-pencil %}) poiché è quello che si aspetta lo strumento **Intersect**.
 > 
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="interval" %}
+>    {% snippet faqs/galaxy-it/datasets_change_datatype.md datatype="interval" %}
 > 
 >    L'output dovrebbe essere simile al seguente:
 > 
@@ -774,9 +774,9 @@ utilizziamo un altro file BED dalle Librerie di dati.
 >    https://zenodo.org/record/1025586/files/mm9.RefSeq_genes_from_UCSC.bed
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md genome="mm9" %}
+>    {% snippet faqs/galaxy-it/datasets_import_via_link.md genome="mm9" %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md path='Cliccare su "GTN - Material", "Introduction to Galaxy Analyses", "From peaks to genes", e poi "DOI: 10.5281/zenodo.1025586"' %}
+>    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md path='Cliccare su "GTN - Material", "Introduction to Galaxy Analyses", "From peaks to genes", e poi "DOI: 10.5281/zenodo.1025586"' %}
 > 
 >    Per impostazione predefinita, Galaxy prende il link come nome, quindi rinominarli.
 > 

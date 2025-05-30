@@ -468,11 +468,11 @@ Mentre nelle sezioni precedenti di questo tutorial abbiamo usato ampiamente le i
 > 
 > 1. Creare una nuova cronologia per questa analisi
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 > 2. Rinominare la storia
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-it/histories_rename.md %}
 > 
 > 3. Importare la sequenza proteica tramite link da [Zenodo]({{ page.zenodo_link }}) o dalle librerie di dati condivisi Galaxy:
 > 
@@ -480,9 +480,9 @@ Mentre nelle sezioni precedenti di questo tutorial abbiamo usato ampiamente le i
 >    {{ page.zenodo_link }}/files/protein.faa
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md %}
 > 
 > 1. {% tool [NCBI BLAST+ blastp](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/2.10.1+galaxy2) %} con i seguenti parametri:
 >    - *"Sequenza/e di query proteica/e "*: `protein.faa`

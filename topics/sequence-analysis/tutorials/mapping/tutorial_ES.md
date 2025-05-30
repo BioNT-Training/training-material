@@ -108,9 +108,9 @@ visualizaremos los datos con el programa **IGV**.
 > 
 > 1. Crea un nuevo historial para este tutorial y dale un nombre apropiado
 > 
->    {% snippet faqs/galaxy/histories_create_new.md %}
+>    {% snippet faqs/galaxy-es/histories_create_new.md %}
 > 
->    {% snippet faqs/galaxy/histories_rename.md %}
+>    {% snippet faqs/galaxy-es/histories_rename.md %}
 > 
 > 2. Importe `wt_H3K4me3_read1.fastq.gz` y `wt_H3K4me3_read2.fastq.gz` de
 >    [Zenodo](https://zenodo.org/record/1324070) o de la biblioteca de datos (pregunte a
@@ -121,15 +121,15 @@ visualizaremos los datos con el programa **IGV**.
 >    https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
 >    ```
 > 
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>    {% snippet faqs/galaxy-es/datasets_import_via_link.md %}
 > 
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>    {% snippet faqs/galaxy-es/datasets_import_from_data_library.md %}
 > 
 >    Por defecto, Galaxy toma el enlace como nombre, así que renómbralos.
 > 
 > 3. Cambie el nombre de los archivos a `reads_1` y `reads_2`
 > 
->    {% snippet faqs/galaxy/datasets_rename.md %}
+>    {% snippet faqs/galaxy-es/datasets_rename.md %}
 > 
 {: .hands_on}
 
