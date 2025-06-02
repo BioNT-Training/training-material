@@ -18,7 +18,7 @@ examples:
 ---
 
 
-- Haga clic en el {% icono galaxy-pencil %} **icono lápiz** del conjunto de datos para editar sus atributos
+- Haga clic en el {% icon galaxy-pencil %} **icono lápiz** del conjunto de datos para editar sus atributos
 - En el panel central, cambie el campo **Name** {% if include.name %} a `{{ include.name }}` {% endif %}
 - Haga clic en el botón **Guardar**
 

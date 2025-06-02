@@ -18,7 +18,7 @@ Hay 3 formas de copiar conjuntos de datos entre historiales
 
 1. Del historial original
 
-    1. Haga clic en el icono {% icono galaxy-gear %} que se encuentra en la parte superior de la lista de conjuntos de datos en el panel de historial
+    1. Haga clic en el icono {% icon galaxy-gear %} que se encuentra en la parte superior de la lista de conjuntos de datos en el panel de historial
     2. Haga clic en **Copiar conjuntos de datos**
     3. Seleccione los archivos deseados {% if include.history_name %}
     4. "Nuevo historial llamado:" `{{ include.history_name }}` {% else %}
@@ -26,10 +26,10 @@ Hay 3 formas de copiar conjuntos de datos entre historiales
     5. Validar por 'Copiar elementos del historial'
     5. Haga clic en el nombre de la nueva historia en el cuadro verde que acaba de aparecer para cambiar a esta historia
 
-2. Uso del {% icono galaxy-columns %} **Mostrar Historias lado a lado**
+2. Uso del {% icon galaxy-columns %} **Mostrar Historias lado a lado**
 
-    1. Haga clic en la flecha desplegable {% icono galaxia-desplegable %} arriba a la derecha del panel de historial (**Opciones de historial**)
-    2. Haga clic en {% icono galaxia-columnas %} **Mostrar Historias lado a lado**
+    1. Haga clic en la flecha desplegable {% icon galaxy-dropdown %} arriba a la derecha del panel de historial (**Opciones de historial**)
+    2. Haga clic en {% icon galaxy-columns %} **Mostrar Historias lado a lado**
     3. Si el historial de destino no está presente
         1. Haga clic en "Seleccionar historiales
         2. Haga clic en el historial de destino

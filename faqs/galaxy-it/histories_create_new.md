@@ -17,7 +17,7 @@ contributors:
 ---
 
 
-Per creare una nuova storia è sufficiente fare clic sull'icona {% icona nuova-storia %} nella parte superiore del pannello della storia:
+Per creare una nuova storia è sufficiente fare clic sull'icona {% icon new-history %} nella parte superiore del pannello della storia:
 
 ![UI per la creazione di una nuova storia]({% link shared/images/history_create_new.svg %})
 

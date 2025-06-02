@@ -12,6 +12,6 @@ Gli strumenti vengono aggiornati frequentemente con nuove versioni. Nella vostra
 
 **Passaggio a una versione** diversa di uno strumento:
   - aprire lo strumento
-  - Fare clic sul logo {% icona strumento-versioni %} versioni in **alto a destra**
+  - Fare clic sul logo {% icon tool-versions %} versioni in **alto a destra**
   - Selezionare la versione desiderata dall'elenco a discesa
 
