@@ -50,16 +50,7 @@ translations:
 ---
 
 
-Nos hemos topado con un artículo ({% cite Li2012 %}) llamado *"La histona
-acetiltransferasa MOF es un regulador clave de la red transcripcional del núcleo de las
-células madre embrionarias "*. El artículo contiene el análisis de posibles genes diana
-de una interesante proteína llamada Mof. Las dianas se obtuvieron mediante ChIP-seq en
-ratones y los datos en bruto están disponibles a través de
-[GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268). Sin embargo, la
-lista de genes no está ni en el suplemento del artículo, ni forma parte de la
-presentación GEO. Lo más parecido que hemos podido encontrar es un archivo en GEO que
-contiene una lista de las regiones en las que la señal está significativamente
-enriquecida (los llamados *picos*):
+Encontramos un artículo ({% cite Li2012 %}) titulado “The histone acetyltransferase MOF is a key regulator of the embryonic stem cell core transcriptional network“. El artículo contiene el análisis de posibles genes (llamémoslos "diana") asociados a la proteína llamada Mof. La asociación se obtuvo mediante ChIP-seq en ratones y los datos en bruto están disponibles en GEO. Sin embargo, la lista de genes no está en el material suplementar del artículo, ni forma parte de los datos enviados a GEO. Lo más parecido que hemos podido encontrar es un archivo en [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268 que contiene una lista de las regiones en las que la señal está significativamente más alta  (los llamados *picos*)
 
 1 | 3660676 | 3661050 | 375 | 210 | 62.0876250438913 | -2.00329386666667
 1 | 3661326 | 3661500 | 175 | 102 | 28.2950833625942 | -0.695557142857143
@@ -83,13 +74,13 @@ lista de posibles genes diana**.
 >
 {: .agenda}
 
-# Pretratamientos
+# Pretratado
 
-> <hands-on-title>Abre Galaxia</hands-on-title>
+> <hands-on-title>Abre Galaxy</hands-on-title>
 > 
 > 1. Navega a una instancia de Galaxy: la recomendada por tu instructor o una de la
 >    lista **Instancia de Galaxy** en la cabecera de esta página
-> 2. Iniciar sesión o registrarse (panel superior)
+> 2. Inicia sesión o regístrate (panel superior)
 > 
 >    ![Iniciar sesión o Registrarse en el panel superior](../../images/login_register.png)
 > 
@@ -101,7 +92,7 @@ central mostrará las herramientas y conjuntos de datos.
 
 ![Captura de pantalla de la interfaz de Galaxy mostrando el panel del historial a la derecha, el panel de herramientas a la izquierda y el panel principal en el centro](../../images/galaxy_interface.png "La interfaz de Galaxy")
 
-Empecemos con una historia fresca.
+Empecemos con una historial vacío.
 
 
 > <hands-on-title>Crear historial</hands-on-title>
@@ -114,12 +105,12 @@ Empecemos con una historia fresca.
 > 
 >    > <tip-title>Renombrar un historial</tip-title>
 >    > 
->    > * Haga clic en el título del historial (por defecto el título es `Unnamed history`)
+>    > * Haz clic en el título del historial (por defecto el título es `Unnamed history`)
 >    > 
 >    >   ![Renombrar historial]({% link shared/images/rename_history.png %})
 >    > 
->    > * Escriba `Galaxy Introduction` como nombre
->    > * Pulse <kbd>Intro</kbd>
+>    > * Escribe `Galaxy Introduction` como nombre
+>    > * Pulsa <kbd>Save</kbd>
 >    > 
 >    {: .tip}
 > 
@@ -129,18 +120,18 @@ Empecemos con una historia fresca.
 
 > <hands-on-title>Carga de datos</hands-on-title>
 > 
-> 1. Descargue la lista de regiones de picos (el archivo [`GSE37268_mof3.out.hpeak.txt.gz`](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE37268&format=file&file=GSE37268%5Fmof3%2Eout%2Ehpeak%2Etxt%2Egz)) de [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268) a su ordenador
-> 2. Haga clic en el botón de carga en la parte superior izquierda de la interfaz
+> 1. Descarga la lista de regiones pico (el archivo [`GSE37268_mof3.out.hpeak.txt.gz`](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE37268&format=file&file=GSE37268%5Fmof3%2Eout%2Ehpeak%2Etxt%2Egz)) de [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268) a tu ordenador
+> 2. Haz clic en el botón de carga en la parte superior izquierda de la interfaz
 > 
 >    ![Icono de subir datos](../../../galaxy-interface/images/upload_button.png)
 > 
-> 3. Pulse **Seleccionar archivos locales** y busque el archivo en su ordenador
-> 4. Select `interval` as **Tipo**
-> 5. Pulse **Iniciar**
-> 6. Pulse **Cerrar**
+> 3. Pulse **Choose local file** y busque el archivo en su ordenador
+> 4. Seleccione `interval` como **Type**
+> 5. Pulse **Start**
+> 6. Pulse **Close**
 > 7. Espera a que termine la carga. Galaxy descomprimirá el archivo automáticamente.
 > 
-> 8. Después de esto verá su primer elemento del historial en el panel derecho de Galaxy. Pasará por los estados gris (preparando/en cola) y amarillo (ejecutando) para convertirse en verde (éxito):
+> 8. Después de esto verás tu primer elemento del historial en el panel derecho de Galaxy. Pasará por los estados gris (preparando/en cola) y amarillo (ejecutando) para convertirse en verde (éxito):
 > 
 >    ![History section](../../images/intro_01.png)
 > 
