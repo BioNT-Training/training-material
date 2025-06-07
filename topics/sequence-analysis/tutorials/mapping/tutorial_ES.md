@@ -3,13 +3,13 @@ layout: tutorial_hands_on
 title: Mapeo
 zenodo_link: https://doi.org/10.5281/zenodo.1324070
 questions:
-- What is mapping?
-- What two things are crucial for a correct mapping?
-- What is BAM?
+- ¿Qué es el mapeo?
+- ¿Qué dos cosas son cruciales para un mapeo correcto?
+- ¿Qué es BAM?
 objectives:
-- Run a tool to map reads to a reference genome
-- Explain what is a BAM file and what it contains
-- Use genome browser to understand your data
+- Correr una herramienta para mapear lectuas a un genoma de referencia
+- Explicar qué es un fichero BAM y qué contiene
+- Utilizar un buscador de genomas para entender tus datos 
 time_estimation: 1h
 key_points:
 - Know your data!
@@ -159,7 +159,7 @@ extremos de las lecturas:
 
 Necesitamos un genoma de referencia para mapear las lecturas.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation.md answer_3="Estos datos provienen del ChIP-seq de ratones, por lo que utilizaremos mm10 (*Mus musculus*)."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_es.md answer_3="Estos datos provienen del ChIP-seq de ratones, por lo que utilizaremos mm10 (*Mus musculus*)."%}
 
 Actualmente, existen más de 60 mapeadores diferentes, y su número sigue creciendo. En
 este tutorial, utilizaremos [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), una
@@ -172,20 +172,20 @@ largos.
 >    - *"Is this single or paired library "*: `Paired-end`
 >       - {% icon param-file %} *"FASTA/Q file #1"*: `reads_1`
 >       - {% icon param-file %} *"FASTA/Q file #2"*: `reads_2`
->       - *"¿Desea configurar las opciones de fin de pares?*: `No`
+>       - *"Do you want to set paired-end options?"*: `No`
 > 
 >         Debería echar un vistazo a los parámetros, especialmente la orientación de la
 >         pareja si la conoce. Pueden mejorar la calidad del mapeo de extremos pareados.
 > 
->     - *"¿Seleccionará un genoma de referencia de su historial o utilizará un índice
->       incorporado?*: `Use a built-in genome index`
->       - *"Seleccionar genoma de referencia "*: `Mouse (Mus musculus): mm10`
->     - *"Seleccionar modo de análisis "*: `Default setting only`
+>     - *"¿Will you select a reference genome from your history or use a built-in index?"*: `Use a built-in genome index`
+>       - *"Select reference genome "*: `Mouse (Mus musculus): mm10`
+
+>     - *"Select analysis mode "*: `Default setting only`
 > 
 >       Debería echar un vistazo a los parámetros no predeterminados e intentar
 >       comprenderlos. Pueden tener un impacto en el mapeo y mejorarlo.
 > 
->     - *"Guardar las estadísticas de mapeo bowtie2 en el historial "*: `Yes`
+>     - *"Save the bowtie2 mapping statistics to the history "*: `Yes`
 > 
 > 2. Inspeccione el archivo `mapping stats` haciendo clic en el {% icon galaxy-eye %} (ojo)
 > 
@@ -251,16 +251,16 @@ donde se almacenan los mapeos de lecturas.
 
 # Inspección de un archivo BAM
 
-{% include topics/sequence-analysis/tutorials/mapping/bam_explanation.md mapper="Bowtie2" %}
+{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_es.md mapper="Bowtie2" %}
 
 El archivo BAM incluye mucha información sobre cada lectura, en particular sobre la
 calidad del mapeo.
 
 > <hands-on-title>Resumen de la calidad del mapeo</hands-on-title>
 > 1. {% tool [Samtools Stats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.2+galaxy2) %} con los siguientes parámetros
->    - {% icon param-file %} *"Archivo BAM "*: `aligned reads` (salida de **Bowtie2** {% icon tool %})
->    - *"Usar secuencia de referencia "*: `Locally cached/Use a built-in genome`
->      - *"Uso del genoma "*: `Mouse (Mus musculus): mm10 Full`
+>    - {% icon param-file %} *"BAM file "*: `aligned reads` (salida de **Bowtie2** {% icon tool %})
+>    - *"Use reference sequence "*: `Locally cached/Use a built-in genome`
+>      - *"Use genome"*: `Mouse (Mus musculus): mm10 Full`
 > 
 > 2. Inspeccionar el archivo {% icon param-file %} archivo `Stats`
 > 
@@ -305,7 +305,7 @@ integrados. Es compatible con una amplia variedad de tipos de datos, incluidos l
 de secuencias basadas en arrays y de próxima generación, y las anotaciones genómicas. A
 continuación, la utilizaremos para visualizar las lecturas mapeadas.
 
-{% include topics/sequence-analysis/tutorials/mapping/igv.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/igv_es.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 ## JBrowse
 
@@ -315,7 +315,7 @@ software que debe descargarse y ejecutarse, las instancias de JBrowse son sitios
 alojados en línea que proporcionan una interfaz para navegar por los datos genómicos. Lo
 utilizaremos para visualizar las lecturas mapeadas.
 
-{% include topics/sequence-analysis/tutorials/mapping/jbrowse.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/jbrowse_es.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 # Conclusión
 
