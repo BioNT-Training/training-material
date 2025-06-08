@@ -11,6 +11,6 @@ contributors:
 ---
 
 
-1. Haga clic en {% icon param-files %} **Conjuntos de datos múltiples**
+1. Haga clic en {% icon param-files %} **Multiple datasets**
 2. Selecciona varios archivos manteniendo pulsada la tecla <kbd>Ctrl</kbd> (o <kbd>COMMAND</kbd>) y haciendo clic en los archivos que te interesen
 

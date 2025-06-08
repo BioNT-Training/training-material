@@ -3,15 +3,15 @@ layout: tutorial_hands_on
 title: Control de calidad
 zenodo_link: https://zenodo.org/records/61771
 questions:
-- How to perform quality control of NGS raw data?
-- What are the quality parameters to check for a dataset?
-- How to improve the quality of a dataset?
+- ¿Cómo hacer controles de calidad sobre datos NGS?
+- ¿Cuáles son los parámetros de calidad a comprobar para un conjunto de datos? 
+- ¿Cómo mejorar la calidad de un conjunto de datos? 
 objectives:
-- Assess short reads FASTQ quality using FASTQE 🧬😎 and FastQC
-- Assess long reads FASTQ quality using Nanoplot and PycoQC
-- Perform quality correction with Cutadapt (short reads)
-- Summarise quality metrics MultiQC
-- Process single-end and paired-end data
+- Evaluar la calidad de lecturas cortas en formato FASTQ usando FASTQE 🧬😎 y FastQC
+- Evaluar la calidad de lecturas largas usando NanoPlot y PycoQC
+- Realizar corrección de calidad con Cutadapt (lecturas cortas)
+- Resumir métricas de calidad con MultiQC
+- Procesar datos single-end y paired-end
 follow_up_training:
 - type: internal
   topic_name: sequence-analysis
@@ -135,10 +135,10 @@ Cada lectura, que representa un fragmento de la biblioteca, está codificada por
 
 | Line | Description                                                                                                                                                        |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1    | Always begins with `@` followed by the information about the read                                                                                                  |
-| 2    | The actual nucleic sequence                                                                                                                                        |
-| 3    | Always begins with a `+` and contains sometimes the same info in line 1                                                                                            |
-| 4    | Has a string of characters which represent the quality scores associated with each base of the nucleic sequence; must have the same number of characters as line 2 |
+| 1    | Empieza siempre con un `@` seguido de la información de la lecture                                                                                                  |
+| 2    | La secuenciación de nucleótidos                                                                                                                                       |
+| 3    |Empieza siempre con un `+` y contiene a veces la misma información qu ela línea 1                                                                                             |
+| 4    | Contiene una cadena de caracteres que representa las puntuaciones de calidad asociadas a cada base de la secuencia nucleotídica; debe tener el mismo número de caracteres que la línea 2. |
 
 Así, por ejemplo, la primera secuencia en nuestro archivo es:
 
@@ -266,11 +266,11 @@ Con FastQC podemos utilizar el gráfico de calidad de secuencia por base para co
 
 ![Calidad de la secuencia por base](../../images/quality-control/per_base_sequence_quality-before.png "Calidad de la secuencia por base")
 
-En el eje x se muestra la posición de la base en la lectura. En este ejemplo, la muestra contiene lecturas de hasta 296 pb de longitud.
+En el eje x se muestra la posición de la base en la lectura. En este ejemplo, la muestra contiene lecturas de hasta 296bp de longitud.
 
 > <details-title>Eje x no uniforme</details-title>
 > 
-> El eje x no siempre es uniforme. Cuando se tienen lecturas largas, se aplica cierto binning para mantener las cosas compactas. Podemos verlo en nuestra muestra. Comienza con 1-10 bases individuales. Después, las bases se agrupan en una ventana de un cierto número de bases de ancho. Agrupar datos significa agrupar y es una técnica de preprocesamiento de datos utilizada para reducir los efectos de pequeños errores de observación. El número de posiciones de bases agrupadas depende de la longitud de la lectura. Con lecturas de más de 50 pb, la última parte del gráfico mostrará estadísticas agregadas para ventanas de 5 pb. Las lecturas más cortas tendrán ventanas más pequeñas y las más largas ventanas más grandes. El agrupamiento puede eliminarse al ejecutar FastQC estableciendo el parámetro "Disable grouping of bases for reads >50bp" en Yes.
+> El eje x no siempre es uniforme. Cuando se tienen lecturas largas, se aplica cierto binning para mantener las cosas compactas. Podemos verlo en nuestra muestra. Comienza con 1-10 bases individuales. Después, las bases se agrupan en una ventana de un cierto número de bases de ancho. Agrupar datos significa agrupar y es una técnica de preprocesamiento de datos utilizada para reducir los efectos de pequeños errores de observación. El número de posiciones de bases agrupadas depende de la longitud de la lectura. Con lecturas de más de 50bp, la última parte del gráfico mostrará estadísticas agregadas para ventanas de 5bp. Las lecturas más cortas tendrán ventanas más pequeñas y las más largas ventanas más grandes. El agrupamiento puede eliminarse al ejecutar FastQC estableciendo el parámetro "Disable grouping of bases for reads >50bp" en Yes.
 > 
 {: .details}
 
@@ -395,13 +395,13 @@ Traza la puntuación de calidad media sobre la longitud total de todas las lectu
 
 ![Puntuaciones de calidad por secuencia](../../images/quality-control/per_sequence_quality_scores-before.png "Puntuaciones de calidad por secuencia")
 
-La distribución de la calidad media de lectura debe ser pico apretado en el rango superior de la parcela. También puede informar si un subconjunto de las secuencias tiene valores de calidad universalmente bajos: puede ocurrir porque algunas secuencias tienen imágenes pobres (en el borde del campo de visión, etc.), sin embargo, éstas deberían representar sólo un pequeño porcentaje del total de secuencias.
+La distribución de la calidad media de lectura debe ser un pico agudo en el rango superior de la parcela. También puede informar si un subconjunto de las secuencias tiene valores de calidad universalmente bajos: puede ocurrir porque algunas secuencias tienen imágenes pobres (en el borde del campo de visión, etc.), sin embargo, éstas deberían representar sólo un pequeño porcentaje del total de secuencias.
 
 ## Contenido de la secuencia por base
 
 ![Contenido por secuencia de bases](../../images/quality-control/per_base_sequence_content-before.png "Contenido por secuencia de bases para una biblioteca de ADN")
 
-"Contenido de la secuencia por base" muestra el porcentaje de cada uno de los cuatro nucleótidos (T, C, A, G) en cada posición de todas las lecturas del archivo de secuencia de entrada. Como en el caso de la calidad de la secuencia por base, el eje x no es uniforme.
+"Per Base Sequence Content"  muestra el porcentaje de cada uno de los cuatro nucleótidos (T, C, A, G) en cada posición de todas las lecturas del archivo de secuencia de entrada. Como en el caso de la calidad de la secuencia por base, el eje x no es uniforme.
 
 En una biblioteca aleatoria esperaríamos que hubiera poca o ninguna diferencia entre las cuatro bases. La proporción de cada una de las cuatro bases debería permanecer relativamente constante a lo largo de la lectura con `%A=%T` y `%G=%C`, y las líneas de este gráfico deberían ser paralelas entre sí. Estos son datos de amplicón, donde el ADN 16S es amplificado por PCR y secuenciado, por lo que esperaríamos que este gráfico tuviera algún sesgo y no mostrara una distribución aleatoria.
 
@@ -453,11 +453,11 @@ Pero también hay otras situaciones en las que puede producirse una distribució
 
 ### Distribución de la longitud de la secuencia
 
-Este gráfico muestra la distribución de tamaños de fragmentos en el archivo analizado. En muchos casos, esto producirá un simple gráfico que mostrará un pico en un solo tamaño, pero para los archivos FASTQ de longitud variable mostrará las cantidades relativas de cada tamaño diferente de fragmento de secuencia. Nuestro gráfico muestra la longitud variable a medida que recortamos los datos. El pico más grande está a 296 pb, pero hay un segundo pico grande a ~100 pb. Así que, aunque nuestras secuencias tienen una longitud de hasta 296 pb, muchas de las secuencias de buena calidad son más cortas. Esto se corresponde con la caída que observamos en la calidad de la secuencia a ~100 pb y las rayas rojas que comienzan en esta posición en el gráfico de calidad de la secuencia por mosaico.
+Este gráfico muestra la distribución de tamaños de fragmentos en el archivo analizado. En muchos casos, esto producirá un simple gráfico que mostrará un pico en un solo tamaño, pero para los archivos FASTQ de longitud variable mostrará las cantidades relativas de cada tamaño diferente de fragmento de secuencia. Nuestro gráfico muestra la longitud variable a medida que recortamos los datos. El pico más grande está a 296bp, pero hay un segundo pico grande a ~100bp. Así que, aunque nuestras secuencias tienen una longitud de hasta 296bp, muchas de las secuencias de buena calidad son más cortas. Esto se corresponde con la caída que observamos en la calidad de la secuencia a ~100bp y las rayas rojas que comienzan en esta posición en el gráfico de calidad de la secuencia por mosaico.
 
 ![Distribución de la longitud de secuencia](../../images/quality-control/sequence_length_distribution-before.png "Distribución de la longitud de secuencia")
 
-Algunos secuenciadores de alto rendimiento generan fragmentos de secuencias de longitud uniforme, pero otros pueden contener lecturas de longitudes muy variables. Incluso dentro de las bibliotecas de longitud uniforme, algunos pipelines recortarán las secuencias para eliminar las llamadas de bases de baja calidad del final o de las primeras $$n$$ bases si coinciden con las primeras $$n$$ bases del adaptador hasta un 90% (por defecto), con a veces $$n = 1$$.
+Algunos secuenciadores de alto rendimiento generan fragmentos de secuencias de longitud uniforme, pero otros pueden contener lecturas de longitudes muy variables. Incluso dentro de las bibliotecas de longitud uniforme, algunas pipelines recortarán las secuencias para eliminar las llamadas de bases de baja calidad del final o de las primeras $$n$$ bases si coinciden con las primeras $$n$$ bases del adaptador hasta un 90% (por defecto), con a veces $$n = 1$$.
 
 ## Niveles de duplicación de secuencias
 
@@ -482,7 +482,7 @@ Se pueden encontrar dos fuentes de lecturas duplicadas:
 > - Línea azul: distribución de los niveles de duplicación para el conjunto completo de secuencias
 > - Línea roja: distribución para las secuencias deduplicadas con las proporciones del conjunto deduplicado que provienen de diferentes niveles de duplicación en los datos originales.
 > 
-> Para los datos de escopeta de genoma completo se espera que casi el 100% de sus lecturas sean únicas (que aparezcan sólo una vez en los datos de la secuencia). La mayoría de las secuencias deberían situarse en el extremo izquierdo del gráfico, tanto en la línea roja como en la azul. Esto indica que la biblioteca es muy diversa y que no se ha secuenciado en exceso. Si la profundidad de secuenciación es extremadamente alta (por ejemplo, > 100 veces el tamaño del genoma) puede aparecer alguna duplicación inevitable de secuencias: en teoría, sólo hay un número finito de lecturas de secuencias completamente únicas que pueden obtenerse a partir de cualquier muestra de ADN de entrada.
+> Para los datos *shotgun* de genoma completo se espera que casi el 100% de sus lecturas sean únicas (que aparezcan sólo una vez en los datos de la secuencia). La mayoría de las secuencias deberían situarse en el extremo izquierdo del gráfico, tanto en la línea roja como en la azul. Esto indica que la biblioteca es muy diversa y que no se ha secuenciado en exceso. Si la profundidad de secuenciación es extremadamente alta (por ejemplo, > 100 veces el tamaño del genoma) puede aparecer alguna duplicación inevitable de secuencias: en teoría, sólo hay un número finito de lecturas de secuencias completamente únicas que pueden obtenerse a partir de cualquier muestra de ADN de entrada.
 > 
 > Los enriquecimientos más específicos de subconjuntos o la presencia de contaminantes de baja complejidad tenderán a producir picos hacia la derecha del gráfico. Estos picos de alta duplicación aparecerán con mayor frecuencia en el trazo azul, ya que constituyen una proporción elevada de la biblioteca original, pero suelen desaparecer en el trazo rojo, ya que constituyen una proporción insignificante del conjunto deduplicado. Si los picos persisten en el trazo rojo, esto sugiere que hay un gran número de secuencias diferentes altamente duplicadas, lo que podría indicar un conjunto contaminante o una duplicación técnica muy grave.
 > 
@@ -496,7 +496,7 @@ Se pueden encontrar dos fuentes de lecturas duplicadas:
 
 Una biblioteca normal de alto rendimiento contendrá un conjunto diverso de secuencias, sin que ninguna secuencia individual represente una pequeña fracción del conjunto. Descubrir que una única secuencia está muy sobrerrepresentada en el conjunto significa que es altamente significativa desde el punto de vista biológico o indica que la biblioteca está contaminada o no es tan diversa como se esperaba.
 
-FastQC enumera todas las secuencias que representan más del 0,1% del total. Para cada secuencia sobrerrepresentada, FastQC buscará coincidencias en una base de datos de contaminantes comunes e informará de la mejor coincidencia que encuentre. Las coincidencias deben tener al menos 20 pb de longitud y no más de 1 desajuste. Encontrar una coincidencia no significa necesariamente que ésta sea la fuente de la contaminación, pero puede orientarle en la dirección correcta. También hay que tener en cuenta que muchas secuencias adaptadoras son muy similares entre sí, por lo que es posible que obtenga una coincidencia que no sea técnicamente correcta, pero que tenga una secuencia muy similar a la coincidencia real.
+FastQC enumera todas las secuencias que representan más del 0,1% del total. Para cada secuencia sobrerrepresentada, FastQC buscará coincidencias en una base de datos de contaminantes comunes e informará de la mejor coincidencia que encuentre. Las coincidencias deben tener al menos 20bp de longitud y no más de 1 desajuste. Encontrar una coincidencia no significa necesariamente que ésta sea la fuente de la contaminación, pero puede orientarle en la dirección correcta. También hay que tener en cuenta que muchas secuencias adaptadoras son muy similares entre sí, por lo que es posible que obtenga una coincidencia que no sea técnicamente correcta, pero que tenga una secuencia muy similar a la coincidencia real.
 
 Los datos de secuenciación de ARN pueden tener algunas transcripciones que son tan abundantes que se registran como secuencia sobrerrepresentada. Con los datos de secuenciación de ADN, ninguna secuencia debería estar presente con una frecuencia lo suficientemente alta como para aparecer en la lista, pero a veces podemos ver un pequeño porcentaje de lecturas adaptadoras.
 
@@ -509,7 +509,7 @@ Los datos de secuenciación de ARN pueden tener algunas transcripciones que son 
 > > >overrep_seq1
 > > GTGTCAGCCGCCGCGGTAGTCCGACGTGGCTGTCTCTTATACACATCTCC
 > > ```
-> > y usamos [blastn](https://blast.ncbi.nlm.nih.gov/Blast.cgi) contra la base de datos Nucleotide (nr/nt) por defecto no obtenemos ningún resultado. Pero si usamos [VecScreen](https://www.ncbi.nlm.nih.gov/tools/vecscreen/) vemos que es el adaptador Nextera. vecScreen](../../images/quality-control/vecscreen-nextera.png "Adaptador Nextera")
+> > y usamos [blastn](https://blast.ncbi.nlm.nih.gov/Blast.cgi) contra la base de datos Nucleotide (nr/nt) por defecto no obtenemos ningún resultado. Pero si usamos [VecScreen](https://www.ncbi.nlm.nih.gov/tools/vecscreen/) vemos que es el adaptador Nextera. vecScreen](../images/quality-control/vecscreen-nextera.png "Adaptador Nextera")
 > > 
 > {: .solution }
 > 
@@ -609,13 +609,13 @@ La calidad desciende en el centro de estas secuencias. Esto podría causar sesgo
 Para llevar a cabo esta tarea utilizaremos [Cutadapt](https://cutadapt.readthedocs.io/en/stable/guide.html) {% cite marcel2011cutadapt %}, una herramienta que mejora la calidad de la secuencia automatizando el recorte de adaptadores así como el control de calidad. Lo haremos:
 
 - Recorte de bases de baja calidad de los extremos. El recorte de calidad se realiza antes de cualquier recorte de adaptador. Estableceremos el umbral de calidad en 20, un umbral de uso común, ver más [en GATK's Phred Score FAQ](https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores).
-- Recorte del adaptador con Cutadapt. Para ello necesitamos suministrar la secuencia del adaptador. En este ejemplo, Nextera es el adaptador detectado. Podemos encontrar la secuencia del adaptador Nextera en el [sitio web de Illumina aquí](https://support.illumina.com/bulletins/2016/12/what-sequences-do-i-use-for-adapter-trimming.html) `CTGTCTCTTATACACATCT`. Recortaremos esa secuencia del extremo 3' de las lecturas.
+- Recorte del adaptador con Cutadapt. Para ello necesitamos suministrar la secuencia del adaptador. En este ejemplo, Nextera es el adaptador detectado. Podemos encontrar la secuencia del adaptador Nextera en el [sitio web de Illumina](https://support.illumina.com/bulletins/2016/12/what-sequences-do-i-use-for-adapter-trimming.html) `CTGTCTCTTATACACATCT`. Recortaremos esa secuencia del extremo 3' de las lecturas.
 - Filtro de secuencias con longitud < 20 después del recorte
 
 > <hands-on-title>Mejora de la calidad de la secuencia</hands-on-title>
 > 
 > 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.9+galaxy1) %} con los siguientes parámetros
->    - *"¿Lecturas de extremo único o de extremo pareado? "*: `Single-end`
+>    - *""Single-end or Paired-end reads?" "*: `Single-end`
 >       - {% icon param-file %} *"FASTQ/A file "*: `Reads` (Conjunto de datos de entrada)
 > 
 >         > <tip-title>¿Archivos no seleccionables?</tip-title> Si su archivo FASTQ no se puede seleccionar, puede comprobar si el formato es FASTQ con valores de calidad escalados por Sanger (`fastqsanger.gz`). Puede editar el tipo de datos haciendo clic en el símbolo del lápiz.
@@ -624,13 +624,13 @@ Para llevar a cabo esta tarea utilizaremos [Cutadapt](https://cutadapt.readthedo
 > 
 >    - En *"Read 1 Adapters "*:
 >       - *"1: 3' (Fin) Adapters "*:
->          - *"Fuente "*: `Enter custom sequence`
->          - *"Secuencia adaptadora 3' personalizada "*: `CTGTCTCTTATACACATCT`
->    - En *"Otras opciones de recorte de lectura "*
->       - *"Corte(s) de calidad (R1) "*: `20`
+>          - *"Source "*: `Enter custom sequence`
+>          - *"Custom 3' adapter sequence"*: `CTGTCTCTTATACACATCT`
+>    - En *"Other Read Trimming Options "*
+>       - *"Quality cutoff(s) (R1) "*: `20`
 >    - En *"Read Filtering Options "* (Opciones de filtrado de lectura)
->       - *"Longitud mínima (R1) "*: `20`
->    - {% icon param-select %} *"Resultados adicionales a generar "*: `Report`
+>       - *"Minimum lenght (R1) "*: `20`
+>    - {% icon param-select %} *"Additional outputs to generate "*: `Report`
 > 
 > 2. Inspeccione el archivo txt generado (`Report`)
 > 
@@ -709,7 +709,7 @@ Podemos examinar nuestros datos recortados con FASTQE y/o FastQC.
 > 
 > 1. {% tool [FASTQE](toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.3.1+galaxy0) %}: Vuelva a ejecutar **FASTQE** con los siguientes parámetros
 >    - {% icon param-files %} *"FastQ data "*: `Cutadapt Read 1 Output`
->    - {% icon param-select %} *"Tipos de puntuación a mostrar "*: `Mean`
+>    - {% icon param-select %} *"Score types to show ":*: `Mean`
 > 
 > 2. Inspeccione el nuevo informe FASTQE
 > 
@@ -831,11 +831,11 @@ Los datos que analizamos en el paso anterior eran datos de extremo único, por l
 > 
 >    {% snippet faqs/galaxy-es/tools_select_multiple_datasets.md %}
 > 
-> 3. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1) %} with the following parameters to aggregate the FastQC reports of both forward and reverse reads
->      - En *"Resultados "*
->        - *"¿Qué herramienta se utilizó para generar los registros?*: `FastQC`
+> 3. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9+galaxy1) %} con los siguientes parámetros para agregar los reportes FastQC de las lecturas hacia adelante y hacia detrás
+>      - En *"Results "*
+>        - *"Which tool was used generate logs?*: `FastQC`
 >        - En *"FastQC output "* (Salida de FastQC)
->           - *"¿Tipo de salida FastQC? "*: `Raw data`
+>           - *"Type of FastQC output? "*: `Raw data`
 >           - {% icon param-files %} *"FastQC output "*: archivos `Raw data` (salida de ambos **FastQC** {% icon tool %})
 > 
 > 4. Inspeccione la página web de MultiQC.
@@ -850,7 +850,7 @@ Los datos que analizamos en el paso anterior eran datos de extremo único, por l
 > 
 > > <solution-title></solution-title>
 > > 
-> > 1. La calidad de las secuencias parece peor para las lecturas inversas que para las lecturas directas:
+> > 1. La calidad de las secuencias parece peor para las lecturas inversas que para las lecturas hacia delante:
 > >     - Puntuaciones de calidad por secuencia: distribución más a la izquierda, es decir, una menor calidad media de las secuencias
 > >     - Calidad de la secuencia por base: curva menos suave y mayor disminución al final con un valor medio inferior al 28
 > >     - Contenido de la secuencia por base: sesgo más fuerte al principio y sin distinción clara entre los grupos C-G y A-T
@@ -865,7 +865,7 @@ Los datos que analizamos en el paso anterior eran datos de extremo único, por l
 
 Con lecturas pareadas, las puntuaciones medias de calidad de las lecturas hacia delante serán casi siempre superiores a las de las lecturas hacia atrás.
 
-Tras el recorte, las lecturas inversas serán más cortas debido a su calidad y se eliminarán durante el paso de filtrado. Si se elimina una de las lecturas inversas, debe eliminarse también su correspondiente lectura directa. De lo contrario, obtendremos un número diferente de lecturas en ambos archivos y en diferente orden, y el orden es importante para los siguientes pasos. Por lo tanto, **es importante tratar las lecturas directas e inversas juntas para recortarlas y filtrarlas**.
+Tras el recorte, las lecturas inversas serán más cortas debido a su calidad y se eliminarán durante el paso de filtrado. Si se elimina una de las lecturas inversas, debe eliminarse también su correspondiente lectura hacia adelante. De lo contrario, obtendremos un número diferente de lecturas en ambos archivos y en diferente orden, y el orden es importante para los siguientes pasos. Por lo tanto, **es importante tratar las lecturas directas e inversas juntas para recortarlas y filtrarlas**.
 
 > <hands-on-title>Mejorando la calidad de los datos paired-end</hands-on-title>
 > 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.9+galaxy1) %} con los siguientes parámetros
@@ -879,10 +879,10 @@ Tras el recorte, las lecturas inversas serán más cortas debido a su calidad y 
 > 
 >         No se encontraron adaptadores en estos conjuntos de datos. Cuando procese sus propios datos y sepa qué secuencias de adaptador se utilizaron durante la preparación de la biblioteca, debe proporcionar sus secuencias aquí.
 > 
->    - En *"Otras opciones de recorte de lectura "*
->       - *"Corte(s) de calidad (R1) "*: `20`
+>    - En *"Other Read Trimming Options "*
+>       - *"Quality cutoff(s)  (R1) "*: `20`
 >    - En *"Read Filtering Options "* (Opciones de filtrado de lectura)
->       - *"Longitud mínima (R1) "*: `20`
+>       - *"Minimum lenght (R1) "*: `20`
 >    - {%icon param-select%} *"Resultados adicionales a generar "*: `Report`
 > 
 > 2. Inspeccione el archivo txt generado (`Report`)
@@ -893,7 +893,7 @@ Tras el recorte, las lecturas inversas serán más cortas debido a su calidad y 
 >    > 2. ¿Cuántos pares de secuencias se han eliminado por ser demasiado cortos?
 >    > 
 >    > > <solution-title></solution-title>
->    > > 1. 44.164 pb (`Quality-trimmed:`) para las lecturas hacia adelante y 138.638 pb para las lecturas hacia atrás.
+>    > > 1. 44.164bp (`Quality-trimmed:`) para las lecturas hacia adelante y 138.638bp para las lecturas hacia atrás.
 >    > > 2. Se han eliminado 1.376 secuencias porque al menos una lectura era más corta que el corte de longitud (322 cuando sólo se analizaron las lecturas hacia adelante).
 > > > 
 > > {: .solution }
@@ -937,9 +937,9 @@ En caso de lecturas largas, podemos comprobar la calidad de la secuencia con [Na
 > 
 > 3. {% tool [Nanoplot](toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.41.0+galaxy0) %} con los siguientes parámetros
 >    - {% icon param-files %} *"files "*: `m64011_190830_220126.Q20.subsample.fastq.gz`
->    - *"Opciones para personalizar los gráficos creados "*
->        - {% icon param-select %} *"Especifica el formato bivariante de los gráficos. "*: `dot`, `kde`
->        - {% icon param-select %} *"Mostrar la marca N50 en el histograma de longitud de lectura. "*: `Yes`
+>    - *"Options for customizing the plots created "*
+>        - {% icon param-select %} *"Specify the bivariate format of the plots. "*: `dot`, `kde`
+>        - {% icon param-select %} *"Show the N50 mark in the read length histogram. "*: `Yes`
 > 
 > 4. Inspeccione el archivo HTML generado
 > 
@@ -956,7 +956,7 @@ En caso de lecturas largas, podemos comprobar la calidad de la secuencia con [Na
 > {: .solution }
 > 
 > ¿Cuál es la mediana, la media y N50?
-> > <solution-title></solution-title> La mediana, la longitud media de lectura y el N50 también están cerca de 18.000 pb. Para las lecturas PacBio HiFi, la mayoría de las lecturas están generalmente cerca de este valor ya que la preparación de la biblioteca incluye un paso de selección de tamaño. Para otras tecnologías como PacBio CLR y Nanopore, es mayor y depende principalmente de la calidad de la extracción de ADN.
+> > <solution-title></solution-title> La mediana, la longitud media de lectura y el N50 también están cerca de 18.000bp. Para las lecturas PacBio HiFi, la mayoría de las lecturas están generalmente cerca de este valor ya que la preparación de la biblioteca incluye un paso de selección de tamaño. Para otras tecnologías como PacBio CLR y Nanopore, es mayor y depende principalmente de la calidad de la extracción de ADN.
 > > 
 > {: .solution }
 > 
@@ -970,7 +970,7 @@ Este gráfico muestra la distribución de tamaños de fragmentos en el archivo a
 
 ## Gráfico de longitudes de lectura frente a calidad media de lectura mediante puntos
 
-Este gráfico muestra la distribución del tamaño de los fragmentos en función de la puntuación Q del archivo analizado. En general, no hay relación entre la longitud de la lectura y la calidad de la lectura, pero esta representación permite visualizar ambas informaciones en un único gráfico y detectar posibles aberraciones. En corridas con muchas lecturas cortas las lecturas más cortas son a veces de menor calidad que el resto.
+Este gráfico muestra la distribución del tamaño de los fragmentos en función de la puntuación Q del archivo analizado. En general, no hay relación entre la longitud de la lectura y la calidad de la lectura, pero esta representación permite visualizar ambas informaciones en un único gráfico y detectar posibles aberraciones. En *runs* con muchas lecturas cortas las lecturas más cortas son a veces de menor calidad que el resto.
 
 ![Gráfico de longitudes de lectura frente a calidad media de lectura mediante puntos](../../images/quality-control/LengthvsQualityScatterPlot_dot.png "Histograma de longitud de lectura")
 
@@ -983,7 +983,7 @@ Este gráfico muestra la distribución del tamaño de los fragmentos en función
 > 
 {: .question}
 
-> <comment-title>¡Pruébelo!</comment-title> Haga el control de calidad con **FastQC** {% icon tool %} en `m64011_190830_220126.Q20.subsample.fastq.gz` y compare los resultados!
+> <comment-title>¡Pruébalo!</comment-title> Haz el control de calidad con **FastQC** {% icon tool %} en `m64011_190830_220126.Q20.subsample.fastq.gz` y compare los resultados!
 > 
 {: .comment}
 
@@ -1027,7 +1027,7 @@ Uno de los puntos fuertes de PycoQC es que es interactivo y altamente personaliz
 
 ## Longitud de las lecturas base
 
-Como para FastQC y Nanoplot, este gráfico muestra la distribución de tamaños de fragmentos en el archivo analizado. En cuanto a PacBio CLR/HiFi, las lecturas largas tienen una longitud variable y esto mostrará las cantidades relativas de cada tamaño diferente de fragmento de secuencia. En este ejemplo, la distribución de la longitud de lectura es bastante dispersa, con una longitud de lectura mínima para las lecturas pasadas de alrededor de 200 pb y una longitud máxima de ~150.000 pb.
+Como para FastQC y Nanoplot, este gráfico muestra la distribución de tamaños de fragmentos en el archivo analizado. En cuanto a PacBio CLR/HiFi, las lecturas largas tienen una longitud variable y esto mostrará las cantidades relativas de cada tamaño diferente de fragmento de secuencia. En este ejemplo, la distribución de la longitud de lectura es bastante dispersa, con una longitud de lectura mínima para las lecturas pasadas de alrededor de 200bp y una longitud máxima de ~150.000bp.
 
 ![Basecalled reads length](../../images/quality-control/basecalled_reads_length-pycoqc.png "Basecalled reads length")
 
