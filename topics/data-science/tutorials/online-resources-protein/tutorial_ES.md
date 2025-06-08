@@ -4,24 +4,18 @@ title: Una proteína a lo largo de la página UniProt
 level: Introductory
 zenodo_link: ''
 questions:
-- How can you search for proteins using text, gene, or protein names?
-- How do you interpret the information at the top of the UniProt entry page?
-- What types of information can you expect from different download formats, such as
-  FASTA and JSON?
-- How is the function of a protein like opsins described in the "Function" section?
-- What structured information is found in the "Names and Taxonomy",  "Subcellular
-  location", "Disease & Variants", "PTM/Processing" sections?
-- How to learn about the protein expression, interactions, structure, family, sequence
-  and similar proteins?
-- How do the "Variant viewer" and "Feature viewer" tabs assist in mapping protein
-  information along the sequence?
-- What does the "Publications" tab list, and how can you filter publications?
-- What is the significance of tracking entry annotation changes over time?
+- ¿Cómo se pueden buscar proteínas utilizando texto, nombres de genes o nombres de proteínas?
+- ¿Cómo se interpreta la información en la parte superior de la página de entrada de UniProt?
+- ¿Qué tipo de información se puede esperar de los distintos formatos de descarga, como FASTA y JSON?
+- ¿Cómo se describe la función de una proteína como las opsinas en la sección "Function"?
+- ¿Qué información estructurada se encuentra en las secciones "Names and Taxonomy", "Subcellular location", "Disease & Variants", "PTM/Processing"?
+- ¿Cómo informarse sobre la expresión, interacciones, estructura, familia, secuencia y proteínas similares?
+- ¿Cómo ayudan las pestañas "Variant viewer" y "Feature viewer" a mapear la información de la proteína a lo largo de su secuencia?
+- ¿Qué muestra la pestaña "Publications" y cómo se pueden filtrar las publicaciones?
+- ¿Cuál es la importancia de hacer un seguimiento de los cambios en la anotación de la entrada a lo largo del tiempo?
 objectives:
-- By exploring protein entries in UniProtKB, interpret protein function, taxonomy,
-  structure, interactions, variants, and more.
-- Use unique identifiers to connect databases, download gene and protein data, visualize
-  and compare sequence features.
+- Explorando las entradas de proteínas en UniProtKB, interpreta la función de la proteína, su taxonomía, estructura, interacciones, variantes y más.
+- Utiliza identificadores únicos para conectar bases de datos, descargar datos de genes y proteínas, visualizar y comparar características de secuencias.
 time_estimation: 1H
 key_points:
 - How to navigate UniProtKB entries, accessing comprehensive details about proteins,
