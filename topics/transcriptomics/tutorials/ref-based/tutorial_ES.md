@@ -2205,7 +2205,7 @@ Ya tenemos los dos archivos de entrada necesarios para goseq.
    > > 
    > > 2. Para sobre-representados, 50 BP, 5 CC y 5 MF y para sub-representados, 5 BP, 2 CC y 0 MF
    > > 
-   > >    {% tool [Agrupar datos](Agrupar1) %} en la columna 7 (categoría) y recuento en la columna 1 (IDs)
+   > >    {% tool [Agrupar datos](Grouping1) %} en la columna 7 (categoría) y recuento en la columna 1 (IDs)
    > > 
    > {: .solution} {: .question}
 
@@ -2268,9 +2268,9 @@ Por ejemplo, la ruta `dme00010` representa el proceso de glucólisis (conversió
    > > <solution-title></solution-title>
    > > 
    > > 1. El archivo tiene 128 líneas, incluida la cabecera, por lo que se han identificado 127 vías KEGG.
-   > > 2. 2 vías KEGG (2,34%) están sobrerrepresentadas, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c6 (valor p ajustado para vías KEGG sobrerrepresentadas)
+   > > 2. 2 vías KEGG (2,34%) están sobrerrepresentadas, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filter1) %} en c6 (valor p ajustado para vías KEGG sobrerrepresentadas)
    > > 3. Las dos vías KEGG sobrerrepresentadas son `01100` y `00010`. Buscándolas en la [base de datos KEGG](https://www.genome.jp/kegg/kegg2.html), podemos encontrar más información sobre estas vías: `01100` corresponde a todas las vías metabólicas y `00010` a la vía de la Glucólisis / Gluconeogénesis.
-   > > 4. Ninguna vía KEGG está infrarrepresentada, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filtro1) %} en c7 (valor p ajustado para vías KEGG infrarrepresentadas) {: .solution} {: .question}
+   > > 4. Ninguna vía KEGG está infrarrepresentada, utilizando {% tool [Filtrar datos en cualquier columna utilizando expresiones simples](Filter1) %} en c7 (valor p ajustado para vías KEGG infrarrepresentadas) {: .solution} {: .question}
 
 2. Una tabla con los genes expresados diferencialmente (de la lista que proporcionamos) asociados a las vías KEGG (`DE genes for categories (GO/KEGG terms)`)
 
