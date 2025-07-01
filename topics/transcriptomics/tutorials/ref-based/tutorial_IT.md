@@ -293,7 +293,7 @@ Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate co
 >    - In *"Output aggiuntivi da generare "*
 >       - Selezionare: `Report: Cutadapt's per-adapter statistics. You can use this file with MultiQC.`
 > 
->      {% include topics/sequence-analysis/tutorials/quality-control/trimming_question.md %}
+>      {% include topics/sequence-analysis/tutorials/quality-control/trimming_question_IT.md %}
 > 
 > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i rapporti Cutadapt con i seguenti parametri:
 >    - In *"Risultati "*:

@@ -293,7 +293,7 @@ Wir sollten die Reads trimmen, um Basen zu entfernen, die mit hoher Unsicherheit
 >    - In *"Additional outputs to generate "*
 >       - Auswählen: `Report: Cutadapt's per-adapter statistics. You can use this file with MultiQC.`
 > 
->      {% include topics/sequence-analysis/tutorials/quality-control/trimming_question.md %}
+>      {% include topics/sequence-analysis/tutorials/quality-control/trimming_question_DE.md %}
 > 
 > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} um die Cutadapt-Berichte mit den folgenden Parametern zu aggregieren:
 >    - In *"Results "*:
