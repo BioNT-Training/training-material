@@ -21,7 +21,7 @@ Als Alternative zum Hochladen der Daten von einer URL oder Ihrem Computer könne
 4. Klicken Sie auf **Zur Historie hinzufügen** {% icon galaxy-dropdown %} am oberen Rand und wählen Sie **{{ include.astype | default: "as Datasets" }}** aus dem Dropdown-Menü
 5. Wählen Sie im Pop-up-Fenster {% if include.collection_type %}
    * *"Sammlungstyp "*: **{{ include.collection_type }}** {% endif %}
-   * *"Historie auswählen "*: {% if include.tohistory %}{{{ include.tohistory }}{% else %}die Historie, in die Sie die Daten importieren möchten (oder erstellen Sie eine neue){% endif %}
+   * *"Historie auswählen "*: {% if include.tohistory %}{{ include.tohistory }}{% else %}die Historie, in die Sie die Daten importieren möchten (oder erstellen Sie eine neue){% endif %}
 6. Klicken Sie auf {% if include.collection_type %}**Fortfahren**{% else %}**Importieren**{% endif %} {% if include.collection_type %}
 7. Geben Sie der neuen Sammlung im nächsten Dialog einen passenden **Name**{% if include.collection_name %}, wie `{{ include.collection_name }}`,{% endif %}
 8. Klicken Sie auf **Sammlung erstellen** {% endif %}
