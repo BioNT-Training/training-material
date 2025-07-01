@@ -1,15 +1,12 @@
-> 
+>
 >      > <question-title></question-title>
 >      >
->      > Why do we run the trimming tool only once on a paired-end dataset and not twice, once for each dataset?
+>      > Warum führen wir das Trimming-Tool nur einmal auf einem Paired-End-Datensatz aus und nicht zweimal, einmal für jeden Datensatz?
 >      >
 >      > > <solution-title></solution-title>
 >      > >
->      > > The tool can remove sequences if they become too short during the trimming process. For paired-end files it removes entire sequence pairs if one (or both) of the two reads became shorter than the set length cutoff. Reads of a read-pair that are longer than a given threshold but for which the partner read has become too short can optionally be written out to single-end files. This ensures that the information of a read pair is not lost entirely if only one read is of good quality.
+>      > > Das Tool kann Sequenzen entfernen, wenn sie während des Trimming-Prozesses zu kurz werden. Bei Paired-End-Dateien entfernt es ganze Sequenzpaare, wenn einer (oder beide) der beiden Reads kürzer als der eingestellte Längen-Cutoff geworden sind. Reads eines Read-Paares, die länger als ein bestimmter Schwellenwert sind, bei denen aber der Partner-Read zu kurz geworden ist, können optional in Single-End-Dateien ausgeschrieben werden. Dadurch wird sichergestellt, dass die Informationen eines Lesepaares nicht vollständig verloren gehen, wenn nur ein Read von guter Qualität ist.
 >      > >
-> > > 
-> > {: .solution}
-> > 
+>      > {: .solution}
 >      {: .question}
-> 
-
+>
