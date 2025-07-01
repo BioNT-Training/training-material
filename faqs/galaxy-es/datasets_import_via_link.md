@@ -52,5 +52,4 @@ contributors: [nomadscientist]
 {% endif %}
 {% if include.renaming == undefined or include.renaming == true %}
 * Galaxy utiliza los URLs como nombres de forma predeterminada , así que los tendrás que cambiar a algunos que sean más útiles o informativos.
-the window
 {% endif %}

@@ -20,7 +20,7 @@ Para ahorrar espacio, el secuenciador registra un [carácter ASCII](http://drive
 
 Así que hay un carácter ASCII asociado a cada nucleótido, que representa su [puntuación de calidad Phred](https://en.wikipedia.org/wiki/Phred_quality_score), la probabilidad de una llamada de base incorrecta:
 
-| Phred Quality Score | Probability of incorrect base call | Base call accuracy |
+| Puntuación de calidad Phred | Probabilidad de una llamada de base incorrecta | Precisión de llamada de base |
 | ------------------- | ---------------------------------- | ------------------ |
 | 10                  | 1 in 10                            | 90%                |
 | 20                  | 1 in 100                           | 99%                |

@@ -1,5 +1,5 @@
 ---
-title: Multipile herramientas similares disponibles
+title: Múltiples herramientas similares disponibles
 area: tools
 box_type: tip
 layout: faq
@@ -12,7 +12,7 @@ A veces hay varias herramientas con nombres muy parecidos. Si los parámetros de
 
 1. Utiliza el **Modo Tutorial** {% icon curriculum %} en Galaxy, y haz click en el botón azul de la herramienta en el tutorial para abrir automáticamente la herramienta y versión correctas (aún no disponible para todos los tutoriales)
 
-   {% snippet faqs/galaxy/tutorial_mode.md %}
+   {% snippet faqs/galaxy-es/tutorial_mode.md %}
 
 2. Comprueba que el **nombre completo de la herramienta** coincide con lo que ves en el tutorial. {% if include.toolname %} Compruebe que:
    - **Nombre completo de la herramienta**: `{{ include.toolname }}` {% endif %} {% if include.toolversion %}

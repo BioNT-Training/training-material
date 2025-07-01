@@ -5,15 +5,13 @@ level: Introductory
 draft: true
 zenodo_link: https://zenodo.org/record/8304465
 questions:
-- How to employ bioinformatics resources to investigate a specific protein family
-  (opsins)?
-- How to navigate the Genome Data Viewer to find opsins in the human genome?
-- How to identify genes associated with opsins and analyze their chromosome locations?
-- How to explore literature and clinical contexts for the OPN1LW gene?
-- How to use protein sequences files to perform similarity searches using BLAST?
+- ¿Cómo utilizar recursos de bioinformática para investigar una familia específica de proteínas (opsinas)?
+- ¿Cómo navegar por el Genome Data Viewer para encontrar opsinas en el genoma humano?
+- ¿Cómo identificar genes asociados con las opsinas y analizar su localización en los cromosomas?
+- ¿Cómo explorar la literatura científica y los contextos clínicos relacionados con el gen OPN1LW?
+- ¿Cómo usar archivos de secuencias proteicas para realizar búsquedas de similitud utilizando BLAST?
 objectives:
-- Starting from a text search, navigate multiple web resources to examine multiple
-  types of information about a gene, conveyed through multiple file formats.
+- Partiendo de una búsqueda por texto, navega por múltiples recursos web para examinar distintos tipos de información sobre un gen, presentada en diversos formatos de archivo. 
 time_estimation: 1H
 key_points:
 - You can search for genes and proteins using specific text on the NCBI genome.
@@ -50,7 +48,7 @@ El objetivo de este tutorial es familiarizarnos con ello, utilizando como ejempl
 
 Las opsinas humanas se encuentran en las células de la retina. Las opsinas captan la luz e inician la secuencia de señales que dan lugar a la visión. Procederemos formulando preguntas sobre las opsinas y los genes de opsina, y luego utilizaremos diferentes bases de datos y recursos bioinformáticos para responderlas.
 
-> <comment-title></comment-title> Este tutorial es un poco atípico: no trabajaremos en Galaxy sino principalmente fuera de ella, navegando por bases de datos y herramientas a través de sus propias interfaces web. El objetivo de este tutorial es ilustrar varias fuentes de datos biológicos en diferentes formatos de archivo, y que representan información diferente.
+> <comment-title></comment-title> Este tutorial es un poco atípico: no trabajaremos en Galaxy sino principalmente fuera de él, navegando por bases de datos y herramientas a través de sus propios interfaces web. El objetivo de este tutorial es ilustrar varias fuentes de datos biológicos en diferentes formatos de archivo, y que representan información diferente.
 {: .comment}
 
 > <agenda-title></agenda-title>
@@ -155,7 +153,7 @@ Pero, ¿cuál es la secuencia de este gen? Hay múltiples formas de recuperar es
 
 > <hands-on-title>Buscador del genoma abierto para el gen OPN1LW</hands-on-title>
 > 
-> 1. Haga clic en el {% icon tool %} *Herramientas* en la parte superior derecha del cuadro que muestra el gen
+> 1. Haga clic en el icono {% icon tool %} *Herramientas* en la parte superior derecha del cuadro que muestra el gen
 > 2. Haga clic en *Vista de secuencias de texto*
 {: .hands-on}
 
@@ -485,14 +483,14 @@ Mientras que en las secciones anteriores de este tutorial hemos utilizado amplia
 >    {% snippet faqs/galaxy-es/datasets_import_from_data_library.md %}
 > 
 > 1. {% tool [NCBI BLAST+ blastp](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/2.10.1+galaxy2) %} con los siguientes parámetros:
->    - *"Secuencia(s) de consulta de proteínas "*: `protein.faa`
->    - *"Base de datos de materias/secuencias "*: `Locally installed BLAST database`
->    - *"Base de datos BLAST de proteínas "*: `SwissProt`
+>    - *"Protein query sequence(s) "*: `protein.faa`
+>    - *"Subject database/sequences "*: `Locally installed BLAST database`
+>    - *"Protein BLAST database "*: `SwissProt`
 > 
 >      Para buscar sólo secuencias anotadas en UniProt, necesitamos seleccionar la última versión de `SwissProt`
 > 
 >    - *"Set expectation value cutoff "*: `0.001`
->    - *"Formato de salida "*: `Tabular (extended 25 columns)`
+>    - *"Output format "*: `Tabular (extended 25 columns)`
 > 
 {: .hands_on}
 
