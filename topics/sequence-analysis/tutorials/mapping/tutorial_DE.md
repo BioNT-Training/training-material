@@ -254,7 +254,7 @@ der die Read-Mappings gespeichert sind.
 
 # Inspektion einer BAM-Datei
 
-{% include topics/sequence-analysis/tutorials/mapping/bam_explanation.md mapper="Bowtie2" %}
+{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_DE.md mapper="Bowtie2" %}
 
 Die BAM-Datei enthält viele Informationen über jeden Read, insbesondere über die
 Qualität des Mappings.

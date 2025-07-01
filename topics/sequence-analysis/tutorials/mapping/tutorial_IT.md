@@ -253,7 +253,7 @@ sono memorizzate le mappature delle letture.
 
 # Ispezione di un file BAM
 
-{% include topics/sequence-analysis/tutorials/mapping/bam_explanation.md mapper="Bowtie2" %}
+{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_IT.md mapper="Bowtie2" %}
 
 Il file BAM include molte informazioni su ciascuna lettura, in particolare sulla qualità
 della mappatura.
