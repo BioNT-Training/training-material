@@ -168,7 +168,7 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 > 
 {: .hands_on}
 
-{% include topics/sequence-analysis/tutorials/quality-control/fastq_question.md %}
+{% include topics/sequence-analysis/tutorials/quality-control/fastq_question_IT.md %}
 
 Le letture sono dati grezzi provenienti dalla macchina di sequenziamento senza alcun pretrattamento. È necessario valutarne la qualità.
 

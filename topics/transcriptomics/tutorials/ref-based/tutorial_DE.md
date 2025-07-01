@@ -168,7 +168,7 @@ Im zweiten Teil des Tutorials werden die Read-Zahlen aller 7 Proben verwendet, u
 > 
 {: .hands_on}
 
-{% include topics/sequence-analysis/tutorials/quality-control/fastq_question.md %}
+{% include topics/sequence-analysis/tutorials/quality-control/fastq_question_DE.md %}
 
 Die Reads sind Rohdaten aus dem Sequenziergerät ohne jegliche Vorbehandlung. Sie müssen auf ihre Qualität geprüft werden.
 
