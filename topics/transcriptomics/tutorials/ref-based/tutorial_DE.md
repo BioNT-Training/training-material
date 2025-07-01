@@ -279,7 +279,7 @@ Leider unterstützt die aktuelle Version von MultiQC (das Tool, das wir zum Komb
 
 Wir sollten die Reads trimmen, um Basen zu entfernen, die mit hoher Unsicherheit (d.h. Basen mit niedriger Qualität) an den Read-Enden sequenziert wurden, und auch die Reads mit insgesamt schlechter Qualität entfernen.
 
-{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
+{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question_DE.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
 
 > <hands-on-title>Trimmen von FASTQs</hands-on-title>
 > 

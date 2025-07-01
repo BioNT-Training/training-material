@@ -279,7 +279,7 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 
 Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate con un'elevata incertezza (cioè basi di bassa qualità) alle estremità delle letture e rimuovere anche le letture di cattiva qualità complessiva.
 
-{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
+{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question_IT.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
 
 > <hands-on-title>Trimming FASTQ</hands-on-title>
 > 
