@@ -308,7 +308,7 @@ Vielzahl von Datentypen, einschließlich array-basierter und Next-Generation-Seq
 sowie genomische Annotationen. Im Folgenden werden wir es verwenden, um die gemappten
 Reads zu visualisieren.
 
-{% include topics/sequence-analysis/tutorials/mapping/igv.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/igv_DE.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 ## JBrowse
 
@@ -318,7 +318,7 @@ herunterladen und ausführen müssen, sind JBrowse-Instanzen online gehostete We
 die eine Schnittstelle zum Durchsuchen von Genomdaten bieten. Wir werden es verwenden,
 um die gemappten Reads zu visualisieren.
 
-{% include topics/sequence-analysis/tutorials/mapping/jbrowse.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/jbrowse_DE.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 # Schlussfolgerung
 

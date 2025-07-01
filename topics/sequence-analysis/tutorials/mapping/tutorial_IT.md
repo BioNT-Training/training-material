@@ -307,7 +307,7 @@ Supporta un'ampia varietà di tipi di dati, compresi i dati di sequenza basati s
 di nuova generazione e le annotazioni genomiche. Di seguito, lo utilizzeremo per
 visualizzare le letture mappate.
 
-{% include topics/sequence-analysis/tutorials/mapping/igv.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/igv_IT.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 ## JBrowse
 
@@ -317,7 +317,7 @@ eseguire, le istanze di JBrowse sono siti web ospitati online che forniscono
 un'interfaccia per sfogliare i dati genomici. Lo useremo per visualizzare le letture
 mappate.
 
-{% include topics/sequence-analysis/tutorials/mapping/jbrowse.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/jbrowse_IT.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 # Conclusione
 
