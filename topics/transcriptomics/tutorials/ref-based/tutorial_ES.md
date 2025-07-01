@@ -166,7 +166,7 @@ En la segunda parte del tutorial, se utilizan los recuentos de lecturas de las 7
 > 
 {: .hands_on}
 
-{% include topics/sequence-analysis/tutorials/quality-control/fastq_question_es.md %}
+{% include topics/sequence-analysis/tutorials/quality-control/fastq_question_ES.md %}
 
 Las lecturas son datos brutos de la máquina de secuenciación sin ningún tratamiento previo. Es necesario evaluar su calidad.
 
@@ -277,7 +277,7 @@ Lamentablemente, la versión actual de MultiQC (la herramienta que utilizamos pa
 
 Debemos recortar las lecturas para eliminar las bases que se secuenciaron con alta incertidumbre (es decir, bases de baja calidad) en los extremos de las lecturas, y también eliminar las lecturas de mala calidad general.
 
-{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question_es.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
+{% include topics/sequence-analysis/tutorials/quality-control/paired_end_question_ES.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
 
 > <hands-on-title>Recorte de FASTQs</hands-on-title>
 > 
@@ -327,7 +327,7 @@ Para dar sentido a las lecturas, primero tenemos que averiguar de dónde procede
 
 En este estudio, los autores utilizaron células de *Drosophila melanogaster*. Por lo tanto, debemos mapear las secuencias de calidad controlada al genoma de referencia de *Drosophila melanogaster*.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_es.md answer_3="El genoma de *Drosophila melanogaster* es conocido y ensamblado y puede utilizarse como genoma de referencia en este análisis. Tenga en cuenta que pueden publicarse nuevas versiones de genomas de referencia si el ensamblaje mejora, para este tutorial vamos a utilizar la versión 6 del ensamblaje del genoma de referencia de *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_ES.md answer_3="El genoma de *Drosophila melanogaster* es conocido y ensamblado y puede utilizarse como genoma de referencia en este análisis. Tenga en cuenta que pueden publicarse nuevas versiones de genomas de referencia si el ensamblaje mejora, para este tutorial vamos a utilizar la versión 6 del ensamblaje del genoma de referencia de *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
 
 En los transcriptomas de eucariotas, la mayoría de las lecturas proceden de ARNm procesados que carecen de intrones:
 
@@ -438,7 +438,7 @@ Según el informe **MultiQC**, alrededor del 80% de las lecturas de ambas muestr
 
 La salida principal de **STAR** es un archivo BAM.
 
-{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_es.md mapper="RNA STAR" %}
+{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_ES.md mapper="RNA STAR" %}
 
 ## Inspección de los resultados del mapeo
 

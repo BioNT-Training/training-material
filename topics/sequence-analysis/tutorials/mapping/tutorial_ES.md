@@ -159,7 +159,7 @@ extremos de las lecturas:
 
 Necesitamos un genoma de referencia para mapear las lecturas.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_es.md answer_3="Estos datos provienen del ChIP-seq de ratones, por lo que utilizaremos mm10 (*Mus musculus*)."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_ES.md answer_3="Estos datos provienen del ChIP-seq de ratones, por lo que utilizaremos mm10 (*Mus musculus*)."%}
 
 Actualmente, existen más de 60 mapeadores diferentes, y su número sigue creciendo. En
 este tutorial, utilizaremos [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), una
@@ -251,7 +251,7 @@ donde se almacenan los mapeos de lecturas.
 
 # Inspección de un archivo BAM
 
-{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_es.md mapper="Bowtie2" %}
+{% include topics/sequence-analysis/tutorials/mapping/bam_explanation_ES.md mapper="Bowtie2" %}
 
 El archivo BAM incluye mucha información sobre cada lectura, en particular sobre la
 calidad del mapeo.
@@ -305,7 +305,7 @@ integrados. Es compatible con una amplia variedad de tipos de datos, incluidos l
 de secuencias basadas en arrays y de próxima generación, y las anotaciones genómicas. A
 continuación, la utilizaremos para visualizar las lecturas mapeadas.
 
-{% include topics/sequence-analysis/tutorials/mapping/igv_es.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/igv_ES.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 ## JBrowse
 
@@ -315,7 +315,7 @@ software que debe descargarse y ejecutarse, las instancias de JBrowse son sitios
 alojados en línea que proporcionan una interfaz para navegar por los datos genómicos. Lo
 utilizaremos para visualizar las lecturas mapeadas.
 
-{% include topics/sequence-analysis/tutorials/mapping/jbrowse_es.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
+{% include topics/sequence-analysis/tutorials/mapping/jbrowse_ES.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 # Conclusión
 
