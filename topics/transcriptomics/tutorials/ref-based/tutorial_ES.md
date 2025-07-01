@@ -978,7 +978,7 @@ Hay 4 formas de estimar la estridencia a partir de los resultados de **STAR** (e
 ## Recuento de lecturas por genes
 
 
-{% include _includes/cyoa-choices-es.html option1="featureCounts" option2="STAR" default="featureCounts" text="Para contar el número de lecturas por gen, ofrecemos un tutorial paralelo para los 2 métodos (STAR y featureCounts) que dan resultados muy similares. ¿Qué método prefiere utilizar?" disambiguation="tool"%}
+{% include _includes/cyoa-choices-ES.html option1="featureCounts" option2="STAR" default="featureCounts" text="Para contar el número de lecturas por gen, ofrecemos un tutorial paralelo para los 2 métodos (STAR y featureCounts) que dan resultados muy similares. ¿Qué método prefiere utilizar?" disambiguation="tool"%}
 
 <div class="featureCounts" markdown="1">
 
@@ -1471,7 +1471,7 @@ Aquí, el tratamiento es el factor principal que nos interesa. El tipo de secuen
 
 Si sólo tiene uno o dos factores con un número reducido de réplicas biológicas, la configuración básica de **DESeq2** es suficiente. En el caso de una configuración experimental compleja con un gran número de réplicas biológicas, las colecciones basadas en etiquetas son apropiadas. Ambos enfoques dan los mismos resultados. El enfoque basado en etiquetas requiere algunos pasos adicionales antes de ejecutar la herramienta **DESeq2**, pero valdrá la pena cuando se trabaje con una configuración experimental compleja.
 
-{% include _includes/cyoa-choices-es.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="¿Qué enfoque prefiere utilizar?" disambiguation="deseq"%}
+{% include _includes/cyoa-choices-ES.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="¿Qué enfoque prefiere utilizar?" disambiguation="deseq"%}
 
 <div class="Basic" markdown="1">
 

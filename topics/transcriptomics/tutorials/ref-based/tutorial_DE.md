@@ -980,7 +980,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
 ## Zählen der Reads pro Genen
 
 
-{% include _includes/cyoa-choices-de.html option1="featureCounts" option2="STAR" default="featureCounts" text="Um die Anzahl der Reads pro Gen zu zählen, bieten wir ein paralleles Tutorial für die beiden Methoden (STAR und featureCounts) an, die sehr ähnliche Ergebnisse liefern. Welche Methode würden Sie bevorzugen?" disambiguation="tool"%}
+{% include _includes/cyoa-choices-DE.html option1="featureCounts" option2="STAR" default="featureCounts" text="Um die Anzahl der Reads pro Gen zu zählen, bieten wir ein paralleles Tutorial für die beiden Methoden (STAR und featureCounts) an, die sehr ähnliche Ergebnisse liefern. Welche Methode würden Sie bevorzugen?" disambiguation="tool"%}
 
 <div class="featureCounts" markdown="1">
 
@@ -1473,7 +1473,7 @@ Hier ist die Behandlung der primäre Faktor, an dem wir interessiert sind. Der S
 
 Wenn Sie nur einen oder zwei Faktoren mit einer geringen Anzahl von biologischen Replikaten haben, ist die Grundeinstellung von **DESeq2** ausreichend. Im Falle eines komplexen Versuchsaufbaus mit einer großen Anzahl von biologischen Replikaten sind Tag-basierte Sammlungen angemessen. Beide Ansätze liefern die gleichen Ergebnisse. Der Tag-basierte Ansatz erfordert einige zusätzliche Schritte vor der Ausführung des **DESeq2**-Tools, lohnt sich aber bei einem komplexen Versuchsaufbau.
 
-{% include _includes/cyoa-choices-de.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="Welchen Ansatz möchten Sie verwenden?" disambiguation="deseq"%}
+{% include _includes/cyoa-choices-DE.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="Welchen Ansatz möchten Sie verwenden?" disambiguation="deseq"%}
 
 <div class="Basic" markdown="1">
 
