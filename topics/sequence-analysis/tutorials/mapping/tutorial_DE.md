@@ -160,7 +160,7 @@ werden:
 
 Wir benötigen ein Referenzgenom, auf das wir die Reads kartieren können.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation.md answer_3="Diese Daten stammen aus der ChIP-seq von Mäusen, daher werden wir mm10 (*Mus musculus*) verwenden."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_DE.md answer_3="Diese Daten stammen aus der ChIP-seq von Mäusen, daher werden wir mm10 (*Mus musculus*) verwenden."%}
 
 Derzeit gibt es über 60 verschiedene Mapper, und ihre Zahl wächst. In diesem Tutorial
 werden wir [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/) verwenden, ein

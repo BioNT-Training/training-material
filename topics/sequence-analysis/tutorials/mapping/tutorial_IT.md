@@ -160,7 +160,7 @@ frammenti alle due estremità delle letture:
 
 Abbiamo bisogno di un genoma di riferimento su cui mappare le letture.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation.md answer_3="Questi dati provengono dal ChIP-seq dei topi, quindi utilizzeremo mm10 (*Mus musculus*)"%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_IT.md answer_3="Questi dati provengono dal ChIP-seq dei topi, quindi utilizzeremo mm10 (*Mus musculus*)"%}
 
 Attualmente esistono oltre 60 mappatori diversi e il loro numero è in crescita. In
 questo tutorial utilizzeremo [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), uno

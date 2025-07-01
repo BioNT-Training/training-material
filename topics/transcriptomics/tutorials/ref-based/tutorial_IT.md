@@ -329,7 +329,7 @@ Per dare un senso alle letture, dobbiamo innanzitutto capire da dove provengono 
 
 In questo studio, gli autori hanno utilizzato cellule di *Drosophila melanogaster*. Occorre pertanto mappare le sequenze a qualità controllata sul genoma di riferimento di *Drosophila melanogaster*.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation.md answer_3="Il genoma di *Drosophila melanogaster* è noto e assemblato e può essere utilizzato come genoma di riferimento in questa analisi. Si noti che nuove versioni dei genomi di riferimento possono essere rilasciate se l'assemblaggio migliora; per questa esercitazione utilizzeremo la release 6 dell'assemblaggio del genoma di riferimento di *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_IT.md answer_3="Il genoma di *Drosophila melanogaster* è noto e assemblato e può essere utilizzato come genoma di riferimento in questa analisi. Si noti che nuove versioni dei genomi di riferimento possono essere rilasciate se l'assemblaggio migliora; per questa esercitazione utilizzeremo la release 6 dell'assemblaggio del genoma di riferimento di *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
 
 Nei trascrittomi eucariotici la maggior parte delle letture proviene da mRNA elaborati privi di introni:
 

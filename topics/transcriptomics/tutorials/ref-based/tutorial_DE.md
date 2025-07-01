@@ -329,7 +329,7 @@ Um aus den Reads einen Sinn zu machen, müssen wir zunächst herausfinden, woher
 
 In dieser Studie haben die Autoren *Drosophila melanogaster*-Zellen verwendet. Wir sollten daher die qualitätskontrollierten Sequenzen auf das Referenzgenom von *Drosophila melanogaster* abbilden.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation.md answer_3="Das Genom von *Drosophila melanogaster* ist bekannt und zusammengesetzt und kann in dieser Analyse als Referenzgenom verwendet werden. Beachten Sie, dass neue Versionen von Referenzgenomen veröffentlicht werden können, wenn die Assemblierung verbessert wird. Für dieses Tutorial werden wir die Version 6 der *Drosophila melanogaster* Referenzgenom-Assemblierung [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/) verwenden."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_DE.md answer_3="Das Genom von *Drosophila melanogaster* ist bekannt und zusammengesetzt und kann in dieser Analyse als Referenzgenom verwendet werden. Beachten Sie, dass neue Versionen von Referenzgenomen veröffentlicht werden können, wenn die Assemblierung verbessert wird. Für dieses Tutorial werden wir die Version 6 der *Drosophila melanogaster* Referenzgenom-Assemblierung [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/) verwenden."%}
 
 Bei eukaryotischen Transkriptomen stammen die meisten Reads von prozessierten mRNAs, denen Introns fehlen:
 
