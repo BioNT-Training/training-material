@@ -11,7 +11,7 @@ contributors:
 
 * Cliccare su {% icon galaxy-selector %} **Seleziona elementi** nella parte superiore del pannello della cronologia ![Pulsante Seleziona elementi]({% link topics/galaxy-interface/images/historyItemControls.png %})
 * Controllare {% if include.datasets_description %}{{ include.datasets_description }}{% else %} tutti i dataset della cronologia che si desidera includere{% endif %}
-* Fare clic su **{% if include.n %}{{{ include.n }}{% else %}n{% endif %} di N selezionati** e scegliere **Costruisci elenco dataset**
+* Fare clic su **{% if include.n %}{{ include.n }}{% else %}n{% endif %} di N selezionati** e scegliere **Costruisci elenco dataset**
 
   ![voce di menu costruisci collezione elenco]({% link topics/galaxy-interface/images/buildList.png %}){:width="15%"}
 
