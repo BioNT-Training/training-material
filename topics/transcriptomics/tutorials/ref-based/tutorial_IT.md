@@ -980,7 +980,7 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
 ## Conteggio delle letture per geni
 
 
-{% include _includes/cyoa-choices.html option1="featureCounts" option2="STAR" default="featureCounts" text="Per contare il numero di letture per gene, offriamo un tutorial parallelo per i due metodi (STAR e featureCounts) che danno risultati molto simili. Quale metodo preferisci usare?" disambiguation="tool"%}
+{% include _includes/cyoa-choices-it.html option1="featureCounts" option2="STAR" default="featureCounts" text="Per contare il numero di letture per gene, offriamo un tutorial parallelo per i due metodi (STAR e featureCounts) che danno risultati molto simili. Quale metodo preferisci usare?" disambiguation="tool"%}
 
 <div class="featureCounts" markdown="1">
 
@@ -1473,7 +1473,7 @@ Qui il trattamento è il fattore principale che ci interessa. Il tipo di sequenz
 
 Se avete solo uno o due fattori con un numero limitato di repliche biologiche, la configurazione di base di **DESeq2** è sufficiente. Nel caso di un setup sperimentale complesso con un gran numero di repliche biologiche, sono appropriate le raccolte basate sui tag. Entrambi gli approcci danno gli stessi risultati. L'approccio basato sui tag richiede alcuni passaggi aggiuntivi prima di eseguire lo strumento **DESeq2**, ma si rivelerà vantaggioso quando si lavora con un setup sperimentale complesso.
 
-{% include _includes/cyoa-choices.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="Quale approccio preferisci usare?" disambiguation="deseq"%}
+{% include _includes/cyoa-choices-it.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="Quale approccio preferisci usare?" disambiguation="deseq"%}
 
 <div class="Basic" markdown="1">
 
