@@ -117,7 +117,7 @@ Jede Probe ist ein separates biologisches Replikat der entsprechenden Bedingung 
 
 # Daten hochladen
 
-Im ersten Teil dieses Tutorials werden wir die Dateien für 2 der 7 Proben verwenden, um zu demonstrieren, wie die Anzahl der Lesevorgänge (ein Maß für die Genexpression) aus FASTQ-Dateien berechnet wird (Qualitätskontrolle, Mapping, Lesezählung). Wir stellen die FASTQ-Dateien für die anderen 5 Proben zur Verfügung, falls Sie die gesamte Analyse später reproduzieren möchten.
+Im ersten Teil dieses Tutorials werden wir die Dateien für 2 der 7 Proben verwenden, um zu demonstrieren, wie die Anzahl der Reads (ein Maß für die Genexpression) aus FASTQ-Dateien berechnet wird (Qualitätskontrolle, Mapping, Lesezählung). Wir stellen die FASTQ-Dateien für die anderen 5 Proben zur Verfügung, falls Sie die gesamte Analyse später reproduzieren möchten.
 
 Im zweiten Teil des Tutorials werden die Read-Zahlen aller 7 Proben verwendet, um die DE-Gene, Genfamilien und molekularen Pfade zu identifizieren und zu visualisieren, die durch die Abreicherung des *PS*-Gens entstehen.
 
@@ -207,7 +207,7 @@ Leider unterstützt die aktuelle Version von MultiQC (das Tool, das wir zum Komb
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
->    > > Die Leselänge der beiden Partner beträgt 37 bp.
+>    > > Die Leselänge der beiden Paare beträgt 37 bp.
 >    > > 
 > > > 
 > > {: .solution}
@@ -265,7 +265,7 @@ Leider unterstützt die aktuelle Version von MultiQC (das Tool, das wir zum Komb
 >    > > 
 >    > >    Es gibt fast keine bekannten Adapter und überrepräsentierte Sequenzen.
 >    > > 
->    > > 2. Wenn die Qualität der Reads schlecht ist, sollten wir:
+>    > > 2. Wenn die Qualität der Reads schlecht ist, sollten wir folgende Schritte befolgen:
 >    > >    1. Überprüfen Sie, was falsch ist, und denken Sie über mögliche Gründe für die schlechte Lesequalität nach: Sie kann von der Art der Sequenzierung oder von dem, was wir sequenziert haben, herrühren (hohe Anzahl überrepräsentierter Sequenzen in Transkriptomikdaten, verzerrter Prozentsatz von Basen in Hi-C-Daten)
 >    > >    2. Fragen Sie die Sequenziereinrichtung danach
 >    > >    3. Führen Sie eine Qualitätsbehandlung durch (wobei Sie darauf achten sollten, nicht zu viele Informationen zu verlieren) und entfernen Sie schlechte Reads
@@ -319,7 +319,7 @@ Wir sollten die Reads trimmen, um Basen zu entfernen, die mit hoher Unsicherheit
 
 # Mapping
 
-Um aus den Reads einen Sinn zu machen, müssen wir zunächst herausfinden, woher die Sequenzen im Genom stammen, damit wir anschließend bestimmen können, zu welchen Genen sie gehören. Wenn ein Referenzgenom für den Organismus zur Verfügung steht, wird dieser Prozess als Alignment oder "Mapping" der Reads auf das Referenzgenom bezeichnet. Dies ist vergleichbar mit dem Lösen eines Puzzles, aber leider sind nicht alle Teile eindeutig.
+Um aus den Reads einen Sinn zu machen, müssen wir zunächst herausfinden, woher die Sequenzen im Genom stammen, damit wir anschließend bestimmen können, zu welchen Genen sie gehören. Wenn ein Referenzgenom für den Organismus zur Verfügung steht, wird dieser Prozess als "Alignment" oder "Mapping" der Reads auf das Referenzgenom bezeichnet. Dies ist vergleichbar mit dem Lösen eines Puzzles, aber leider sind nicht alle Teile eindeutig.
 
 > <comment-title></comment-title>
 > 
@@ -335,7 +335,7 @@ Bei eukaryotischen Transkriptomen stammen die meisten Reads von prozessierten mR
 
 ![Arten von RNA-Seq-Reads](../../images/ref-based/rna-seq-reads.png "Die Arten von RNA-Seq-Reads (Anpassung der Abbildung 1a von {% cite kim2015hisat %}): Reads, die vollständig innerhalb eines Exons gemappt wurden (in rot), Reads, die sich über 2 Exons erstrecken (in blau), Reads, die sich über mehr als 2 Exons erstrecken (in lila)")
 
-Daher können sie nicht einfach auf das Genom zurückgemappt werden, wie wir es normalerweise bei DNA-Daten tun. Es wurden Mapper mit gespleißten Enden entwickelt, um von Transkripten abgeleitete Reads effizient gegen ein Referenzgenom abzubilden:
+Daher können sie nicht einfach auf das Genom zurückgemappt werden, wie wir es normalerweise bei DNA-Daten tun. Splice-sensible Mapper wurden entwickelt, um Transkript-abgeleitete Reads effizient gegen ein Referenzgenom zu mappen:
 
 ![Splice-aware alignment](../../images/transcriptomics_images/splice_aware_alignment.png "Prinzip der gespleißten Mapper: (1) Identifizierung der Reads, die ein einzelnes Exon überspannen, (2) Identifizierung der Spleißverbindungen auf den ungemappten Reads")
 
@@ -351,7 +351,7 @@ Daher können sie nicht einfach auf das Genom zurückgemappt werden, wie wir es 
 > 
 > ![TopHat2](../../images/transcriptomics_images/13059_2012_Article_3053_Fig6_HTML.jpg "TopHat2 (Abbildung 6 aus {% cite kim2013tophat2 %})")
 > 
-> Zur weiteren Optimierung und Beschleunigung des Alignments gespleißter Lesungen wurde [**HISAT2**](https://ccb.jhu.edu/software/hisat2/index.shtml) ({% cite kim2019graph %}) entwickelt. Es verwendet einen hierarchischen Graph [FM](https://en.wikipedia.org/wiki/FM-index) (HGFM)-Index, der das gesamte Genom und eventuelle Varianten repräsentiert, zusammen mit überlappenden lokalen Indizes (die jeweils ~57 kb umfassen), die das Genom und seine Varianten gemeinsam abdecken. Auf diese Weise lassen sich mithilfe des globalen Index erste Ansatzpunkte für potenzielle Read-Alignments im Genom finden und diese Alignments mithilfe eines entsprechenden lokalen Index schnell verfeinern:
+> Zur weiteren Optimierung und Beschleunigung des Alignments gespleißter Reads wurde [**HISAT2**](https://ccb.jhu.edu/software/hisat2/index.shtml) ({% cite kim2019graph %}) entwickelt. Es verwendet einen hierarchischen Graph [FM](https://en.wikipedia.org/wiki/FM-index) (HGFM)-Index, der das gesamte Genom und eventuelle Varianten repräsentiert, zusammen mit überlappenden lokalen Indizes (die jeweils ~57 kb umfassen), die das Genom und seine Varianten gemeinsam abdecken. Auf diese Weise lassen sich mithilfe des globalen Index erste Ansatzpunkte für potenzielle Read-Alignments im Genom finden und diese Alignments mithilfe eines entsprechenden lokalen Index schnell verfeinern:
 > 
 > ![Hierarchischer Graph FM index in HISAT/HISAT2](../../images/transcriptomics_images/hisat.png "Hierarchischer Graph FM index in HISAT/HISAT2 (Abbildung S8 aus {% cite kim2015hisat %})")
 > 
@@ -363,7 +363,7 @@ Daher können sie nicht einfach auf das Genom zurückgemappt werden, wie wir es 
 > 
 > Hier wird ein Read zwischen zwei aufeinanderfolgenden Exons aufgeteilt. **STAR** beginnt mit der Suche nach einem maximal mappbaren Präfix (MMP) ab dem Beginn des Reads, bis es nicht mehr kontinuierlich übereinstimmen kann. Danach beginnt er mit der Suche nach einem MMP für den nicht übereinstimmenden Teil des Read (**a**). Im Falle von Mismatches (**b**) und nicht ausrichtbaren Regionen (**c**) dienen MMPs als Anker, von denen aus die Ausrichtungen erweitert werden können.
 > 
-> In der zweiten Phase sticht **STAR** MMPs zusammen, um Alignments auf Leseebene zu erzeugen, die (im Gegensatz zu MMPs) Mismatches und Indels enthalten können. Ein Scoring-Schema wird verwendet, um Stitching-Kombinationen zu bewerten und zu priorisieren und um Reads zu bewerten, die mehreren Orten zugeordnet sind. **STAR** ist extrem schnell, benötigt aber eine beträchtliche Menge an RAM, um effizient zu arbeiten.
+> In der zweiten Phase fügt **STAR** MMPs zusammen, um Alignments auf Leseebene zu erzeugen, die (im Gegensatz zu MMPs) Mismatches und Indels enthalten können. Ein Scoring-Schema wird verwendet, um Stitching-Kombinationen zu bewerten und zu priorisieren und um Reads zu bewerten, die mehreren Orten zugeordnet sind. **STAR** ist extrem schnell, benötigt aber eine beträchtliche Menge an RAM, um effizient zu arbeiten.
 > 
 {: .details}
 
@@ -604,7 +604,7 @@ Die BAM-Datei enthält Informationen für alle unsere Reads, was eine Überprüf
 > 
 > #### Genkörperabdeckung
 > 
-> Die verschiedenen Regionen eines Gens bilden den Genkörper. Es ist wichtig zu prüfen, ob die Leseabdeckung im gesamten Genkörper gleichmäßig ist. Ein Bias zum 5'-Ende von Genen könnte beispielsweise auf einen Abbau der RNA hinweisen. Andererseits könnte eine 3'-Vorspannung darauf hinweisen, dass die Daten von einem 3'-Assay stammen. Um dies zu beurteilen, können wir das Tool **Gen Body Coverage** aus der RSeQC ({% cite wang2012rseqc %}) Tool-Suite verwenden. Dieses Tool skaliert alle Transkripte auf 100 Nukleotide (unter Verwendung einer bereitgestellten Annotationsdatei) und berechnet die Anzahl der Reads, die jede (skalierte) Nukleotidposition abdecken. Da dieses Tool sehr langsam ist, werden wir die Abdeckung nur für 200.000 zufällige Reads berechnen.
+> Die verschiedenen Regionen eines Gens bilden den Genkörper. Es ist wichtig zu prüfen, ob die Leseabdeckung im gesamten Genkörper gleichmäßig ist. Ein Bias zum 5'-Ende von Genen könnte beispielsweise auf einen Abbau der RNA hinweisen. Andererseits könnte ein 3'-Bias darauf hinweisen, dass die Daten von einem 3'-Assay stammen. Um dies zu beurteilen, können wir das Tool **Gen Body Coverage** aus der RSeQC ({% cite wang2012rseqc %}) Tool-Suite verwenden. Dieses Tool skaliert alle Transkripte auf 100 Nukleotide (unter Verwendung einer bereitgestellten Annotationsdatei) und berechnet die Anzahl der Reads, die jede (skalierte) Nukleotidposition abdecken. Da dieses Tool sehr langsam ist, werden wir die Abdeckung nur für 200.000 zufällige Reads berechnen.
 > 
 > > <hands-on-title>Genkörperabdeckung prüfen</hands-on-title>
 > > 
@@ -640,11 +640,11 @@ Die BAM-Datei enthält Informationen für alle unsere Reads, was eine Überprüf
 > >    > 
 > >    > ![Gene body coverage](../../images/ref-based/rseqc_gene_body_coverage_plot.png)
 > >    > 
-> >    > Wie ist die Abdeckung über die Genkörper hinweg? Sind die Proben in 3' oder 5' verzerrt?
+> >    > Wie ist die Abdeckung über die Genkörper hinweg? Gibt es einen Bias der Proben in 3' oder 5'?
 > >    > 
 > >    > > <solution-title></solution-title>
 > >    > > 
-> >    > > Für beide Proben gibt es eine ziemlich gleichmäßige Abdeckung von den 5'- bis zu den 3'-Enden (trotz etwas Rauschen in der Mitte). Also keine offensichtliche Verzerrung in beiden Proben. {: .solution}
+> >    > > Für beide Proben gibt es eine ziemlich gleichmäßige Abdeckung von den 5'- bis zu den 3'-Enden (trotz etwas Rauschen in der Mitte). Also kein offensichtlicher Bias in beiden Proben. {: .solution}
 > > > 
 > > {: .question}
 > > 
@@ -730,28 +730,28 @@ Um die Expression einzelner Gene unter verschiedenen Bedingungen (*z.B.* mit ode
 > 
 {: .question}
 
-Für die Lesezählung stehen hauptsächlich zwei Tools zur Verfügung: [**HTSeq-count**](http://htseq.readthedocs.io/en/release_0.9.1/count.html) ({% cite anders2015htseq %}) oder **featureCounts** ({% cite liao2013featurecounts %}). Zusätzlich erlaubt **STAR** das Zählen von Reads während des Mappings: Die Ergebnisse sind identisch mit denen von **HTSeq-count**. Während diese Ausgabe für die meisten Analysen ausreicht, bietet **featureCounts** mehr Anpassungsmöglichkeiten für die Zählung von Reads (minimale Mapping-Qualität, Zählen von Reads anstelle von Fragmenten, Zählen von Transkripten anstelle von Genen usw.).
+Zum Zählen der Anzahl der Reads stehen hauptsächlich zwei Tools zur Verfügung: [**HTSeq-count**](http://htseq.readthedocs.io/en/release_0.9.1/count.html) ({% cite anders2015htseq %}) oder **featureCounts** ({% cite liao2013featurecounts %}). Zusätzlich erlaubt **STAR** das Zählen von Reads während des Mappings: Die Ergebnisse sind identisch mit denen von **HTSeq-count**. Während diese Ausgabe für die meisten Analysen ausreicht, bietet **featureCounts** mehr Anpassungsmöglichkeiten für das Zählen von Reads (minimale Mapping-Qualität, Zählen von Reads anstelle von Fragmenten, Zählen von Transkripten anstelle von Genen usw.).
 
-Im Prinzip ist das Zählen von Reads, die sich mit genomischen Merkmalen überschneiden, eine recht einfache Aufgabe. Allerdings muss die Strandness der Bibliothek bestimmt werden. Dies ist in der Tat ein Parameter von **featureCounts**. Im Gegensatz dazu wertet **STAR** die Zählungen in die drei möglichen Strandnesses aus, aber Sie benötigen diese Information trotzdem, um die Zählungen zu extrahieren, die Ihrer Bibliothek entsprechen.
+Im Prinzip ist das Zählen von Reads, die sich mit genomischen Merkmalen überschneiden, eine recht einfache Aufgabe. Allerdings muss die Strängigkeit der Bibliothek bestimmt werden. Dies ist in der Tat ein Parameter von **featureCounts**. Im Gegensatz dazu wertet **STAR** die Zählungen in die drei möglichen Strängigkeit aus, aber Sie benötigen diese Information trotzdem, um die Zählungen zu extrahieren, die Ihrer Bibliothek entsprechen.
 
-## Schätzung der Strandness
+## Schätzung der Strängigkeit
 
-RNAs, auf die in RNA-Seq-Experimenten typischerweise abgezielt wird, sind einzelsträngig (*z.B.*, mRNAs) und weisen daher eine Polarität auf (5'- und 3'-Enden, die sich funktionell unterscheiden). Bei einem typischen RNA-Seq-Experiment geht die Information über die Strangigkeit verloren, nachdem beide Stränge der cDNA synthetisiert, auf ihre Größe hin selektiert und in eine Sequenzierungsbibliothek umgewandelt wurden. Diese Information kann jedoch für den Schritt des Read-Counting sehr nützlich sein, insbesondere für Reads, die sich auf der Überlappung von 2 Genen befinden, die auf unterschiedlichen Strängen liegen.
+RNAs, auf die in RNA-Seq-Experimenten typischerweise abgezielt wird, sind einzelsträngig (*z.B.*, mRNAs) und weisen daher eine Polarität auf (5'- und 3'-Enden, die sich funktionell unterscheiden). Bei einem typischen RNA-Seq-Experiment geht die Information über die Strängigkeit verloren, nachdem beide Stränge der cDNA synthetisiert, auf ihre Größe hin selektiert und in eine Sequenzierungsbibliothek umgewandelt wurden. Diese Information kann jedoch für den Schritt des Read-Counting sehr nützlich sein, insbesondere für Reads, die sich auf der Überlappung von 2 Genen befinden, die auf unterschiedlichen Strängen liegen.
 
 ![Why strandness?](../../images/ref-based/strandness_why.png "Wenn bei der Bibliotheksvorbereitung Stranginformationen verloren gingen, wird Read1 dem auf dem Vorwärtsstrang befindlichen Gen1 zugeordnet, aber Read2 ist 'zweideutig', da er sowohl Gen1 (Vorwärtsstrang) als auch Gen2 (Rückwärtsstrang) zugeordnet werden kann.")
 
 Einige Bibliotheksvorbereitungsprotokolle erzeugen sogenannte *stranded* RNA-Seq-Bibliotheken, bei denen die Stranginformationen erhalten bleiben ({% cite levin2010comprehensive %} bietet einen hervorragenden Überblick). In der Praxis ist es unwahrscheinlich, dass Sie bei Illumina RNA-Seq-Protokollen auf alle in diesem Artikel beschriebenen Möglichkeiten stoßen. Höchstwahrscheinlich werden Sie es entweder mit:
 
 - Unstranded RNA-Seq-Daten
-- Gestrandete RNA-Seq-Daten, die durch die Verwendung spezieller RNA-Isolierungskits während der Probenvorbereitung erzeugt wurden
+- Stranded RNA-Seq-Daten, die durch die Verwendung spezieller RNA-Isolierungskits während der Probenvorbereitung erzeugt wurden
 
 > <details-title>Mehr Details zur Strenge</details-title>
 > 
 > ![Verhältnis zwischen DNA- und RNA-Ausrichtung](../../images/transcriptomics_images/dna_rna.png "Verhältnis zwischen DNA- und RNA-Ausrichtung")
 > 
-> Der Vorteil von gestrandeter RNA-Seq ist, dass man unterscheiden kann, ob die Reads von vorwärts oder rückwärts kodierten Transkripten stammen. Im folgenden Beispiel kann die Anzahl der Reads für das Gen Mrpl43 nur in einer gestrandeten Bibliothek effizient geschätzt werden, da die meisten Reads das Gen Peo1 in umgekehrter Orientierung überlappen:
+> Der Vorteil von stranded RNA-Seq ist, dass man unterscheiden kann, ob die Reads von vorwärts oder rückwärts kodierten Transkripten stammen. Im folgenden Beispiel kann die Anzahl der Reads für das Gen Mrpl43 nur in einer stranded Bibliothek effizient geschätzt werden, da die meisten Reads das Gen Peo1 in umgekehrter Orientierung überlappen:
 > 
-> ![So sehen gestrandete RNA-Seq-Daten aus](../../images/ref-based/igv_stranded_screenshot.png "Non-stranded (oben) vs. reverse strand-specific (unten) RNA-Seq read alignment (using IGV, forward mapping reads are red and reverse mapping reads are blue )")
+> ![So sehen stranded RNA-Seq-Daten aus](../../images/ref-based/igv_stranded_screenshot.png "Non-stranded (oben) vs. reverse strand-specific (unten) RNA-Seq read alignment (using IGV, forward mapping reads are red and reverse mapping reads are blue )")
 > 
 > Je nach Ansatz und je nachdem, ob man eine Single-End- oder eine Paired-End-Sequenzierung durchführt, gibt es mehrere Möglichkeiten, wie man die Ergebnisse der Zuordnung dieser Reads zum Genom interpretieren kann:
 > 
@@ -761,7 +761,7 @@ Einige Bibliotheksvorbereitungsprotokolle erzeugen sogenannte *stranded* RNA-Seq
 
 Diese Information sollte in den FASTQ-Dateien enthalten sein, fragen Sie Ihre Sequenziereinrichtung! Wenn nicht, versuchen Sie, sie auf der Website zu finden, von der Sie die Daten heruntergeladen haben, oder in der entsprechenden Veröffentlichung.
 
-![How to estimate the strandness?](../../images/ref-based/strandness_cases.png "In einer stranded forward library, reads map mostly on the same strand as the genes. Bei einer gestrandeten Reverse-Bibliothek befinden sich die Reads meist auf dem Gegenstrang. Bei einer nicht gestrandeten Bibliothek werden die Reads auf beiden Strängen auf die Gene abgebildet, unabhängig von der Ausrichtung des Gens (Beispiel für eine Single-End-Read-Bibliothek).")
+![How to estimate the strandness?](../../images/ref-based/strandness_cases.png "In einer stranded forward library, reads map mostly on the same strand as the genes. Bei einer stranded Reverse-Bibliothek befinden sich die Reads meist auf dem Gegenstrang. Bei einer nicht stranded Bibliothek werden die Reads auf beiden Strängen auf die Gene abgebildet, unabhängig von der Ausrichtung des Gens (Beispiel für eine Single-End-Read-Bibliothek).")
 
 Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (wählen Sie die von Ihnen bevorzugte)
 
@@ -794,14 +794,14 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
    > ![Screenshot der IGV-Ansicht auf ps](../../images/ref-based/group_strand_igv_screenshot.png "Screenshot von IGV auf ps")
    > 
    > 1. Sind die Reads gleichmäßig auf die beiden Gruppen (NEGATIV und POSITIV) verteilt?
-   > 2. Welcher Art ist der Bibliotheksstrand?
+   > 2. Welcher Art ist der Bibliotheksstrang?
    > 
    > > <solution-title></solution-title>
    > > 
    > > 1. Ja, wir sehen in beiden Gruppen die gleiche Anzahl von Reads.
-   > > 2. Dies bedeutet, dass die Bibliothek nicht gestreut war.
+   > > 2. Dies bedeutet, dass die Bibliothek nicht stranded war.
    > > 
-   > > > <comment-title>Wie wäre es, wenn die Bibliothek gestrandet wäre?</comment-title>
+   > > > <comment-title>Wie wäre es, wenn die Bibliothek stranded wäre?</comment-title>
    > > > 
    > > > ![Screenshot der IGV für stranded vs. non-stranded](../../images/ref-based/group_strand_igv_screenshot_RSvsUS.png "Screenshot der IGV für non-stranded (oben) vs. reverse strand-specific (unten)")
    > > > 
@@ -843,7 +843,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
    > 
    > 1. Um welches Gen handelt es sich? Welcher Strang ist es?
    > 2. Wie hoch ist die durchschnittliche Abdeckung für jeden Strang?
-   > 3. Wie hoch ist die Strenge der Bibliothek?
+   > 3. Wie hoch ist die Strängigkeit der Bibliothek?
    > 
    > > <solution-title></solution-title>
    > > 
@@ -851,7 +851,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
    > > 2. Die Skala geht bei den 4 Profilen auf 1,5-2. Die durchschnittliche Abdeckung sollte etwa 1,2-1,5 betragen
    > > 3. Wir schließen daraus, dass die Bibliothek nicht stranded ist.
    > > 
-   > > > <comment-title>Wie wäre es, wenn die Bibliothek gestrandet wäre?</comment-title>
+   > > > <comment-title>Wie wäre es, wenn die Bibliothek stranded wäre?</comment-title>
    > > > 
    > > > ![pyGenomeTracks USvsRS](../../images/ref-based/pyGenomeTracks_USvsRS.png "STAR coverage for strand 1 in blue and strand 2 in red for unstranded and reverse stranded library") Beachten Sie, dass die Abdeckung auf dem Strang 1 für die stranded_PE-Probe sehr niedrig ist, während das Gen vorwärts ist. Dies bedeutet, dass die Bibliothek von stranded_PE rückwärts gestrandet ist. Im Gegensatz dazu ist bei unstranded_PE der Umfang für beide Stränge vergleichbar. {: .comment} {: .solution}
    > 
@@ -875,7 +875,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
    > <question-title></question-title>
    > 
    > 1. Wie viel Prozent der Reads werden den Genen zugeordnet, wenn die Bibliothek nichtstrandig/gleichsträngig/rückwärtssträngig ist?
-   > 2. Wie hoch ist die Strenge der Bibliothek?
+   > 2. Was ist die Strängigkeit der Bibliothek?
    > 
    > > <solution-title></solution-title>
    > > 
@@ -892,7 +892,7 @@ Es gibt 4 Möglichkeiten, die Strenge von **STAR**-Ergebnissen abzuschätzen (w�
 
 4. Eine weitere Möglichkeit ist die Schätzung dieser Parameter mit einem Tool namens **Infer Experiment** aus der RSeQC ({% cite wang2012rseqc %}) Tool-Suite.
 
-   Dieses Tool nimmt die BAM-Dateien aus dem Mapping, wählt eine Teilprobe der Reads aus und vergleicht deren Genomkoordinaten und Stränge mit denen des Referenzgenmodells (aus einer Annotationsdatei). Anhand des Strangs der Gene kann es abschätzen, ob die Sequenzierung strangspezifisch ist, und wenn ja, wie die Reads gestrandet sind (vorwärts oder rückwärts).
+   Dieses Tool nimmt die BAM-Dateien aus dem Mapping, wählt eine Teilprobe der Reads aus und vergleicht deren Genomkoordinaten und Stränge mit denen des Referenzgenmodells (aus einer Annotationsdatei). Anhand des Strangs der Gene kann es abschätzen, ob die Sequenzierung strangspezifisch ist, und wenn ja, wie die Strängigkeit der Reads sind (vorwärts oder rückwärts).
 
    > <hands-on-title>Bestimmung der Strenge der Bibliothek mit dem Infer-Experiment</hands-on-title>
    > 
