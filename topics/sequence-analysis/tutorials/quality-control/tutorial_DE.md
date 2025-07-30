@@ -82,9 +82,9 @@ recordings:
 
 
 
-Bei der Sequenzierung werden die Nukleotidbasen in einer DNA- oder RNA-Probe (Bibliothek) durch den Sequenzierer bestimmt. Für jedes Fragment in der Bibliothek wird eine Sequenz erzeugt, auch **Leseprobe** genannt, die einfach eine Folge von Nukleotiden ist.
+Bei der Sequenzierung werden die Nukleotidbasen in einer DNA- oder RNA-Probe (Bibliothek) durch den Sequenzierer bestimmt. Für jedes Fragment in der Bibliothek wird eine Sequenz erzeugt, auch **Read** genannt, die einfach eine Folge von Nukleotiden ist.
 
-Moderne Sequenzierungstechnologien können in einem einzigen Experiment eine riesige Anzahl von Sequenz-Reads erzeugen. Allerdings ist keine Sequenzierungstechnologie perfekt, und jedes Gerät erzeugt unterschiedliche Arten und Mengen von Fehlern, wie z. B. falsch bezeichnete Nukleotide. Diese falsch benannten Basen sind auf die technischen Beschränkungen der einzelnen Sequenzierplattformen zurückzuführen.
+Moderne Sequenzierungstechnologien können in einem einzigen Experiment eine riesige Anzahl von Sequenzier-Reads erzeugen. Allerdings ist keine Sequenzierungstechnologie perfekt, und jedes Gerät erzeugt unterschiedliche Arten und Mengen von Fehlern, wie z. B. falsch bezeichnete Nukleotide. Diese falsch benannten Basen sind auf die technischen Beschränkungen der einzelnen Sequenzierplattformen zurückzuführen.
 
 Daher ist es notwendig, Fehlertypen zu verstehen, zu identifizieren und auszuschließen, die die Interpretation der nachgeschalteten Analyse beeinträchtigen können. Die Qualitätskontrolle der Sequenzen ist daher ein wesentlicher erster Schritt in Ihrer Analyse. Frühzeitiges Erkennen von Fehlern spart später Zeit.
 
@@ -337,7 +337,7 @@ Wenn der Median der Qualität unter einem Phred-Score von ~20 liegt, sollten wir
 
 Die Grafik zeigt den kumulativen Prozentsatz der Reads mit den verschiedenen Adaptersequenzen an jeder Position. Sobald eine Adaptersequenz in einem Read vorkommt, wird sie bis zum Ende des Reads gezählt, so dass der Prozentsatz mit der Readlänge zunimmt. FastQC kann einige Adapter standardmäßig erkennen (z.B. Illumina, Nextera), für andere können wir eine Kontaminanten-Datei als Eingabe für das FastQC-Tool bereitstellen.
 
-Idealerweise sollten Illumina-Sequenzdaten keine Adaptersequenz enthalten. Aber bei langen Reads sind einige der Bibliotheksinserts kürzer als die Leselänge, was zu einem Durchlesen des Adapters am 3'-Ende des Reads führt. Diese Mikrobiom-Probe hat relativ lange Reads und wir können sehen, dass Nextera dapater erkannt wurde.
+Idealerweise sollten Illumina-Sequenzdaten keine Adaptersequenz enthalten. Aber bei langen Reads sind einige der Bibliotheksinserts kürzer als die Leselänge, was zu einem Durchlesen des Adapters am 3'-Ende des Reads führt. Diese Mikrobiom-Probe hat relativ lange Reads und wir können sehen, dass der Nextera dapater erkannt wurde.
 
 > <details-title>Sonstige Adapterinhaltsprofile</details-title>
 > 
@@ -388,15 +388,15 @@ In einer zufälligen Bibliothek würde man erwarten, dass sich die vier Basen we
 
 > <Details-title>Biases nach Bibliothekstyp</details-title>
 > 
-> Es ist erwähnenswert, dass einige Bibliothekstypen immer eine verzerrte Sequenzzusammensetzung erzeugen, normalerweise zu Beginn des Lesevorgangs. Bibliotheken, die durch Priming mit zufälligen Hexameren hergestellt wurden (einschließlich fast aller RNA-Seq-Bibliotheken), und solche, die mit Transposasen fragmentiert wurden, enthalten eine intrinsische Verzerrung an den Positionen, an denen Reads beginnen (die ersten 10-12 Basen). Diese Verzerrung bezieht sich nicht auf eine bestimmte Sequenz, sondern sorgt für eine Anreicherung einer Reihe verschiedener K-Mere am 5'-Ende der Reads. Dies ist zwar ein echter technischer Bias, kann aber nicht durch Trimming korrigiert werden und scheint in den meisten Fällen die nachgeschaltete Analyse nicht zu beeinträchtigen. Es wird jedoch eine Warnung oder ein Fehler in diesem Modul erzeugt.
+> Es ist erwähnenswert, dass einige Bibliothekstypen immer einn Sequenzzusammensetzungsbias erzeugen, normalerweise zu Beginn des Lesevorgangs. Bibliotheken, die durch Priming mit zufälligen Hexameren hergestellt wurden (einschließlich fast aller RNA-Seq-Bibliotheken), und solche, die mit Transposasen fragmentiert wurden, enthalten eine intrinsischen Bias an den Positionen, an denen Reads beginnen (die ersten 10-12 Basen). Dieser Bias bezieht sich nicht auf eine bestimmte Sequenz, sondern sorgt für eine Anreicherung einer Reihe verschiedener K-Mere am 5'-Ende der Reads. Dies ist zwar ein echter technischer Bias, kann aber nicht durch Trimming korrigiert werden und scheint in den meisten Fällen die nachgeschaltete Analyse nicht zu beeinträchtigen. Es wird jedoch eine Warnung oder ein Fehler in diesem Modul erzeugt.
 > 
 > ![Inhalt pro Basensequenz für RNA-seq-Daten](../../images/quality-control/per_base_sequence_content_rnaseq.png)
 > 
-> Bei ChIP-seq-Daten kann es bei der Fragmentierung mit Transposasen auch zu Verzerrungen der Lesestartsequenz kommen. Bei Bisulfit-konvertierten Daten, z. B. HiC-Daten, wird eine Trennung von G von C und A von T erwartet:
+> Bei ChIP-seq-Daten kann es bei der Fragmentierung mit Transposasen auch zu Bias der Lesestartsequenz kommen. Bei Bisulfit-konvertierten Daten, z. B. HiC-Daten, wird eine Trennung von G von C und A von T erwartet:
 > 
 > ![Inhalt pro Basensequenz für Bisulfit-Daten](../../images/quality-control/per_base_sequence_content_bisulphite.png)
 > 
-> Am Ende ist eine allgemeine Verschiebung in der Sequenzzusammensetzung festzustellen. Wenn die Verschiebung mit einem Verlust an Sequenzierqualität korreliert, kann vermutet werden, dass Fehlanrufe mit einer gleichmäßigeren Sequenzverzerrung erfolgen als bei bisulfitkonvertierten Bibliotheken. Durch das Trimmen der Sequenzen wurde dieses Problem behoben, aber wenn dies nicht geschehen wäre, hätte es dramatische Auswirkungen auf die durchgeführten Methylierungs-Calls gehabt.
+> Am Ende ist eine allgemeine Verschiebung in der Sequenzzusammensetzung festzustellen. Wenn die Verschiebung mit einem Verlust an Sequenzierqualität korreliert, kann vermutet werden, dass Fehlanrufe mit einem gleichmäßigerem Sequenzbias erfolgen als bei bisulfitkonvertierten Bibliotheken. Durch das Trimmen der Sequenzen wurde dieses Problem behoben, aber wenn dies nicht geschehen wäre, hätte es dramatische Auswirkungen auf die durchgeführten Methylierungs-Calls gehabt.
 {: .details}
 
 > <question-title></question-title>
@@ -414,7 +414,7 @@ In einer zufälligen Bibliothek würde man erwarten, dass sich die vier Basen we
 
 Diese Grafik zeigt die Anzahl der Reads im Vergleich zum Prozentsatz der Basen G und C pro Read. Sie wird mit einer theoretischen Verteilung verglichen, die von einem einheitlichen GC-Gehalt aller Reads ausgeht, wie er bei der Shotgun-Sequenzierung des gesamten Genoms erwartet wird, wobei der zentrale Peak dem gesamten GC-Gehalt des zugrunde liegenden Genoms entspricht. Da der GC-Gehalt des Genoms nicht bekannt ist, wird der modale GC-Gehalt aus den beobachteten Daten berechnet und zur Erstellung einer Referenzverteilung verwendet.
 
-Eine ungewöhnlich geformte Verteilung könnte auf eine kontaminierte Bibliothek oder eine andere Art von verzerrter Teilmenge hinweisen. Eine verschobene Normalverteilung deutet auf eine systematische Verzerrung hin, die unabhängig von der Basenposition ist. Wenn es eine systematische Verzerrung gibt, die eine verschobene Normalverteilung erzeugt, wird dies vom Modul nicht als Fehler erkannt, da es nicht weiß, wie hoch der GC-Gehalt Ihres Genoms sein sollte.
+Eine ungewöhnlich geformte Verteilung könnte auf eine kontaminierte Bibliothek oder eine andere Art von Bias in der Teilmenge hinweisen. Eine verschobene Normalverteilung deutet auf einen systematischen Bias hin, der unabhängig von der Basenposition ist. Wenn es einen systematischen Bias gibt, der eine verschobene Normalverteilung erzeugt, wird dies vom Modul nicht als Fehler erkannt, da es nicht weiß, wie hoch der GC-Gehalt Ihres Genoms sein sollte.
 
 Es gibt aber auch andere Situationen, in denen eine ungewöhnlich geformte Verteilung auftreten kann. Bei der RNA-Sequenzierung kann es beispielsweise zu einer mehr oder weniger starken Verteilung des mittleren GC-Gehalts unter den Transkripten kommen, was dazu führt, dass die beobachtete Kurve breiter oder schmaler ist als eine ideale Normalverteilung.
 
@@ -443,7 +443,7 @@ Das Diagramm zeigt in Blau den Prozentsatz der Reads einer bestimmten Sequenz in
 In einer heterogenen Bibliothek werden die meisten Sequenzen nur einmal im endgültigen Satz vorkommen. Eine geringe Duplizierung kann auf einen sehr hohen Abdeckungsgrad der Zielsequenz hinweisen, eine hohe Duplizierung deutet jedoch eher auf eine Art Anreicherungsbias hin.
 
 Es lassen sich zwei Quellen für doppelte Reads finden:
-- PCR-Duplikation, bei der Bibliotheksfragmente aufgrund einer verzerrten PCR-Anreicherung überrepräsentiert sind
+- PCR-Duplikation, bei der Bibliotheksfragmente aufgrund eines PCR-Anreicherungs-bias überrepräsentiert sind
 
   Dies ist besorgniserregend, weil PCR-Duplikate den wahren Anteil der Sequenzen in der Eingabe falsch darstellen.
 
@@ -495,7 +495,7 @@ RNA-Sequenzierungsdaten können einige Transkripte enthalten, die so häufig vor
 > 
 > ![Per base N content](../../images/quality-control/per_base_n_content-before.png "Per base N content")
 > 
-> Wenn ein Sequenzer nicht in der Lage ist, einen Base-Call mit ausreichendem Vertrauen durchzuführen, schreibt er ein "N" anstelle eines herkömmlichen Base-Calls. Dieses Diagramm zeigt den Prozentsatz der Basenaufrufe an jeder Position oder jedem Bin an, für die ein "N" aufgerufen wurde.
+> Wenn ein Sequenzer nicht in der Lage ist, einen Base-Call mit ausreichender Sicherheit durchzuführen, schreibt er ein "N" anstelle eines herkömmlichen Base-Calls. Dieses Diagramm zeigt den Prozentsatz der Basenaufrufe an jeder Position oder jedem Bin an, für die ein "N" aufgerufen wurde.
 > 
 > Es ist nicht ungewöhnlich, dass ein sehr hoher Anteil von Ns in einer Sequenz auftritt, insbesondere gegen Ende der Sequenz. Aber diese Kurve sollte niemals merklich über Null ansteigen. Wenn dies der Fall ist, deutet dies auf ein Problem während des Sequenzierungslaufs hin. Im folgenden Beispiel führte ein Fehler dazu, dass das Gerät bei etwa 20 % der Reads an Position 29 keine Base aufrufen konnte:
 > 
@@ -506,16 +506,16 @@ RNA-Sequenzierungsdaten können einige Transkripte enthalten, die so häufig vor
 > 
 > Dieser Plot wird standardmäßig nicht ausgegeben. Wie im Tool-Formular angegeben, muss dieses Modul mit Hilfe eines benutzerdefinierten Submoduls und einer Grenzwertdatei aktiviert werden, wenn Sie es wünschen. Mit diesem Modul führt FastQC eine generische Analyse aller kurzen Nukleotidsequenzen der Länge k (kmer, standardmäßig k = 7) durch, beginnend an jeder Position entlang des Reads in der Bibliothek, um diejenigen zu finden, die keine gleichmäßige Abdeckung über die Länge Ihrer Reads haben. Jedes gegebene kmer sollte gleichmäßig über die Länge des Reads vertreten sein.
 > 
-> FastQC meldet die Liste der kmers, die an bestimmten Positionen mit einer größeren Häufigkeit als erwartet auftreten. Dies kann auf verschiedene Quellen von Verzerrungen in der Bibliothek zurückzuführen sein, einschließlich des Vorhandenseins von Durchlese-Adaptersequenzen, die sich am Ende der Sequenzen ansammeln. Das Vorhandensein von überrepräsentierten Sequenzen in der Bibliothek (z. B. Adapterdimere) führt dazu, dass das Kmer-Diagramm von den Kmer-Werten dieser Sequenzen dominiert wird. Kmer, die aufgrund anderer interessanter Verzerrungen verzerrt sind, können dann verwässert werden und sind nicht leicht zu erkennen.
+> FastQC meldet die Liste der kmers, die an bestimmten Positionen mit einer größeren Häufigkeit als erwartet auftreten. Dies kann auf verschiedene Quellen von Bias in der Bibliothek zurückzuführen sein, einschließlich des Vorhandenseins von Readthrough-Adaptersequenzen, die sich am Ende der Sequenzen ansammeln. Das Vorhandensein von überrepräsentierten Sequenzen in der Bibliothek (z. B. Adapterdimere) führt dazu, dass das Kmer-Diagramm von den Kmer-Werten dieser Sequenzen dominiert wird. Kmere, die aufgrund anderer interessanter Biases verzerrt sind, können dann verwässert werden und sind nicht leicht zu erkennen.
 > 
-> Das folgende Beispiel stammt aus einer hochwertigen DNA-Seq-Bibliothek. Die verzerrten kmers in der Nähe des Lesebeginns sind wahrscheinlich auf eine geringe sequenzabhängige Effizienz der DNA-Scherung oder auf ein zufälliges Priming zurückzuführen:
+> Das folgende Beispiel stammt aus einer hochwertigen DNA-Seq-Bibliothek. Die biased kmers in der Nähe des Lesebeginns sind wahrscheinlich auf eine geringe sequenzabhängige Effizienz der DNA-Scherung oder auf ein zufälliges Priming zurückzuführen:
 > 
 > ![Kmer Content](../../images/quality-control/kmer_content.png "Kmer content")
 > 
 > Dieses Modul kann sehr schwer zu interpretieren sein. Der Adapter-Content-Plot und die Tabelle der überrepräsentierten Sequenzen sind einfacher zu interpretieren und können Ihnen genügend Informationen liefern, ohne dass Sie diesen Plot benötigen. RNA-seq-Bibliotheken können stark vertretene kmers haben, die von hoch exprimierten Sequenzen stammen. Um mehr über diese Darstellung zu erfahren, lesen Sie bitte die [FastQC Kmer Content documentation](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/11%20Kmer%20Content.html).
 {: .details}
 
-Wir haben versucht, hier verschiedene FastQC-Berichte und einige Anwendungsfälle zu erklären. Mehr darüber und auch einige häufige Probleme bei der Sequenzierung der nächsten Generation finden Sie auf [QCFAIL.com](https://sequencing.qcfail.com/)
+Wir haben versucht, hier verschiedene FastQC-Berichte und einige Anwendungsfälle zu erklären. Mehr darüber und auch einige häufige Probleme bei Next-Generation-Sequenzierung finden Sie auf [QCFAIL.com](https://sequencing.qcfail.com/)
 
 > <details-title>Spezifisches Problem bei alternativen Bibliothekstypen</details-title>
 > 
@@ -564,7 +564,7 @@ Wir haben versucht, hier verschiedene FastQC-Berichte und einige Anwendungsfäll
 
 # Trimmen und Filtern - kurze Reads
 
-Die Qualität nimmt in der Mitte dieser Sequenzen ab. Dies könnte bei nachgelagerten Analysen zu Verzerrungen durch diese möglicherweise falsch benannten Nukleotide führen. Die Sequenzen müssen behandelt werden, um eine Verzerrung in der nachgelagerten Analyse zu vermeiden. Trimming kann dazu beitragen, die Anzahl der Reads zu erhöhen, die der Aligner oder Assembler erfolgreich nutzen kann, und die Anzahl der nicht gemappten oder nicht assemblierten Reads zu verringern. Im Allgemeinen umfassen die Qualitätsbehandlungen:
+Die Qualität nimmt in der Mitte dieser Sequenzen ab. Dies könnte bei nachgelagerten Analysen zu einem Bias durch diese möglicherweise falsch benannten Nukleotide führen. Die Sequenzen müssen behandelt werden, um eine Verzerrung in der nachgelagerten Analyse zu vermeiden. Trimming kann dazu beitragen, die Anzahl der Reads zu erhöhen, die der Aligner oder Assembler erfolgreich nutzen kann, und die Anzahl der nicht gemappten oder nicht assemblierten Reads zu verringern. Im Allgemeinen umfassen die Qualitätsbehandlungen:
 
 1. Trimmen/Schneiden/Maskieren von Sequenzen
     - aus Regionen mit niedriger Qualitätsbewertung
@@ -854,7 +854,7 @@ Nach dem Trimmen sind die Reverse-Reads aufgrund ihrer Qualität kürzer und wer
 
 Zusätzlich zu dem Bericht erzeugt Cutadapt 2 Dateien:
 - Read 1 mit den getrimmten und gefilterten Forward Reads
-- Read 2 mit den beschnittenen und gefilterten Reverse Reads
+- Read 2 mit den getrimmten und gefilterten Reverse Reads
 
 Diese Datensätze können für die nachgelagerte Analyse, z. B. für das Mapping, verwendet werden.
 
@@ -1041,7 +1041,7 @@ Man hofft auf eine Darstellung, die in der Nähe der X-Achse dunkel ist und bei 
 # Schlussfolgerung
 
 
-In diesem Lernprogramm haben wir die Qualität der FASTQ-Dateien überprüft, um sicherzustellen, dass die Daten gut aussehen, bevor wir weitere Informationen ableiten. Dieser Schritt ist der übliche erste Schritt für Analysen wie RNA-Seq, ChIP-Seq oder andere OMIC-Analysen, die auf NGS-Daten beruhen. Die Schritte der Qualitätskontrolle sind für jede Art von Sequenzierungsdaten ähnlich:
+In diesem Lernprogramm haben wir die Qualität der FASTQ-Dateien überprüft, um sicherzustellen, dass die Daten gut aussehen, bevor wir weitere Informationen ableiten. Dieser Schritt ist der übliche erste Schritt für Analysen wie RNA-Seq, ChIP-Seq oder andere OMICs-Analysen, die auf NGS-Daten beruhen. Die Schritte der Qualitätskontrolle sind für jede Art von Sequenzierungsdaten ähnlich:
 
 - Qualitätsbewertung mit Tools wie:
   - *Short Reads*: {% tool [FASTQE](toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.3.1+galaxy0) %}
