@@ -79,7 +79,7 @@ Opsine befinden sich in den Zellen der Netzhaut. Sie fangen das Licht ein und le
 
 > <agenda-title></agenda-title>
 > 
-> In diesem Tutorium werden wir uns mit:
+> In diesem Tutorium werden wir uns folgendne Themen beschäftigen:
 > 
 > 1. TOC {:toc}
 > 
@@ -112,7 +112,7 @@ Das Portal, das man besuchen muss, um alle Informationen über ein Protein zu er
 
 Diese 410 Ergebnisse geben uns das Gefühl, dass wir genauer sein müssen (obwohl - Spoiler - unser eigentliches Ziel unter den ersten Treffern ist).
 
-Um genau genug zu sein, schlagen wir vor, einen eindeutigen Bezeichner zu verwenden. Aus dem [vorherigen Tutorial]({% link topics/data-science/tutorials/online-resources-gene/tutorial.md %}) kennen wir den Gennamen des Proteins, nach dem wir suchen, `OPN1LW`.
+Um genau genug zu sein, schlagen wir vor, einen eindeutigen Identifikator zu verwenden. Aus dem [vorherigen Tutorial]({% link topics/data-science/tutorials/online-resources-gene/tutorial.md %}) kennen wir den Gennamen des Proteins, nach dem wir suchen, `OPN1LW`.
 
 > <hands-on-title>Suche nach OPN1LW auf UniProtKB</hands-on-title>
 > 
@@ -240,7 +240,7 @@ GO ist ein perfektes Beispiel für eine Datenbank/Ressource, die auf einem sehr 
 
 ### Names and Taxonomy
 
-Weitere Beispiele für strukturierte Informationen sind im nächsten Abschnitt zu finden, z. B. in der Taxonomie. In diesem Abschnitt werden auch andere eindeutige Bezeichner angegeben, die sich auf dieselbe biologische Einheit oder auf verknüpfte Einheiten beziehen (z. B. assoziierte Krankheiten im Menü `MIM`).
+Weitere Beispiele für strukturierte Informationen sind im nächsten Abschnitt zu finden, z. B. in der Taxonomie. In diesem Abschnitt werden auch andere eindeutige Identifikatoren angegeben, die sich auf dieselbe biologische Einheit oder auf verknüpfte Einheiten beziehen (z. B. assoziierte Krankheiten im Menü `MIM`).
 
 > <question-title></question-title>
 > 
@@ -337,7 +337,7 @@ Eine posttranslationale Modifikation (PTM) ist ein kovalentes Verarbeitungsereig
 > 
 {: .question}
 
-### Ausdruck
+### Expression
 
 Wir wissen bereits, wo sich das Protein in der Zelle befindet, aber bei menschlichen Proteinen haben wir oft Informationen darüber, wo es sich im menschlichen Körper befindet, d. h. in welchen Geweben. Diese Informationen können aus dem Human [ExpressionAtlas] (https://www.ebi.ac.uk/gxa/home) oder anderen ähnlichen Quellen stammen.
 
@@ -355,7 +355,7 @@ Wir wissen bereits, wo sich das Protein in der Zelle befindet, aber bei menschli
 
 ### Interaktion
 
-Proteine erfüllen ihre Funktion durch ihre Interaktion mit der Umgebung, insbesondere mit anderen Proteinen. In diesem Abschnitt werden die Interaktoren unseres interessierenden Proteins in einer Tabelle aufgeführt, die wir auch nach subzellulärer Lage, Krankheiten und Art der Interaktion filtern können.
+Proteine erfüllen ihre Funktion durch ihre Interaktion mit der Umgebung, insbesondere mit anderen Proteinen. In diesem Abschnitt werden die Interaktoren unseres Proteins von Interesse in einer Tabelle aufgeführt, die wir auch nach subzellulärer Lage, Krankheiten und Art der Interaktion filtern können.
 
 Die Quelle dieser Informationen sind Datenbanken wie STRING, und die Einstiegsseite für unser Protein ist direkt von diesem Abschnitt aus verlinkt.
 
@@ -394,7 +394,7 @@ In diesem Abschnitt finden Sie Informationen über experimentell bestimmte Prote
 > > <solution-title></solution-title>
 > > 
 > > 1. Im Abschnitt *Krankheit & Varianten* entdecken wir, dass der Wechsel von Glycin (G) zu Glutaminsäure (E) an Position 338 der Proteinsequenz mit Farbenblindheit in Verbindung steht.
-> > 2. Im Strukturbetrachter können wir das Molekül verschieben und mit der Maus über die Struktur fahren, um das AA an Position 338 zu finden. Es kann einige Zeit in Anspruch nehmen, die vielfältigen helikalen Anordnungen dieser Strukturen zu durchschauen. Das Glycin an Position 338 befindet sich nicht in einer Helix, sondern in etwas, das wie eine Schleife aussieht, kurz vor einem Bereich mit geringem Vertrauen in der Struktur.
+> > 2. Im Strukturbetrachter können wir das Molekül verschieben und mit der Maus über die Struktur fahren, um das AA an Position 338 zu finden. Es kann einige Zeit in Anspruch nehmen, die vielfältigen helikalen Anordnungen dieser Strukturen zu durchschauen. Das Glycin an Position 338 befindet sich nicht in einer Helix, sondern in etwas, das wie eine Schleife aussieht, kurz vor einem Bereich mit geringer Sicherheit in der Struktur.
 > > 3. Auf der Grundlage der bisher gesammelten Informationen können wir eine Hypothese aufstellen, warum dieses Gen störend ist. Die Mutation befindet sich nicht in einer Helix (normalerweise sind bei Transmembranproteinen Helices in die Membran eingefügt), sondern in einer der größeren Domänen, die aus der Membran in die Zelle hinein oder aus ihr heraus ragen. Diese Mutation unterbricht wahrscheinlich nicht die Struktur in ihren membraninternen Abschnitten, sondern eher eine der funktionellen Domänen. Wenn Sie tiefer eindringen möchten, können Sie im **Feature Viewer** überprüfen, ob es sich um das extra- oder intrazelluläre Segment handelt.
 > > 
 > {: .solution}
@@ -551,7 +551,7 @@ Unter *Publikationen* sind wissenschaftliche Veröffentlichungen zu dem Protein 
 > 
 {: .hands-on}
 
-Die Registerkarte *Externe Links* fasst alle Verweise auf externe Datenbanken und Informationsquellen zusammen, die wir in den einzelnen Abschnitten der Einstiegsseite gefunden haben. Der Linktext enthält oft die eindeutigen Bezeichner, die dieselbe biologische Einheit in anderen Datenbanken darstellen. Um ein Gefühl für diese Kompatibilität zu bekommen, sehen Sie sich das folgende Bild an (das bereits teilweise veraltet ist).
+Die Registerkarte *Externe Links* fasst alle Verweise auf externe Datenbanken und Informationsquellen zusammen, die wir in den einzelnen Abschnitten der Einstiegsseite gefunden haben. Der Linktext enthält oft die eindeutigen Identifikatoren, die dieselbe biologische Einheit in anderen Datenbanken darstellen. Um ein Gefühl für diese Kompatibilität zu bekommen, sehen Sie sich das folgende Bild an (das bereits teilweise veraltet ist).
 
 ![Ein Diagramm, das darstellt, wie alle verschiedenen Datenbanken durch eindeutige IDs verbunden sind, wobei die Hauptknoten DBs sind und Pfeile sie mit den IDs (Nebenknoten) verbinden, die sie melden. Die Karte ist sehr voll, vor allem um die UniProt Entry Name, Gene ID und Ensembl Gene ID](./images/complexDB.jpeg "Best illustration of the complex ID crossref: bioDBnet Network Diagram - [source](https://biodbnet-abcc.ncifcrf.gov/dbInfo/netGraph.php)")
 
