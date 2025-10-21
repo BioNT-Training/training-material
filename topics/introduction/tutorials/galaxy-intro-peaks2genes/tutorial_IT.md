@@ -1,26 +1,27 @@
+# BioNT translations
+
 ---
 layout: tutorial_hands_on
 title: Dai picchi ai geni
 zenodo_link: https://doi.org/10.5281/zenodo.1025586
 level: Introductory
 questions:
-- How to use Galaxy?
-- How to get from peak regions to a list of gene names?
+- Come usare Galaxy?
+- Come derivare una lista di identificativi di geni da regioni *peaks*
 objectives:
-- Familiarize yourself with the basics of Galaxy
-- Learn how to obtain data from external sources
-- Learn how to run tools
-- Learn how histories work
-- Learn how to create a workflow
-- Learn how to share your work
+- Familiarizza con le basi di Galaxy
+- Impara come ottenere dati da fonti esterno
+- Impara come lanciare dei *tool*
+- Impara come funzionano le cronologie
+- Impara come creare dei flussi di lavoro
+- Impara come condividere il tuo lavoro
 time_estimation: 3H
 key_points:
-- Galaxy provides an easy-to-use graphical user interface for often complex commandline
-  tools
-- Galaxy keeps a full record of your analysis in a history
-- Workflows enable you to repeat your analysis on different data
-- Galaxy can connect to external sources for data import and visualization purposes
-- Galaxy provides ways to share your results and methods with others
+- Galaxy offre un'interfaccia utente grafica facile da usare per strumenti da riga di comando spesso complessi
+- Galaxy conserva una cronologia completa delle analisi
+- I flussi di lavoro consentono di ripetere l'analisi su dati diversi
+- Galaxy può connettersi a fonti esterne per l'importazione e la visualizzazione dei dati
+- Galaxy offre modalità per condividere risultati e metodi con altri
 subtopic: next-steps
 contributions:
   authorship:
@@ -53,11 +54,11 @@ translations:
 
 Ci siamo imbattuti in un articolo ({% cite Li2012 %}) intitolato *"L'istone
 acetiltransferasi MOF è un regolatore chiave della rete trascrizionale centrale delle
-cellule staminali embrionali "*. L'articolo contiene l'analisi dei possibili geni
+cellule staminali embrionali"*. L'articolo contiene l'analisi dei possibili geni
 bersaglio di un'interessante proteina chiamata Mof. I target sono stati ottenuti
 mediante ChIP-seq nei topi e i dati grezzi sono disponibili su [GEO]
 (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268). Tuttavia, l'elenco dei
-geni non è né nel supplemento dell'articolo, né parte dell'invio a GEO. La cosa più
+geni non si trova né nei material supplementari dell'articolo, né sono parte dell'invio a GEO. La cosa più
 simile che abbiamo trovato è un file in GEO contenente un elenco delle regioni in cui il
 segnale è significativamente arricchito (i cosiddetti *peaks*):
 
@@ -85,10 +86,10 @@ un elenco di possibili geni bersaglio**.
 
 # Pretrattamenti
 
-> <hands-on-title>Galassia aperta</hands-on-title>
+> <hands-on-title>Apri Galaxy</hands-on-title>
 > 
 > 1. Naviga verso un'istanza Galaxy: quella raccomandata dal tuo istruttore o una
->    nell'elenco **Istanza Galaxy** all'inizio di questa pagina
+>    nell'elenco **Istanze Galaxy** all'inizio di questa pagina
 > 2. Accesso o registrazione (pannello superiore)
 > 
 >    ![Accedi o registrati nel pannello superiore](../../images/login_register.png)
@@ -101,8 +102,7 @@ pannello centrale mostra gli strumenti e i set di dati.
 
 ![schermata dell'interfaccia Galaxy che mostra il pannello della cronologia a destra, il pannello degli strumenti a sinistra e il pannello principale al centro](../../images/galaxy_interface.png "L'interfaccia Galaxy")
 
-Cominciamo con una nuova storia.
-
+Cominciamo con una nuova cronologia.
 
 > <hands-on-title>Creare la cronologia</hands-on-title>
 > 
@@ -110,7 +110,7 @@ Cominciamo con una nuova storia.
 > 
 >    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
-> 2. **Rename della cronologia** per facilitarne il riconoscimento
+> 2. **Rinomina la cronologia** per facilitarne il riconoscimento
 > 
 >    > <tip-title>Rinominare una cronologia</tip-title>
 >    > 
@@ -138,12 +138,12 @@ Cominciamo con una nuova storia.
 > 4. Selezionare `interval` come **Tipo**
 > 5. premete **Avvio**
 > 6. Premere **Chiudo**
-> 7. Attendere il completamento del caricamento. Galaxy scompatterà automaticamente il
+> 7. Attendere il completamento del caricamento. Galaxy de-compatterà automaticamente il
 >    file.
 > 
 > 8. Dopo questa operazione si vedrà il primo elemento della cronologia nel pannello
 >    destro di Galaxy. Passerà attraverso gli stati grigio (preparazione/in attesa) e
->    giallo (esecuzione) per diventare verde (successo):
+>    giallo (esecuzione) per poi diventare verde (successo):
 > 
 >    ![Sezione storia](../../images/intro_01.png)
 > 
@@ -164,7 +164,7 @@ Cominciamo con una nuova storia.
 > - posizione iniziale (in base 0)
 > - posizione finale (fine esclusiva)
 > 
-> è possibile specificare anche una colonna filamento opzionale e utilizzare una riga di
+> è possibile specificare anche una colonna "filamento' opzionale e utilizzare una riga di
 > intestazione iniziale per etichettare le colonne, che non devono essere in un ordine
 > particolare. A differenza del formato BED (vedi sotto), possono essere presenti anche
 > colonne aggiuntive arbitrarie.
@@ -173,7 +173,7 @@ Cominciamo con una nuova storia.
 {: .comment}
 
 
-> <hands-on-title>Ispettare e modificare gli attributi di un file</hands-on-title>
+> <hands-on-title>Controllare e modificare gli attributi di un file</hands-on-title>
 > 
 > 1. fare clic sul file nel pannello della cronologia
 > 
@@ -197,7 +197,7 @@ Cominciamo con una nuova storia.
 > 4. Cerca `mm9` nell'attributo **Database/Build** e seleziona `Mouse July 2007
 >    (NCBI37/mm9)` (la carta ci dice che i picchi sono da `mm9`)
 > 
->    ![La versione del database/costruzione può essere selezionata da un menu a discesa. Gli utenti possono iniziare a digitare il nome del database per filtrare l'elenco](../../images/Search-for-mm9.PNG)
+>    ![La versione del database può essere selezionata da un menu a discesa. Gli utenti possono iniziare a digitare il nome del database per filtrare l'elenco](../../images/Search-for-mm9.PNG)
 > 
 > 5. Cliccare su **Salva** in alto
 > 6. Aggiungere un tag chiamato `#peaks` al set di dati per renderlo più facilmente
@@ -308,7 +308,7 @@ Diamo un'occhiata ai nostri file per vedere cosa abbiamo qui.
 > > 
 > > Questo file di picco non ha un formato standard e, solo guardandolo, non è possibile
 > > scoprire il significato dei numeri nelle diverse colonne. Nel documento gli autori
-> > affermano di aver utilizzato il chiamante di picco
+> > affermano di aver utilizzato il tool
 > > [HPeak](https://www.ncbi.nlm.nih.gov/pubmed/20598134).
 > > 
 > > consultando il manuale di HPeak possiamo scoprire che le colonne contengono le
@@ -412,7 +412,7 @@ Per convertire i nomi dei cromosomi abbiamo quindi due cose da fare:
 ## Analisi
 
 Il nostro obiettivo è confrontare i due file di regione (il file dei geni e il file dei
-picchi della pubblicazione) per sapere quali picchi sono correlati a quali geni. Se si
+picchi/*peaks*) per sapere quali picchi sono correlati a quali geni. Se si
 vuole sapere solo quali picchi si trovano **all'interno** dei geni (all'interno del
 corpo del gene) si può saltare il passaggio successivo. Altrimenti, potrebbe essere
 ragionevole includere la regione **promoter** dei geni nel confronto, ad esempio perché
@@ -470,7 +470,7 @@ si può ottenere questo risultato con Galaxy.
 > <hands-on-title>Cambia formato e database</hands-on-title>
 > 
 > 1. Fare clic sull'icona {% icon galaxy-pencil %} (matita) nella voce della cronologia del file della regione di picco
-> 2. passa alla scheda **Datipi**
+> 2. passa alla scheda **Datatype**
 > 3. Nella sezione **Convert to Datatype** sotto *"Target datatype "* selezionare: `bed (using 'Convert Genomic Interval To Bed')`
 > 4. Premere **Crea set di dati**
 > 5. Verificare che "Database/Build" sia `mm9` (la build del database per i topi utilizzata nel documento)
@@ -536,7 +536,7 @@ Abbiamo dei bei dati aggregati, quindi perché non disegnare un grafico a barre?
 
 Prima di fare questo, però, dovremmo perfezionare i nostri dati raggruppati.
 
-si può notare che i cromosomi di topo non sono elencati nell'ordine corretto in questo
+Si può notare che i cromosomi di topo non sono elencati nell'ordine corretto in questo
 set di dati (lo strumento **Group** ha cercato di ordinarli, ma lo ha fatto in ordine
 alfabetico).
 
@@ -556,7 +556,7 @@ dati.
 > 
 {: .hands_on}
 
-Bene, siamo pronti a tracciare le cose!
+Bene, siamo pronti a visualizzare!
 
 > <hands-on-title>Disegna grafico a barre</hands-on-title>
 > 
@@ -565,7 +565,7 @@ Bene, siamo pronti a tracciare le cose!
 > 3. Fare clic sul pulsante **<<** nell'angolo in alto a destra
 > 4. Scegliere un titolo in **Provvedere un titolo**, ad esempio `Gene counts per chromosome`
 > 5. passare alla scheda {% icon galaxy-chart-select-data %} **Selezionare i dati** e
->    giocare con le impostazioni
+>    testare le impostazioni
 > 6. Quando si è soddisfatti, fare clic sull'icona {% icon galaxy-save %} **Salva** in
 >    alto a destra del *quadro principale*
 > 
@@ -575,7 +575,7 @@ Bene, siamo pronti a tracciare le cose!
 > 
 {: .hands_on}
 
-## Estrazione del flusso di lavoro
+## Estrazione del flusso di lavoro / *workflow*
 
 Osservando attentamente la cronologia, si può notare che contiene tutti i passaggi della
 nostra analisi, dall'inizio alla fine. Costruendo questa cronologia, abbiamo costruito
@@ -639,7 +639,7 @@ facilmente le analisi.
 >    > editor per creare flussi di lavoro da zero.
 >    {: .comment}
 >
->     Although we have our two inputs in the workflow they are missing their connection to the first tool (**Intersect** {% icon tool %}), because we didn't carry over some of the intermediate steps.
+>     Sebbene abbiamo i nostri due input nel flusso di lavoro, manca loro la connessione con il primo strumento (**Intersect** {% icon tool %}), perché non abbiamo riportato alcuni dei passaggi intermedi.
 > 
 > 8. Collegate ogni set di dati di input allo strumento **Intersect** {% icon tool %} trascinando la freccia rivolta verso l'esterno a destra del suo riquadro (che denota un output) a una freccia rivolta verso l'interno a sinistra del riquadro **Intersect** (che denota un input)
 > 9. Rinominare i set di dati di input in `Reference regions` e `Peak regions`
@@ -679,7 +679,7 @@ concentra la maggior parte delle letture, il **capo del picco**. Utilizzeremo le
 informazioni sulla posizione del vertice del picco contenute nel file del picco
 originale e controlleremo la sovrapposizione dei vertici con i geni.
 
-## preparazione
+## Preparazione
 
 Abbiamo di nuovo bisogno del nostro file di picco, ma vorremmo lavorare in una
 cronologia pulita. Invece di caricarlo due volte, possiamo copiarlo in una nuova
@@ -699,7 +699,7 @@ cronologia.
 > 3. trascinare e rilasciare il file del picco modificato (`Peak regions`, dopo i
 >    passaggi di sostituzione), che contiene le informazioni sulla cima, nella nuova
 >    cronologia.
-> 4. Fare clic sul nome della galassia nella barra dei menu in alto a sinistra per
+> 4. Fare clic sul nome di Galaxy nella barra dei menu in alto a sinistra per
 >    tornare alla finestra di analisi
 > 
 {: .hands_on}
@@ -793,8 +793,8 @@ utilizziamo un altro file BED dalle Librerie di dati.
 È il momento di riutilizzare il flusso di lavoro creato in precedenza.
 
 > <hands-on-title>Eseguire un flusso di lavoro</hands-on-title>
-> 1. apre il menu del flusso di lavoro (barra dei menu a sinistra)
-> 2. trovare il flusso di lavoro creato nella sezione precedente e selezionare l'opzione **Esegui**
+> 1. Aprire il menu del flusso di lavoro (barra dei menu a sinistra)
+> 2. Trovare il flusso di lavoro creato nella sezione precedente e selezionare l'opzione **Esegui**
 > 3. Scegliere come input il nostro file BED `mm9.RefSeq_genes` (`#genes`) e il risultato dello strumento **Cut** (`#peaks`)
 > 4. Fare clic su **Eseguire flusso di lavoro**
 > 
@@ -809,8 +809,8 @@ di picchi in ogni singolo gene? Eseguiamo nuovamente il flusso di lavoro con
 impostazioni diverse!
 
 > <hands-on-title>Eseguire un flusso di lavoro con le impostazioni cambiate</hands-on-title>
-> 1. apre il menu del flusso di lavoro (barra dei menu a sinistra)
-> 2. trovare il flusso di lavoro creato nella sezione precedente e selezionare l'opzione **Esegui**
+> 1. Aprire il menu del flusso di lavoro (barra dei menu a sinistra)
+> 2. Trovare il flusso di lavoro creato nella sezione precedente e selezionare l'opzione **Esegui**
 > 3. Scegliere come input il nostro file BED `mm9.RefSeq_genes` (`#genes`) e il
 >    risultato dello strumento **Cut** (`#peaks`)
 > 4. Fare clic sul titolo dello strumento {% icon tool %} **Gruppo** per espandere le opzioni.
@@ -822,12 +822,12 @@ impostazioni diverse!
 > 
 {: .hands_on}
 
-Congratulazioni! Si dovrebbe avere un file con tutti i nomi unici dei geni e un
+Congratulazioni! Dovresti avere un file con tutti i nomi unici dei geni e un
 conteggio di quanti picchi contengono.
 
 > <question-title></question-title>
 > 
-> L'elenco dei geni unici non è ordinato. Provare a ordinarlo da soli!
+> L'elenco dei geni unici non è ordinato. Prova a ordinarlo da solo!
 > 
 > > <solution-title></solution-title>
 > > È possibile utilizzare lo strumento "Ordina i dati in ordine crescente o decrescente" sulla colonna 2 e "ordinamento numerico veloce".
@@ -837,10 +837,10 @@ conteggio di quanti picchi contengono.
 
 # Condividi il tuo lavoro
 
-Una delle caratteristiche più importanti di Galaxy arriva alla fine di un'analisi.
+Una delle caratteristiche più importanti di Galaxy si concretizza alla fine di un'analisi.
 Quando si pubblicano risultati eclatanti, è importante che altri ricercatori siano in
 grado di riprodurre l'esperimento in silico. Galaxy consente agli utenti di condividere
-facilmente i loro flussi di lavoro e le loro storie con altri.
+facilmente i loro flussi di lavoro e le loro cronologie con altri.
 
 Per condividere una cronologia, fare clic sulle opzioni della cronologia {% icon
 galaxy-history-options %} e selezionare `Share or Publish`. In questa pagina si possono
@@ -866,9 +866,9 @@ fare 3 cose:
 
 > <hands-on-title>Condivisione della storia e del flusso di lavoro</hands-on-title>
 > 
-> 1. Condividi una delle tue storie con il tuo vicino di casa
+> 1. Condividi una delle tue storie con un tuo collega
 > 2. Vedete se riuscite a fare lo stesso con il vostro flusso di lavoro!
-> 3. Trova la cronologia e/o il flusso di lavoro condiviso dal vicino di casa
+> 3. Trova la cronologia e/o il flusso di lavoro condiviso dal tuo collega
 > 
 >    Le cronologie condivise con utenti specifici possono essere consultate da tali
 >    utenti con `Data → Histories → Histories shared with me`.
