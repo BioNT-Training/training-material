@@ -4,33 +4,24 @@ title: Una proteina lungo la pagina UniProt
 level: Introductory
 zenodo_link: ''
 questions:
-- How can you search for proteins using text, gene, or protein names?
-- How do you interpret the information at the top of the UniProt entry page?
-- What types of information can you expect from different download formats, such as
-  FASTA and JSON?
-- How is the function of a protein like opsins described in the "Function" section?
-- What structured information is found in the "Names and Taxonomy",  "Subcellular
-  location", "Disease & Variants", "PTM/Processing" sections?
-- How to learn about the protein expression, interactions, structure, family, sequence
-  and similar proteins?
-- How do the "Variant viewer" and "Feature viewer" tabs assist in mapping protein
-  information along the sequence?
-- What does the "Publications" tab list, and how can you filter publications?
-- What is the significance of tracking entry annotation changes over time?
+- Come si possono cercare proteine utilizzando testo, geni o nomi di proteine?
+- Come si interpretano le informazioni in cima alla pagina di UniProt?
+- Che tipo di informazioni ci si può aspettare da diversi formati di download, come FASTA e JSON?
+- Come viene descritta la funzione di una proteina come le opsine nella sezione "Funzione"?
+- Quali informazioni strutturate si trovano nelle sezioni "Nomi e tassonomia", "Localizzazione subcellulare", "Malattia e varianti", "PTM/Elaborazione"?
+- Come si possono conoscere l'espressione proteica, le interazioni, la struttura, la famiglia, la sequenza e le proteine simili?
+- In che modo le schede "Visualizzatore varianti" e "Visualizzatore caratteristiche" aiutano a mappare le informazioni proteiche lungo la sequenza?
+- Cosa elenca la scheda "Pubblicazioni" e come si possono filtrare le pubblicazioni?
+- Qual è l'importanza di monitorare le modifiche delle annotazioni delle voci nel tempo?
 objectives:
-- By exploring protein entries in UniProtKB, interpret protein function, taxonomy,
-  structure, interactions, variants, and more.
-- Use unique identifiers to connect databases, download gene and protein data, visualize
-  and compare sequence features.
+- Esplorando le voci proteiche in UniProtKB, è possibile interpretare la funzione, la tassonomia, la struttura, le interazioni, le varianti e altro ancora delle proteine.
+- Utilizzare identificatori univoci per collegare database, scaricare dati su geni e proteine, visualizzare e confrontare le caratteristiche delle sequenze.
 time_estimation: 1H
 key_points:
-- How to navigate UniProtKB entries, accessing comprehensive details about proteins,
-  such as their functions, taxonomy, and interactions
-- The Variant and Feature viewer are your tools to visually explore protein variants,
-  domains, modifications, and other key sequence features.
-- Expand your understanding by utilizing external links to cross-reference data and
-  uncover complex relationships.
-- Explore the History tab for access to previous versions of entry annotations.
+- Come navigare tra le voci di UniProtKB, accedendo a dettagli completi sulle proteine, come funzioni, tassonomia e interazioni.
+- Il visualizzatore di varianti e caratteristiche è uno strumento utile per esplorare visivamente varianti proteiche, domini, modifiche e altre caratteristiche chiave della sequenza.
+- Amplia le tue conoscenze utilizzando link esterni per incrociare i dati e scoprire relazioni complesse.
+- Esplora la scheda Cronologia per accedere alle versioni precedenti delle annotazioni delle voci.
 requirements:
 - type: internal
   topic_name: data-science
@@ -188,7 +179,7 @@ Per navigare in questa lunga pagina, il menu (barra di navigazione) a sinistra s
 
 La barra di navigazione rimane nella stessa posizione sullo schermo mentre si sale e si scende in una voce, in modo da poter navigare rapidamente verso le sezioni di interesse. Consulteremo separatamente tutte le sezioni citate, ma prima concentriamoci sulle intestazioni a sinistra.
 
-Nella parte superiore della pagina, è possibile vedere l'adesione e il nome della voce UniProt, il nome della proteina e del gene, l'organismo, se la voce della proteina è stata rivista manualmente da un curatore UniProt, il suo punteggio di annotazione e il livello di evidenza della sua esistenza.
+Nella parte superiore della pagina, è possibile vedere l'identificativo e il nome della voce UniProt, il nome della proteina e del gene, l'organismo, se la voce della proteina è stata rivista manualmente da un curatore UniProt, il suo punteggio di annotazione e il livello di evidenza della sua esistenza.
 
 Sotto l'intestazione principale si trova una serie di schede (*Ingresso*, *Variant viewer*, *Feature viewer*, *Pubblicazioni*, *Link esterni*, *Storia*). Le schede consentono di passare dalla voce, alla visualizzazione grafica delle caratteristiche della sequenza (Feature viewer), alle pubblicazioni e ai collegamenti esterni, ma per il momento le ignorano e non si spostano dalla scheda *Entry*.
 
@@ -220,7 +211,7 @@ I pigmenti visivi sono le molecole che assorbono la luce e che sono alla base de
 
 Indipendentemente dal livello di dettaglio che si comprende (a seconda del proprio background), questo è impressionantemente breve e specifico, considerando l'enorme quantità di letteratura e di studi che esistono al di là della determinazione della funzione di una proteina. Comunque, qualcuno ha fatto il lavoro per noi e questa proteina è già completamente classificata nella Gene Ontology (GO), che descrive la funzione molecolare, il processo biologico e il componente cellulare di ogni proteina classificata.
 
-GO è un perfetto esempio di database/risorsa che si basa su un universo di conoscenze molto complesso e lo traduce in un grafico più semplice, con il rischio di perdere i dettagli. Questo ha il grande vantaggio di organizzare le informazioni, renderle conteggiabili, analizzabili e programmaticamente accessibili, permettendoci in definitiva di avere queste lunghe pagine riassuntive e le KnowledgeBase.
+GO è un perfetto esempio di database/risorsa che si basa su un universo di conoscenze molto complesso e lo traduce in un grafico più semplice, con il rischio di perdere i dettagli. Questo ha il grande vantaggio di organizzare le informazioni, renderle conteggiabili, analizzabili e programmaticamente accessibili, permettendoci di ottenere queste lunghe pagine riassuntive e le KnowledgeBase.
 
 > <question-title></question-title>
 > 
@@ -412,7 +403,7 @@ Da dove provengono le informazioni nel visualizzatore di strutture?
 
 Questo è un file PDB (Protein Data Bank) che consente di visualizzare e analizzare la disposizione degli atomi e degli amminoacidi della proteina.
 
-Tuttavia, non c'è alcun riferimento al database PDB nei collegamenti tra i database delle *strutture 3D*. Invece, il primo link fa riferimento all'AlphaFoldDB. Il database AlphaFold è una risorsa completa che fornisce strutture 3D previste per un'ampia gamma di proteine. Utilizzando tecniche di deep learning e informazioni evolutive, AlphaFold predice accuratamente la disposizione spaziale degli atomi all'interno di una proteina, contribuendo alla comprensione della funzione e delle interazioni proteiche.
+Tuttavia, non c'è alcun riferimento al database PDB nei collegamenti tra i database delle *strutture 3D*. Invece, il primo link fa riferimento all'AlphaFoldDB. Il database AlphaFold è una risorsa completa che fornisce strutture 3D previste per un'ampia gamma di proteine. Utilizzando tecniche di deep learning e informazioni evolutive, AlphaFold predice la disposizione spaziale degli atomi all'interno di una proteina, contribuendo alla comprensione della funzione e delle interazioni proteiche.
 
 Si tratta quindi di una *predizione* della struttura, non di una struttura convalidata sperimentalmente. Questo è il motivo per cui è colorato in base alla confidenza: le sezioni in blu sono quelle con un alto valore di confidenza, quindi quelle per cui la predizione è molto affidabile, mentre quelle in arancione sono meno affidabili o hanno una struttura disordinata (più flessibile e mobile). Tuttavia, queste informazioni sono rappresentate attraverso un file PDB, perché sono comunque strutturali.
 
@@ -459,11 +450,11 @@ L'ultima sezione della pagina UniProt Entry riporta le proteine simili (si tratt
 > 
 {: .question}
 
-Come avrete intuito guardando questa pagina, gran parte dell'elaborazione dei dati biologici su una proteina consiste nel mappare diversi tipi di informazioni lungo la sequenza e capire come si influenzano a vicenda. Una mappatura visiva (e una tabella con le stesse informazioni) è fornita dalle due schede alternative per visualizzare questa voce, cioè il *Variant viewer* e il *Feature viewer*.
+Come avrete intuito consultando questa pagina, gran parte dell'elaborazione dei dati biologici su una proteina consiste nel mappare diversi tipi di informazioni lungo la sequenza e capire come si influenzano a vicenda. Una mappatura visiva (e una tabella con le stesse informazioni) è fornita dalle due schede alternative per visualizzare questa voce, cioè il *Variant viewer* e il *Feature viewer*.
 
-## Variante spettatore
+## Variant viewer
 
-> <hands-on-title>Variante visualizzatore</hands-on-title>
+> <hands-on-title>Visualizzazione delle varianti</hands-on-title>
 > 
 > 1. Cliccare sulla scheda *Variant viewer*
 > 
@@ -486,11 +477,11 @@ Il *Variant viewer* mappa tutte le versioni alternative note di questa sequenza.
 
 L'elevato numero di varianti che si trovano in questa sezione suggerisce che le "sequenze proteiche" (così come le sequenze geniche, le strutture proteiche ecc.) sono in realtà entità meno fisse di quanto si possa pensare.
 
-## Visualizzatore di caratteristiche
+## Feature viewer
 
-> <hands-on-title>Visualizzatore di caratteristiche</hands-on-title>
+> <hands-on-title>Visualizzazione delle caratteristiche</hands-on-title>
 > 
-> 1. Fare clic sulla scheda *Visualizzatore di caratteristiche*
+> 1. Fare clic sulla scheda *Feature viewer*
 > 
 {: .hands-on}
 
@@ -561,7 +552,7 @@ Infine, anche la scheda *Storia* è interessante. Riporta e rende disponibili pe
 
 > <question-title></question-title>
 > 
-> Questa voce non è mai stata annotata manualmente?
+> Questa voce non è mai stata annotata automaticament?
 > 
 > > <solution-title></solution-title>
 > > 
