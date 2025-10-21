@@ -158,7 +158,7 @@ werden:
 
 ![Erläuterung des Mappings](../../images/mapping/mapping.png "Illustration des Mapping-Prozesses. Die Eingabe besteht aus einer Reihe von Reads und einem Referenzgenom. In der Mitte sind die Ergebnisse des Mappings dargestellt: die Positionen der Reads auf dem Referenzgenom. Der erste Read wird an Position 100 ausgerichtet und das Alignment weist zwei Mismatches auf. Der zweite Read wird an der Position 114 ausgerichtet. Es handelt sich um ein lokales Alignment mit Ausschnitten auf der linken und rechten Seite. Der dritte Read wird an der Position 123 ausgerichtet. Er besteht aus einer 2-Basen-Insertion und einer 1-Base-Deletion.")
 
-Wir benötigen ein Referenzgenom, auf das wir die Reads kartieren können.
+Wir benötigen ein Referenzgenom, auf das wir die Reads mappen können.
 
 {% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_DE.md answer_3="Diese Daten stammen aus der ChIP-seq von Mäusen, daher werden wir mm10 (*Mus musculus*) verwenden."%}
 
@@ -184,7 +184,7 @@ Genomen eignet.
 >       - *"Referenzgenom auswählen "*: `Mouse (Mus musculus): mm10`
 >     - *"Analysemodus auswählen "*: `Default setting only`
 > 
->       Sie sollten einen Blick auf die nicht standardmäßigen Parameter werfen und
+>       Sie sollten einen Blick auf die nicht-standard Parameter werfen und
 >       versuchen, sie zu verstehen. Sie können einen Einfluss auf das Mapping haben und
 >       es verbessern.
 > 
@@ -212,15 +212,15 @@ Genomen eignet.
 > >    Reads klein sind. Es ist schwierig zu entscheiden, woher diese Sequenzen stammen,
 > >    und deshalb werden sie von den meisten Pipelines ignoriert. Überprüfen Sie immer
 > >    die Statistiken, um sicherzustellen, dass nicht zu viele Informationen in
-> >    nachgelagerten Analysen verworfen werden.
+> >    nachfolgenden Analysen verworfen werden.
 > > 4. ~3% der Reads wurden nicht gemappt, weil
-> >     - beide Reads des Paares sind ausgerichtet, aber ihre Positionen stimmen nicht
+> >     - beide Reads des Paares sind aligned, aber ihre Positionen stimmen nicht
 > >       mit dem Paar von Reads überein (`aligned discordantly 1 time`)
 > >     - Reads dieser Paare sind mehrfach gemappt (`aligned >1 times` in `pairs aligned
 > >       0 times concordantly or discordantly`)
 > >     - ein Read dieser Paare wird gemappt, aber nicht der gepaarte Read (`aligned
 > >       exactly 1 time` in `pairs aligned 0 times concordantly or discordantly`)
-> >     - der Rest ist überhaupt nicht kartiert
+> >     - der Rest ist überhaupt nicht gemappt
 > > 
 > {: .solution }
 > 
@@ -228,18 +228,18 @@ Genomen eignet.
 
 Die Überprüfung der Mapping-Statistiken ist ein wichtiger Schritt, der vor der
 Fortsetzung der Analysen durchgeführt werden muss. Es gibt mehrere potenzielle
-Fehlerquellen bei der Kartierung, einschließlich (aber nicht beschränkt auf):
+Fehlerquellen beim Mapping, einschließlich (aber nicht beschränkt auf):
 
 - **Polymerase-Kettenreaktion (PCR)-Artefakte**: Viele
   Hochdurchsatz-Sequenzierungsmethoden (HTS) beinhalten einen oder mehrere PCR-Schritte.
   PCR-Fehler zeigen sich als Mismatches im Alignment, und insbesondere Fehler in frühen
-  PCR-Runden zeigen sich in mehreren Reads, was fälschlicherweise auf eine genetische
+  PCR-Zyklen zeigen sich in mehreren Reads, was fälschlicherweise auf eine genetische
   Variation in der Probe schließen lässt. Ein ähnlicher Fehler sind PCR-Duplikate, bei
   denen dasselbe Lesepaar mehrfach vorkommt und die Berechnung der Abdeckung im
   Alignment verfälscht.
 - **Sequenzierungsfehler**: Das Sequenziergerät kann entweder aus physikalischen Gründen
   (z. B. Öl auf einem Illumina-Objektträger) oder aufgrund von Eigenschaften der
-  sequenzierten DNA (z. B. Homopolymere) einen fehlerhaften Aufruf machen. Da
+  sequenzierten DNA (z. B. Homopolymere) einen fehlerhafte Aussage machen. Da
   Sequenzierfehler oft zufällig sind, können sie beim Variantenaufruf als Singleton
   Reads herausgefiltert werden.
 - **Mapping-Fehler**: Der Mapping-Algorithmus kann einen Read an der falschen Stelle in
@@ -279,8 +279,8 @@ Qualität des Mappings.
 > 5. Wie viele Reads haben einen Mapping-Qualitätsscore unter 20?
 > 
 > > <solution-title></solution-title>
-> > 1. Es gibt ~21.900 Mismatches für ~4.753.900 kartierte Basen, was im Durchschnitt
-> >    ~0,005 Mismatches pro kartierter Base ergibt.
+> > 1. Es gibt ~21.900 Mismatches für ~4.753.900 gemappted Basen, was im Durchschnitt
+> >    ~0,005 Mismatches pro gemappter Base ergibt.
 > > 2. Die Fehlerrate ist der Anteil der Fehlanpassungen pro gemappter Base, also das
 > >    unmittelbar zuvor berechnete Verhältnis.
 > > 3. Die durchschnittliche Qualität ist der mittlere Qualitätswert der Kartierung. Es
