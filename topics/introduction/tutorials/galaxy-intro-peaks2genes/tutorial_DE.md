@@ -51,12 +51,12 @@ translations:
 ---
 
 
-Wir sind auf eine Arbeit ({% cite Li2012 %}) mit dem Titel *"The histone
+Wir sind auf eine Publikation ({% cite Li2012 %}) mit dem Titel *"The histone
 acetyltransferase MOF is a key regulator of the embryonic stem cell core transcriptional
-network "* gestoßen. Die Arbeit enthält die Analyse möglicher Zielgene eines
+network "* gestoßen. Die Publikation enthält die Analyse möglicher Zielgene eines
 interessanten Proteins namens Mof. Die Zielgene wurden durch ChIP-seq in Mäusen
 gewonnen, und die Rohdaten sind über [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268) verfügbar. Die Liste der
-Gene ist jedoch weder in der Beilage der Arbeit noch in der GEO-Einreichung enthalten.
+Gene ist jedoch weder in den Supplements der Publikation noch in der GEO-Einreichung enthalten.
 Das Naheliegendste, was wir finden konnten, ist eine Datei in GEO, die eine Liste der
 Regionen enthält, in denen das Signal signifikant angereichert ist (so genannte
 *Peaks*):
@@ -101,7 +101,7 @@ aufgezeichnet, und im mittleren Bereich werden die Werkzeuge und Datensätze ang
 
 ![Bildschirmfoto der Galaxy-Oberfläche mit dem Verlaufsfenster rechts, dem Werkzeugfenster links und dem Hauptfenster in der Mitte](../../images/galaxy_interface.png "Die Galaxy-Oberfläche")
 
-Beginnen wir mit einer neuen Geschichte.
+Beginnen wir mit einer neuen History.
 
 
 > <hands-on-title>Historie erstellen</hands-on-title>
@@ -149,10 +149,10 @@ Beginnen wir mit einer neuen Geschichte.
 >    Galaxy. Es durchläuft den grauen (Vorbereitung/Warteschlange) und gelben (läuft)
 >    Status und wird schließlich grün (Erfolg):
 > 
->    ![Abschnitt Geschichte](../../images/intro_01.png)
+>    ![Abschnitt History](../../images/intro_01.png)
 > 
 >    Das direkte Hochladen von Dateien ist nicht die einzige Möglichkeit, Daten in
->    Galaxy zu bekommen
+>    Galaxy zu erhalten
 > 
 >    {% snippet faqs/galaxy-de/datasets_import_via_link.md format="interval" %}
 > 
@@ -164,7 +164,7 @@ Beginnen wir mit einer neuen Geschichte.
 
 
 > <comment-title>Intervall-Dateiformat</comment-title>
-> Das **Intervall**-Format ist ein Galaxy-Format zur Darstellung genomischer Intervalle. Es ist tabulatorgetrennt, hat aber die zusätzliche Anforderung, dass drei der Spalten sein müssen:
+> Das **Intervall**-Format ist ein Galaxy-Format zur Darstellung genomischer Intervalle. Es ist tabulatorgetrennt, hat aber die zusätzliche Anforderung, dass drei der Spalten die folgenden Spezifikationen beinhalten müssen:
 > - Chromosomen-ID
 > - Startposition (0-basiert)
 > - Endposition (end-exclusive)
@@ -202,7 +202,7 @@ Beginnen wir mit einer neuen Geschichte.
 >    angezeigt
 > 
 > 4. Suche nach `mm9` im **Datenbank/Build**-Attribut und Auswahl von `Mouse July 2007
->    (NCBI37/mm9)` (das Papier sagt uns, dass die Peaks von `mm9` stammen)
+>    (NCBI37/mm9)` (die Publikaton sagt uns, dass die Peaks von `mm9` stammen)
 > 
 >    ![Die Datenbank/Build-Version kann aus einem Dropdown-Menü ausgewählt werden. Benutzer können mit der Eingabe des Datenbanknamens beginnen, um die Liste zu filtern](../../images/Search-for-mm9.PNG)
 > 
@@ -237,7 +237,7 @@ von Genen in Mäusen, die wir von UCSC erhalten können.
 > 3. Setzen Sie die folgenden Optionen:
 >     - *"Klade "*: `Mammal`
 >     - *"Genom "*: `Mouse`
->     - *"Baugruppe "*: `July 2007 (NCBI37/mm9)`
+>     - *"Assembly"*: `July 2007 (NCBI37/mm9)`
 >     - *"Gruppe "*: `Genes and Gene Predictions`
 >     - *"Spur "*: `RefSeq Genes`
 >     - *"Tabelle "*: `refGene`
@@ -255,7 +255,7 @@ von Genen in Mäusen, die wir von UCSC erhalten können.
 >    ist
 > 6. Klicken Sie auf die Schaltfläche **Abfrage an Galaxy senden**
 > 7. Warten, bis der Upload beendet ist
-> 8. Benennen Sie unseren Datensatz in etwas Erkennbareres wie `Genes` um
+> 8. Benennen Sie unseren Datensatz in etwas Wiedererkennbareres wie `Genes` um
 > 
 >    {% snippet faqs/galaxy-de/datasets_rename.md name="Genes" %}
 > 
@@ -341,7 +341,7 @@ sie stattdessen X und Y heißen? Schauen wir nach:
 > <hands-on-title>Ende der Datei anzeigen</hands-on-title>
 > 
 > 1. Suche nach {% tool [Select last lines from a dataset (tail)](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/9.3+galaxy1) %} tool und führe es mit den folgenden Einstellungen aus:
->     - *"Textdatei "*: unsere Spitzendatei `GSE37268_mof3.out.hpeak.txt.gz`
+>     - *"Textdatei "*: unsere Peakdatei `GSE37268_mof3.out.hpeak.txt.gz`
 >     - *"Operation "*: `Keep last lines`
 >     - *"Anzahl der Zeilen "*: Wählen Sie einen Wert, z.B. `100`
 > 2. Klick auf **Werkzeug starten**
@@ -485,7 +485,7 @@ konvertieren, um zu zeigen, wie dies mit Galaxy erreicht werden kann.
 > 3. Im Abschnitt **In Datentyp konvertieren** unter *"Zieldatentyp "* wählen: `bed
 >    (using 'Convert Genomic Interval To Bed')`
 > 4. Drücken Sie **Datensatz erstellen**
-> 5. Prüfen Sie, ob die "Datenbank/Build" `mm9` ist (die in der Arbeit verwendete
+> 5. Prüfen Sie, ob die "Datenbank/Build" `mm9` ist (die in der Publikation verwendete
 >    Datenbank-Build für Mäuse)
 > 6. Benennen Sie die Datei erneut in etwas Erkennbares um, z.B. `Peak regions BED`
 {: .hands_on}
@@ -662,7 +662,7 @@ Analyse problemlos weitergeben oder veröffentlichen.
 >    > Editor auch verwenden, um Workflows von Grund auf neu zu erstellen.
 >    {: .comment}
 > 
->     Although we have our two inputs in the workflow they are missing their connection to the first tool (**Intersect** {% icon tool %}), because we didn't carry over some of the intermediate steps.
+>      Obwohl wir unsere beiden Eingaben im Workflow haben, fehlt ihnen die Verbindung zum ersten Werkzeug (**Intersect** {% icon tool %}), da wir einige der Zwischenschritte nicht übernommen haben.
 > 
 > 8. Verbinden Sie jeden Eingabedatensatz mit dem Tool **Intersect** {% icon tool %},
 >    indem Sie den nach außen zeigenden Pfeil auf der rechten Seite des Kästchens (das
@@ -726,7 +726,7 @@ kopieren.
 > 
 > 3. Ziehen Sie die bearbeitete Peak-Datei (`Peak regions`, nach den
 >    Ersetzungsschritten), die die Gipfelinformationen enthält, in Ihren neuen Verlauf.
-> 4. Klicken Sie auf den Namen der Galaxie in der oberen Menüleiste (oben links), um zu
+> 4. Klicken Sie auf `Galaxy` in der oberen Menüleiste (oben links), um zu
 >    Ihrem Analysefenster zurückzukehren
 > 
 {: .hands_on}
@@ -822,7 +822,7 @@ erhalten, verwenden wir eine andere BED-Datei aus den Datenbibliotheken.
 Es ist an der Zeit, den zuvor erstellten Arbeitsablauf wiederzuverwenden.
 
 > <hands-on-title>Ausführen eines Arbeitsablaufs</hands-on-title>
-> 1. Öffnet das Workflow-Menü (linke Menüleiste)
+> 1. Öffnen Sie das Workflow-Menü (linke Menüleiste)
 > 2. Suchen Sie den Workflow, den Sie im vorherigen Abschnitt erstellt haben, und wählen
 >    Sie die Option **Ausführen**
 > 3. Wählen Sie als Eingaben unsere `mm9.RefSeq_genes` (`#genes`) BED-Datei und das
@@ -900,11 +900,11 @@ tun:
 
 ![Das Menü für die gemeinsame Nutzung des Verlaufs enthält Schaltflächen, um den Verlauf zugänglich zu machen, ihn auf diesem Galaxy-Server zu veröffentlichen und einen Link zum gemeinsamen Nutzen des Verlaufs anzuzeigen. Unten befindet sich eine Schaltfläche zur Freigabe des Verlaufs für einzelne Benutzer](../../images/publish.png)
 
-> <hands-on-title>Geschichte und Arbeitsablauf teilen</hands-on-title>
+> <hands-on-title>History und Arbeitsablauf teilen</hands-on-title>
 > 
 > 1. Teilen Sie eine Ihrer Historien mit Ihrem Nachbarn
 > 2. Schau mal, ob du das auch mit deinem Arbeitsablauf machen kannst!
-> 3. Finde die Geschichte und/oder den Arbeitsablauf, den dein Nachbar teilt
+> 3. Finde die History und/oder den Arbeitsablauf, den dein Nachbar teilt
 > 
 >    Historien, die für bestimmte Benutzer freigegeben sind, können von diesen Benutzern
 >    unter `Data → Histories → Histories shared with me` eingesehen werden.
