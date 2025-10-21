@@ -1,5 +1,3 @@
-# BioNT translations
-
 ---
 layout: tutorial_hands_on
 title: Dai picchi ai geni
