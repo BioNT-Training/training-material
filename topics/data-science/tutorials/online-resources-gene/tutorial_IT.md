@@ -1,30 +1,26 @@
 ---
 layout: tutorial_hands_on
-title: Imparare a conoscere un gene attraverso risorse biologiche e formati
+title: Imparare a conoscere un gene attraverso risorse e formati di dato biologici
 level: Introductory
 draft: true
 zenodo_link: https://zenodo.org/record/8304465
 questions:
-- How to employ bioinformatics resources to investigate a specific protein family
-  (opsins)?
-- How to navigate the Genome Data Viewer to find opsins in the human genome?
-- How to identify genes associated with opsins and analyze their chromosome locations?
-- How to explore literature and clinical contexts for the OPN1LW gene?
-- How to use protein sequences files to perform similarity searches using BLAST?
+- Come utilizzare le risorse bioinformatiche per studiare una specifica famiglia di proteine
+(opsine)?
+- Come navigare nel Genome Data Viewer per trovare le opsine nel genoma umano?
+- Come identificare i geni associati alle opsine e analizzarne la posizione cromosomica?
+- Come esplorare la letteratura e i contesti clinici per il gene OPN1LW?
+- Come utilizzare i file di sequenze proteiche per eseguire ricerche di similarità utilizzando BLAST?
 objectives:
-- Starting from a text search, navigate multiple web resources to examine multiple
-  types of information about a gene, conveyed through multiple file formats.
+- Partendo da una ricerca testuale, esplora più risorse web per esaminare molteplici tipi di informazioni su un gene, trasmesse attraverso più formati di file.
 time_estimation: 1H
 key_points:
-- You can search for genes and proteins using specific text on the NCBI genome.
-- Once you find a relevant gene or protein, you can obtain its sequence and annotation
-  in various formats from NCBI.
-- You can also learn about the chromosome location and the exon-intron composition
-  of the gene of interest.
-- NCBI offers a BLAST tool to perform similarity searches with sequences.
-- You can further explore the resources included in this tutorial to learn more about
-  the gene-associated conditions and the variants.
-- You can input a FASTA file containing a sequence of interest for BLAST searches.
+- È possibile cercare geni e proteine utilizzando testo specifico sul genoma NCBI.
+- Una volta trovato un gene o una proteina rilevante, è possibile ottenerne la sequenza e l'annotazione in vari formati da NCBI.
+- È inoltre possibile ottenere informazioni sulla posizione cromosomica e sulla composizione esone-introne del gene di interesse.
+- NCBI offre uno strumento BLAST per eseguire ricerche di similarità con le sequenze.
+- È possibile esplorare ulteriormente le risorse incluse in questo tutorial per saperne di più sulle condizioni associate ai geni e sulle varianti.
+- È possibile inserire un file FASTA contenente una sequenza di interesse per le ricerche BLAST.
 contributions:
   authorship:
   - lisanna
@@ -46,9 +42,9 @@ translations:
 
 Quando facciamo un'analisi bioinformatica, per esempio RNA-seq, potremmo ritrovarci con un elenco di nomi di geni. Dobbiamo quindi esplorare questi geni. Ma come possiamo farlo? Quali sono le risorse disponibili per farlo? E come navigare al loro interno?
 
-Lo scopo di questo tutorial è di familiarizzare con questo aspetto, utilizzando come esempio le opsine umane.
+Lo scopo di questo tutorial è di familiarizzare con questi aspetti, utilizzando come esempio le opsine umane.
 
-Le opsine umane si trovano nelle cellule della retina. Le opsine catturano la luce e iniziano la sequenza di segnali che porta alla visione. Procederemo ponendoci delle domande sulle opsine e sui geni delle opsine, utilizzando poi diversi database e risorse bioinformatiche per rispondere.
+Le opsine umane si trovano nelle cellule della retina. Sono proteine che catturano la luce e iniziano la sequenza di segnali che porta alla visione. Procederemo ponendoci delle domande sulle opsine e sui geni delle opsine, utilizzando poi diversi database e risorse bioinformatiche per rispondere ad esse.
 
 > <comment-title></comment-title> Questo tutorial è un po' atipico: non lavoreremo in Galaxy ma per lo più al di fuori di esso, navigando tra i database e gli strumenti attraverso le loro interfacce web. Lo scopo di questa esercitazione è quello di illustrare diverse fonti di dati biologici in diversi formati di file e che rappresentano diverse informazioni.
 {: .comment}
@@ -76,7 +72,7 @@ La homepage include un semplice "albero della vita" in cui il nodo umano è evid
 
 Il pannello a destra riporta assemblaggi multipli del genoma di interesse e una mappa dei cromosomi in quel genoma. Possiamo cercare le Opsine.
 
-> <hands-on-title>Ricerca di OpsineApri il visualizzatore di dati del genoma NCBI</hands-on-title>
+> <hands-on-title>Ricerca di Opsine: Apri il visualizzatore di dati del genoma NCBI</hands-on-title>
 > 
 > 1. Digitare `opsin` nella casella *Ricerca nel genoma*
 > 2. Fare clic sull'icona della lente di ingrandimento o premere <kbd>Invio<kbd>
@@ -84,9 +80,9 @@ Il pannello a destra riporta assemblaggi multipli del genoma di interesse e una 
 
 Sotto il riquadro viene ora visualizzata una tabella con i geni correlati all'opsina insieme ai loro nomi e alla loro posizione, cioè il numero del cromosoma, nonché la posizione iniziale e finale
 
-Nell'elenco dei geni correlati al termine di ricerca opsina, ci sono il gene della rodopsina (RHO) e tre pigmenti del cono, le opsine sensibili a breve, media e lunga lunghezza d'onda (per il rilevamento della luce blu, verde e rossa). Esistono altre entità, ad esempio una -LCR (Locus Control region), geni e recettori putativi.
+Nell'elenco dei geni correlati al termine di ricerca opsina, ci sono il gene della rodopsina (RHO) e tre pigmenti del cono, le opsine sensibili a breve, media e lunga lunghezza d'onda (per il rilevamento della luce blu, verde e rossa). Esistono altre entità, ad esempio una -LCR (*Locus Control Region*), geni e recettori putativi.
 
-Più risultati si trovano sul cromosoma X, uno dei cromosomi che determinano il sesso.
+Molti risultati si trovano sul cromosoma X, uno dei cromosomi che determinano il sesso.
 
 > <question-title></question-title>
 > 
@@ -194,7 +190,7 @@ Possiamo ora chiudere la *visualizzazione della sequenza*.
 Da questa risorsa si possono ottenere anche file, in formato diverso, che descrivono il gene. Sono disponibili nella sezione *Download*.
 
 1. *Scaricare FASTA* ci permetterà di scaricare il formato di file più semplice per rappresentare la sequenza nucleotidica di tutto l'intervallo visibile del genoma (più lungo del solo gene).
-2. *Download GenBank flat file* ci permetterà di accedere alle annotazioni disponibili su questa pagina (e oltre) in un formato di testo piatto.
+2. *Download GenBank flat file* ci permetterà di accedere alle annotazioni disponibili su questa pagina (e oltre) in un formato di testo semplice.
 3. *Scarica i dati delle tracce* ci permette di ispezionare due dei formati di file presentati nelle diapositive: i formati GFF (GFF3) e BED. Se si cambiano le tracce, ognuna di esse può essere disponibile o meno.
 
 # Trovare ulteriori informazioni sul nostro gene
@@ -291,7 +287,7 @@ Come le variazioni nel gene influenzano il prodotto proteico e le sue funzioni? 
 > {: .solution}
 {: .question}
 
-Indaghiamo ancora di più sulla variante rs104894913
+Indaghiamo ancora sulla variante rs104894913
 
 > <hands-on-title>Per saperne di più su una variante dbSNP</hands-on-title>
 > 
@@ -433,7 +429,7 @@ Con questa nuova ricerca, troviamo le altre opsine (verde, blu, pigmento della c
 > 
 > 2. il valore di aspettativa (etichettato Expect o E)
 > 
->     Il valore di aspettativa E di un hit indica se l'hit è probabilmente il risultato di una somiglianza casuale tra hit e query o di un'ascendenza comune tra hit e query. ()
+>     Il "valore di aspettativa" E di un hit indica se l'hit è probabilmente il risultato di una somiglianza casuale tra hit e query o di un'ascendenza comune tra hit e query. ()
 > 
 >     > <comment-title>Filtrare una ricerca BLAST</comment-title>
 >     > 
@@ -452,7 +448,7 @@ Con questa nuova ricerca, troviamo le altre opsine (verde, blu, pigmento della c
 >
 {: .details}
 
-> <hands-on-title>Scarico </hands-on-title>
+> <hands-on-title>Download </hands-on-title>
 > 
 > 1. Fare clic sulla scheda *Descrizioni*
 > 2. Fare clic su una qualsiasi sequenza hit
