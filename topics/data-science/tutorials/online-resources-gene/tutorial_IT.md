@@ -5,8 +5,7 @@ level: Introductory
 draft: true
 zenodo_link: https://zenodo.org/record/8304465
 questions:
-- Come utilizzare le risorse bioinformatiche per studiare una specifica famiglia di proteine
-(opsine)?
+- Come utilizzare le risorse bioinformatiche per studiare una specifica famiglia di proteine (opsine)?
 - Come navigare nel Genome Data Viewer per trovare le opsine nel genoma umano?
 - Come identificare i geni associati alle opsine e analizzarne la posizione cromosomica?
 - Come esplorare la letteratura e i contesti clinici per il gene OPN1LW?
