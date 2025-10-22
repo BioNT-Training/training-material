@@ -61,7 +61,7 @@ Menschliche Opsine befinden sich in den Zellen der Netzhaut. Opsine fangen Licht
 > {:toc}
 {: .agenda}
 
-# Searching Human Opsins
+# Suche nach humanen Opsinen
 
 Um nach menschlichen Opsinen zu suchen, beginnen wir mit dem [NCBI Genome Data Viewer] (https://www.ncbi.nlm.nih.gov/genome/gdv). Der NCBI Genome Data Viewer (GDV) ({% cite rangwala2021accessing %}) ist ein Genom-Browser, der die Erforschung und Analyse von annotierten eukaryotischen Genomassemblies unterstützt. Der GDV-Browser zeigt biologische Informationen an, die einem Genom zugeordnet sind, einschließlich Genannotation, Variationsdaten, BLAST-Alignments und experimentelle Studiendaten aus den Datenbanken NCBI GEO und dbGaP. In den GDV-Versionshinweisen werden neue Funktionen für diesen Browser beschrieben.
 
@@ -75,7 +75,7 @@ Die Homepage enthält einen einfachen "Baum des Lebens", in dem der menschliche 
 
 ![Bildschirmfoto der Startseite des Genome Data Viewer, das Wort "opsin" wird in das Suchfeld geschrieben und das Ergebnis wird in der Vorschau angezeigt](./images/GenomeDataViewerpage.png "Genome Data Viewer Startseite")
 
-Das Feld auf der rechten Seite zeigt mehrere Zusammenstellungen des interessierenden Genoms und eine Karte der Chromosomen in diesem Genom. Dort können wir nach Opsins suchen.
+Das Feld auf der rechten Seite zeigt mehrere Zusammenstellungen des Genoms von Interesse und eine Karte der Chromosomen in diesem Genom. Dort können wir nach Opsinen suchen.
 
 > <hands-on-title>Suche nach OpsinsOpen NCBI Genome Data Viewer</hands-on-title>
 > 
@@ -118,7 +118,7 @@ Sie sollten auf [dieser Seite](https://www.ncbi.nlm.nih.gov/genome/gdv/browser/g
 
 ![Genomdaten-Viewer des Gens OPN1LW, Screenshot der beiden Hauptfenster des Viewers, mit Chromosomen auf der linken Seite und dem Feature-Viewer auf der rechten Seite](./images/GenomeDataViewerofgeneOPN1LW.png "Genomdaten-Viewer des Gens OPN1LW")
 
-Es gibt viele Informationen auf dieser Seite, konzentrieren wir uns auf einen Abschnitt zur Zeit.
+Es gibt viele Informationen auf dieser Seite, konzentrieren wir uns momentan auf einen Abschnitt.
 
 1. Der Genomdaten-Viewer, oben, sagt uns, dass wir die Daten des Organismus `Homo sapiens`, der Assemblierung `GRCh38.p14` und insbesondere von `Chr X` (Chromosom X) betrachten. Jede dieser Informationen hat eine eindeutige ID.
 2. Das gesamte Chromosom ist direkt darunter dargestellt, und die Positionen entlang der kurzen `p` und langen `q` Arme sind hochgestellt.
@@ -179,13 +179,13 @@ Die hier lila hervorgehobene Sequenz signalisiert eine regulatorische Region.
 > <question-title></question-title>
 > 
 > 1. Wie lautet die erste Aminosäure des entstehenden Proteinprodukts?
-> 2. Was ist das letzte?
+> 2. Welche ist die letzte?
 > 3. Können Sie sich die ersten drei und die letzten drei AAs dieses Proteins merken?
 > 
 > > <solution-title></solution-title>
 > > 
 > > 1. Das entsprechende Protein beginnt mit Methionin, M (das tun sie alle).
-> > 2. Das letzte AA des letzten Exons (zu finden auf der 2. Seite) ist Alanin (A). Danach kommt das Stoppcodon TGA, das nicht in ein AA übersetzt wird.
+> > 2. Das letzte AA des letzten Exons (zu finden auf der 2. Seite) ist Alanin (A). Danach kommt das Stoppcodon TGA, das nicht in eine AA übersetzt wird.
 > > 3. Die ersten drei AAs sind: M,A,Q; die letzten drei: S,P,A.
 > {: .solution}
 {: .question}
@@ -195,7 +195,7 @@ Wir können jetzt die *Sequenzansicht* schließen.
 Von dieser Ressource können wir auch Dateien in verschiedenen Formaten erhalten, die das Gen beschreiben. Sie sind im Bereich *Download* verfügbar.
 
 1. *Download FASTA* ermöglicht es uns, das einfachste Dateiformat herunterzuladen, um die Nukleotidsequenz des gesamten sichtbaren Bereichs des Genoms darzustellen (länger als nur ein Gen).
-2. *Download GenBank flat file* ermöglicht uns den Zugriff auf die auf dieser Seite (und darüber hinaus) verfügbaren Anmerkungen in einem flachen Textformat.
+2. *Download GenBank flat file* ermöglicht uns den Zugriff auf die auf dieser Seite (und darüber hinaus) verfügbaren Anmerkungen in einem Plaintext-Format.
 3. *Download Track Data* ermöglicht es uns, zwei der in den Folien vorgestellten Dateiformate einzusehen: die Formate GFF (GFF3) und BED. Wenn Sie die Tracks ändern, kann es sein, dass die einzelnen Formate nicht mehr verfügbar sind.
 
 # Suche nach weiteren Informationen über unser Gen
@@ -228,7 +228,7 @@ Beginnen wir mit der Literatur und insbesondere den Ergebnissen von *PubMed* ode
 > 1. Klicken Sie auf *PubMed* im Feld *Literature*
 {: .hands-on}
 
-Sie haben in PubMed, einer kostenlosen Datenbank für wissenschaftliche Literatur, die Ergebnisse einer vollständigen Suche nach Artikeln eingegeben, die direkt mit diesem Genort in Verbindung stehen.
+Sie haben in PubMed, einer kostenlosen Datenbank für wissenschaftliche Literatur, die Ergebnisse einer vollständigen Suche nach Artikeln eingegeben, die direkt mit diesem Genlocus in Verbindung stehen.
 
 Wenn Sie auf den Titel eines Artikels klicken, können Sie die Kurzfassung des Artikels sehen. Wenn Sie sich auf einem Universitätscampus befinden, wo es einen Online-Zugang zu bestimmten Zeitschriften gibt, sehen Sie möglicherweise auch Links zu vollständigen Artikeln. PubMed ist Ihr Zugang zu einer großen Vielfalt an wissenschaftlicher Literatur im Bereich der Biowissenschaften. Auf der linken Seite jeder PubMed-Seite finden Sie Links zu einer Beschreibung der Datenbank, zur Hilfe und zu Anleitungen für die Suche.
 
@@ -362,7 +362,7 @@ Auf dieser Seite werden wieder einige Daten präsentiert, die wir kennen (z. B. 
 > > 1. Der Ordner enthält
 > >    - ein Ordner `ncbi_datasets` mit verschiedenen Unterordnern darin, die einige Datendateien (mehrere Formate) führen,
 > >    - eine `README.md` (eine Markdown-Datei), die zusammen mit den Daten "reisen" soll und erklärt, wie die Daten gewonnen wurden, wie die Struktur des Unterordners, der die Daten enthält, aussieht und wo man eine ausführliche Dokumentation findet.
-> > 2. Es ist auf jeden Fall eine gute Datenverwaltungspraxis, die Benutzer (nicht nur Ihre Mitarbeiter, sondern auch Sie selbst in nicht allzu ferner Zukunft, wenn Sie vergessen werden, woher die Datei in Ihrem Download-Ordner stammt) zur Datenquelle und zur Datenstruktur zu führen.
+> > 2. Es ist auf jeden Fall eine gute Datenverwaltungspraxis, die Benutzer (nicht nur für Ihre Mitarbeiter, sondern auch für Sie selbst in nicht allzu ferner Zukunft, wenn Sie vergessen haben, woher die Datei in Ihrem Download-Ordner stammt) zur Datenquelle und zur Datenstruktur zu führen.
 > {: .solution}
 {: .question}
 
@@ -374,8 +374,8 @@ Was können wir mit den soeben heruntergeladenen Sequenzen tun? Nehmen wir an, d
 > 
 > 1. Öffnen Sie (mit dem einfachsten Texteditor, den Sie installiert haben) die soeben heruntergeladene Datei `protein.faa`.
 > 2. Kopieren Sie den Inhalt
-> 3. Open BLAST [blast.ncbi.nlm.nih.gov](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
-> 4. Klicken Sie auf den `Protein BLAST, protein > protein`
+> 3. Öffnen Sie BLAST [blast.ncbi.nlm.nih.gov](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
+> 4. Klicken Sie auf `Protein BLAST, protein > protein`
 > 
 >    Wir werden in der Tat eine Proteinsequenz verwenden, um eine Datenbank mit Proteinen zu durchsuchen
 > 
@@ -402,8 +402,8 @@ Wir haben Zugriff auf einen Kasten mit vielen farbigen Linien. Jede Linie steht 
 
 > <question-title></question-title>
 > 
-> 1. Was ist der erste Treffer? Wird er erwartet?
-> 2. Was sind die anderen Treffer? Für welche Organismen?
+> 1. Was ist der erste Treffer? Haben Sie ihn erwartet?
+> 2. Was sind die anderen Treffer und für welche Organismen?
 > 
 > > <solution-title></solution-title>
 > > 
@@ -526,7 +526,7 @@ Das Portal, das man besuchen muss, um alle Informationen über ein Protein zu er
 
 Der erste Treffer sollte `P04000 · OPSR_HUMAN` sein. Bevor Sie die Seite öffnen, sollten Sie zwei Dinge beachten:
 
-1. Der Name des Proteins `OPSR_HUMAN` ist anders als der Genname, sowie ihre IDs sind.
+1. Der Name des Proteins `OPSR_HUMAN`, sowie die IDs sind anders als der Genname.
 2. Dieser Eintrag hat einen goldenen Stern, was bedeutet, dass er manuell kommentiert und kuratiert wurde.
 
 > <hands-on-title>Öffne ein Ergebnis auf UniProt</hands-on-title>
