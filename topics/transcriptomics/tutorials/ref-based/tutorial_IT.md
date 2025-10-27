@@ -303,13 +303,14 @@ Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate co
 > 
 >    > <question-title></question-title>
 >    > 
->    > 1. Quante coppie di sequenze sono state rimosse perché almeno una lettura era più corta del limite di lunghezza?
->    > 2. Quante coppie di basi sono state rimosse dalle letture in avanti a causa della cattiva qualità? E dalle letture inverse?
+>    > 1. Quante coppie di letture sono state rimosse perché almeno una delle due era più corta della soglia di lunghezza?
+>    > 2. Quante coppie di basi (bp) sono state rimosse dalle letture forward per bassa qualità? E dalle reverse?
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
 >    > > 1. 147.810 (1,4%) letture erano troppo corte per `GSM461177_untreat_paired` e 1.101.875 (9%) per `GSM461180_treat_paired`. ![Cutadapt Filtered reads](../../images/ref-based/cutadapt_filtered_reads_plot.png "Cutadapt Filtered reads")
->    > > 2. L'output di MultiQC fornisce solo la percentuale di bp tagliati in totale, non per ogni lettura. Per ottenere questa informazione, è necessario tornare ai singoli report. Per `GSM461177_untreat_paired`, 5.072.810 bp sono stati tagliati dalle letture in avanti (lettura 1) e 8.648.619 bp dalle letture inverse (lettura 2) a causa della qualità. Per `GSM461180_treat_paired`, 10.224.537 bp dalle letture in avanti e 51.746.850 bp dalle letture inverse. Non è una sorpresa: abbiamo visto che alla fine delle letture la qualità calava di più per le letture inverse che per quelle in avanti, soprattutto per `GSM461180_treat_paired`.
+>    > > 2. LL’output di MultiQC riporta solo la percentuale totale di bp tagliati, non il dettaglio per ciascuna lettura. Per ottenere questa informazione occorre tornare ai report individuali. Per `GSM461177_untreat_paired`, ono stati tagliati 5.072.810 bp dalle letture forward (Read 1) e 8.648.619 bp dalle letture reverse (Read 2) per motivi di qualità. Per `GSM461180_treat_paired`, 10.224.537 bp dalle forward e 51.746.850 bp dalle reverse.
+Non sorprende: abbiamo già osservato un calo più marcato della qualità verso la fine delle letture reverse rispetto alle forward, in particolare per `GSM461180_treat_paired`.
 > > > 
 > > {: .solution }
 > > 
@@ -341,9 +342,9 @@ Pertanto, queste letture non possono essere semplicemente mappate al genoma come
 
 > <details-title>Maggiori dettagli sui diversi mappatori "spliced"</details-title>
 > 
-> Negli ultimi anni sono stati sviluppati diversi spliced mapper per elaborare l'esplosione dei dati RNA-Seq.
+> Negli ultimi anni sono stati sviluppati diversi spliced mappers per affrontare l’enorme quantità di dati RNA-Seq.
 > 
-> [**TopHat**](https://ccb.jhu.edu/software/tophat/index.shtml) ({% cite trapnell2009tophat %}) è stato uno dei primi strumenti progettati specificamente per affrontare questo problema. In **TopHat** le letture sono mappate rispetto al genoma e vengono separate in due categorie: (1) quelle che si mappano e (2) quelle inizialmente non mappate (IUM). le "pile" di letture che rappresentano potenziali esoni vengono estese alla ricerca di potenziali siti di splice donor/acceptor e vengono ricostruite le potenziali giunzioni di splice. Gli IUM vengono quindi mappati su queste giunzioni.
+> [**TopHat**](https://ccb.jhu.edu/software/tophat/index.shtml) ({% cite trapnell2009tophat %}è stato uno dei primi strumenti creati appositamente per questo scopo. In **TopHat** le letture vengono allineate al genoma e suddivise in due categorie:: (1) quelle che si mappano direttamente e (2) quelle inizialmente non mappate (IUM).Le “pile” di letture che rappresentano potenziali esoni vengono estese alla ricerca di siti di splicing donatore/accettore e le possibili giunzioni vengono ricostruite. Le letture IUM vengono quindi riallineate su queste giunzioni.
 > 
 > ![TopHat](../../images/transcriptomics_images/tophat.png "TopHat (Figura 1 da {% cite trapnell2009tophat %})")
 > 
@@ -351,82 +352,83 @@ Pertanto, queste letture non possono essere semplicemente mappate al genoma come
 > 
 > ![TopHat2](../../images/transcriptomics_images/13059_2012_Article_3053_Fig6_HTML.jpg "TopHat2 (Figura 6 da {% cite kim2013tophat2 %})")
 > 
-> Per ottimizzare e velocizzare ulteriormente l'allineamento delle letture spliced, è stato sviluppato [**HISAT2**](https://ccb.jhu.edu/software/hisat2/index.shtml) ({% cite kim2019graph %}). Utilizza un indice a grafo gerarchico [FM](https://en.wikipedia.org/wiki/FM-index) (HGFM), che rappresenta l'intero genoma e le eventuali varianti, insieme a indici locali sovrapposti (ciascuno dei quali copre ~57 kb) che coprono collettivamente il genoma e le sue varianti. Ciò consente di trovare le posizioni iniziali per potenziali allineamenti di letture nel genoma utilizzando l'indice globale e di raffinare rapidamente questi allineamenti utilizzando un indice locale corrispondente:
+> Per ottimizzare e velocizzare ulteriormente l'allineamento delle letture spliced, è stato sviluppato [**HISAT2**](https://ccb.jhu.edu/software/hisat2/index.shtml) ({% cite kim2019graph %}). UUtilizza un indice FM [FM](https://en.wikipedia.org/wiki/FM-index) a grafo gerarchic (HGFM), che rappresenta l’intero genoma (e le sue varianti), combinato con indici locali sovrapposti (~57 kb ciascuno). Questo approccio permette di individuare rapidamente i punti iniziali di allineamento con l’indice globale e di rifinire gli allineamenti con gli indici locali:
 > 
 > ![Grafico gerarchico indice FM in HISAT/HISAT2](../../images/transcriptomics_images/hisat.png "Grafico gerarchico indice FM in HISAT/HISAT2 (Figura S8 da {% cite kim2015hisat %})")
 > 
-> Una parte della lettura (freccia blu) viene prima mappata sul genoma usando l'indice FM globale. **HISAT2** cerca quindi di estendere l'allineamento utilizzando direttamente la sequenza del genoma (freccia viola). In (**a**) ha successo e questa lettura viene allineata in quanto risiede completamente all'interno di un esone. In (**b**) l'estensione si scontra con un mismatch. Ora **HISAT2** sfrutta l'indice FM locale che si sovrappone a questa posizione per trovare la mappatura appropriata per il resto della lettura (freccia verde). La (**c**) mostra una combinazione di queste due strategie: l'inizio della lettura viene mappato utilizzando l'indice FM globale (freccia blu), esteso fino a raggiungere la fine dell'esone (freccia viola), mappato utilizzando l'indice FM locale (freccia verde) e nuovamente esteso (freccia viola).
+> Una parte della lettura (freccia blu)iene inizialmente mappata sul genoma utilizzando l’indice FM globale. **HISAT2** tenta poi di estendere l’allineamento utilizzando direttamente la sequenza del genoma (freccia viola). Nel caso (**a**)l’operazione ha successo e la lettura viene allineata completamente all’interno di un esone. Nel caso (**b**) l’estensione incontra un mismatch. In questa situazione, HISAT2 utilizza l’indice FM locale che si sovrappone a tale posizione per trovare la mappatura appropriata per la parte restante della lettura (freccia verde). Il caso (**c**) mostra una combinazione di entrambe le strategie: l’inizio della lettura viene mappato utilizzando l’indice FM globale (freccia blu), esteso fino alla fine dell’esone (freccia viola), quindi mappato con l’indice FM locale (freccia verde) e infine ulteriormente esteso (freccia viola).
 > 
-> [**STAR** aligner](https://github.com/alexdobin/STAR) ({% cite dobin2013star %}) è un'alternativa veloce per mappare le letture RNA-Seq rispetto a un genoma di riferimento utilizzando un [suffix array] non compresso (https://en.wikipedia.org/wiki/Suffix_array). Opera in due fasi. Nella prima fase esegue una ricerca di semi:
+> [**STAR** aligner](https://github.com/alexdobin/STAR) ({% cite dobin2013star %})è un’alternativa veloce per mappare le letture RNA-Seq rispetto a un genoma di riferimento utilizzando un [suffix array] non compresso (https://en.wikipedia.org/wiki/Suffix_array). Opera in due fasi. Nella prima fase esegue una ricerca dei semi
 > 
 > ![Ricerca del seme di STAR](../../images/transcriptomics_images/star.png "Ricerca del seme di STAR (Figura 1 da {% cite dobin2013star %})")
 > 
-> Qui una lettura è divisa tra due esoni consecutivi. **STAR** inizia a cercare un prefisso massimo mappabile (MMP) dall'inizio della lettura fino a quando non riesce più a trovare una corrispondenza continua. Dopo questo punto inizia a cercare un MMP per la porzione di lettura non appaiata (**a**). Nel caso di mismatches (**b**) e di regioni non allineabili (**c**) gli MMP servono come ancore da cui estendere gli allineamenti.
+> In questo passaggio, una lettura è divisa tra due esoni consecutivi. **STAR** cerca un prefisso massimo mappabile (MMP) dall’inizio della lettura fino a quando non riesce più a trovare una corrispondenza continua. DSuccessivamente, ricerca un MMP per la parte non allineata della lettura (**a**). In presenza di mismatch (**b**) o di regioni non allineabili (**c**) gli MMP fungono da ancore da cui estendere gli allineamenti.
 > 
-> Nella seconda fase **STAR** ricuce le MMP per generare allineamenti a livello di lettura che (contrariamente alle MMP) possono contenere mismatch e indel. Viene utilizzato uno schema di punteggio per valutare e dare priorità alle combinazioni di cuciture e per valutare le letture che mappano in più posizioni. **STAR** è estremamente veloce, ma richiede una notevole quantità di RAM per funzionare in modo efficiente.
+> Nella seconda fase, **STAR** ricuce gli MMP per generare allineamenti a livello di lettura che, a differenza degli MMP, possono contenere mismatch e indel. Viene utilizzato uno schema di punteggio per valutare e dare priorità alle combinazioni di ricucitura e per gestire le letture che si mappano in più posizioni. **STAR**è estremamente veloce, ma richiede una notevole quantità di memoria RAM per funzionare in modo efficiente.
 > 
 {: .details}
 
 ## Mappatura
 
-Mapperemo le nostre letture sul genoma di *Drosophila melanogaster* usando **STAR** ({% cite dobin2013star %}).
+Mapperemo ora le nostre letture sul genoma di *Drosophila melanogaster* utilizzando **STAR** ({% cite dobin2013star %}).
 
 > <hands-on-title>Mappatura degli spliced</hands-on-title>
 > 
-> 1. Importare l'annotazione genica Ensembl per *Drosophila melanogaster* (`Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`) dalla libreria Shared Data, se disponibile, o da [Zenodo] ({{ page.zenodo_link }}/files/Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz) nella storia della Galassia corrente
+> 1. Importare l’annotazione genica Ensembl per *Drosophila melanogaster* (`Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`) dalla libreria Shared Data, se disponibile, oppure da [Zenodo] ({{ page.zenodo_link }}/files/Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz) nella storia di Galaxy corrente.
 > 
 >    ```text
 >    {{ page.zenodo_link }}/files/Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz
 >    ```
 > 
->    1. Rinominare il set di dati, se necessario
->    2. Verificare che il tipo di dati sia `gtf` e non `gff` e che il database sia `dm6`
+>    1. Rinominare il dataset, se necessario,
+>    2. Verificare che il tipo di dato sia `gtf` e non `gff` e che il database sia `dm6`
 > 
 >    > <comment-title>Come ottenere il file di annotazione? </comment-title>
 >    > 
->    > I file di annotazione degli organismi modello possono essere disponibili nella libreria Shared Data (il percorso cambia da un server Galaxy all'altro). È anche possibile recuperare il file di annotazione dall'UCSC (usando lo strumento **UCSC Main**).
+>    > I file di annotazione degli organismi modello possono essere disponibili nella libreria Shared Data (il percorso può variare da un server Galaxy all’altro). È anche possibile scaricarli dall’UCSC, utilizzando lo strumento **UCSC Main**.
 >    > 
->    > Per generare questo file specifico, il file di annotazione è stato scaricato da Ensembl, che fornisce un database più completo di trascritti, ed è stato ulteriormente adattato per farlo funzionare con il genoma dm6, installato su server Galaxy compatibili.
+>    > Per generare questo file specifico, il file di annotazione è stato scaricato da Ensembl, che fornisce un database più completo di trascritti, e adattato per essere compatibile con il genoma dm6 installato sui server Galaxy.
 >    > 
 > > 
 > {: .comment}
 > 
 > 2. {% tool [RNA STAR](toolshed.g2.bx.psu.edu/repos/iuc/rgrnastar/rna_star/2.7.11a+galaxy0) %} con i seguenti parametri per mappare le letture sul genoma di riferimento:
 >    - *"Letture single-end o paired-end "*: `Paired-end (as collection)`
->       - {% icon param-collection %} *"RNA-Seq FASTQ/FASTA paired reads "*: il `Cutadapt on collection N: Reads` (output di **Cutadapt** {% icon tool %})
->    - *"Genoma di riferimento personalizzato o integrato "*: `Use a built-in index`
->       - *"Genoma di riferimento con o senza annotazione "*: `use genome reference without builtin gene-model but provide a gtf`
->           - *"Seleziona genoma di riferimento "*: `Fly (Drosophila melanogaster): dm6 Full`
->           - {% icon param-file %} *"File del modello genico (gff3,gtf) per le giunzioni di splice "*: il `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz` importato
->           - *"Lunghezza della sequenza genomica intorno alle giunzioni annotate "*: `36`
+>       - {% icon param-collection %} *"RNA-Seq FASTQ/FASTA paired reads "*:  `Cutadapt on collection N: Reads` (output di **Cutadapt** {% icon tool %})
+>    - *"Custom or built-in reference genome "*: `Use a built-in index`
+>       - *"Reference genome with or without an annotation" "*: `use genome reference without builtin gene-model but provide a gtf`
+>           - *"Select reference genome "*: `Fly (Drosophila melanogaster): dm6 Full`
+>           - {% icon param-file %} *"Gene model (gff3,gtf) file for splice junctions"*:  `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+>           - *"Length of the genomic sequence around annotated junctions"*: `36`
 > 
 >             Questo parametro deve corrispondere alla lunghezza delle letture - 1
->                - *"Output per gene/trascritto "*: `Per gene read counts (GeneCounts)`
->    - *"Calcolo della copertura "*:
+>                - *"Per gene/transcript output"*: `Per gene read counts (GeneCounts)`
+>    - *"Compute coverage "*:
 >       - `Yes in bedgraph format`
 > 
 > 3. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i log di STAR con i seguenti parametri:
->    - In *"Risultati "*:
->        - *"Risultati "*
->            - *"Quale strumento è stato usato per generare i log? "*: `STAR`
->                - In *"output STAR "*:
->                    - {% icon param-repeat %} *"Uscita Insert STAR "*
->                        - *"Tipo di output STAR? "*: `Log`
->                            - {% icon param-collection %} *"STAR log output "*: `RNA STAR on collection N: log` (output di **RNA STAR** {% icon tool %})
+>    - In *"Results "*:
+>        - *"Results "*
+>            - *"Which tool was used generate logs? "*: `STAR`
+>                - In *"STAR output "*:
+>                    - {% icon param-repeat %} *"Insert STAR output "*
+>                        - *"Type of STAR output? "*: `Log`
+>                            - {% icon param-collection %} *"STAR log output "*: `RNA STAR on collection N: log` (output of **RNA STAR** {% icon tool %})
 > 
 >    > <question-title></question-title>
 >    > 
->    > 1. Quale percentuale di letture sono mappate esattamente una volta per entrambi i campioni?
->    > 2. Quali sono le altre statistiche disponibili?
+>    > 1. Quale percentuale di letture è mappata esattamente una volta per entrambi i campioni?
+>    > 2. Quali altre statistiche sono disponibili?
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
->    > > 1. Più dell'83% per `GSM461177_untreat_paired` e del 79% per `GSM461180_treat_paired`. Possiamo procedere con l'analisi poiché solo le percentuali inferiori al 70% devono essere esaminate per verificare la potenziale contaminazione.
->    > > 2. Abbiamo anche accesso al numero e alla percentuale di letture che sono mappate in diverse posizioni, mappate in troppe posizioni diverse, non mappate perché troppo corte.
+>    > > 1. Più dell’83% per `GSM461177_untreat_paired` e del 79% per `GSM461180_treat_paired`. È possibile procedere con l’analisi, poiché solo percentuali inferiori al 70% devono essere esaminate per verificare una potenziale contaminazione.
+>    > > 2. Sono disponibili anche il numero e la percentuale di letture mappate in più posizioni, di letture mappate in troppe posizioni diverse e di letture non mappate perché troppo corte.
+
 >    > > 
 >    > >    ![Punteggi di allineamento STAR](../../images/ref-based/star_alignment_plot.png "Punteggi di allineamento")
 >    > > 
->    > >    Probabilmente avremmo potuto essere più rigorosi nella lunghezza minima delle letture per evitare queste letture non mappate a causa della lunghezza.
+>    > >    Probabilmente sarebbe stato possibile essere più rigorosi nella soglia minima di lunghezza delle letture per evitare queste letture non mappate a causa della lunghezza.
 > > > 
 > > {: .solution}
 > > 
@@ -436,7 +438,7 @@ Mapperemo le nostre letture sul genoma di *Drosophila melanogaster* usando **STA
 > 
 {: .hands_on}
 
-Secondo il rapporto **MultiQC**, circa l'80% delle letture per entrambi i campioni sono mappate esattamente una volta sul genoma di riferimento. Possiamo procedere con l'analisi poiché solo le percentuali inferiori al 70% devono essere esaminate per verificare la potenziale contaminazione. Entrambi i campioni presentano una percentuale bassa (inferiore al 10%) di letture mappate su più posizioni del genoma di riferimento. Questo dato rientra nella norma per il sequenziamento Illumina a lettura breve, ma può essere inferiore per i nuovi set di dati di sequenziamento a lettura lunga che possono coprire regioni ripetute più ampie nel genoma di riferimento e sarà più elevato per le librerie con estremità 3'.
+Secondo il reporto **MultiQC**, circa l’80% delle letture di entrambi i campioni si mappa esattamente una volta sul genoma di riferimento. È possibile procedere con l’analisi, poiché solo percentuali inferiori al 70% devono essere verificate per una potenziale contaminazione. Entrambi i campioni mostrano una percentuale bassa (inferiore al 10%) di letture mappate in più posizioni del genoma di riferimento. Questo valore rientra nella norma per i dati di sequenziamento Illumina a lettura breve, ma può essere inferiore per i nuovi dataset di sequenziamento a lettura lunga, che possono coprire regioni ripetute più ampie nel genoma di riferimento, e più elevato per le librerie 3’-end.
 
 L'output principale di **STAR** è un file BAM.
 
@@ -444,7 +446,7 @@ L'output principale di **STAR** è un file BAM.
 
 ## Ispezione dei risultati della mappatura
 
-Il file BAM contiene informazioni per tutte le letture, il che lo rende difficile da ispezionare ed esplorare in formato testo. Un potente strumento per visualizzare il contenuto dei file BAM è l'Integrative Genomics Viewer (**IGV**, {% cite robinson2011integrative %}).
+Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile da ispezionare o esplorare in formato di testo. Uno strumento potente per visualizzare il contenuto dei file BAM è l’Integrative Genomics Viewer (**IGV**, {% cite robinson2011integrative %}).
 
 > <hands-on-title>Ispezione dei risultati di mappatura</hands-on-title>
 > 
@@ -456,14 +458,14 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 > 6. Nel pannello centrale fare clic su `local` in `display with IGV (local, D. melanogaster (dm6))` per caricare le letture nel browser IGV
 >    > <comment-title></comment-title>
 >    > 
->    > Affinché questo passo funzioni, è necessario che sul computer sia installato IGV o [Java Web Start](https://www.java.com/en/download/faq/java_webstart.xml). Tuttavia, le domande di questa sezione possono essere risolte anche esaminando le schermate di IGV riportate di seguito.
+>    > Perché questo passaggio funzioni, è necessario avere installato IGV o [Java Web Start](https://www.java.com/en/download/faq/java_webstart.xml) sul proprio computer. Tuttavia, le domande di questa sezione possono essere risolte anche osservando le schermate di IGV riportate di seguito.
 >    > 
->    > Per ulteriori informazioni, consultare la [documentazione IGV] (https://software.broadinstitute.org/software/igv/AlignmentData).
+>    > Per ulteriori informazioni, consultare la [documentazione di IGV] (https://software.broadinstitute.org/software/igv/AlignmentData).
 >    > 
 > > 
 > {: .comment}
 > 
-> 6. **IGV** {% icon tool %}: Zoom su `chr4:540,000-560,000` (Cromosoma 4 tra 540 kb e 560 kb)
+> 6. **IGV** {% icon tool %}: In IGV, eseguire lo zoom sulla regione `chr4:540,000-560,000` (Cromosoma 4 tra 540 kb e 560 kb)
 > 
 >    > <question-title></question-title>
 >    > 
@@ -474,8 +476,8 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
->    > > 1. Il grafico della copertura: la somma delle letture mappate in ogni posizione
->    > > 2. Indicano eventi di giunzione (o siti di giunzione), *cioè *leggi che sono mappate attraverso un introne
+>    > > 1. Il grafico della copertura rappresenta la somma delle letture mappate in ogni posizione.
+>    > > 2. Indicano eventi di giunzione (o siti di giunzione), *cioè * letture che sono mappate attraverso un introne.
 >    > > 
 > > > 
 > > {: .solution}
@@ -505,7 +507,7 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 > > > 
 > > > 1. La copertura per ogni traccia di allineamento è rappresentata da un grafico a barre rosse. Gli archi rappresentano le giunzioni di splice osservate, cioè le letture che coprono gli introni.
 > > > 2. I numeri si riferiscono al numero di letture di giunzione osservate.
-> > > 3. I diversi gruppi di caselle collegate sul fondo rappresentano i diversi trascritti dei geni in questa posizione presenti nel file GTF.
+> > > 3. I diversi gruppi di caselle collegate nella parte inferiore rappresentano i diversi trascritti dei geni presenti in quella posizione nel file GTF.
 > > > 
 > > {: .solution}
 > > 
@@ -528,13 +530,13 @@ Il file BAM contiene informazioni per tutte le letture, il che lo rende difficil
 > 
 > #### Letture duplicate
 > 
-> Nel rapporto Falco/MultiQC abbiamo visto che alcune letture sono duplicate:
+> Nel rapporto Falco/MultiQC abbiamo visto che alcune letture risultano duplicate:
 > 
 > ![Livelli di duplicazione della sequenza](../../images/ref-based/fastqc_sequence_duplication_levels_plot.png "Livelli di duplicazione della sequenza")
 > 
-> Le letture duplicate possono provenire da geni altamente espressi, quindi di solito vengono mantenute nelle analisi di espressione differenziale RNA-Seq. Tuttavia, un'alta percentuale di duplicati può indicare un problema, ad esempio un'amplificazione eccessiva durante la PCR di una libreria a bassa complessità.
+> Le letture duplicate possono derivare da geni altamente espressi, quindi di solito vengono mantenute nelle analisi di espressione differenziale RNA-Seq. Tuttavia, una percentuale elevata di duplicati può indicare un problema, ad esempio un’eccessiva amplificazione durante la PCR di una libreria a bassa complessità.
 > 
-> **MarkDuplicates** da [Picard suite](http://broadinstitute.github.io/picard/) esamina i record allineati di un file BAM per individuare le letture duplicate, cioè quelle che mappano nella stessa posizione (in base alla posizione iniziale della mappatura).
+> Il tool **MarkDuplicates** della [Picard suite](http://broadinstitute.github.io/picard/) esamina i record allineati di un file BAM per individuare le letture duplicate, ossia quelle che mappano nella stessa posizione (in base alla posizione iniziale della mappatura).
 > 
 > > <hands-on-title>Controllo delle letture duplicate</hands-on-title>
 > > 
