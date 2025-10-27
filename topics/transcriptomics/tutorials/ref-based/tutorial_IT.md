@@ -221,14 +221,14 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 > 4. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.24.1+galaxy0) %} per aggregare i rapporti Falco con i seguenti parametri:
 >    - In *"Risultati "*:
 >        - *"Risultati "*
->            - *"Quale strumento è stato usato per generare i log? "*: `FastQC`
+>            - *"Quale strumento è stato utilizzato per generare i log? "*: `FastQC`
 > 
 >              **Falco** è un sostituto di *FastQC* e possiamo passare il suo output a MultiQC come se fosse stato generato dallo strumento originale.
 >                - In *"FastQC output "*:
 >                    - {% icon param-repeat %} *"Inserisci output FastQC "*
 >                        - {% icon param-collection %} *"Output FastQC "*: `Falco on collection N: RawData` (output di **Falco** {% icon tool %})
 > 
-> 5. Ispezionare la pagina web in uscita da MultiQC per ogni FASTQ
+> 5. Ispeziona la pagina web prodotta da MultiQC per ciascun file FASTQ
 > 
 >    > <question-title></question-title>
 >    > 
@@ -237,17 +237,17 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
->    > > 1. Tutto sembra buono per 3 dei file. Il file `GSM461177_untreat_paired` ha 10,6 milioni di sequenze appaiate e il file `GSM461180_treat_paired` 12,3 milioni di sequenze appaiate. Ma in `GSM461180_treat_paired_reverse` (letture inverse di GSM461180) la qualità diminuisce parecchio alla fine delle sequenze.
+>    > > 1. Tutto sembra buono per 3 dei file. Il file `GSM461177_untreat_paired` contiene 10,6 milioni di sequenze appaiate e il file `GSM461180_treat_paired` 12,3 milioni di sequenze appaiate. Tuttavia in `GSM461180_treat_paired_reverse` (letture inverse di GSM461180) la qualità diminuisce sensibilmente verso fine delle sequenze.
 >    > > 
->    > >    Tutti i file, tranne `GSM461180_treat_paired_reverse`, hanno un'alta percentuale di letture duplicate (previste nei dati RNA-Seq).
+>    > >    Tutti i file, eccetto `GSM461180_treat_paired_reverse`, mostrano un'elevata percentuale di letture duplicate (atteso nei dati RNA-Seq).
 >    > > 
 >    > >    ![Sequence Counts](../../images/ref-based/fastqc_sequence_counts_plot.png "Sequence Counts")
 >    > > 
->    > >    La "qualità della sequenza per base" è globalmente buona, con una leggera diminuzione alla fine delle sequenze. Per `GSM461180_treat_paired_reverse`, la diminuzione è piuttosto ampia.
+>    > >    La "qualità della sequenza per base" è globalmente buona, con una leggera diminuzione alla fine delle sequenze. Per il campione `GSM461180_treat_paired_reverse`, la diminuzione è invece piuttosto marcata.
 >    > > 
 >    > >    ![Qualità della sequenza](../../images/ref-based/fastqc_per_base_sequence_quality_plot.png "Qualità della sequenza")
 >    > > 
->    > >    Il punteggio medio di qualità delle letture è abbastanza alto, ma la distribuzione è leggermente diversa per `GSM461180_treat_paired_reverse`.
+>    > >    Il punteggio medio di qualità delle letture è complessivamente alto, ma la distribuzione è leggermente diversa per `GSM461180_treat_paired_reverse`.
 >    > > 
 >    > >    ![punteggi di qualità per sequenza](../../images/ref-based/fastqc_per_sequence_quality_scores_plot.png "punteggi di qualità per sequenza")
 >    > > 
@@ -255,7 +255,7 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 >    > > 
 >    > >    ![Contenuto GC per sequenza](../../images/ref-based/fastqc_per_sequence_gc_content_plot.png "Contenuto GC per sequenza")
 >    > > 
->    > >    La percentuale di N nelle letture (basi che non è stato possibile chiamare) è bassa.
+>    > >    La percentuale di basi N (cioè quelle che non è stato possibile identificare) è bassa.
 >    > > 
 >    > >    ![Contenuto per base N](../../images/ref-based/fastqc_per_base_n_content_plot.png "Contenuto per base N")
 >    > > 
@@ -263,12 +263,12 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 >    > > 
 >    > >    ![Livelli di duplicazione della sequenza](../../images/ref-based/fastqc_sequence_duplication_levels_plot.png "Livelli di duplicazione della sequenza")
 >    > > 
->    > >    Non ci sono quasi adattatori noti e ci sono sequenze sovrarappresentate.
+>    > >    Non sono presenti adattatori noti e le sequenze sovrarappresentate sono quasi assenti.
 >    > > 
 >    > > 2. Se la qualità delle letture è scarsa, è necessario:
->    > >    1. Verificare cosa non va e pensare alle possibili ragioni della scarsa qualità delle letture: potrebbe derivare dal tipo di sequenziamento o da ciò che abbiamo sequenziato (elevata quantità di sequenze sovrarappresentate nei dati di trascrittomica, percentuale distorta di basi nei dati Hi-C)
->    > >    2. Chiedere informazioni al centro di sequenziamento
->    > >    3. Eseguire un trattamento di qualità (facendo attenzione a non perdere troppe informazioni) con un po' di trimming o rimozione delle letture di cattiva qualità
+>    > >    1. Verificare cosa non va e riflettere sulle possibili cause: la bassa qualità potrebbe dipendere dal tipo di sequenziamento o dal materiale sequenziato (ad esempio un’elevata quantità di sequenze sovrarappresentate nei dati di trascrittomica o una percentuale distorta di basi nei dati Hi-C)
+>    > >    2. Contattare il centro di sequenziamento per ottenere chiarimenti.
+>    > >    3. Eseguire un trattamento di qualità (prestando attenzione a non perdere troppe informazioni), ad esempio effettuando un leggero trimming o rimuovendo le letture di scarsa qualità
 >    > > 
 > > > 
 > > {: .solution}
@@ -277,29 +277,29 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 > 
 {: .hands_on}
 
-Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate con un'elevata incertezza (cioè basi di bassa qualità) alle estremità delle letture e rimuovere anche le letture di cattiva qualità complessiva.
+Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate con un’elevata incertezza, cioè basi di bassa qualità, alle estremità delle letture, e rimuovere anche le letture con una qualità complessiva scarsa.
 
 {% include topics/sequence-analysis/tutorials/quality-control/paired_end_question_IT.md forward="GSM461177_untreat_paired_forward" reverse="GSM461177_untreat_paired_reverse" %}
 
 > <hands-on-title>Trimming FASTQ</hands-on-title>
 > 
 > 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.9+galaxy1) %} con i seguenti parametri per tagliare le sequenze di bassa qualità:
->    - *"Letture single-end o paired-end? "*: `Paired-end Collection`
->       - {% icon param-collection %} *"Collezione accoppiata "*: `2 PE fastqs`
->    - In *"Altre opzioni di taglio delle letture "*
->       - *"Cutoff di qualità (R1) "*: `20`
->    - In *"Opzioni di filtraggio delle letture "*
->       - *"Lunghezza minima (R1) "*: `20`
->    - In *"Output aggiuntivi da generare "*
+>    - *"Single-end or Paired-end reads? "*: `Paired-end Collection`
+>       - {% icon param-collection %} *"Paired Collection "*: `2 PE fastqs`
+>    - In *"Other Read Trimming Options "*
+>       - *"Quality cutoff(s) (R1) "*: `20`
+>    - In *"Read Filtering Options "*
+>       - *"Minimum length (R1) "*: `20`
+>    - In *"Additional outputs to generate "*
 >       - Selezionare: `Report: Cutadapt's per-adapter statistics. You can use this file with MultiQC.`
 > 
 >      {% include topics/sequence-analysis/tutorials/quality-control/trimming_question_IT.md %}
 > 
-> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i rapporti Cutadapt con i seguenti parametri:
->    - In *"Risultati "*:
->        - {% icon param-repeat %} *"Risultati "*
->            - *"Quale strumento è stato usato per generare i log? "*: `Cutadapt/Trim Galore!`
->               - {% icon param-collection %} *"Output di Cutadapt "*: `Cutadapt on collection N: Report` (output di **Cutadapt** {% icon tool %}) selezionato come **raccolta di dati**
+> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i rapporti prodotti da Cutadapt e visualizzare i risultati complessivi:
+>    - In *"Results "*:
+>        - {% icon param-repeat %} *"Results "*
+>            - *"Which tool was used generate logs? "*: `Cutadapt/Trim Galore!`
+>               - {% icon param-collection %} *"Output of Cutadapt "*: `Cutadapt on collection N: Report` (output of **Cutadapt** {% icon tool %}) selezionato as **Dataset collection**
 > 
 >    > <question-title></question-title>
 >    > 
@@ -319,7 +319,7 @@ Dovremmo tagliare le letture per eliminare le basi che sono state sequenziate co
 
 # Mappatura
 
-Per dare un senso alle letture, dobbiamo innanzitutto capire da dove provengono le sequenze nel genoma, in modo da poter determinare a quali geni appartengono. Quando è disponibile un genoma di riferimento per l'organismo, questo processo è noto come allineamento o "mappatura" delle letture al riferimento. Ciò equivale a risolvere un puzzle, ma purtroppo non tutti i pezzi sono unici.
+Per interpretare correttamente le letture, dobbiamo innanzitutto determinare da dove provengono le sequenze all’interno del genoma, così da poter stabilire a quali geni appartengono. Quando è disponibile un genoma di riferimento per l’organismo, questo processo è chiamato allineamento o mappatura delle letture al genoma di riferimento. È un po’ come risolvere un puzzle: tuttavia, non tutti i pezzi sono unici.
 
 > <comment-title></comment-title>
 > 
@@ -327,19 +327,19 @@ Per dare un senso alle letture, dobbiamo innanzitutto capire da dove provengono 
 > 
 {: .comment}
 
-In questo studio, gli autori hanno utilizzato cellule di *Drosophila melanogaster*. Occorre pertanto mappare le sequenze a qualità controllata sul genoma di riferimento di *Drosophila melanogaster*.
+In questo studio, gli autori hanno utilizzato cellule di *Drosophila melanogaster*. Pertanto, le sequenze sottoposte a controllo qualità devono essere mappate sul genoma di riferimento di *Drosophila melanogaster*.
 
-{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_IT.md answer_3="Il genoma di *Drosophila melanogaster* è noto e assemblato e può essere utilizzato come genoma di riferimento in questa analisi. Si noti che nuove versioni dei genomi di riferimento possono essere rilasciate se l'assemblaggio migliora; per questa esercitazione utilizzeremo la release 6 dell'assemblaggio del genoma di riferimento di *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
+{% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_IT.md answer_3="Il genoma di *Drosophila melanogaster* è noto e assemblato e può essere utilizzato come genoma di riferimento per questa analisi. Si noti che nuove versioni dei genomi di riferimento vengono pubblicate quando l’assemblaggio migliora; pin questa esercitazione utilizzeremo la release 6 dell’assemblaggio del genoma di riferimento di *Drosophila melanogaster* [(dm6)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383921/)."%}
 
-Nei trascrittomi eucariotici la maggior parte delle letture proviene da mRNA elaborati privi di introni:
+Nei trascrittomi eucariotici, la maggior parte delle letture deriva da mRNA maturi privi di introni:
 
 ![Tipi di letture RNA-Seq](../../images/ref-based/rna-seq-reads.png "I tipi di letture RNA-seq (adattamento della Figura 1a da {% cite kim2015hisat %}): letture che hanno mappato interamente all'interno di un esone (in rosso), letture che si estendono su 2 esoni (in blu), letture che si estendono su più di 2 esoni (in viola)")
 
-Pertanto non possono essere semplicemente mappate al genoma, come si fa normalmente per i dati sul DNA. Per mappare in modo efficiente le letture derivate dai trascritti rispetto a un genoma di riferimento, sono stati sviluppati dei mappatori di spliced-awared:
+Pertanto, queste letture non possono essere semplicemente mappate al genoma come avviene per i dati di DNA. Per gestire correttamente i punti di giunzione tra esoni, sono stati sviluppati strumenti di mappatura “splicing-aware” (consapevoli dello splicing), in grado di allineare in modo efficiente le letture derivate dai trascritti rispetto al genoma di riferimento:
 
 ![allineamento consapevole dello splicing](../../images/transcriptomics_images/splice_aware_alignment.png "Principio dei mappatori dello splicing: (1) identificazione delle letture che coprono un singolo esone, (2) identificazione delle giunzioni di splicing sulle letture non mappate")
 
-> <details-title>Maggiori dettagli sui diversi mappatori spliced</details-title>
+> <details-title>Maggiori dettagli sui diversi mappatori "spliced"</details-title>
 > 
 > Negli ultimi anni sono stati sviluppati diversi spliced mapper per elaborare l'esplosione dei dati RNA-Seq.
 > 
