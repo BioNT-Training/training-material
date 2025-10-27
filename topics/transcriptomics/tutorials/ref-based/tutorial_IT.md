@@ -89,20 +89,20 @@ translations:
 
 
 
-Negli ultimi anni, il sequenziamento dell'RNA (in breve RNA-Seq) è diventato una tecnologia molto utilizzata per analizzare il trascrittoma cellulare in continua evoluzione, cioè l'insieme di tutte le molecole di RNA in una cellula o in una popolazione di cellule. Uno degli obiettivi più comuni dell'RNA-Seq è la profilazione dell'espressione genica, identificando i geni o le vie molecolari che sono differenzialmente espressi (DE) tra due o più condizioni biologiche. Questo tutorial dimostra un flusso di lavoro computazionale per l'individuazione di geni e percorsi DE da dati RNA-Seq, fornendo un'analisi completa di un esperimento RNA-Seq che profila cellule di *Drosophila* dopo la deplezione di un gene regolatore.
+Negli ultimi anni, il sequenziamento dell'RNA (RNA-Seq) è diventata una tecnologia ampiamente utilizzata per analizzare il trascrittoma cellulare in continua evoluzione, ovvero l'insieme di tutte le molecole di RNA presenti in una cellula o in una popolazione di cellule. Uno degli obiettivi più comuni dell'RNA-Seq è la profilazione dell'espressione genica, ossia l'identificazione dei geni o delle vie molecolari che risultano differenzialmente espressi (DE) tra due o più condizioni biologiche. Questo tutorial illustra un flusso di lavoro computazionale per l'individuazione di geni e percorsi DE a partire da dati di RNA-Seq, fornendo un'analisi completa di un esperimento RNA-Seq che profila cellule di *Drosophila* dopo la deplezione di un gene regolatore.
 
-Nello studio di {% cite brooks2011conservation %}, gli autori hanno identificato geni e percorsi regolati dal gene *Pasilla* (l'omologo *drosophila* delle proteine Nova-1 e Nova-2 regolatrici dello splicing nei mammiferi) utilizzando dati RNA-Seq. I ricercatori hanno eliminato il gene *Pasilla* (*PS*) in *Drosophila melanogaster* mediante interferenza con l'RNA (RNAi). L'RNA totale è stato quindi isolato e utilizzato per preparare librerie RNA-Seq single-end e paired-end per campioni trattati (privi di PS) e non trattati. Queste librerie sono state sequenziate per ottenere letture RNA-Seq per ciascun campione. I dati RNA-Seq per i campioni trattati e non trattati possono essere confrontati per identificare gli effetti della deplezione del gene *Pasilla* sull'espressione genica.
+Nello studio di {% cite brooks2011conservation %}, gli autori hanno identificato geni e vie molecolari regolati dal gene *Pasilla* (l'omologo *drosophila* delle proteine Nova-1 e Nova-2 regolatori dello splicing nei mammiferi) utilizzando dati di RNA-Seq. Il gene *Pasilla* (*PS*) in *Drosophila melanogaster* è stato silenziato mediante il metodo dell'interferenza a RNA (RNAi). L'RNA totale è stato quindi isolato e utilizzato per preparare librerie RNA-Seq di tipo single-end e paired-end per i campioni trattati (privi di PS) e non trattati. Le librerie sono state successivamente sequenziate per ottenere le letture RNA-Seq per ciascun campione. I dati RNA-Seq dei campioni trattati e non trattati possono essere confrontati per identificare gli effetti della deplezione del gene *Pasilla* sull'espressione genica.
 
 In questa esercitazione, illustriamo l'analisi dei dati di espressione genica passo dopo passo utilizzando 7 set di dati originali:
 
 - 4 campioni non trattati: [GSM461176](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461176), [GSM461177](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461177), [GSM461178](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461178), [GSM461182](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461182)
-- 3 campioni trattati (gene *Pasilla* impoverito da RNAi): [GSM461179](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461179), [GSM461180](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461180), [GSM461181](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461181)
+- 3 campioni trattati (gene *Pasilla* impoverito mediante RNAi): [GSM461179](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461179), [GSM461180](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461180), [GSM461181](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM461181)
 
-Ogni campione costituisce un replicato biologico separato della condizione corrispondente (trattato o non trattato). Inoltre, due dei campioni trattati e due di quelli non trattati provengono da un saggio di sequenziamento paired-end, mentre i campioni rimanenti provengono da un esperimento di sequenziamento single-end.
+Ogni campione rappresenta un replicato biologico indipendete della condizione corrispondente (trattata o non trattata). Inoltre, due dei campioni trattati e due di quelli non trattati derivano da un saggio di sequenziamento paired-end, mentre i restanti campioni provengono da un esperimento di sequenziamento single-end.
 
 > <comment-title>Dati completi</comment-title>
 > 
-> I dati originali sono disponibili in NCBI Gene Expression Omnibus (GEO) con il numero di accesso [GSE18508] (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18508). Le letture RNA-Seq grezze sono state estratte dai file del Sequence Read Archive (SRA) e convertite in file FASTQ.
+> I dati originali sono disponibili nel database NCBI Gene Expression Omnibus (GEO) con il numero di accesso [GSE18508] (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18508). Le letture RNA-Seq grezze sono state estratte dai file del Sequence Read Archive (SRA) e convertite in file FASTQ.
 > 
 {: .comment}
 
@@ -117,13 +117,13 @@ Ogni campione costituisce un replicato biologico separato della condizione corri
 
 # Caricamento dei dati
 
-Nella prima parte di questa esercitazione utilizzeremo i file di 2 dei 7 campioni per dimostrare come calcolare il conteggio delle letture (una misura dell'espressione genica) dai file FASTQ (controllo di qualità, mappatura, conteggio delle letture). Forniamo i file FASTQ per gli altri 5 campioni se si desidera riprodurre l'intera analisi in seguito.
+Nella prima parte di questo tutorial utilizzeremo i file di 2 dei 7 campioni per dimostrare come calcolare il conteggio delle letture (una misura dell'espressione genica) a partire dai file FASTQ (controllo di qualità, mappatura, conteggio delle letture). Forniamo i file FASTQ per gli altri 5 campioni nel caso si desideri riprodurre l'intera analisi in un secondo momento.
 
-Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 i campioni viene utilizzato per identificare e visualizzare i geni DE, le famiglie di geni e i percorsi molecolari dovuti alla deplezione del gene *PS*.
+Nella seconda parte del tutorial, i conteggi delle letture di tutti e 7 i campioni vengono utilizzati per identificare e visualizzare i geni differenzialmente espressi, le famiglie geniche e le vie molecolari associate alla deplezione del gene *PS*.
 
 > <hands-on-title>Caricamento dati</hands-on-title>
 > 
-> 1. Creare una nuova storia per questo esercizio di RNA-Seq
+> 1. Creare una nuova storia (sessione di lavoro) per questo tutorial di RNA-Seq
 > 
 >    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
@@ -144,9 +144,9 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 > 
 >    > <comment-title></comment-title>
 >    > 
->    > Si noti che questi sono i file completi dei campioni e sono di circa 1,5 Gb ciascuno, quindi l'importazione potrebbe richiedere alcuni minuti.
+>    > Si noti che questi sono i file completi dei campioni, di circa 1,5 GB ciascuno, quindi l’importazione potrebbe richiedere alcuni minuti.  
 >    > 
->    > Per un'esecuzione più rapida dei passaggi FASTQ, un piccolo sottoinsieme di ogni file FASTQ (~5Mb) può essere trovato qui su [Zenodo] ({{ page.zenodo_link }}):
+>    > Per un’esecuzione più rapida dei passaggi relativi ai file FASTQ, è disponibile un piccolo sottoinsieme di ciascun file (~5 MB) su [Zenodo] ({{ page.zenodo_link }}):
 >    > 
 >    > ```text
 >    > {{ page.zenodo_link }}/files/GSM461177_1_subsampled.fastqsanger
@@ -158,11 +158,11 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 > > 
 > {: .comment}
 > 
-> 3. Verificare che il tipo di dato sia `fastqsanger` (ad esempio **non** `fastq`). In caso contrario, modificare il tipo di dato in `fastqsanger`.
+> 3. Verifica che il tipo di dato sia `fastqsanger` (ad esempio **non** `fastq`). In caso contrario, modifica il tipo di dato in `fastqsanger`.
 > 
 >    {% snippet faqs/galaxy-it/datasets_change_datatype.md datatype="fastqsanger" %}
 > 
-> 4. Creare una raccolta di coppie denominata `2 PE fastqs`, nominare le coppie con il nome del campione seguito dagli attributi: `GSM461177_untreat_paired` e `GSM461180_treat_paired`.
+> 4. Crea una raccolta di coppie denominata `2 PE fastqs`, assegnando alle coppie il nome del campione seguito dagli attributi: `GSM461177_untreat_paired` e `GSM461180_treat_paired`.
 > 
 >    {% snippet faqs/galaxy-it/collections_build_list_paired.md %}
 > 
@@ -170,32 +170,32 @@ Nella seconda parte dell'esercitazione, il conteggio delle letture di tutti e 7 
 
 {% include topics/sequence-analysis/tutorials/quality-control/fastq_question_IT.md %}
 
-Le letture sono dati grezzi provenienti dalla macchina di sequenziamento senza alcun pretrattamento. È necessario valutarne la qualità.
+Le letture rappresentano dati grezzi provenienti dalla macchina di sequenziamento senza alcun pretrattamento. È necessario valutarne la qualità.
 
 # Controllo qualità
 
-Durante il sequenziamento si verificano errori, come il richiamo di nucleotidi errati. Questi sono dovuti alle limitazioni tecniche di ciascuna piattaforma di sequenziamento. Gli errori di sequenziamento possono influenzare l'analisi e portare a un'interpretazione errata dei dati. Se le letture sono più lunghe dei frammenti sequenziati, possono essere presenti degli adattatori, la cui eliminazione può migliorare il numero di letture mappate.
+Durante il sequenziamento possono verificarsi errori, come il richiamo errato di nucleotidi, dovuti alle limitazioni tecniche di ciascuna piattaforma di sequenziamento. Tali errori di sequenziamento possono influenzare l'analisi e portare a un'interpretazione non corretta dei dati. Se le letture sono più lunghe dei frammenti sequenziati, possono contenere degli adattatori, la cui rimozione può migliorare il numero di letture mappate.
 
 Il controllo della qualità delle sequenze è quindi un primo passo essenziale nella vostra analisi. Utilizzeremo strumenti simili a quelli descritti nel tutorial ["Controllo di qualità"] ({% link topics/sequence-analysis/tutorials/quality-control/tutorial.md %}):
-- [Falco](https://falco.readthedocs.io/en/latest/), che è una riscrittura ottimizzata per l'efficienza di [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), per creare un rapporto sulla qualità della sequenza
+- [Falco](https://falco.readthedocs.io/en/latest/), una riscrittura ottimizzata per l’efficienza di [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), per generare un rapporto sulla qualità delle sequenze
 - [MultiQC](https://multiqc.info/) ({% cite ewels2016multiqc %}) per aggregare i rapporti generati
 - [Cutadapt](https://cutadapt.readthedocs.io/en/stable/guide.html) ({% cite marcel2011cutadapt %}) per migliorare la qualità delle sequenze attraverso il taglio e il filtraggio.
 
-Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combinare i report) non supporta le raccolte di liste di coppie. Dovremo prima trasformare il nostro elenco di coppie in un semplice elenco.
+Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combinare i report) non supporta le raccolte di liste di coppie. Dovremo quindi prima trasformare la nostra raccolta di coppie in una semplice lista.
 
-> <details-title>Che cosa significa esattamente? </details-title>
+> <details-title>Che cosa significa questo esattamente? </details-title>
 > 
-> La situazione attuale è in alto e lo strumento **Flatten collection** la trasformerà nella situazione visualizzata in basso: ![Flatten](../../images/ref-based/flatten.png "Flatten the list of pairs to list")
+> La situazione attuale è mostrata in alto e lo strumento **Flatten collection** la trasformerà in quella visualizzata in basso: ![Flatten](../../images/ref-based/flatten.png "Flatten the list of pairs to list")
 > 
 {: .details}
 
 > <hands-on-title>Controllo qualità</hands-on-title>
 > 
-> 1. {% tool [Flatten collection](__FLATTEN__) %} con i seguenti parametri converte l'elenco di coppie in un elenco semplice:
+> 1. {% tool [Flatten collection](__FLATTEN__) %} con i seguenti parametri, per convertire la raccolta di coppie in un elenco semplice:
 >     - *"Collezione di input "*: `2 PE fastqs`
 > 
 > 2. {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} con i seguenti parametri:
->    - {% icon param-collection %} *"Dati di lettura grezzi dalla cronologia corrente "*: Output della **raccolta di appiattimenti** {% icon tool %} selezionata come **raccolta di dati**
+>    - {% icon param-collection %} *"Dati di lettura grezzi dalla cronologia corrente "*: Output dello strumento **Flatten collection** {% icon tool %} selezionata come **raccolta di dati**
 > 
 >    {% snippet faqs/galaxy-it/tools_select_collection.md %}
 > 
@@ -203,7 +203,7 @@ Purtroppo la versione attuale di MultiQC (lo strumento che utilizziamo per combi
 > 
 >    > <question-title></question-title>
 >    > 
->    > Qual è la lunghezza della lettura?
+>    > Qual è la lunghezza delle lettura?
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
