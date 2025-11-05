@@ -68,31 +68,18 @@ translations:
 
 
 
-Il sequenziamento produce una collezione di sequenze senza contesto genomico. Non
-sappiamo a quale parte del genoma corrispondano le sequenze. La mappatura delle letture
-di un esperimento su un genoma di riferimento è un passo fondamentale nella moderna
-analisi dei dati genomici. Con la mappatura le letture vengono assegnate a una posizione
-specifica nel genoma e si possono ottenere informazioni come il livello di espressione
-dei geni.
+Il sequenziamento produce una raccolta di sequenze prive di contesto genomico.
+Non sappiamo a quale parte del genoma corrispondano queste sequenze.
+La mappatura delle letture di un esperimento su un genoma di riferimento è una fase fondamentale nell’analisi moderna dei dati genomici. Attraverso la mappatura, le letture vengono assegnate a una posizione specifica nel genoma, consentendo di ottenere informazioni come il livello di espressione dei geni.
 
-Le letture non vengono fornite con informazioni sulla posizione, quindi non sappiamo da
-quale parte del genoma provengano. Dobbiamo usare la sequenza della lettura stessa per
-trovare la regione corrispondente nella sequenza di riferimento. Ma la sequenza di
-riferimento può essere molto lunga (~3 miliardi di basi per l'uomo), il che rende
-difficile trovare una regione corrispondente. Poiché le nostre letture sono brevi, ci
-possono essere diversi punti della sequenza di riferimento da cui potrebbero essere
-state lette con la stessa probabilità. Ciò è particolarmente vero per le regioni
-ripetitive.
+Le letture non contengono informazioni sulla posizione, quindi non sappiamo da quale parte del genoma provengano.
+Dobbiamo utilizzare la sequenza della lettura stessa per trovare la regione corrispondente nella sequenza di riferimento. Tuttavia, la sequenza di riferimento può essere molto lunga (circa 3 miliardi di basi per l’uomo), il che rende difficile individuare la regione corrispondente. Poiché le nostre letture sono brevi, potrebbero esserci più posizioni ugualmente probabili nella sequenza di riferimento da cui esse potrebbero derivare, questo è particolarmente vero per le regioni ripetitive.
 
-In linea di principio, potremmo fare un'analisi BLAST per capire dove i pezzi
-sequenziati si inseriscono meglio nel genoma conosciuto. Dovremmo farlo per ciascuno dei
-milioni di letture presenti nei nostri dati di sequenziamento. Allineare milioni di
-brevi sequenze in questo modo potrebbe tuttavia richiedere un paio di settimane. E non
-ci interessa l'esatta corrispondenza base-base (allineamento). Quello che ci interessa è
-"da dove provengono queste letture". Questo approccio si chiama **mappatura**.
+In linea di principio, potremmo eseguire un’analisi BLAST per determinare dove si adattano meglio i frammenti sequenziati nel genoma noto. Tuttavia, sarebbe necessario eseguire questa operazione per ciascuna delle milioni di letture presenti nei dati di sequenziamento.
+Allineare milioni di brevi sequenze in questo modo richiederebbe settimane di elaborazione. Inoltre, non ci interessa la corrispondenza esatta base per base (alignment), ma piuttosto da quale parte del genoma provengono le letture.
+Questo approccio è chiamato **mappatura**.
 
-Di seguito, elaboreremo un set di dati con il mappatore **Bowtie2** e visualizzeremo i
-dati con il programma **IGV**.
+Di seguito, elaboreremo un set di dati con il mappatore **Bowtie2** e visualizzeremo i dati con il programma **IGV**. 
 
 > <agenda-title></agenda-title>
 > 
@@ -103,18 +90,18 @@ dati con il programma **IGV**.
 > 
 {: .agenda}
 
-# Preparare i dati
+# Preparazione dei dati
 
-> <hands-on-title>Caricamento dati</hands-on-title>
+> <hands-on-title>Caricamento dei dati</hands-on-title>
 > 
-> 1. Creare una nuova storia per questa esercitazione e darle un nome appropriato
+> 1. Creare una nuova storia per questa esercitazione e assegnarle un nome appropriato
 > 
 >    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 >    {% snippet faqs/galaxy-it/histories_rename.md %}
 > 
-> 2. Importazione di `wt_H3K4me3_read1.fastq.gz` e `wt_H3K4me3_read2.fastq.gz` da
->    [Zenodo](https://zenodo.org/record/1324070) o dalla libreria di dati (chiedere al
+> 2. Importare `wt_H3K4me3_read1.fastq.gz` e `wt_H3K4me3_read2.fastq.gz` da
+>    [Zenodo](https://zenodo.org/record/1324070) o dalla libreria dei dati (chiedere al
 >    proprio docente)
 > 
 >    ```
@@ -126,7 +113,7 @@ dati con il programma **IGV**.
 > 
 >    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md %}
 > 
->    Per impostazione predefinita, Galaxy prende il link come nome, quindi rinominarli.
+>   Per impostazione predefinita, Galaxy assegna come nome il link stesso, quindi è necessario rinominarli.
 > 
 > 3. Rinominare i file in `reads_1` e `reads_2`
 > 
@@ -134,19 +121,14 @@ dati con il programma **IGV**.
 > 
 {: .hands_on}
 
-Abbiamo semplicemente importato in Galaxy i file FASTQ corrispondenti ai dati paired-end
-che abbiamo potuto ottenere direttamente da un centro di sequenziamento.
-
-Durante il sequenziamento vengono introdotti degli errori, come il richiamo di
-nucleotidi errati. Gli errori di sequenziamento possono influenzare l'analisi e portare
-a un'interpretazione errata dei dati. Il primo passo da compiere per qualsiasi tipo di
-dati di sequenziamento è sempre quello di verificarne la qualità.
+bbiamo appena importato in Galaxy i file FASTQ corrispondenti a dati paired-end, come quelli che si ottengono direttamente da un centro di sequenziamento.
+Durante il sequenziamento possono essere introdotti errori, come nucleotidi chiamati in modo errato.
+Tali errori possono influenzare l’analisi e portare a un’interpretazione sbagliata dei dati.
+Il primo passo in qualsiasi analisi di dati di sequenziamento è sempre verificare la qualità delle letture.
 
 Esiste un tutorial dedicato al [controllo di qualità] ({% link
-topics/sequence-analysis/tutorials/quality-control/tutorial.md %}) dei dati di
-sequenziamento. Non ripeteremo i passaggi ivi descritti. È necessario seguire il
-[tutorial]({% link topics/sequence-analysis/tutorials/quality-control/tutorial.md %}) e
-applicarlo ai propri dati prima di andare avanti.
+topics/sequence-analysis/tutorials/quality-control/tutorial.md %}) dei dati di sequenziamento. NNon ripeteremo qui i passaggi descritti. Ti consigliamo di seguire il
+[tutorial]({% link topics/sequence-analysis/tutorials/quality-control/tutorial.md %}) e di applicarlo ai tuoi dati prima di proseguire.
 
 # Mappare le letture su un genoma di riferimento
 
