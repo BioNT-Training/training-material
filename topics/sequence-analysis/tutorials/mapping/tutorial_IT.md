@@ -121,7 +121,7 @@ Di seguito, elaboreremo un set di dati con il mappatore **Bowtie2** e visualizze
 > 
 {: .hands_on}
 
-bbiamo appena importato in Galaxy i file FASTQ corrispondenti a dati paired-end, come quelli che si ottengono direttamente da un centro di sequenziamento.
+Abbiamo appena importato in Galaxy i file FASTQ corrispondenti a dati paired-end, come quelli che si ottengono direttamente da un centro di sequenziamento.
 Durante il sequenziamento possono essere introdotti errori, come nucleotidi chiamati in modo errato.
 Tali errori possono influenzare l’analisi e portare a un’interpretazione sbagliata dei dati.
 Il primo passo in qualsiasi analisi di dati di sequenziamento è sempre verificare la qualità delle letture.
@@ -132,44 +132,34 @@ topics/sequence-analysis/tutorials/quality-control/tutorial.md %}) dei dati di s
 
 # Mappare le letture su un genoma di riferimento
 
-La mappatura delle letture è il processo di allineamento delle letture su un genoma di
-riferimento. Un mappatore prende in input un genoma di riferimento e un insieme di
-letture. Il suo scopo è quello di allineare ogni lettura dell'insieme di letture sul
-genoma di riferimento, tenendo conto di mismatch, indel e ritaglio di alcuni brevi
-frammenti alle due estremità delle letture:
+La mappatura delle letture è il processo di allineamento delle sequenze lette a un genoma di riferimento. Un mapper prende in input un genoma di riferimento e un insieme di letture, con l’obiettivo di allineare ciascuna lettura al genoma di riferimento, consentendo mismatch, inserzioni/delezioni (indel) e clipping di piccoli frammenti alle due estremità delle letture:
 
-![Spiegazione della mappatura](../../images/mapping/mapping.png "Illustrazione del processo di mappatura. L'input è costituito da un insieme di letture e da un genoma di riferimento. Al centro sono riportati i risultati della mappatura: le posizioni delle letture sul genoma di riferimento. La prima lettura è allineata alla posizione 100 e l'allineamento presenta due mismatch. La seconda lettura è allineata alla posizione 114. Si tratta di un allineamento locale con ritagli. Si tratta di un allineamento locale con ritagli a sinistra e a destra. La terza lettura è allineata in posizione 123. Consiste in un'inserzione di 2 basi e in una delezione di 1 base")
+![Spiegazione della mappatura](../../images/mapping/mapping.png "L’input è costituito da un insieme di letture e da un genoma di riferimento. Al centro sono mostrati i risultati della mappatura: le posizioni delle letture sul genoma di riferimento.
+La prima lettura è allineata alla posizione 100 e presenta due mismatch.
+La seconda lettura è allineata alla posizione 114: si tratta di un allineamento locale con clipping (ritagli) alle estremità sinistra e destra. La terza lettura è allineata alla posizione 123 e mostra un’inserzione di 2 basi e una delezione di 1 base.")
 
 Abbiamo bisogno di un genoma di riferimento su cui mappare le letture.
 
 {% include topics/sequence-analysis/tutorials/mapping/ref_genome_explanation_IT.md answer_3="Questi dati provengono dal ChIP-seq dei topi, quindi utilizzeremo mm10 (*Mus musculus*)"%}
 
-Attualmente esistono oltre 60 mappatori diversi e il loro numero è in crescita. In
-questo tutorial utilizzeremo [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), uno
-strumento open-source veloce ed efficiente in termini di memoria, particolarmente adatto
-all'allineamento di letture di sequenziamento da circa 50 a 1.000 basi a genomi
-relativamente lunghi.
+Attualmente esistono oltre 60 diversi mappatori, e il loro numero continua a crescere. In questo tutorial utilizzeremo [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/), uno strumento open source veloce ed efficiente in termini di memoria, particolarmente adatto per l’allineamento di letture di lunghezza compresa tra circa 50 e diverse migliaia di basi su genomi relativamente grandi.
 
 > <hands-on-title>Mappatura con Bowtie2</hands-on-title>
 > 1. {% tool [Bowtie2](toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.4.2+galaxy0) %} con i seguenti parametri
->    - *"È una libreria singola o accoppiata "*: `Paired-end`
->       - {% icon param-file %} *"File FASTA/Q #1"*: `reads_1`
->       - {% icon param-file %} *"File FASTA/Q #2"*: `reads_2`
->       - *"Vuoi impostare le opzioni paired-end? "*: `No`
+>    - *"Is this single or paired library"*: `Paired-end`
+>       - {% icon param-file %} *"FASTA/Q file #1"*: `reads_1`
+>       - {% icon param-file %} *"FASTA/Q file #2"*: `reads_2`
+>       - *"Do you want to set paired-end options?"*: `No`
 > 
->         Dovreste dare un'occhiata ai parametri, in particolare all'orientamento del
->         mate, se lo conoscete. Possono migliorare la qualità della mappatura
->         paired-end.
+>         È comunque utile esaminare i parametri disponibili, in particolare l’orientamento dei mate, se conosciuto. Queste opzioni possono migliorare la qualità della mappatura paired-end.
 > 
->     - *"Selezionerete un genoma di riferimento dalla vostra storia o userete un indice
->       incorporato? "*: `Use a built-in genome index`
->       - *"Selezionare il genoma di riferimento "*: `Mouse (Mus musculus): mm10`
->     - *"Selezionare la modalità di analisi "*: `Default setting only`
+>     - *"Will you select a reference genome from your history or use a built-in index?"*: `Use a built-in genome index`
+>       - *"Select reference genome"*: `Mouse (Mus musculus): mm10`
+>     - *"Select analysis mode"*: `Default setting only`
 > 
->       È necessario dare un'occhiata ai parametri non predefiniti e cercare di
->       comprenderli. Possono avere un impatto sulla mappatura e migliorarla.
+>       È consigliabile consultare anche i parametri non predefiniti e comprenderne la funzione, poiché possono influenzare la qualità e l’efficienza della mappatura.
 > 
->     - *"Salva le statistiche di mappatura di bowtie2 nella cronologia "*: `Yes`
+>     - *"Save the bowtie2 mapping statistics to the history"*: `Yes`
 > 
 > 2. Ispezionare il file `mapping stats` cliccando sull'icona {% icon galaxy-eye %} (occhio)
 > 
@@ -177,29 +167,20 @@ relativamente lunghi.
 
 > <question-title></question-title>
 > 
-> 1. Quali informazioni sono fornite qui?
-> 2. quante letture sono state mappate esattamente 1 volta?
-> 3. Quante letture sono state mappate più di una volta? Come è possibile? Cosa dobbiamo
->    fare con loro?
-> 4. Quante coppie di letture non sono state mappate? Quali sono le cause?
+> 1. Quali informazioni sono fornite in questo file?
+> 2. Quante letture sono state mappate esattamente una volta?
+> 3. Quante letture sono state mappate più di una volta? Come è possibile? Cosa si dovrebbe fare con esse?
+> 4. Quante coppie di letture non sono state mappate? Quali possono essere le cause?
 > 
 > > <titolo della soluzione></solution-title>
-> > 1. Le informazioni fornite qui sono di tipo quantitativo. Possiamo vedere quante
-> >    sequenze sono allineate. Non ci dice nulla sulla qualità.
-> > 2. ~90% di letture sono state allineate esattamente 1 volta
-> > 3. ~7% di letture sono state allineate in modo concordante >1 volta. Queste sono
-> >    chiamate letture multimappate. Può accadere a causa di ripetizioni nel genoma di
-> >    riferimento (copie multiple di un gene, per esempio), in particolare quando le
-> >    letture sono piccole. È difficile stabilire da dove provengano queste sequenze e
-> >    quindi la maggior parte delle pipeline le ignora. Controllare sempre le
-> >    statistiche per essere sicuri di non scartare troppe informazioni nelle analisi a
-> >    valle.
-> > 4. ~3% coppie di letture non sono state mappate perché
-> >     - entrambe le letture della coppia sono allineate ma le loro posizioni non
-> >       concordano con la coppia di letture (`aligned discordantly 1 time`)
-> >     - le letture di queste coppie sono multimappate (`aligned >1 times` in `pairs
+> > 1. Il file fornisce informazioni quantitative: mostra quante sequenze sono state allineate, ma non dà indicazioni dirette sulla qualità dell’allineamento.
+> > 2. Circa il 90% delle letture è stato allineato esattamente una volta
+> > 3. Circa il 7% delle letture è stato allineato concordemente più di una volta. Queste sono dette multi-mapped reads. Ciò può accadere a causa di regioni ripetitive nel genoma di riferimento (ad esempio copie multiple di un gene), soprattutto quando le letture sono brevi. È difficile stabilire la loro origine esatta, perciò la maggior parte delle pipeline le ignora. È comunque importante verificare queste statistiche per assicurarsi di non escludere troppe informazioni nelle analisi successive.
+> > 4. Circa il 3% delle coppie di letture non è stato mappato, perché:
+> >     - entrambe le letture della coppia sono allineate, ma le loro posizioni non concordano (`aligned discordantly 1 time`)
+> >     - le letture della coppia sono multi-mappate (`aligned >1 times` in `pairs
 > >       aligned 0 times concordantly or discordantly`)
-> >     - una lettura di queste coppie è mappata ma non la lettura accoppiata (`aligned
+> >     - una delle due letture è mappata ma non la sua compagna (`aligned
 > >       exactly 1 time` in `pairs aligned 0 times concordantly or discordantly`)
 > >     - il resto non viene mappato affatto
 > > 
@@ -207,11 +188,10 @@ relativamente lunghi.
 > 
 {: .question}
 
-Il controllo delle statistiche di mappatura è un passo importante da fare prima di
-continuare qualsiasi analisi. Esistono diverse fonti potenziali di errore nella
-mappatura, tra cui (ma non solo):
+Verificare le statistiche di mappatura è un passaggio cruciale prima di proseguire con qualsiasi analisi.
+Esistono numerose possibili fonti di errore nella mappatura, tra cui (ma non solo): 
 
-- **Arfatti della reazione a catena della polimerasi (PCR)**: Molti metodi di
+- **Artefatti della reazione a catena della polimerasi (PCR)**: Molti metodi di
   sequenziamento ad alta velocità (HTS) prevedono una o più fasi di PCR. Gli errori di
   PCR si manifestano come mismatch nell'allineamento e, in particolare, gli errori nei
   primi cicli di PCR si manifestano con letture multiple, suggerendo falsamente una
@@ -237,14 +217,13 @@ sono memorizzate le mappature delle letture.
 
 {% include topics/sequence-analysis/tutorials/mapping/bam_explanation_IT.md mapper="Bowtie2" %}
 
-Il file BAM include molte informazioni su ciascuna lettura, in particolare sulla qualità
-della mappatura.
+Il file BAM include molte informazioni, in particolare sulla qualità della mappatura.
 
 > <hands-on-title>Riepilogo della qualità di mappatura</hands-on-title>
 > 1. {% tool [Samtools Stats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.2+galaxy2) %} con i seguenti parametri
->    - {% icon param-file %} *"File BAM "*: `aligned reads` (output di **Bowtie2** {% icon tool %})
->    - *"Usa sequenza di riferimento "*: `Locally cached/Use a built-in genome`
->      - *"Utilizzo del genoma "*: Mouse (Mus musculus): mm10 Full
+>    - {% icon param-file %} *"BAM file"*: `aligned reads` (output of **Bowtie2** {% icon tool %})
+>    - *"Use reference sequence"*: `Locally cached/Use a built-in genome`
+>      - *"Using genome"*: `Mouse (Mus musculus): mm10 Full`
 > 
 > 2. Ispezionare il file {% icon param-file %} file `Stats`
 > 
@@ -252,14 +231,13 @@ della mappatura.
 
 > <question-title></question-title>
 > 
-> 1. Qual è la percentuale di mismatch nelle letture mappate quando sono allineate al
->    genoma di riferimento?
+> 1. Qual è la percentuale di mismatch nelle letture mappate rispetto al genoma di riferimento?
 > 2. Cosa rappresenta il tasso di errore?
-> 3. Qual è la qualità media? Come viene rappresentata?
+> 3. Qual è la qualità media della mappatura e come viene rappresentata?
 > 4. Qual è la dimensione media degli inserti?
 > 5. Quante letture hanno un punteggio di qualità di mappatura inferiore a 20?
 > 
-> > <titolo della soluzione></solution-title>
+> > <solution-title></solution-title>
 > > 1. Ci sono ~21.900 mismatches per ~4.753.900 basi mappate, il che produce in media
 > >    ~0,005 mismatches per basi mappate.
 > > 2. Il tasso di errore è la proporzione di mismatch per basi mappate, quindi il
@@ -271,7 +249,7 @@ della mappatura.
 > > 4. La dimensione dell'inserto è la distanza tra le due letture nelle coppie.
 > > 5. Per ottenere le informazioni:
 > >      1. {% tool [Filter BAM](toolshed.g2.bx.psu.edu/repos/devteam/bamtools_filter/bamFilter/2.5.2+galaxy2) %} con un filtro per mantenere solo le letture con una qualità di mappatura >= 20
-> >      2. {% tool [Samtools Stats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.5) %} sull'output di **Filtro**
+> >      2. {% tool [Samtools Stats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.5) %} sull'output di **Filter**
 > > 
 > >    Prima del filtraggio: 95.412 letture e dopo il filtraggio: 89.664 letture.
 > > 
@@ -283,28 +261,23 @@ della mappatura.
 
 ## IGV
 
-L'Integrative Genomics Viewer (IGV) è uno strumento di visualizzazione ad alte
-prestazioni per l'esplorazione interattiva di grandi insiemi di dati genomici integrati.
-Supporta un'ampia varietà di tipi di dati, compresi i dati di sequenza basati su array e
-di nuova generazione e le annotazioni genomiche. Di seguito, lo utilizzeremo per
-visualizzare le letture mappate.
+L’Integrative Genomics Viewer (IGV) è uno strumento di visualizzazione ad alte prestazioni per l’esplorazione interattiva di grandi insiemi di dati genomici integrati.
+Supporta un’ampia varietà di tipi di dati, tra cui i dati di sequenziamento basati su microarray e di nuova generazione (NGS), oltre alle annotazioni genomiche.
+Di seguito lo utilizzeremo per visualizzare le letture mappate.
 
 {% include topics/sequence-analysis/tutorials/mapping/igv_IT.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 ## JBrowse
 
 {% tool [JBrowse](toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.11+galaxy0) %} è
-un browser genomico alternativo basato sul web. Mentre IGV è un software da scaricare ed
-eseguire, le istanze di JBrowse sono siti web ospitati online che forniscono
-un'interfaccia per sfogliare i dati genomici. Lo useremo per visualizzare le letture
-mappate.
+è un browser genomico alternativo basato sul web.
+Mentre IGV è un software da scaricare ed eseguire localmente, JBrowse è accessibile tramite un’interfaccia web ospitata online, che consente di esplorare i dati genomici direttamente dal browser.
+Lo useremo per visualizzare le letture mappate.
 
 {% include topics/sequence-analysis/tutorials/mapping/jbrowse_IT.md tool="Bowtie2" region_to_zoom="chr2:98,666,236-98,667,473" %}
 
 # Conclusione
 
-Dopo il controllo di qualità, la mappatura è una fase importante della maggior parte
-delle analisi dei dati di sequenziamento (RNA-Seq, ChIP-Seq, ecc.) per determinare
-l'origine delle letture nel genoma e utilizzare queste informazioni per le analisi a
-valle.
+Dopo il controllo di qualità, la mappatura rappresenta una fase fondamentale nella maggior parte delle analisi di dati di sequenziamento (RNA-Seq, ChIP-Seq, ecc.).
+Serve a determinare l’origine delle letture nel genoma di riferimento e a utilizzare queste informazioni nelle analisi successive (downstream analyses).
 
