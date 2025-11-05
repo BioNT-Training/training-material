@@ -80,11 +80,12 @@ recordings:
 ---
 
 
-Durante il sequenziamento, le basi nucleotidiche di un campione di DNA o RNA (libreria) vengono determinate dal sequenziatore. Per ogni frammento della libreria viene generata una sequenza, detta anche **lettura**, che è semplicemente una successione di nucleotidi.
+Durante il sequenziamento, le basi nucleotidiche di un campione di DNA o RNA (detto libreria) vengono determinate dal sequenziatore. Per ogni frammento della libreria viene generata una sequenza, chiamata anche **lettura (read)**, che è semplicemente una successione di nucleotidi.
 
-Le moderne tecnologie di sequenziamento possono generare un numero enorme di letture di sequenza in un singolo esperimento. Tuttavia, nessuna tecnologia di sequenziamento è perfetta e ogni strumento genera diversi tipi e quantità di errori, come la chiamata di nucleotidi errati. Queste basi chiamate in modo errato sono dovute alle limitazioni tecniche di ciascuna piattaforma di sequenziamento.
-
-Pertanto, è necessario comprendere, identificare ed escludere i tipi di errore che possono influire sull'interpretazione dell'analisi a valle. Il controllo della qualità delle sequenze è quindi un primo passo essenziale nell'analisi. Individuare tempestivamente gli errori consente di risparmiare tempo in seguito.
+Le moderne tecnologie di sequenziamento possono generare un numero enorme di letture in un singolo esperimento. Tuttavia, nessuna tecnologia di sequenziamento è perfetta e ogni strumento produce diversi tipi e quantità di errori, come l’identificazione errata di nucleotidi.
+Queste basi chiamate in modo errato derivano dalle limitazioni tecniche proprie di ciascuna piattaforma di sequenziamento.
+È quindi necessario comprendere, identificare ed escludere i tipi di errore che possono influire sull’interpretazione delle analisi successive.
+Il controllo di qualità delle sequenze rappresenta pertanto un primo passo essenziale dell’analisi: individuare tempestivamente gli errori consente di risparmiare tempo nelle fasi successive.
 
 > <agenda-title></agenda-title>
 > 
@@ -98,13 +99,13 @@ Pertanto, è necessario comprendere, identificare ed escludere i tipi di errore 
 
 > <hands-on-title>Caricamento dei dati</hands-on-title>
 > 
-> 1. Creare una nuova storia per questa esercitazione e darle un nome appropriato
+> 1. Crea una nuova storia per questa esercitazione e assegnale un nome appropriato.
 > 
 >    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
 >    {% snippet faqs/galaxy-it/histories_rename.md %}
 > 
-> 2. Importare il file `female_oral2.fastq-4143.gz` da [Zenodo](https://zenodo.org/record/3977236) o dalla libreria di dati (chiedere al proprio istruttore) Questo è un campione di microbioma di un serpente {% cite StJacques2021 %}.
+> 2. Importa il file `female_oral2.fastq-4143.gz` da [Zenodo](https://zenodo.org/record/3977236) oppure dalla libreria di dati (chiedi al tuo istruttore). Si tratta di un campione di microbioma prelevato dalla bocca di un serpente {% cite StJacques2021 %}.
 > 
 >    ```
 >    https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz
@@ -114,26 +115,26 @@ Pertanto, è necessario comprendere, identificare ed escludere i tipi di errore 
 > 
 >    {% snippet faqs/galaxy-it/datasets_import_from_data_library.md %}
 > 
-> 3. Rinominare il dataset importato in `Reads`.
+> 3. Rinomina il dataset importato in `Reads`.
 {: .hands_on}
 
 Abbiamo appena importato un file in Galaxy. Questo file è simile ai dati che potremmo ottenere direttamente da un impianto di sequenziamento: un [file FASTQ](https://en.wikipedia.org/wiki/FASTQ_format).
 
 > <hands-on-title>Ispezione del file FASTQ</hands-on-title>
 > 
-> 1. Ispezionare il file facendo clic sull'icona {% icon galaxy-eye %} (occhio)
+> 1. Ispeziona il file facendo clic sull’icona {% icon galaxy-eye %} (occhio)
 {: .hands_on}
 
-Anche se sembra complicato (e forse lo è), il formato FASTQ è facile da capire con una piccola decodifica.
+Anche se a prima vista può sembrare complesso (e in parte lo è), il formato FASTQ è facile da comprendere con una breve spiegazione.
 
-Ogni lettura, che rappresenta un frammento della libreria, è codificata da 4 righe:
+Ogni lettura, che rappresenta un frammento della libreria, è codificata in 4 righe:
 
 Line | Description
 --- | ---
-1 | Always begins with `@` followed by the information about the read
-2 | The actual nucleic sequence
-3 | Always begins with a `+` and contains sometimes the same info in line 1
-4 | Has a string of characters which represent the quality scores associated with each base of the nucleic sequence; must have the same number of characters as line 2
+1 | Inizia sempre con `@` seguito dalle informazioni relative alla lettura 
+2 | Contiene la sequenza nucleotidica effettiva
+3 | Inizia sempre con `+` e talvolta ripete le informazioni della riga 1
+4 | Contiene una stringa di caratteri che rappresentano i punteggi di qualità associati a ciascuna base della sequenza; deve avere lo stesso numero di caratteri della riga 2
 
 Quindi, ad esempio, la prima sequenza nel nostro file è:
 
@@ -152,47 +153,47 @@ significa che il frammento denominato `@M00970` corrisponde alla sequenza di DNA
 > 
 > 1. Quale carattere ASCII corrisponde al peggior punteggio Phred per Illumina 1.8+?
 > 2. Qual è il punteggio di qualità Phred del 3° nucleotide della prima sequenza?
-> 3. Come calcolare la precisione della base nucleotidica con il codice ASCII `/`?
+> 3. Come si calcola la precisione della base nucleotidica con il codice ASCII `/`?
 > 4. Qual è la precisione di questo terzo nucleotide?
 > 
 > > <solution-title></solution-title>
-> > 1. Il punteggio Phred peggiore è il più piccolo, quindi 0. Per Illumina 1.8+, corrisponde al carattere `!`.
-> > 2. Il terzo nucleotide della prima sequenza ha un carattere ASCII `G`, che corrisponde a un punteggio di 38.
-> > 3. può essere calcolato come segue:
-> >    - il codice ASCII per `/` è 47
+> > 1. Il punteggio Phred peggiore è il più basso, quindi 0. Per Illumina 1.8+, corrisponde al carattere `!`.
+> > 2. Il terzo nucleotide della prima sequenza ha un carattere ASCII G, che corrisponde a un punteggio di 38.
+> > 3. Il calcolo può essere eseguito come segue:
+> >    - Il codice ASCII per `/` è 47
 > >    - Punteggio di qualità = 47-33=14
 > >    - Formula per trovare la probabilità di errore: \\(P = 10^{-Q/10}})
 > >    - Probabilità di errore = \\\(10^{-14/10}\) = 0,03981
 > >    - Quindi Accuratezza = 100 - 0,03981 = 99,96%
-> > 4. Il nucleotide corrispondente `G` ha un'accuratezza di quasi il 99,96%
+> > 4. Il nucleotide corrispondente `G` ha un'accuratezza di quasi il 96%
 > >
 > {: .solution }
 {: .question}
 
-> <comment-title></comment-title> L'attuale lllumina (1.8+) utilizza il formato Sanger (Phred+33). Se si lavora con set di dati più vecchi, si possono incontrare i vecchi schemi di punteggio. **FastQC** {% icon tool %}, uno strumento che useremo più avanti in questo tutorial, può essere usato per cercare di determinare quale tipo di codifica di qualità viene usata (valutando la gamma di valori Phred visti nel FASTQ).
+> <comment-title></comment-title> L’attuale versione di Illumina (1.8+) utilizza il formato Sanger (Phred+33).Se si lavora con set di dati più vecchi, si possono incontrare altri schemi di punteggio. **FastQC** {% icon tool %}, uno strumento che useremo più avanti in questo tutorial, può essere utilizzato per determinare quale tipo di codifica della qualità viene usata, analizzando l’intervallo dei valori Phred presenti nel file FASTQ.
 {: .comment}
 
-Guardando il file in Galaxy, sembra che la maggior parte dei nucleotidi abbia un punteggio elevato (`G` corrisponde a un punteggio 38). È vero per tutte le sequenze? E per tutta la lunghezza della sequenza?
-
+Guardando il file in Galaxy, sembra che la maggior parte dei nucleotidi abbia un punteggio elevato (G corrisponde a un punteggio 38). È vero per tutte le sequenze? E per l’intera lunghezza della sequenza?
 
 # Valutazione della qualità con FASTQE 🧬😎 - solo letture brevi
 
-Per dare un'occhiata alla qualità della sequenza lungo tutte le sequenze, possiamo usare [FASTQE](https://fastqe.com/). Si tratta di uno strumento open-source che offre un modo semplice e divertente per controllare la qualità dei dati di sequenza grezzi e stamparli come emoji. È possibile utilizzarlo per dare una rapida impressione se i dati presentano problemi di cui si dovrebbe essere consapevoli prima di effettuare ulteriori analisi.
+Per esaminare la qualità delle sequenze lungo tutte le letture, possiamo usare FASTQE [FASTQE](https://fastqe.com/). Sii tratta di uno strumento open-source che offre un modo semplice e divertente per valutare la qualità dei dati di sequenziamento grezzi, rappresentandoli anche come emoji.
+Può essere utile per ottenere rapidamente un’idea generale della qualità dei dati prima di procedere con analisi più approfondite.
 
 > <hands-on-title>Controllo della qualità</hands-on-title>
 > 
-> 1. {% tool [FASTQE](toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.3.1+galaxy0) %} con i seguenti parametri
->    - {% icon param-files %} *"Dati FastQ "*: `Reads`
->    - {% icon param-select %} *"Tipi di punteggio da mostrare "*: `Mean`
+> 1. Esegui il {% tool [FASTQE](toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.3.1+galaxy0) %} con i seguenti parametri
+>    - {% icon param-files %} *"FastQ data"*: `Reads`
+>    - {% icon param-select %} *"Score types to show"*: `Mean`
 > 
-> 2. Ispezione del file HTML generato
+> 2. Ispeziona il file HTML generato.
 {: .hands_on}
 
-Invece di esaminare i punteggi di qualità per ogni singola lettura, FASTQE esamina la qualità collettivamente per tutte le letture di un campione e può calcolare la media per ogni posizione nucleotidica lungo la lunghezza delle letture. Di seguito sono riportati i valori medi per questo set di dati.
+Invece di analizzare i punteggi di qualità per ogni singola lettura, FASTQE valuta la qualità complessiva di tutte le letture di un campione e calcola la media per ogni posizione nucleotidica lungo la lunghezza delle letture. Di seguito sono riportati i valori medi per questo set di dati:
 
 ![FASTQE before](../../images/quality-control/fastqe-mean-before.png "FASTQE mean scores")
 
-è possibile vedere il punteggio per ogni [emoji nella documentazione di fastqe](https://github.com/fastqe/fastqe#scale). Le emoji sottostanti, con punteggi Phred inferiori a 20, sono quelle che speriamo di non vedere molto.
+È possibile consultare il punteggio associato a ciascuna [emoji nella documentazione di fastqe](https://github.com/fastqe/fastqe#scale). Le emoji sottostanti, con punteggi Phred inferiori a 20, sono quelle che speriamo di non vedere troppo spesso.
 
 Phred Quality Score | ASCII code | Emoji
 --- | --- | ---
@@ -227,16 +228,16 @@ Phred Quality Score | ASCII code | Emoji
 {: .question}
 
 
-# Valutazione della qualità con FastQC - letture corte e lunghe
+# Valutazione della qualità con FastQC – letture corte e lunghe
 
-Un modo aggiuntivo o alternativo per verificare la qualità della sequenza è [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). Fornisce una serie modulare di analisi che possono essere utilizzate per verificare se i dati presentano problemi di cui si dovrebbe essere a conoscenza prima di effettuare ulteriori analisi. Possiamo usarlo, ad esempio, per valutare se nei dati sono presenti adattatori noti. Lo eseguiamo sul file FASTQ.
+Un metodo aggiuntivo o alternativo per verificare la qualità delle sequenze è [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). Questo strumento fornisce un insieme modulare di analisi che possono essere utilizzate per individuare eventuali problemi nei dati, di cui è bene essere consapevoli prima di procedere con ulteriori analisi. Possiamo usarlo, ad esempio, per verificare la presenza di adattatori noti nei dati. Lo eseguiremo sul file FASTQ.
 
 > <hands-on-title>Controllo della qualità</hands-on-title>
 > 
-> 1. {% tool [FASTQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0) %} con i seguenti parametri
->    - {% icon param-files %} *"Dati di lettura grezzi dalla vostra storia attuale "*: `Reads`
+> 1. Eseguite il {% tool [FASTQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0) %} con i seguenti parametri
+>    - {% icon param-files %} *"Raw read data from your current history"*: `Reads`
 > 
-> 2. ispezionare il file HTML generato
+> 2. Ispezionare il file HTML generato.
 > 
 {: .hands_on}
 
@@ -245,129 +246,143 @@ Un modo aggiuntivo o alternativo per verificare la qualità della sequenza è [F
 > Quale codifica Phred è utilizzata nel file FASTQ per queste sequenze?
 > 
 > > <solution-title></solution-title>
-> > I punteggi Phred sono codificati con `Sanger / Illumina 1.9` (`Encoding` nella tabella superiore).
+> > I punteggi Phred sono codificati secondo lo schema `Sanger / Illumina 1.9` (`Encoding` tabella superiore del report).
 > {: .solution }
 {: .question}
 
 ## Qualità della sequenza per base
 
-Con FastQC possiamo usare il grafico della qualità della sequenza per base per controllare la qualità delle basi delle letture, in modo simile a quanto fatto con FASTQE.
+Con FastQC possiamo usare il grafico “Qualità della sequenza per base” per esaminare la qualità delle basi delle letture, in modo analogo a quanto fatto con FASTQE.
 
 ![Qualità della sequenza per base](../../images/quality-control/per_base_sequence_quality-before.png "Qualità della sequenza per base")
 
-sull'asse delle ascisse sono indicate le posizioni delle basi nella lettura. In questo esempio, il campione contiene letture lunghe fino a 296 bp.
+Sull’asse delle ascisse (x) sono indicate le posizioni delle basi all’interno della lettura. In questo esempio, il campione contiene letture lunghe fino a 296 bp.
 
 > <details-title>Asse x non uniforme</details-title>
 > 
-> L'asse x non è sempre uniforme. Quando si hanno letture lunghe, si applica un certo binning per mantenere le cose compatte. Lo vediamo nel nostro campione. Inizia con singole basi da 1 a 10. Successivamente, le basi vengono suddivise in una finestra larga un certo numero di basi. Il binning dei dati significa raggruppamento ed è una tecnica di pre-elaborazione dei dati utilizzata per ridurre gli effetti di piccoli errori di osservazione. Il numero di posizioni di base raggruppate dipende dalla lunghezza della lettura. Nel caso di letture >50bp, l'ultima parte del grafico riporterà le statistiche aggregate per finestre di 5bp. Le letture più corte avranno finestre più piccole e quelle più lunghe più grandi. Il binning può essere rimosso durante l'esecuzione di FastQC impostando il parametro "Disable grouping of bases for reads >50bp" su Yes.
+> L’asse x non è sempre uniforme. Quando si hanno letture lunghe, viene applicato un certo binning per mantenere il grafico compatto. Lo possiamo osservare anche nel nostro campione: inizia con basi singole da 1 a 10, poi le basi vengono raggruppate in finestre di ampiezza crescente. Il binning dei dati è una tecnica di pre-elaborazione che serve a ridurre gli effetti di piccoli errori di osservazione. Il numero di posizioni raggruppate dipende dalla lunghezza della lettura: Il numero di posizioni di base raggruppate dipende dalla lunghezza della lettura. Nel caso di letture >50bp, l'ultima parte del grafico riporterà le statistiche aggregate per finestre di 5bp. Le letture più corte avranno finestre più piccole e quelle più lunghe più grandi. Il binning può essere rimosso durante l'esecuzione di FastQC impostando il parametro "Disable grouping of bases for reads >50bp" su Yes.
 {: .details}
 
-Per ogni posizione, viene disegnato un boxplot con:
+Per ogni posizione viene disegnato un boxplot che mostra:
 
-- il valore mediano, rappresentato dalla linea centrale rossa
-- l'intervallo interquartile (25-75%), rappresentato dal riquadro giallo
-- i valori del 10% e del 90% nei baffi superiori e inferiori
+- la mediana (linea rossa centrale)
+- l’intervallo interquartile (25–75%), rappresentato dal riquadro giallo
+- i valori del 10° e 90° percentile, nei baffi superiore e inferiore
 - la qualità media, rappresentata dalla linea blu
+  
+L’asse delle ordinate (y) mostra i punteggi di qualità Phred: più alto è il punteggio, più affidabile è la chiamata della base. Lo sfondo del grafico suddivide l’asse y in tre zone: qualità molto buoni (verde), punteggi di qualità accettabile (arancione) e letture di qualità scadente (rosso).
 
-L'asse y mostra i punteggi di qualità. Più alto è il punteggio, migliore è la chiamata della base. Lo sfondo del grafico divide l'asse y in punteggi di qualità molto buoni (verde), punteggi di qualità ragionevole (arancione) e letture di qualità scadente (rosso).
-
-È normale, con tutti i sequenziatori Illumina, che il punteggio di qualità mediano inizi a essere più basso nelle prime 5-7 basi e poi aumenti. La qualità delle letture sulla maggior parte delle piattaforme diminuisce alla fine della lettura. Ciò è spesso dovuto al decadimento del segnale o alla sfasatura durante la corsa di sequenziamento. I recenti sviluppi della chimica applicata al sequenziamento hanno migliorato in parte questo aspetto, ma le letture sono ora più lunghe che mai.
+È normale, con tutti i sequenziatori Illumina, che il punteggio mediano inizi più basso nelle prime 5–7 basi e poi aumenti.
+La qualità tende invece a diminuire verso la fine della lettura, spesso a causa del decadimento del segnale o dello sfasamento durante la corsa di sequenziamento. I recenti sviluppi della chimica di sequenziamento hanno migliorato parzialmente questo fenomeno, ma oggi le letture sono anche molto più lunghe.
 
 
 > <details-title>Decadimento e sfasamento del segnale</details-title>
 > 
 > - Decadimento del segnale
 > 
-> L'intensità del segnale fluorescente decade a ogni ciclo del processo di sequenziamento. A causa della degradazione dei fluorofori, una parte dei filamenti nel cluster non viene allungata. La proporzione del segnale emesso continua a diminuire a ogni ciclo, determinando una diminuzione dei punteggi di qualità all'estremità 3' della lettura.
+> L’intensità del segnale fluorescente diminuisce a ogni ciclo di sequenziamento.
+A causa della degradazione dei fluorofori, una parte dei filamenti nel cluster non viene più allungata.
+La frazione di segnale emesso continua quindi a ridursi ciclo dopo ciclo, determinando un calo dei punteggi di qualità all’estremità 3’ della lettura.
 > 
-> - Sfasatura
+> - Sfasamento
 > 
-> Il segnale inizia a confondersi con l'aumentare del numero di cicli perché il cluster perde sincronia. Con l'avanzare dei cicli, alcuni filamenti presentano fallimenti casuali di nucleotidi da incorporare a causa di:
+> Il segnale inizia a confondersi man mano che aumentano i cicli, poiché il cluster perde sincronia.
+Alcuni filamenti subiscono errori casuali di incorporazione dei nucleotidi dovuti a:
 > 
-> - Rimozione incompleta dei terminatori e dei fluorofori in 3'
-> - Incorporazione di nucleotidi senza terminatori efficaci in 3'
+> - rimozione incompleta dei terminatori e dei fluorofori in 3'
+> - Incorporazione di nucleotidi privi di terminatori efficaci in 3’'
 >
-> Questo comporta una diminuzione dei punteggi di qualità all'estremità 3' della lettura.
+> Entrambi i fenomeni portano a una riduzione della qualità all’estremità 3’ della lettura.
 {: .details}
 
 
 > <details-title>Altri profili di qualità di sequenza</details-title>
 > 
-> Questi sono alcuni profili di qualità per sequenza di basi che possono indicare problemi con il sequenziamento.
+> Questi sono alcuni profili di qualità per base che possono indicare problemi di sequenziamento.
 > 
 > - Sovra-raggruppamento
 > 
->   Le strutture di sequenziamento possono raggruppare eccessivamente le celle di flusso. Ciò comporta piccole distanze tra i cluster e una sovrapposizione dei segnali. Due cluster possono essere interpretati come un unico cluster con segnali fluorescenti misti che vengono rilevati, riducendo la purezza del segnale. Genera punteggi di qualità inferiori per l'intera lettura.
+>   LIn alcuni casi, le strutture di sequenziamento possono sovraccaricare la cella di flusso, causando distanze ridotte tra i cluster e sovrapposizione dei segnali. Due cluster possono quindi essere interpretati come uno solo, con segnali fluorescenti misti che riducono la purezza del segnale.
+Questo genera punteggi di qualità inferiori per l’intera lettura.
 > 
-> - Disaggregazione della strumentazione
+> - Guasti strumentali
 > 
->   occasionalmente possono verificarsi alcuni problemi con gli strumenti di sequenziamento durante una corsa. Qualsiasi calo improvviso della qualità o un'alta percentuale di letture di bassa qualità in tutta la lettura potrebbe indicare un problema nella struttura. Alcuni esempi di tali problemi:
+>   Possono verificarsi problemi tecnici durante una corsa di sequenziamento.
+Un calo improvviso della qualità o una percentuale elevata di letture a bassa qualità lungo tutta la sequenza possono indicare un problema di strumentazione. Alcuni esempi:
 > 
->    - Raffica di collettori
+>    - Rottura del collettore (Manifold burst)
 > 
 >      ![Manifold burst](../../images/quality-control/per_base_sequence_quality_manifold_burst.png)
 > 
->    - perdita di cicli
+>    - Perdita di cicli (Cycle loss)
 > 
 >      ![Perdita di cicli](../../images/quality-control/per_base_sequence_quality_cycle_loss.png)
 > 
->    - fallimento della lettura 2
+>    - Errore della lettura 2 (Read 2 failure)
 > 
 >      ![Perdita di cicli](../../images/quality-control/per_base_sequence_quality_read2_failure.png)
 > 
->   Con questi dati, è necessario contattare il centro di sequenziamento per discuterne. Spesso è necessario un nuovo sequenziamento (che, secondo la nostra esperienza, viene offerto dall'azienda).
+>   CIn questi casi è consigliabile contattare il centro di sequenziamento per discuterne. Spesso è necessario un nuovo sequenziamento, che in genere viene offerto dalla struttura stessa.
 {: .details}
 
 > <question-title></question-title>
 > 
 > 1. Come cambia il punteggio medio di qualità lungo la sequenza?
-> 2. Questa tendenza si riscontra in tutte le sequenze?
+> 2. Questa tendenza si osserva in tutte le sequenze?
 > 
 > > <solution-title></solution-title>
-> > 1. Il punteggio medio di qualità (linea blu) scende circa a metà di queste sequenze. È normale che la qualità media diminuisca verso la fine delle sequenze, poiché i sequenziatori incorporano più nucleotidi errati alla fine. Tuttavia, in questo campione c'è un calo di qualità molto forte dalla metà in poi.
-> > 2. I box plot si allargano a partire dalla posizione ~100. Ciò significa che molte sequenze hanno un punteggio in calo a partire dalla metà della sequenza. Dopo 100 nucleotidi, oltre il 10% delle sequenze ha un punteggio inferiore a 20.
+> > 1. Il punteggio medio di qualità (linea blu) diminuisce circa a metà di queste sequenze.
+È normale che la qualità media cali verso la fine delle letture, poiché i sequenziatori incorporano più nucleotidi errati negli ultimi cicli.
+Tuttavia, in questo campione si osserva un calo di qualità molto marcato dalla metà in poi.
+> > 2. I boxplot si allargano a partire dalla posizione ~100, indicando che molte sequenze mostrano un calo di punteggio a partire da metà lettura. Dopo 100 nucleotidi, oltre il 10% delle sequenze presenta un punteggio inferiore a 20.
 > >
 > {: .solution }
 {: .question}
 
-Quando la qualità mediana è inferiore a un punteggio Phred di ~20, dovremmo considerare la possibilità di tagliare le basi di cattiva qualità dalla sequenza. Questo processo verrà spiegato nella sezione Trim e filtro.
+Quando la qualità mediana scende sotto un punteggio Phred di circa 20, è opportuno considerare il taglio delle basi di bassa qualità dalla sequenza. Questo processo verrà illustrato nella sezione Trim e filtro.
 
 ### Contenuto adattatore
 
 ![Contenuto adattatore](../../images/quality-control/adapter_content-before.png "Contenuto adattatore")
 
-Il grafico mostra la percentuale cumulativa di letture con le diverse sequenze di adattatori in ogni posizione. Una volta che una sequenza di adattatori viene rilevata in una lettura, viene contata come presente fino alla fine della lettura, quindi la percentuale aumenta con la lunghezza della lettura. FastQC è in grado di rilevare alcuni adattatori per impostazione predefinita (ad es. Illumina, Nextera), mentre per altri è possibile fornire un file di contaminanti come input allo strumento FastQC.
+l grafico mostra la percentuale cumulativa di letture che contengono diverse sequenze adattatrici in ciascuna posizione.
+Una volta che una sequenza di adattatore viene rilevata in una lettura, viene conteggiata come presente fino alla fine, quindi la percentuale aumenta con la lunghezza della lettura. FastQC rileva automaticamente diversi adattatori comuni (ad esempio Illumina, Nextera), ma è anche possibile fornire un file di contaminanti personalizzato come input allo strumento.
 
-Idealmente i dati di sequenza Illumina non dovrebbero avere alcuna sequenza adattatore presente. Tuttavia, in caso di letture lunghe, alcuni inserti della libreria sono più corti della lunghezza della lettura, con conseguente passaggio all'adattatore all'estremità 3' della lettura. Questo campione di microbioma ha letture relativamente lunghe e possiamo vedere che è stato rilevato l'adattatore Nextera.
+Idealmente, i dati di sequenziamento Illumina non dovrebbero contenere adattatori. Tuttavia, nelle letture lunghe, alcuni inserti della libreria possono essere più corti della lunghezza della lettura, facendo sì che l’adattatore venga letto all’estremità 3’.
+Nel nostro campione di microbioma, FastQC rileva la presenza dell’adattatore Nextera.
 
-> <details-title>Altri profili di contenuto dell'adattatore</details-title>
+> <details-title>Altri profili di contenuto adattatore</details-title>
 > 
-> Il contenuto di adattatori può essere rilevato anche con le librerie RNA-Seq, dove la distribuzione delle dimensioni degli inserti della libreria è varia e probabilmente include alcuni inserti corti.
+>Il contenuto di adattatori può comparire anche nelle librerie RNA-Seq, dove la distribuzione delle dimensioni degli inserti è varia e include spesso inserti corti.
 > 
 > ![Contenuto adattatore](../../images/quality-control/adapter_content_rna_seq.png)
 >
 {: .details}
 
-Per rimuovere l'adattatore, è possibile utilizzare uno strumento di trimming come Cutadapt. Il processo verrà illustrato nella sezione Filtro e trim.
+Per rimuovere l’adattatore, è possibile utilizzare uno strumento di trimming come Cutadapt. Il processo viene illustrato nella sezione Filtro e trim
 
 
 > <tip-title>Scorciatoia</tip-title>
 > 
-> Le sezioni seguenti illustrano in dettaglio alcuni degli altri grafici generati da FastQC. Si noti che alcuni grafici/moduli possono dare degli avvertimenti, ma sono normali per il tipo di dati con cui si sta lavorando, come discusso di seguito e [nelle FAQ di FASTQC](https://rtsf.natsci.msu.edu/genomics/tech-notes/fastqc-tutorial-and-faq/). Gli altri grafici ci forniscono informazioni per comprendere più a fondo la qualità dei dati e per vedere se è possibile apportare modifiche in laboratorio per ottenere dati di qualità superiore in futuro. Queste sezioni sono **opzionali** e se si desidera saltarle è possibile:
->   - Passate direttamente alla [sezione successiva] (#trim-and-filter---short-reads) per imparare a tagliare i dati paired-end
+> Le sezioni seguenti descrivono nel dettaglio alcuni degli altri grafici generati da FastQC. Alcuni moduli possono dare avvertimenti che sono normali per il tipo di dati con cui si sta lavorando, come discusso sotto e [nelle FAQ di FASTQC](https://rtsf.natsci.msu.edu/genomics/tech-notes/fastqc-tutorial-and-faq/). Gli altri grafici forniscono informazioni utili per comprendere più a fondo la qualità dei dati e per valutare possibili miglioramenti di laboratorio in futuro. Queste sezioni sono **opzionali** e vuoi saltarle, puoi 
+>   - Passate direttamente alla [sezione successiva] (#trim-and-filter---short-reads) per imparare a ritagliare dati paired-end.
 {: .tip}
 
-### Qualità della sequenza per mattonella
+### Qualità della sequenza per piastrella (tile)
 
-Questo grafico consente di esaminare i punteggi di qualità di ciascuna piastrella su tutte le basi per vedere se c'è stata una perdita di qualità associata a una sola parte della cella di flusso. Il grafico mostra la deviazione dalla qualità media per ogni piastrella della flowcell. I colori più caldi indicano che le letture in quella determinata piastrella hanno una qualità peggiore per quella posizione rispetto alle letture in altre piastrelle. Con questo campione, si può notare che alcune piastrelle mostrano una qualità costantemente scarsa, soprattutto a partire da ~100bp. Un buon grafico dovrebbe essere tutto blu.
+Questo grafico consente di esaminare i punteggi di qualità di ciascuna piastrella della flow cell su tutte le basi per vedere se c’è stata una perdita di qualità associata a una singola area della flow cell. Mostra la deviazione dalla qualità media per ogni piastrella; i colori più caldi indicano qualità peggiore rispetto alle altre piastrelle nella stessa posizione. In questo campione, alcune piastrelle mostrano qualità costantemente bassa, soprattutto da ~100 bp in poi. Un buon grafico dovrebbe essere tutto blu.
 
 ![Qualità della sequenza per tile](../../images/quality-control/per_tile_sequence_quality-before.png "Qualità della sequenza per tile")
 
-Questo grafico appare solo per le librerie Illumina che conservano gli identificatori di sequenza originali. In essi è codificata la piastrella della cella di flusso da cui proviene ogni lettura.
+Questo grafico appare solo per librerie Illumina che preservano gli identificatori originali nelle intestazioni delle letture (che codificano la piastrella di provenienza).
 
 > <details-title>Altri profili di qualità delle piastrelle</details-title>
 > 
-> In alcuni casi, le sostanze chimiche utilizzate durante il sequenziamento si esauriscono con il passare del tempo e le ultime piastrelle ricevono le sostanze chimiche peggiori, rendendo le reazioni di sequenziamento un po' soggette a errori. Il grafico "Qualità della sequenza per tile" presenta quindi alcune linee orizzontali come questa:
+> Questo grafico appare solo per librerie Illumina che preservano gli identificatori originali nelle intestazioni delle letture (che codificano la piastrella di provenienza).
+
+<details-title>Altri profili di qualità per piastrella</details-title>
+
+A volte le sostanze chimiche usate durante il sequenziamento si esauriscono col tempo e le ultime piastrelle ricevono reagenti meno performanti, rendendo la reazione più soggetta a errori. Il grafico può presentare linee orizzontali come in questo esempio:
 > 
 > ![Qualità della sequenza per tile con linee orizzontali](../../images/quality-control/per_tile_sequence_quality_horizontal_lines.png)
 > 
