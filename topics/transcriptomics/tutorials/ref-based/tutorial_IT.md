@@ -534,7 +534,7 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > 
 > ![Livelli di duplicazione della sequenza](../../images/ref-based/fastqc_sequence_duplication_levels_plot.png "Livelli di duplicazione della sequenza")
 > 
-> Le letture duplicate possono derivare da geni altamente espressi, quindi di solito vengono mantenute nelle analisi di espressione differenziale RNA-Seq. Tuttavia, una percentuale elevata di duplicati può indicare un problema, ad esempio un’eccessiva amplificazione durante la PCR di una libreria a bassa complessità.
+> Le letture duplicate possono derivare da geni altamente espressi, quindi di solito vengono mantenute nelle analisi di espressione differenziale RNA-Seq. uttavia, una percentuale elevata di duplicati può indicare un problema, ad esempio un’eccessiva amplificazione durante la PCR di una libreria a bassa complessità.
 > 
 > Il tool **MarkDuplicates** della [Picard suite](http://broadinstitute.github.io/picard/) esamina i record allineati di un file BAM per individuare le letture duplicate, ossia quelle che mappano nella stessa posizione (in base alla posizione iniziale della mappatura).
 > 
@@ -544,17 +544,17 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > >    - {% icon param-collection %} *"Seleziona il set di dati SAM/BAM o la raccolta di dati "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
 > > 
 > > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i log di MarkDuplicates con i seguenti parametri:
-> >    - In *"Risultati "*:
-> >        - *"Risultati "*
-> >            - *"Quale strumento è stato usato per generare i log? "*: `Picard`
+> >    - In *"Results "*:
+> >        - *"Results "*
+> >            - *"Which tool was used generate logs? "*: `Picard`
 > >                - In *"Picard output "*:
-> >                    - {% icon param-repeat %} *"Inserire l'output di Picard "*
-> >                        - *"Tipo di output Picard? "*: `Markdups`
+> >                    - {% icon param-repeat %} *"Insert Picard output "*
+> >                        - *"Type of Picard output? "*: `Markdups`
 > >                        - {% icon param-collection %} *"Picard output "*: `MarkDuplicates on collection N: MarkDuplicate metrics` (output di **MarkDuplicates** {% icon tool %})
 > > 
 > >    > <question-title></question-title>
 > >    > 
-> >    > Quali sono le percentuali di letture duplicate per ogni campione?
+> >    > Quali sono le percentuali di letture duplicate per ciascun campione?
 > >    > 
 > >    > > <solution-title></solution-title>
 > >    > > 
@@ -566,22 +566,22 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > 
 > In generale, ottenere fino al 50% di letture duplicate è considerato normale. Quindi entrambi i nostri campioni vanno bene.
 > 
-> #### Numero di letture mappate su ogni cromosoma
+> #### Numero di letture mappate su ciascun cromosoma
 > 
-> Per valutare la qualità del campione (ad es. eccesso di contaminazione mitocondriale), possiamo controllare il sesso dei campioni, oppure per vedere se qualche cromosoma ha geni altamente espressi, possiamo controllare il numero di letture mappate su ciascun cromosoma usando **IdxStats** della suite **Samtools**.
+> Per valutare la qualità dei campioni (ad esempio un eccesso di contaminazione mitocondriale), possiamo controllare il sesso dei campioni o verificare se alcuni cromosomi presentano geni altamente espressi. Questo può essere fatto controllando il numero di letture mappate su ciascun cromosoma utilizzando **IdxStats** della suite **Samtools**.
 > 
-> > <hands-on-title>Verifica il numero di letture mappate su ciascun cromosoma</hands-on-title>
+> > <hands-on-title>Controlla il numero di letture mappate su ciascun cromosoma</hands-on-title>
 > > 
 > > 1. {% tool [Samtools idxstats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_idxstats/samtools_idxstats/2.0.4) %} con i seguenti parametri:
 > >    - {% icon param-collection %} *"File BAM "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
 > > 
 > > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i log di idxstats con i seguenti parametri:
-> >    - In *"Risultati "*:
-> >        - *"Risultati "*
-> >            - *"Quale strumento è stato usato per generare i log? "*: `Samtools`
+> >    - In *"Results "*:
+> >        - *"Results "*
+> >            - *"Which tool was used generate logs? "*: `Samtools`
 > >                - In *"Samtools output "*:
-> >                    - {% icon param-repeat %} *"Inserisci l'output di Samtools "*
-> >                        - *"Tipo di output di Samtools? "*: `idxstats`
+> >                    - {% icon param-repeat %} *"Insert Samtools output "*
+> >                        - *"Type of Samtools output? "*: `idxstats`
 > >                            - {% icon param-collection %} *"Samtools idxstats output "*: `Samtools idxstats on collection N` (output di **Samtools idxstats** {% icon tool %})
 > > 
 > >    > <question-title></question-title>
@@ -589,7 +589,7 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > >    > ![Samtools idxstats](../../images/ref-based/samtools-idxstats-mapped-reads-plot.png)
 > >    > 
 > >    > 1. Quanti cromosomi ha il genoma di *Drosophila*?
-> >    > 2. Dove sono state mappate le letture?
+> >    > 2. Dove sono state mappate principalmente le letture?
 > >    > 3. Possiamo determinare il sesso dei campioni?
 > >    > 
 > >    > > <solution-title></solution-title>
@@ -604,49 +604,49 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > > 
 > {: .hands_on}
 > 
-> #### Copertura del corpo del gene
+> #### Copertura del corpo genico
 > 
-> Le diverse regioni di un gene costituiscono il corpo del gene. È importante verificare se la copertura delle letture è uniforme in tutto il corpo del gene. Ad esempio, un bias verso l'estremità 5' dei geni potrebbe indicare una degradazione dell'RNA. In alternativa, un bias verso i 3' potrebbe indicare che i dati provengono da un saggio 3'. Per valutare questo aspetto, è possibile utilizzare lo strumento **Gene Body Coverage** della suite di strumenti RSeQC ({% cite wang2012rseqc %}). Questo strumento scala tutti i trascritti a 100 nucleotidi (utilizzando un file di annotazione fornito) e calcola il numero di letture che coprono ogni posizione nucleotidica (scalata). Poiché questo strumento è molto lento, calcoleremo la copertura solo su 200.000 letture casuali.
+> LLe diverse regioni di un gene costituiscono il corpo del gene. È importante verificare se la copertura delle letture è uniforme lungo tutto il corpo genico. Ad esempio, un bias verso l’estremità 5' può indicare una degradazione dell’RNA, mentre un bias verso il 3' può indicare che i dati provengono da un saggio 3'. Per valutare questo aspetto, si utilizza lo strumento **Gene Body Coverage** della suite di strumenti RSeQC ({% cite wang2012rseqc %}). uesto strumento ridimensiona tutti i trascritti a 100 nucleotidi (usando un file di annotazione fornito) e calcola il numero di letture che coprono ciascuna posizione (scalata) del trascritto. Poiché questo strumento è piuttosto lento, la copertura viene calcolata solo su 200.000 letture casuali.
 > 
 > > <hands-on-title>Controllo della copertura del corpo genico</hands-on-title>
 > > 
 > > 1. {% tool [Samtools view](toolshed.g2.bx.psu.edu/repos/iuc/samtools_view/samtools_view/1.15.1+galaxy0) %} con i seguenti parametri:
 > >    - {% icon param-collection %} *"Set di dati SAM/BAM/CRAM "*: `mapped_reads` (output di **RNA STAR** {% icon tool %})
 > >    - *"Cosa vorresti guardare? "*: `A filtered/subsampled selection of reads`
-> >        - In *"Configura sottocampionamento "*:
-> >            - *"Allineamento del sottocampione "*: `Specify a target # of reads`]
+> >        - In *"CConfigure subsampling "*:
+> >            - *"ASubsample alignment "*: `Specify a target # of reads`]
 > >                - *"Target # of reads "*: `200000`
-> >                - *"Seme per il generatore di numeri casuali "*: `1`
-> >        - *"Cosa vorresti che fosse riportato? "*: `All reads retained after filtering and subsampling`
-> >            - *"Formato di output "*: `BAM (-b)`
-> >    - *"Utilizzare una sequenza di riferimento "*: `No`
+> >                - *"Seed for random number generator "*: `1`
+> >        - *"What would you like to have reported? "*: `All reads retained after filtering and subsampling`
+> >            - *"Output format "*: `BAM (-b)`
+> >    - *"Use a reference sequence "*: `No`
 > > 
 > > 2. {% tool [Convert GTF to BED12](toolshed.g2.bx.psu.edu/repos/iuc/gtftobed12/gtftobed12/357) %} per convertire il file GTF in BED:
 > >    - {% icon param-file %} *"File GTF da convertire "*: `Drosophila_melanogaster.BDGP6.32.109.gtf.gz`
 > > 
 > > 3. {% tool [Gene Body Coverage (BAM)](toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_geneBody_coverage/5.0.1+galaxy2) %} con i seguenti parametri:
 > >    - *"Eseguire ogni campione separatamente o combinare più campioni in un unico grafico "*: `Run each sample separately`
-> >        - {% icon param-collection %} *"File .bam di ingresso "*: output della vista **Samtools** {% icon tool %}
-> >    - {% icon param-file %} *"Modello genetico di riferimento "*: `Convert GTF to BED12 on data N: BED12` (risultato di **Converti GTF in BED12** {% icon tool %})
+> >        - {% icon param-collection %} *"File .bam di ingresso "*: output di **Samtools view** {% icon tool %}
+> >    - {% icon param-file %} *"Reference gene model "*: `Convert GTF to BED12 on data N: BED12` (risultato di **Converti GTF in BED12** {% icon tool %})
 > > 
 > > 4. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i risultati di RSeQC con i seguenti parametri:
-> >    - In *"Risultati "*:
-> >        - *"Risultati "*
-> >            - *"Quale strumento è stato usato per generare i log? "*: `RSeQC`
-> >                - In *"output RSeQC "*:
-> >                    - {% icon param-repeat %} *"Inserisci output RSeQC "*
-> >                        - *"Tipo di output RSeQC? "*: `gene_body_coverage`
+> >    - In *"Results "*:
+> >        - *"Results "*
+> >            - *"Which tool was used generate logs? "*: `RSeQC`
+> >                - In *"RSeQC output "*:
+> >                    - {% icon param-repeat %} *"Insert RSeQC output "*
+> >                        - *"Type of RSeQC output "*: `gene_body_coverage`
 > >                            - {% icon param-collection %} *"RSeQC gene_body_coverage output "*: `Gene Body Coverage (BAM) on collection N (text)` (output di **Gene Body Coverage (BAM)** {% icon tool %})
 > > 
 > >    > <question-title></question-title>
 > >    > 
 > >    > ![Copertura del corpo del gene](../../images/ref-based/rseqc_gene_body_coverage_plot.png)
 > >    > 
-> >    > Come sono le coperture tra i corpi genici? I campioni sono polarizzati in 3' o 5'?
+> >    > Come appare la copertura lungo i corpi genici? I campioni sono polarizzati in 3' o 5'?
 > >    > 
 > >    > > <solution-title></solution-title>
 > >    > > 
-> >    > > Per entrambi i campioni c'è una copertura abbastanza uniforme dalle estremità 5' a quelle 3' (nonostante un po' di rumore nel mezzo). Quindi non ci sono bias evidenti in entrambi i campioni. {Soluzione}
+> >    > > PPer entrambi i campioni la copertura è abbastanza uniforme dalle estremità 5' alle 3', nonostante un po’ di rumore al centro. Quindi non si osservano bias evidenti. {Soluzione}
 > > > 
 > > {: .question}
 > > 
@@ -654,9 +654,9 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > 
 > #### Distribuzione delle letture tra le caratteristiche
 > 
-> Con i dati RNA-Seq, ci si aspetta che la maggior parte delle letture mappino su esoni piuttosto che su introni o regioni intergeniche. Prima di procedere con il conteggio e l'analisi dell'espressione differenziale, può essere interessante verificare la distribuzione delle letture tra le caratteristiche note del gene (esoni, CDS, 5' UTR, 3' UTR, introni, regioni intergeniche). Ad esempio, un numero elevato di letture mappate nelle regioni intergeniche può indicare la presenza di contaminazione da DNA.
+> Nei dati RNA-Seq, ci si aspetta che la maggior parte delle letture si mappi sugli esoni, piuttosto che su introni o regioni intergeniche. Prima di procedere con il conteggio e con l’analisi dell’espressione differenziale, può essere utile controllare la distribuzione delle letture tra le diverse caratteristiche geniche (esoni, CDS, 5’UTR, 3’UTR, introni, regioni intergeniche). Un’elevata percentuale di letture mappate nelle regioni intergeniche può indicare contaminazione da DNA.
 > 
-> Qui utilizzeremo lo strumento **Read Distribution** della suite di strumenti RSeQC ({% cite wang2012rseqc %}), che utilizza il file di annotazione per identificare la posizione delle diverse caratteristiche geniche.
+> Per farlo, utilizzeremo lo strumento **Read Distribution** di RSeQC ({% cite wang2012rseqc %}), che utilizza il file di annotazione per identificare la posizione delle varie caratteristiche geniche.
 > 
 > > <hands-on-title>Verifica il numero di letture mappate su ciascun cromosoma</hands-on-title>
 > > 
@@ -665,13 +665,13 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > >    - {% icon param-file %} *"Modello genico di riferimento "*: File BED12 (risultato di **Converti GTF in BED12** {% icon tool %})
 > > 
 > > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i risultati della Read Distribution con i seguenti parametri:
-> >    - In *"Risultati "*:
-> >        - *"Risultati "*
-> >            - *"Quale strumento è stato usato per generare i log? "*: `RSeQC`
-> >                - In *"output RSeQC "*:
-> >                    - {% icon param-repeat %} *"Inserisci output RSeQC "*
-> >                        - *"Tipo di output RSeQC? "*: `read_distribution`
-> >                            - {% icon param-collection %} *"RSeQC read_distribution output "*: `Read Distribution on collection N` (output di **Distribuzione letture** {% icon tool %})
+> >    - In *"Results "*:
+> >        - *"Results "*
+> >            - *"Which tool was used generate logs? "*: `RSeQC`
+> >                - In *"RSeQC output"*:
+> >                    - {% icon param-repeat %} *"Insert RSeQC output "*
+> >                        - *"Type of RSeQC output? "*: `read_distribution`
+> >                            - {% icon param-collection %} *"RSeQC read_distribution output "*: `Read Distribution on collection N` (output di **Read Distribution** {% icon tool %})
 > > 
 > >    > <question-title></question-title>
 > >    > 
@@ -681,7 +681,7 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > >    > 
 > >    > > <solution-title></solution-title>
 > >    > > 
-> >    > > La maggior parte delle letture è mappata sugli esoni (>80%), solo ~2% sugli introni e ~5% sulle regioni intergeniche, come ci aspettavamo. Ciò conferma che i nostri dati sono dati RNA-Seq e che la mappatura è riuscita. {\a6}(*)
+> >    > >La maggior parte delle letture si mappa sugli esoni (>80%), circa il 2% sugli introni e circa il 5% nelle regioni intergeniche, come ci aspettavamo. Questo conferma che i nostri dati sono effettivamente dati RNA-Seq e che la mappatura è riuscita correttamente. {\a6}(*)
 > > > 
 > > {: .question}
 > > 
@@ -691,19 +691,19 @@ Il file BAM contiene informazioni su tutte le letture, il che lo rende difficile
 > 
 {: .details}
 
-Dopo la mappatura, ora abbiamo le informazioni sulla posizione delle letture sul genoma di riferimento e sulla loro mappatura. Il passo successivo nell'analisi dei dati RNA-Seq è la quantificazione del numero di letture mappate su caratteristiche genomiche (geni, trascritti, esoni, ...).
+Dopo la mappatura, disponiamo ora delle informazioni sulla posizione delle letture sul genoma di riferimento e sulla qualità della loro mappatura. Il passo successivo dell’analisi RNA-Seq consiste nella quantificazione del numero di letture mappate sulle diverse caratteristiche genomiche (geni, trascritti, esoni, ecc.).
 
 > <comment-title></comment-title>
 > 
-> La quantificazione dipende sia dal genoma di riferimento (il file FASTA) sia dalle annotazioni associate (il file GTF). È estremamente importante utilizzare un file di annotazione che corrisponda alla stessa versione del genoma di riferimento utilizzato per la mappatura (ad esempio, `dm6` qui), poiché le coordinate cromosomiche dei geni sono solitamente diverse tra le varie versioni del genoma di riferimento.
+> La quantificazione dipende sia dal genoma di riferimento (file FASTA) sia dalle annotazioni associate (file GTF). È fondamentale utilizzare un file di annotazione corrispondente alla stessa versione del genoma di riferimento utilizzata per la mappatura (in questo caso dm6), poiché le coordinate cromosomiche dei geni variano tra versioni diverse del genoma.
 > 
 {: .comment}
 
-Qui ci concentreremo sui geni, poiché vorremmo identificare quelli espressi in modo differenziato a causa dell'eliminazione del gene Pasilla.
+Qui ci concentreremo sui geni, poiché vogliamo identificare quelli espressi in modo differenziale a seguito della deplezione del gene Pasilla.
 
 # Conteggio del numero di letture per gene annotato
 
-Per confrontare l'espressione di singoli geni tra condizioni diverse (*ad esempio, con o senza deplezione di PS), un primo passo essenziale è quantificare il numero di letture per gene, o più specificamente il numero di letture che mappano sugli esoni di ciascun gene.
+er confrontare l’espressione di singoli geni tra condizioni diverse (ad esempio con o senza deplezione di PS), un primo passo essenziale è quantificare il numero di letture per gene, o più specificamente, il numero di letture che mappano sugli esoni di ciascun gene.
 
 ![Conteggio del numero di letture per gene annotato](../../images/transcriptomics_images/gene_counting.png "Conteggio del numero di letture per gene annotato")
 
@@ -726,7 +726,7 @@ Per confrontare l'espressione di singoli geni tra condizioni diverse (*ad esempi
 > >    | gene2 - exon2 | 4               |
 > >    | gene2 - exon3 | 3               |
 > > 
-> > 2. il gene1 ha 4 letture, non 5, a causa dello splicing dell'ultima lettura (gene1 - esone1 + gene1 - esone2). il gene2 ha 6 letture, 3 delle quali sono spliced.
+> > 2. Il gene1 ha 4 letture, non 5, a causa dello splicing dell’ultima lettura (gene1 - esone1 + gene1 - esone2). Il gene2 ha 6 letture, 3 delle quali sono spliced.
 > > 
 > {: .solution}
 > 
@@ -734,20 +734,20 @@ Per confrontare l'espressione di singoli geni tra condizioni diverse (*ad esempi
 
 Per il conteggio delle letture sono disponibili due strumenti principali: [**HTSeq-count**](http://htseq.readthedocs.io/en/release_0.9.1/count.html) ({% cite anders2015htseq %}) o **featureCounts** ({% cite liao2013featurecounts %}). Inoltre, **STAR** permette di contare le letture durante la mappatura: i suoi risultati sono identici a quelli di **HTSeq-count**. Sebbene questo risultato sia sufficiente per la maggior parte delle analisi, **featureCounts** offre una maggiore personalizzazione del conteggio delle letture (qualità minima della mappatura, conteggio delle letture invece dei frammenti, conteggio dei trascritti invece dei geni, ecc.)
 
-In linea di principio, il conteggio delle letture che si sovrappongono alle caratteristiche genomiche è un compito abbastanza semplice. Tuttavia, è necessario determinare l'omogeneità della libreria. Questo è infatti un parametro di **featureCounts**. Al contrario, **STAR** valuta i conteggi nei tre possibili strandness, ma è comunque necessaria questa informazione per estrarre i conteggi che corrispondono alla propria libreria.
+IIn linea di principio, il conteggio delle letture che si sovrappongono a caratteristiche genomiche è un compito piuttosto semplice. Tuttavia, è necessario determinare la direzionalità (strandness) della libreria. Questo è infatti un parametro di **featureCounts**. Al contrario, **STAR** calcola i conteggi per tutte e tre le possibili opzioni di strandness, ma è comunque necessario conoscere questa informazione per estrarre i conteggi corretti.
 
-## Stima della filiazione
+## tima della filiazione (strandness)
 
-Gli RNA che vengono tipicamente presi di mira negli esperimenti di RNA-Seq sono a singolo filamento (*ad esempio, mRNA) e quindi hanno una polarità (estremità 5' e 3' funzionalmente distinte). Durante un tipico esperimento RNA-Seq, l'informazione sulla filiazione viene persa dopo che entrambi i filamenti di cDNA sono stati sintetizzati, selezionati per dimensione e convertiti in una libreria di sequenziamento. Tuttavia, questa informazione può essere molto utile per la fase di conteggio delle letture, soprattutto per le letture situate sulla sovrapposizione di due geni che si trovano su filamenti diversi.
+Gli RNA analizzati negli esperimenti di RNA-Seq sono in genere a singolo filamento (per esempio mRNA) e quindi possiedono una polarità, con estremità 5’ e 3’ funzionalmente distinte. Durante un esperimento di RNA-Seq, queste informazioni vengono spesso perse dopo la sintesi del cDNA, la selezione delle dimensioni e la preparazione della libreria di sequenziamento. Tuttavia, sapere se la libreria conserva o meno la direzionalità è importante per il conteggio corretto, soprattutto per le letture che si trovano in regioni dove due geni si sovrappongono su filamenti opposti.
 
 ![Perché la filiazione?](../../images/ref-based/strandness_why.png "Se l'informazione sulla filiazione è stata persa durante la preparazione della libreria, la lettura1 sarà assegnata al gene1 situato sul filamento in avanti ma la lettura2 sarà 'ambigua' in quanto può essere assegnata al gene1 (filamento in avanti) o al gene2 (filamento inverso)")
 
 Alcuni protocolli di preparazione delle librerie creano librerie RNA-Seq cosiddette *stranded* che conservano le informazioni sugli strand ({% cite levin2010comprehensive %} fornisce un'eccellente panoramica). In pratica, con i protocolli Illumina RNA-Seq è improbabile che si incontrino tutte le possibilità descritte in questo articolo. Molto probabilmente si avrà a che fare con:
 
-- Dati RNA-Seq non filati
-- Dati RNA-Seq a filamento generati dall'uso di kit specializzati per l'isolamento dell'RNA durante la preparazione dei campioni
+- Dati RNA-Seq non direzionali (unstranded)
+- Dati RNA-Seq direzionali (stranded) ottenuti mediante kit specifici per l’isolamento dell’RNA
 
-> <details-title>Più dettagli sulla filiazione</details-title>
+> <details-title>Più dettagli sullo strendness</details-title>
 > 
 > ![Relazione tra orientamento del DNA e dell'RNA](../../images/transcriptomics_images/dna_rna.png "Relazione tra orientamento del DNA e dell'RNA")
 > 
@@ -761,17 +761,17 @@ Alcuni protocolli di preparazione delle librerie creano librerie RNA-Seq cosidde
 > 
 {: .details}
 
-Queste informazioni dovrebbero essere fornite con i file FASTQ, chiedete al vostro centro di sequenziamento! In caso contrario, cercate di trovarle sul sito da cui avete scaricato i dati o nella pubblicazione corrispondente.
+Le informazioni sulla strandness dovrebbero essere fornite insieme ai file FASTQ; in caso contrario, è possibile richiederle al centro di sequenziamento o trovarle nel sito da cui i dati sono stati scaricati o nella pubblicazione associata.
 
 ![Come stimare la strandness?](../../images/ref-based/strandness_cases.png "In una libreria stranded forward, le letture mappano principalmente sullo stesso filamento dei geni. In una libreria stranded reverse, le letture si trovano per lo più sul filamento opposto. Con una libreria non filiforme, le letture si trovano sui geni su entrambi i filamenti, indipendentemente dall'orientamento del gene (esempio per una libreria a lettura singola).")
 
-Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere quello che si preferisce)
+Esistono quattro modi principali per stimare la strandness dai risultati di **STAR** (scegliere quello che si preferisce)
 
 1. Possiamo fare un'ispezione visiva dei filamenti delle letture su IGV (per i set di dati Paired-end è meno facile che con le letture singole e quando si hanno molti campioni può essere doloroso).
 
    > <hands-on-title>Stimare la filiazione con IGV per una libreria paired-end</hands-on-title>
    > 
-   > 1. Tornare alla sessione IGV con il BAM `GSM461177_untreat_paired` aperto.
+   > 1. Aprire il file BAM del campione `GSM461177_untreat_paired`.
    > 
    >    > <tip-title>Se non ce l'hai</tip-title>
    >    > 
@@ -795,48 +795,48 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > 
    > ![Schermata della vista IGV su ps](../../images/ref-based/group_strand_igv_screenshot.png "Schermata di IGV su ps")
    > 
-   > 1. Le letture sono distribuite uniformemente tra i due gruppi (NEGATIVO e POSITIVO)?
-   > 2. Qual è il tipo di filiazione della libreria?
+   > 1. Le letture sono distribuite uniformemente tra i due gruppi (positivo e negativo)?
+   > 2. Qual è il tipo di strandness della libreria?
    > 
    > > <solution-title></solution-title>
    > > 
-   > > 1. Sì, vediamo lo stesso numero di letture in entrambi i gruppi.
-   > > 2. Questo significa che la libreria non è stata sequenziata.
+   > > 1. Le letture sono equamente distribuite tra i due gruppi.
+   > > 2. Questo indica che la libreria è non direzionale (unstranded).
    > > 
-   > > > <comment-title>Come sarebbe se la libreria fosse incagliata? </comment-title>
+   > > > <comment-title>Cosa succederebbe se la libreria fosse “stranded”? </comment-title>
    > > > 
    > > > ![Schermata dell'IGV per stranded vs non-stranded](../../images/ref-based/group_strand_igv_screenshot_RSvsUS.png "Schermata dell'IGV per non-stranded (in alto) vs. reverse strand-specific (in basso)")
    > > > 
-   > > > Si noti che non c'è nessuna lettura nel gruppo POSITIVO per il filamento inverso specifico. {: .comment} {: .solution} {: .question}
+   > > > Si noti che non ci sono letture nel gruppo POSITIVO per il filamento inverso specifico. {: .comment} {: .solution} {: .question}
 
-2. In alternativa, invece di usare la BAM si può usare la copertura dei filamenti generata da **STAR**. Utilizzando **pyGenomeTracks** si potrà visualizzare la copertura su ciascun filamento per ogni campione. Questo strumento dispone di numerosi parametri per personalizzare le trame.
+2. In alternativa, invece di usare la BAM si può usare la copertura dei filamenti generata da **STAR**. Utilizzando **pyGenomeTracks** si potrà visualizzare la copertura su ciascun filamento per ogni campione. Questo strumento dispone di numerosi parametri per personalizzare i grafici.
 
-   > <hands-on-title>Stimare la filiazione con pyGenometracks dalla copertura STAR</hands-on-title>
+   > <hands-on-title>Stimare la strandness con pyGenometracks dalla copertura STAR</hands-on-title>
    > 
    > 1. {% tool [pyGenomeTracks](toolshed.g2.bx.psu.edu/repos/iuc/pygenometracks/pygenomeTracks/3.8+galaxy2) %}:
-   >    - *"Regione del genoma da tracciare "*: `chr4:540,000-560,000`
-   >    - In *"Includi le tracce nel tuo grafico "*:
-   >        - {% icon param-repeat %} *"Inserisci Includi tracce nel tuo grafico "*
-   >            - *"Scegli lo stile della traccia "*: `Bedgraph track`
-   >                - *"Titolo del grafico "*: È necessario lasciare questo campo vuoto in modo che il titolo del grafico sia il nome del campione.
-   >                - {% icon param-collection %} *"File di traccia in formato bedgraph "*: Selezionare `RNA STAR on collection N: Coverage Uniquely mapped strand 1`.
-   >                - *"Colore della traccia "*: Selezionare un colore a scelta, ad esempio blu
-   >                - *"Valore minimo "*: `0`
-   >                - *"altezza "*: `3`
-   >                - *"Mostra la visualizzazione dell'intervallo di dati "*: `Yes`
-   >        - {% icon param-repeat %} *"Inserisci Includi tracce nel tuo grafico "*
-   >            - *"Scegli lo stile della traccia "*: `Bedgraph track`
-   >                - *"Titolo del grafico "*: È necessario lasciare questo campo vuoto in modo che il titolo del grafico sia il nome del campione.
-   >                - {% icon param-collection %} *"File di traccia in formato bedgraph "*: Selezionare `RNA STAR on collection N: Coverage Uniquely mapped strand 2`.
-   >                - *"Colore della traccia "*: Selezionare un colore a scelta diverso dal primo, ad esempio rosso
-   >                - *"Valore minimo "*: `0`
-   >                - *"altezza "*: `3`
-   >                - *"Mostra la visualizzazione dell'intervallo di dati "*: `Yes`
-   >        - {% icon param-repeat %} *"Inserisci Includi tracce nel tuo grafico "*
-   >            - *"Scegli lo stile della traccia "*: `Gene track / Bed track`
-   >                - *"Titolo della trama "*: `Genes`
-   >                - {% icon param-file %} *"File di traccia letto o formato gtf "*: Selezionare `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
-   >                - *"altezza "*: `5`
+   >    - *"Region of the genome to plot "*: `chr4:540,000-560,000`
+   >    - In *"Include tracks in your plot "*:
+   >        - {% icon param-repeat %} *"Insert Include tracks in your plot "*
+   >            - *"Choose style of the track "*: `Bedgraph track`
+   >                - *"Plot title "*: È necessario lasciare questo campo vuoto in modo che il titolo del grafico sia il nome del campione.
+   >                - {% icon param-collection %} *"Track file(s) bedgraph format "*: Selezionare `RNA STAR on collection N: Coverage Uniquely mapped strand 1`.
+   >                - *"Color of track "*: Selezionare un colore a scelta, ad esempio blu
+   >                - *"Minimum value "*: `0`
+   >                - *"height "*: `3`
+   >                - *"Show visualization of data range "*: `Yes`
+   >        - {% icon param-repeat %} *"Insert Include tracks in your plot "*
+   >            - *"Choose style of the track "*: `Bedgraph track`
+   >                - *"Plot title "*: È necessario lasciare questo campo vuoto in modo che il titolo del grafico sia il nome del campione.
+   >                - {% icon param-collection %} *"Track file(s) bedgraph format "*: Selezionare `RNA STAR on collection N: Coverage Uniquely mapped strand 2`.
+   >                - *"Color of track "*: Selezionare un colore a scelta diverso dal primo, ad esempio rosso
+   >                - *"Minimum valu "*: `0`
+   >                - *"height "*: `3`
+   >                - *"Show visualization of data range "*: `Yes`
+   >        - {% icon param-repeat %} *"Insert Include tracks in your plot "*
+   >            - *"Choose style of the track"*: `Gene track / Bed track`
+   >                - *"Plot title "*: `Genes`
+   >                - {% icon param-file %} *"Track file(s) bed or gtf format "*: Selezionare `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+   >                - *"height "*: `5`
    {: .hands_on}
 
    > <question-title></question-title>
@@ -845,7 +845,7 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > 
    > 1. Quale gene stiamo osservando? Quale filamento è?
    > 2. Qual è la copertura media per ciascun filamento?
-   > 3. Qual è la filiazione della libreria?
+   > 3. Qual è la strandness della libreria?
    > 
    > > <solution-title></solution-title>
    > > 
@@ -853,7 +853,7 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > > 2. La scala passa a 1,5-2 nei 4 profili. La copertura media dovrebbe essere di circa 1,2-1,5
    > > 3. Si deduce che la libreria è unstranded.
    > > 
-   > > > <comment-title>Come sarebbe se la libreria fosse filiforme? </comment-title>
+   > > > <comment-title>Come sarebbe se la libreria fosse direzionale? </comment-title>
    > > > 
    > > > ![pyGenomeTracks USvsRS](../../images/ref-based/pyGenomeTracks_USvsRS.png "STAR coverage for strand 1 in blue and strand 2 in red for unstranded and reverse stranded library") Si noti che la copertura sullo strand 1 è molto bassa per il campione stranded_PE mentre il gene è forward. Ciò significa che la libreria di stranded_PE è a filamento inverso. Al contrario, per unstranded_PE la scala è paragonabile per entrambi gli strand. {: .comment} {: .solution}
    > 
@@ -861,69 +861,69 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
 
 3. È possibile utilizzare l'output di **STAR** con i conteggi. Infatti, come spiegato in precedenza, **STAR** valuta il numero di letture sui geni per i tre possibili scenari: libreria non filiforme, filiforme in avanti o filiforme inverso. La condizione che attribuisce più letture al gene deve essere quella che corrisponde alla vostra libreria.
 
-   > <hands-on-title>Stimare la filiazione con il conteggio delle stelle</hands-on-title>
+   > <hands-on-title>Stimare la strandness con featureCounts</hands-on-title>
    > 
    > 1. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i conteggi STAR con i seguenti parametri:
-   >    - In *"Risultati "*:
-   >        - *"Risultati "*
-   >            - *"Quale strumento è stato usato per generare i log? "*: `STAR`
-   >                - In *"output STAR "*:
-   >                    - {% icon param-repeat %} *"Uscita Insert STAR "*
-   >                        - *"Tipo di output STAR? "*: `Gene counts`
-   >                            - {% icon param-collection %} *"Output del conteggio dei geni STAR "*: `RNA STAR on collection N: reads per gene` (output di **RNA STAR** {% icon tool %})
+   >    - In *"Results "*:
+   >        - *"Results "*
+   >            - *"Which tool was used generate logs? "*: `STAR`
+   >                - In *"STAR output"*:
+   >                    - {% icon param-repeat %} *"Insert STAR output "*
+   >                        - *"ype of STAR output? "*: `Gene counts`
+   >                            - {% icon param-collection %} *"STAR gene count output "*: `RNA STAR on collection N: reads per gene` (output di **RNA STAR** {% icon tool %})
    > 
    {: .hands_on}
 
    > <question-title></question-title>
    > 
-   > 1. Quale percentuale di letture viene assegnata ai geni se la libreria è unstranded/same stranded/reverse stranded?
-   > 2. Qual è la filiazione della libreria?
+   > 1. Qual è la percentuale di letture assegnata ai geni se la libreria è non direzionale / direzionale (stesso filamento) / direzionale (filamento inverso)?
+   > 2. Qual è la direzionalità della libreria?
    > 
    > > <solution-title></solution-title>
    > > 
    > > ![STAR Gene counts unstranded](../../images/ref-based/star_gene_counts_unstranded.png "Gene counts unstranded") ![STAR Gene counts same stranded](../..sTAR Gene counts reverse stranded](../../images/ref-based/star_gene_counts_same.png "Gene counts same stranded") ![STAR Gene counts reverse stranded](../../images/ref-based/star_gene_counts_reverse.png "Gene counts reverse stranded")
    > > 
    > > 1. Circa il 75% delle letture sono assegnate ai geni se la libreria è unstranded, mentre è circa il 40% negli altri casi.
-   > > 2. Questo suggerisce che la libreria non è filiforme.
+   > > 2. Questo suggerisce che la libreria non è direzionale
    > > 
-   > > > <comment-title>Come sarebbe se la libreria fosse filiforme? </comment-title>
+   > > > <comment-title>Come sarebbe se la libreria fosse direzionale? </comment-title>
    > > > 
    > > > ![STAR Gene counts unstranded USvsRS](../../images/ref-based/star_gene_counts_unstranded_USvsRS.png "Gene counts unstranded for unstranded and reverse stranded library") ![STAR Gene counts same stranded USvsRS](../../images/ref-based/star_gene_counts_same_USvsRS.png "Gene counts same stranded for unstranded and reverse stranded library") ![STAR Gene counts reverse stranded USvsRS](../../images/ref-based/star_gene_counts_reverse_USvsRS.png "Gene counts reverse stranded for unstranded and reverse stranded library") Si noti che le letture attribuite ai geni per lo stesso filamento sono molto poche. I numeri sono paragonabili tra unstranded e reverse stranded perché pochi geni si sovrappongono su filamenti opposti, ma comunque si passa dal 63,6% (unstranded) al 65% (reverse stranded). {\a6}Commento {: .solution}
    > 
    {: .question}
 
-4. Un'altra opzione è stimare questi parametri con uno strumento chiamato **Infer Experiment** della suite di strumenti RSeQC ({% cite wang2012rseqc %}).
+4. Un'altra opzione è stimare questi parametri con uno strumento chiamato **Infer Experiment** negli strumenti di RSeQC ({% cite wang2012rseqc %}).
 
-   Questo strumento prende i file BAM dalla mappatura, seleziona un sottocampione di letture e confronta le loro coordinate genomiche e gli strand con quelli del modello genico di riferimento (da un file di annotazione). In base al filamento dei geni, è in grado di valutare se il sequenziamento è specifico per il filamento e, in tal caso, in che modo le letture sono filate (avanti o indietro).
+   Questo strumento prende i file BAM dalla mappatura, seleziona un sottocampione di letture e confronta le loro coordinate genomiche e gli strand con quelli del modello genico di riferimento (da un file di annotazione). In base all’orientamento dei geni, è possibile verificare se il sequenziamento è strand-specifico e, in tal caso, stabilire se le letture sono orientate sul filamento forward o reverse.
 
-   > <hands-on-title>Determinare la filiazione della libreria usando Infer Experiment</hands-on-title>
+   > <hands-on-title>Determinare la direzionalità della libreria usando Infer Experiment</hands-on-title>
    > 
    > 1. {% tool [Convert GTF to BED12](toolshed.g2.bx.psu.edu/repos/iuc/gtftobed12/gtftobed12/357) %} per convertire il file GTF in BED:
-   >    - {% icon param-file %} *"File GTF da convertire "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+   >    - {% icon param-file %} *"GTF File to convert "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
    > 
    >    È possibile che abbiate già convertito questo file `BED12` dal set di dati `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz` se avete fatto la parte dettagliata sui controlli di qualità. In questo caso, non è necessario ripetere l'operazione una seconda volta
    > 
-   > 2. {% tool [Infer Experiment](toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_infer_experiment/5.0.3+galaxy0) %} per determinare la filiazione della libreria con i seguenti parametri:
-   >    - {% icon param-collection %} *"File .bam di input "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
-   >    - {% icon param-file %} *"Modello genico di riferimento "*: File BED12 (risultato di **Converti GTF in BED12** {% icon tool %})
-   >    - *"Numero di letture campionate "*: `200000` {: .hands_on}
+   > 2. {% tool [Infer Experiment](toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_infer_experiment/5.0.3+galaxy0) %} per determinare la direzionalità della libreria con i seguenti parametri:
+   >    - {% icon param-collection %} *"Input .bam file "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
+   >    - {% icon param-file %} *"Reference gene model "*: File BED12 (risultato di **Converti GTF in BED12** {% icon tool %})
+   >    - *"Number of reads sampled "*: `200000` {: .hands_on}
 
    {% tool [Infer Experiment](toolshed.g2.bx.psu.edu/repos/nilesh/rseqc/rseqc_infer_experiment/5.0.3+galaxy0) %} il tool genera un file con informazioni su:
     - Libreria Paired-end o single-end
     - Frazione di letture di cui non è riuscita la determinazione
     - 2 righe
         - Per le letture single-end
-            - `Fraction of reads explained by "++,--"`: la frazione di letture assegnate al filamento di andata
-            - `Fraction of reads explained by "+-,-+"`: la frazione di letture assegnate al filamento inverso
+            - `Fraction of reads explained by "++,--"`: frazione di letture assegnate al filamento forward
+            - `Fraction of reads explained by "+-,-+"`: la frazione di letture assegnate al filamento reverse
         - Per le letture paired-end
-            - `Fraction of reads explained by "1++,1--,2+-,2-+"`: la frazione di letture assegnate al filamento di andata
-            - `Fraction of reads explained by "1+-,1-+,2++,2--"`: la frazione di letture assegnate al filamento inverso
+            - `Fraction of reads explained by "1++,1--,2+-,2-+"`: la frazione di letture assegnate al filamento di forward
+            - `Fraction of reads explained by "1+-,1-+,2++,2--"`: la frazione di letture assegnate al filamento reverse
 
-   Se i due numeri di "Frazione di letture spiegate da" sono vicini, si conclude che la libreria non è un set di dati specifici per un filamento (o un filamento).
+Se le due “Fraction of reads explained by” hanno valori simili, si può concludere che la libreria non è specifica per il filamento (ovvero è non direzionale / unstranded).
 
    > <question-title></question-title>
    > 
-   > 1. Quali sono i risultati della "Frazione delle letture spiegate da" per `GSM461177_untreat_paired`?
+   > 1. Quali sono i risultati della "Fraction of the reads explained by" per `GSM461177_untreat_paired`?
    > 2. Pensi che il tipo di libreria dei 2 campioni sia stranded o unstranded?
    > 
    > > <solution-title></solution-title>
@@ -939,13 +939,13 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > >    Fraction of reads explained by "1+-,1-+,2++,2--": 0.4360
    > >    ```
    > > 
-   > >    quindi il 46,26% delle letture è assegnato al filamento anteriore e il 43,60% al filamento inverso.
+   > >    quindi il 46,26% delle letture è assegnato al filamento forward e il 43,60% al filamento reverse.
    > > 
    > > 2. Si trovano statistiche simili per `GSM461180_treat_paired`, quindi la libreria sembra essere di tipo unstranded per entrambi i campioni.
    > > 
-   > > > <comment-title>Come sarebbe se la libreria fosse filiforme? </comment-title>
+   > > > <comment-title>Come sarebbe se la libreria fosse direzionale? </comment-title>
    > > > 
-   > > > Sempre prendendo come esempio i 2 BAM, otteniamo per le basi non filiformi:
+   > > > Sempre prendendo come esempio i 2 file BAM, otteniamo per le basi non direzionali:
    > > > 
    > > > ```text
    > > > This is PairEnd Data
@@ -965,7 +965,7 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
    > > > 
    > > {: .comment} {: .solution} {: .question}
 
-> <details-title>Impostazioni di filiazione e software</details-title>
+> <details-title>Impostazioni di strandness e software</details-title>
 > 
 > Poiché a volte è piuttosto difficile scoprire quali impostazioni corrispondono a quelle di altri programmi, la seguente tabella può essere utile per identificare il tipo di libreria:
 > 
@@ -982,37 +982,37 @@ Ci sono 4 modi per stimare la filiazione dai risultati di **STAR** (scegliere qu
 ## Conteggio delle letture per geni
 
 
-{% include _includes/cyoa-choices-IT.html option1="featureCounts" option2="STAR" default="featureCounts" text="Per contare il numero di letture per gene, offriamo un tutorial parallelo per i due metodi (STAR e featureCounts) che danno risultati molto simili. Quale metodo preferisci usare?" disambiguation="tool"%}
+{% include _includes/cyoa-choices-IT.html option1="featureCounts" option2="STAR" default="featureCounts" text="Per contare il numero di letture per gene, offriamo un tutorial parallelo per i due metodi (STAR e featureCounts) che danno risultati molto simili. Quale metodo preferisci?" disambiguation="tool"%}
 
 <div class="featureCounts" markdown="1">
 
-Dato che si è scelto di usare la funzione featureCounts del tutorial, ora si esegue **featureCounts** per contare il numero di letture per gene annotato.
+Poiché in questo tutorial si è scelto di utilizzare la funzione **featureCounts**, ora eseguiremo featureCounts per contare il numero di letture assegnate a ciascun gene annotato.
 
 > <hands-on-title>Conto del numero di letture per gene annotato</hands-on-title>
 > 
 > 1. {% tool [featureCounts](toolshed.g2.bx.psu.edu/repos/iuc/featurecounts/featurecounts/2.0.3+galaxy2) %} con i seguenti parametri per contare il numero di letture per gene:
->    - {% icon param-collection %} *"File di allineamento "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
->    - *"Specificare informazioni sul filamento "*: `Unstranded`
->    - *"File di annotazione genica "*: `A GFF/GTF file in your history`
->        - {% icon param-file %} *"File di annotazione genica "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
->    - *"Filtro del tipo di caratteristica GFF "*: `exon`
->    - *"GFF gene identifier "*: `gene_id`
->    - *"Formato di output "*: `Gene-ID "\t" read-count (MultiQC/DESeq2/edgeR/limma-voom compatible)`
->    - *"Crea file di lunghezza del gene "*: `Yes`
->    - *"L'input ha coppie di letture "*: `Yes, paired-end and count them as 1 single fragment`
->    - In *"Opzioni di filtraggio delle letture "*:
->        - *"Qualità minima di mappatura per lettura "*: `10`
+>    - {% icon param-collection %} *"Alignment file "*: `RNA STAR on collection N: mapped.bam` (output di **RNA STAR** {% icon tool %})
+>    - *"Specify strand information"*: `Unstranded`
+>    - *"Gene annotation file"*: `A GFF/GTF file in your history`
+>        - {% icon param-file %} *"Gene annotation file "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+>    - *"GFF feature type filter "*: `exon`
+>    - *"GFF gene identifier"*: `gene_id`
+>    - *"Output format"*: `Gene-ID "\t" read-count (MultiQC/DESeq2/edgeR/limma-voom compatible)`
+>    - *"Create gene-length file"*: `Yes`
+>    - *"Does the input have read pairs"*: `Yes, paired-end and count them as 1 single fragment`
+>    - In *"Read filtering options"*:
+>        - *"Minimum mapping quality per read"*: `10`
 > 
 > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} per aggregare i rapporti con i seguenti parametri:
->    - In *"Risultati "*:
->        - *"Risultati "*
->            - *"Quale strumento è stato usato per generare i log? "*: `featureCounts`
->                - {% icon param-collection %} *"Output di FeatureCounts "*: `featureCounts on collection N: Summary` (output di **featureCounts** {% icon tool %})
+>    - In *"Results "*:
+>        - *"Results "*
+>            - *"Which tool was used generate logs? "*: `featureCounts`
+>                - {% icon param-collection %} *"Output of FeatureCounts"*: `featureCounts on collection N: Summary` (output di **featureCounts** {% icon tool %})
 > 
 >    > <question-title></question-title>
 >    > 
 >    > 1. Quante letture sono state assegnate a un gene?
->    > 2. Quando dobbiamo preoccuparci del tasso di assegnazione? Cosa dobbiamo fare?
+>    > 2. Quando dovremmo preoccuparci del tasso di assegnazione? E cosa dovremmo fare in quel caso?
 >    > 
 >    > > <solution-title></solution-title>
 >    > > 
@@ -1031,15 +1031,14 @@ Dato che si è scelto di usare la funzione featureCounts del tutorial, ora si es
 > 
 {: .hands_on}
 
-L'output principale di **featureCounts** è una tabella con i conteggi, cioè il numero di letture (o frammenti nel caso di letture paired-end) mappate a ciascun gene (in righe, con il loro ID nella prima colonna) nell'annotazione fornita. **FeatureCount** genera anche i set di dati di output della **lunghezza delle caratteristiche**. Questo file ci servirà in seguito per eseguire lo strumento **goseq**.
+L'output principale di **featureCounts** è una tabella con i conteggi, cioè il numero di letture (o frammenti nel caso di letture paired-end) mappate a ciascun gene (in righe, con il loro ID nella prima colonna) nell'annotazione fornita. **FeatureCount** genera anche i set di dati di output della ***feature length**. Questo file ci servirà in seguito per eseguire lo strumento **goseq**.
 </div>
 
 <div class="STAR" markdown="1">
 
 Dato che si è scelto di utilizzare la versione STAR del tutorial, useremo **STAR** per contare le letture.
 
-Come scritto sopra, durante la mappatura, **STAR** ha contato le letture per ogni gene fornito nel file di annotazione genetica (questo è stato ottenuto con l'opzione `Per gene read counts (GeneCounts)`). Tuttavia, questo output fornisce alcune statistiche all'inizio e i conteggi per ciascun gene a seconda della libreria (unstranded è la colonna 2, stranded forward è la colonna 3 e stranded reverse è la colonna 4).
-
+Come descritto in precedenza, durante la mappatura **STAR** ha contato le letture per ciascun gene riportato nel file di annotazione genica (questa operazione è stata eseguita tramite l’opzione Per gene read counts (GeneCounts)). Tuttavia, l’output prodotto include alcune statistiche iniziali, seguite dai conteggi per ciascun gene, che variano in base al tipo di libreria: la colonna 2 corrisponde a unstranded, la colonna 3 a stranded forward e la colonna 4 a stranded reverse.
 > <hands-on-title>Ispetta l'output di STAR</hands-on-title>
 > 
 > 1. Ispezionare i conteggi di `GSM461177_untreat_paired` nella raccolta `RNA STAR on collection N: reads per gene`
@@ -1049,7 +1048,7 @@ Come scritto sopra, durante la mappatura, **STAR** ha contato le letture per ogn
 > 
 > <question-title></question-title>
 > 
-> 1. Quante letture non sono mappate/multimamente mappate?
+> 1. Quante letture non sono mappate o sono multi-mappate?
 > 2. A quale riga inizia il conteggio dei geni?
 > 3. Quali sono le diverse colonne?
 > 4. Quali sono le colonne più interessanti per il nostro set di dati?
@@ -1060,10 +1059,10 @@ Come scritto sopra, durante la mappatura, **STAR** ha contato le letture per ogn
 > > 2. Inizia alla riga 5 con il gene `FBgn0250732`.
 > > 3. Ci sono 4 colonne:
 > >    1. ID del gene
-> >    2. conteggi per RNA-seq non filiforme
-> >    3. Conteggi per il primo filamento di lettura allineato con l'RNA
-> >    4. Conteggi per il secondo filamento di lettura allineato con l'RNA
-> > 4. Abbiamo bisogno della colonna ID Gene e della seconda colonna a causa dell'incostanza dei nostri dati
+> >    2. Conteggi per RNA-Seq unstranded)
+> >    3. Conteggi per il primo filamento di lettura allineato all’RNA (stranded forward)
+> >    4. Conteggi per il secondo filamento di lettura allineato all’RNA (stranded reverse)
+> > 4. Poiché i nostri dati non sono stranded, utilizzeremo la colonna Gene ID e la seconda colonna del file.
 > > 
 > {: .solution}
 > 
@@ -1074,29 +1073,28 @@ Riformuleremo l'output di **STAR** in modo che sia simile a quello di **featureC
 > <hands-on-title>Riformattazione dell'output STAR</hands-on-title>
 > 
 > 1. {% tool [Select last](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/1.1.0) %} righe da un dataset (coda) per rimuovere le prime 4 righe con i seguenti parametri:
->    - {% icon param-collection %} *"File di testo "*: `RNA STAR on collection N: reads per gene` (output di **RNA STAR** {% icon tool %})
->    - *"Operazione "*: `Keep everything from this line on`
->    - *"Numero di righe "*: `5`
+>    - {% icon param-collection %} *"Text file"*: `RNA STAR on collection N: reads per gene` (output di **RNA STAR** {% icon tool %})
+>    - *"Operation "*: `Keep everything from this line on`
+>    - *"Number of lines"*: `5`
 > 
 > 2. {% tool [Cut](Cut1) %} colonne da una tabella con i seguenti parametri:
->    - *"Tagliare le colonne "*: `c1,c2`
->    - *"Delimitato da "*: `Tab`
->    - {% icon param-collection %} *"Da "*: `Select last on collection N` (risultato di **Select last** {% icon tool %})
+>    - *"Cut columns"*: `c1,c2`
+>    - *"Delimited by"*: `Tab`
+>    - {% icon param-collection %} *"From "*: `Select last on collection N` (risultato di **Select last** {% icon tool %})
 > 
 > 3. Rinominare la raccolta `FeatureCount-like files`
 > 
 {: .hands_on}
 
-Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni gene. Questo è uno degli output di **FeatureCounts**, ma possiamo anche ottenerlo direttamente dal file di annotazione del gene. Poiché è piuttosto lungo, si consiglia di lanciarlo ora.
-
-> <hands-on-title>Imparare la lunghezza del gene</hands-on-title>
+Più avanti nell’esercitazione avremo bisogno di conoscere la lunghezza di ciascun gene. Questo valore è già incluso tra gli output di **FeatureCounts**, ma può anche essere ottenuto direttamente dal file di annotazione genica. Poiché il calcolo richiede un po’ di tempo, è consigliabile avviarlo già ora.
+> <hands-on-title>Determinare la lunghezza dei geni</hands-on-title>
 > 
 > 1. {% tool [Gene length and GC content](toolshed.g2.bx.psu.edu/repos/iuc/length_and_gc_content/length_and_gc_content/0.1.2) %} con i seguenti parametri:
->    - *"Selezionare un file GTF integrato o uno dalla propria cronologia "*: `Use a GTF from history`
->      - {% icon param-file %} *"Seleziona un file GTF "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
->    - *"Analisi da eseguire "*: `gene lengths only`
+>    - *"Select a built-in GTF file or one from your history"*: `Use a GTF from history`
+>      - {% icon param-file %} *"Select a GTF file"*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+>    - *"Analysis to perform"*: `gene lengths only`
 > 
->    > <warning-title>Controllare la versione dello strumento sotto</warning-title>
+>    > <warning-title>Controllare la versione dello strumento</warning-title>
 >    > 
 >    > Questo funziona solo con la versione 0.1.2 o superiore
 >    > 
@@ -1111,17 +1109,18 @@ Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni 
 
 > <question-title></question-title>
 > 
-> Quale caratteristica ha il maggior numero di conteggi per entrambi i campioni? (Suggerimento: utilizzare lo strumento Ordina)
+> Quale feature (caratteristica genica) presenta il numero più alto di conteggi in entrambi i campioni?
 > 
 > > <solution-title></solution-title>
 > > 
-> > Per visualizzare la caratteristica più abbondantemente rilevata, è necessario ordinare la tabella dei conteggi. Questo può essere fatto con la seguente procedura:
+> > Per visualizzare la feature (caratteristica) più abbondantemente rappresentata, è necessario ordinare la tabella dei conteggi.
+Questo può essere fatto seguendo la procedura riportata di seguito:
 > > 
 > > 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1) %} con i seguenti parametri:
 > >    - {% icon param-collection %} *"Sort Query "*: <span class="featureCounts" markdown="1">`featureCounts on collection N: Counts` (output di **featureCounts** {% icon tool %})</span><span class="STAR" markdown="1">Utilizzare la collezione `FeatureCount-like files`</span>
-> >    - *"Numero di intestazioni "*: <span class="featureCounts" markdown="1">`1`</span><span class="STAR" markdown="1">`0`</span>
-> >    - In *"1: Selezioni di colonne "*:
-> >      - *"sulla colonna "*: `Column: 2`
+> >    - *"Number of header"*: <span class="featureCounts" markdown="1">`1`</span><span class="STAR" markdown="1">`0`</span>
+> >    - In *"1: Column selections"*:
+> >      - *"on column"*: `Column: 2`
 > > 
 > >        Questa colonna contiene il numero di letture = conteggi
 > > 
@@ -1129,7 +1128,7 @@ Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni 
 > > 
 > > 2. Ispezione del risultato
 > > 
-> >    Il risultato dell'ordinamento della tabella sulla colonna 2 rivela che FBgn0284245 è la caratteristica con il maggior numero di conteggi (circa 128.740 in `GSM461177_untreat_paired` e 127.400 in `GSM461180_treat_paired`).
+> >    Il risultato dell'ordinamento della tabella sulla colonna 2 rivela che FBgn0284245 è la feature con il maggior numero di conteggi (circa 128.740 in `GSM461177_untreat_paired` e 127.400 in `GSM461180_treat_paired`).
 > > 
 > >    Il confronto di diversi file di output è più facile se possiamo visualizzare più di un set di dati contemporaneamente. La funzione Scratchbook ci permette di creare una raccolta di set di dati che verranno visualizzati insieme sullo schermo.
 > > 
@@ -1139,15 +1138,15 @@ Più avanti nell'esercitazione avremo bisogno di ottenere la dimensione di ogni 
 > >    > 
 > >    >    ![icona scratchbook](../../images/ref-based/menubarWithScratchbook.png "Barra del menu con icona Scratchbook")
 > >    > 
-> >    > 2. Quando Scratchbook è **abilitato** i dataset visualizzati (facendo clic sull'icona dell'occhio) vengono aggiunti alla vista Scratchbook:
+> >    > 2. Quando Scratchbook è **enabled** e i dataset visualizzati (facendo clic sull'icona dell'occhio) vengono aggiunti alla vista Scratchbook:
 > >    > 
 > >    >    ![icona di Scratchbook abilitata](../../images/ref-based/menubarWithScratchbookEnabled.png "Barra del menu con icona di Scratchbook abilitata")
 > >    > 
-> >    > 3. Fare clic sull'icona {% icon galaxy-eye %} (occhio) per visualizzare uno dei file dei **conti ordinati**. Invece di occupare l'intera barra centrale, la vista del set di dati viene ora mostrata in sovrimpressione:
+> >    > 3. Fare clic sull'icona {% icon galaxy-eye %} (occhio) per visualizzare uno dei file dei **sorted counts**. Invece di occupare l'intera barra centrale, la vista del set di dati viene ora mostrata in sovrimpressione:
 > >    > 
 > >    >    ![Scratchbook one dataset shown](../../images/ref-based/scratchbookOneDataset.png "Scratchbook showing one dataset overlay")
 > >    > 
-> >    > 4. Fare quindi clic sull'icona {% icon galaxy-eye %} (occhio) sul **secondo file di conteggi ordinati**. Il secondo set di dati va a sovrapporsi al primo, ma è possibile spostare la finestra per vedere i due set di dati uno accanto all'altro:
+> >    > 4. Fare quindi clic sull'icona {% icon galaxy-eye %} (occhio) sul **second sorted counts**. Il secondo set di dati va a sovrapporsi al primo, ma è possibile spostare la finestra per vedere i due set di dati uno accanto all'altro:
 > >    > 
 > >    >    ![Mostra di due set di dati](../../images/ref-based/scratchbookTwoDatasetsShown.png "Mostra di due set di dati affiancati")
 > >    > 
@@ -1171,7 +1170,7 @@ Qui abbiamo contato le letture mappate sui geni per due campioni. È molto inter
 > - Dati paired-end
 >   - `GSM461178_1` e `GSM461178_2` che possono essere etichettati come `GSM461178_untreat_paired`
 >   - `GSM461181_1` e `GSM461181_2` che possono essere etichettati come `GSM461181_treat_paired`
-> - Dati a estremità singola
+> - Dati single-end
 >   - `GSM461176` che può essere etichettato come `GSM461176_untreat_single`
 >   - `GSM461179` che può essere etichettato come `GSM461179_treat_single`
 >   - `GSM461182` che può essere etichettato come `GSM461182_untreat_single`
@@ -1188,19 +1187,20 @@ Qui abbiamo contato le letture mappate sui geni per due campioni. È molto inter
 > {{ page.zenodo_link }}/files/GSM461182.fastqsanger
 > ```
 > 
-> Per i dati single-end, non è necessario appiattire la raccolta prima del passaggio **Falco**. I parametri di tutti gli strumenti sono gli stessi, ad eccezione di **STAR** per il quale è possibile impostare `Length of the genomic sequence around annotated junctions` a 74 poiché un set di dati ha letture di 75bp (gli altri sono 44bp e 45bp) e **FeatureCount** se i dati non sono più accoppiati.
+> Per i dati single-end, non è necessario appiattire la raccolta prima di eseguire il passaggio con **Falco**. II parametri di tutti gli strumenti restano invariati, ad eccezione di **STAR**, per il quale è possibile impostare `Length of the genomic sequence around annotated junctions` a 74 poiché un set di dati ha letture di 75bp (gli altri sono 44bp e 45bp). Inoltre, è necessario modificare i parametri di **FeatureCounts** nel caso in cui i dati non siano più accoppiati.
 > 
 {: .hands_on}
 
 # Analisi dell'espressione genica differenziale
 
-## Identificazione delle caratteristiche differenzialmente espresse
+## Identificazione dei geni differenzialmente espressi 
 
-Per poter identificare l'espressione genica differenziale indotta dalla deplezione di PS, tutti i set di dati (3 trattati e 4 non trattati) devono essere analizzati seguendo la stessa procedura. Per risparmiare tempo, abbiamo eseguito i passaggi precedenti per voi. Otteniamo quindi 7 file con i conteggi per ciascun gene di *Drosophila* per ogni campione.
+Per identificare l’espressione genica differenziale indotta dalla deplezione di PS, tutti i set di dati, 3 trattati e 4 non trattati,devono essere analizzati seguendo la stessa procedura. Per risparmiare tempo, abbiamo già eseguito per voi i passaggi preliminari.
+Il risultato consiste in 7 file di conteggi, ciascuno contenente il numero di letture associate a ogni gene di Drosophila per ciascun campione.
 
 > <hands-on-title>Importa tutti i file di conteggio</hands-on-title>
 > 
-> 1. Creare una **nuova storia vuota**
+> 1. Creare una **new empty history**
 > 
 >    {% snippet faqs/galaxy-it/histories_create_new.md %}
 > 
@@ -1237,8 +1237,7 @@ Immaginiamo di avere i conteggi RNA-Seq di 3 campioni per un genoma con 4 geni:
 | C (1kb)  | 5               | 8               | 15              |
 | D (10kb) | 0               | 0               | 1               |
 
-Il campione 3 ha più letture degli altri replicati, indipendentemente dal gene. Ha una profondità di sequenziamento maggiore rispetto alle altre repliche. Il gene B è due volte più lungo del gene A: questo potrebbe spiegare perché ha il doppio delle letture, indipendentemente dalle repliche.
-
+Il campione 3 presenta un numero di letture superiore rispetto agli altri replicati, indipendentemente dal gene, poiché è stato sequenziato con una maggiore profondità di lettura. Inoltre, il gene B è lungo il doppio del gene A, e ciò può spiegare perché mostra un numero di letture circa doppio, a prescindere dalle repliche.
 Il numero di letture sequenziate mappate su un gene dipende quindi da:
 
 - la **profondità di sequenziamento** dei campioni
@@ -1485,55 +1484,55 @@ Ora possiamo eseguire **DESeq2**:
 > 
 > 1. {% tool [DESeq2](toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.8+galaxy0) %} con i seguenti parametri:
 >    - *"come "*: `Select datasets per level`
->        - In *"Fattore "*:
->           - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Treatment`
->           - In *"1: Livello del fattore "*:
->               - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `treated`
->               - In *"File di conteggio "*: `Select all the treated count files (GSM461179, GSM461180, GSM461181)`
->           - In *"2: Livello del fattore "*:
->               - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `untreated`
->               - In *"File di conteggio "*: `Select all the untreated count files (GSM461176, GSM461177, GSM461178, GSM461182)`
->       - {% icon param-repeat %} *"Fattore di inserzione "*
->           - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Sequencing`
->               - In *"Livello del fattore "*:
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `PE`
->                        - In *"File di conteggio "*: `Select all the paired-end count files (GSM461177, GSM461178, GSM461180, GSM461181)`
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `SE`
->                        - In *"File di conteggio "*: `Select all the single-end count files (GSM461176, GSM461179, GSM461182)`
->    - *"I file hanno un'intestazione? "*: `Yes`
->    - *"Scelta dei dati di input "*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
->    - In *"Opzioni avanzate "*:
->        - *"Usa priori beta "*: `Yes`
->    - In *"Opzioni di output "*:
->        - *"Selettore di output "*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
-> 
+>        - In *"Factor "*:
+>           - *"Specify a factor name, e.g. effects_drug_x or cancer_markers "*: `Treatment`
+>           - In *"1: Factor level"*:
+>               - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `treated`'"*
+>               - In *"FiCount file(s)"*: Select the collection `treated` 
+>           - In *": Factor level"*:
+>               - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `untreated``
+>               - In *"Count file(s)"*: Select the collection `untreated`
+>       - {% icon param-repeat %} *"Insert Factor"*
+>           - *"Specify a factor name, e.g. effects_drug_x or cancer_markers"*: `Sequencing`
+>               - In *"Factor level"*:
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"pecify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `PE`
+>                        - In *"Count file(s)"*: Select the collection `paired`
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `SE`
+>                        - In *"File di conteggio "*: `Count file(s)"*: Select the collection `single`
+>    - *"Files have header? "*: `Yes`
+>    - *"Choice of Input data"*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
+>    - In *"dvanced options"*:
+>        - *"Use beta priors"*: `Yes`
+>    - In *"Output options"*:
+>        - *"Output selector"*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
+>
 {: .hands_on}
-
 </div>
+
 
 <div class="Tag-based" markdown="1">
 
-DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni categoria. Utilizzeremo quindi i tag sulla nostra raccolta di conteggi per selezionare facilmente tutti i campioni appartenenti alla stessa categoria. Per ulteriori informazioni sui modi alternativi di impostare i tag di gruppo, consultare [questo tutorial]({% link topics/galaxy-interface/tutorials/group-tags/tutorial.md %}).
+DESeq2 richiede di specificare, per ciascun fattore sperimentale, i conteggi dei campioni appartenenti a ogni categoria. Per questo motivo, useremo i tag sulla nostra raccolta di conteggi, così da poter selezionare facilmente tutti i campioni appartenenti alla stessa categoria.Per ulteriori informazioni su metodi alternativi per impostare i tag di gruppo, consultare[questo tutorial]({% link topics/galaxy-interface/tutorials/group-tags/tutorial.md %}).
 
 > <hands-on-title>Aggiungi dei tag alla tua collezione per ognuno di questi fattori</hands-on-title>
 > 
-> 1. Creare un elenco di raccolta con tutti questi conteggi, etichettato come `all counts`. Nominare ogni elemento in modo che contenga solo l'id GSM, il trattamento e la libreria, ad esempio, `GSM461176_untreat_single`.
+> 1. Creare una raccolta di dataset contenente tutti i file di conteggio e assegnarle il nome `all counts`. Nominare ogni elemento in modo che contenga solo l'id GSM, il trattamento e la libreria, ad esempio, `GSM461176_untreat_single`.
 > 
 >    {% snippet faqs/galaxy-it/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} con i seguenti parametri:
->    - {% icon param-collection %} *"Raccolta di dati "*: `all counts`
+>    - {% icon param-collection %} *"Dataset collection"*: `all counts`
 > 
 >    Ora estrarremo dai nomi i fattori:
 > 
 > 3. {% tool [Replace Text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %}
->      - {% icon param-file %} *"File da elaborare "*: output di **Estrai identificatori di elementi** {% icon tool %}
->      - In *"Sostituzione "*:
->         - In *"1: Sostituzione "*
->            - *"Trova schema "*: `(.*)_(.*)_(.*)`
->            - *"Sostituisci con "*: `\1_\2_\3\tgroup:\2\tgroup:\3`
+>      - {% icon param-file %} *"File to process"*: output di **Extract element identifiers** {% icon tool %}
+>      - In *"Replacement "*:
+>         - In *"1: Replacement "*
+>            - *"Find pattern"*: `(.*)_(.*)_(.*)`
+>            - *"Replace with"*: `\1_\2_\3\tgroup:\2\tgroup:\3`
 > 
 >    Questo passaggio crea 2 colonne aggiuntive con il tipo di trattamento e di sequenziamento che possono essere utilizzate con lo strumento {% tool [Elementi tag](__TAG_FROM_FILE__) %}
 > 
@@ -1549,7 +1548,7 @@ DESeq2 richiede di fornire per ogni fattore i conteggi dei campioni in ogni cate
 > 
 >    > <tip-title>Non riuscite a vedere i cambiamenti?</tip-title>
 >    > 
->    > A prima vista non si nota perché i nomi sono gli stessi. Tuttavia, se si fa clic su uno di essi e si clicca su {% icon galaxy-tags %} **Modifica i tag del dataset**, si dovrebbero vedere 2 tag che iniziano con "group:". Questa parola chiave permetterà di usare questi tag in **DESeq2**.
+>    > A prima vista non si nota perché i nomi sono gli stessi. Tuttavia, se si fa clic su uno di essi e si clicca su {% icon galaxy-tags %} **Edit dataset tags**, si dovrebbero vedere 2 tag che iniziano con "group:". Questa parola chiave permetterà di usare questi tag in **DESeq2**.
 >    > 
 > > 
 >     {: .tip}
@@ -1560,35 +1559,35 @@ Ora possiamo eseguire **DESeq2**:
 
 > <hands-on-title>Determinare le caratteristiche differenzialmente espresse</hands-on-title>
 > 
-> 1. {% tool [DESeq2](toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.8+galaxy0) %} con i seguenti parametri:
->    - *"come "*: `Select group tags corresponding to levels`
->        - {% icon param-collection %} *"Raccolta di file di conteggio "*: output di **Elementi di tag** {% icon tool %}
->        - In *"Fattore "*:
->            - {% icon param-repeat %} *"Fattore di inserzione "*
->                - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Treatment`
->                - In *"Livello del fattore "*:
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `treated`
->                        - *"Seleziona i gruppi che corrispondono a questo livello di fattore "*: `Tags: treat`
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `untreated`
->                        - *"Seleziona i gruppi che corrispondono a questo livello di fattore "*: `Tags: untreat`
->            - {% icon param-repeat %} *"Fattore di inserzione "*
->                - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Sequencing`
->                - In *"Livello del fattore "*:
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `PE`
->                        - *"Seleziona i gruppi che corrispondono a questo livello di fattore "*: `Tags: paired`
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `SE`
->                        - *"Seleziona i gruppi che corrispondono a questo livello di fattore "*: `Tags: single`
->    - *"I file hanno un'intestazione? "*: `Yes`
->    - *"Scelta dei dati di input "*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
->    - In *"Opzioni avanzate "*:
->        - *"Usa priori beta "*: `Yes`
->    - In *"Opzioni di output "*:
->        - *"Selettore di output "*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
-> 
+>> 1. {% tool [DESeq2](toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.8+galaxy0) %} with the following parameters:
+>    - *"how"*: `Select group tags corresponding to levels`
+>        - {% icon param-collection %} *"Count file(s) collection"*: output of **Tag elements** {% icon tool %}
+>        - In *"Factor"*:
+>            - {% icon param-repeat %} *"Insert Factor"*
+>                - *"Specify a factor name, e.g. effects_drug_x or cancer_markers"*: `Treatment`
+>                - In *"Factor level"*:
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `treated`
+>                        - *"Select groups that correspond to this factor level"*: `Tags: treat`
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `untreated`
+>                        - *"Select groups that correspond to this factor level"*: `Tags: untreat`
+>            - {% icon param-repeat %} *"Insert Factor"*
+>                - *"Specify a factor name, e.g. effects_drug_x or cancer_markers"*: `Sequencing`
+>                - In *"Factor level"*:
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `PE`
+>                        - *"Select groups that correspond to this factor level"*: `Tags: paired`
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `SE`
+>                        - *"Select groups that correspond to this factor level"*: `Tags: single`
+>    - *"Files have header?"*: `Yes`
+>    - *"Choice of Input data"*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
+>    - In *"Advanced options"*:
+>        - *"Use beta priors"*: `Yes`
+>    - In *"Output options"*:
+>        - *"Output selector"*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
+>
 {: .hands_on}
 
 </div>
@@ -1598,38 +1597,38 @@ DESeq2 richiede di fornire per ogni fattore, i conteggi dei campioni in ogni cat
 
 > <hands-on-title>Generare una raccolta di ogni categoria</hands-on-title>
 > 
-> 1. Creare un elenco di raccolta con tutti questi conteggi, etichettato come `all counts`. Nominare ogni elemento in modo che contenga solo l'id GSM, il trattamento e la libreria, ad esempio, `GSM461176_untreat_single`.
+> 1. Creare una raccolta di dataset contenente tutti i file di conteggio e assegnarle il nome `all counts`. Rinominare ciascun elemento della raccolta in modo che includa solo l’ID GSM, la condizione di trattamento e il tipo di libreria, ad esempio `GSM461176_untreat_single`.
 > 
 >    {% snippet faqs/galaxy-it/collections_build_list.md %}
 > 
 > 2. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} con i seguenti parametri:
->    - {% icon param-collection %} *"Raccolta di dati "*: `all counts`
+>    - {% icon param-collection %} *"Dataset collection "*: `all counts`
 > 
 >    Ora divideremo la raccolta per trattamento. Dobbiamo trovare un modello che sia presente in una sola delle due categorie. Utilizzeremo la parola `untreat`:
 > 
-> 3. {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} (grep) con i seguenti parametri:
->    - *"Seleziona linee da "*: `Extract element identifiers on data XXX` (output di **Estrai identificatori di elementi** {% icon tool %})
->    - *"che "*: `Match`
->    - *"Espressione regolare "*: `untreat`
+> 3. {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} (grep) with the following parameters:
+>    - *"Select lines from"*: `Extract element identifiers on data XXX` (output of  **Extract element identifiers** {% icon tool %})
+>    - *"that"*: `Match`
+>    - *"Regular Expression"*: `untreat`
 > 
 > 4. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} con i seguenti parametri:
->    - *"Collezione di input "*: `all counts`
->    - *"Come si devono determinare gli elementi da rimuovere "*: `Remove if identifiers are ABSENT from file`
->        - *"Filtrare gli identificatori assenti da "*: `Search in textfiles on data XXX` (output di **Ricerca nei file di testo** {% icon tool %})
+>    - *"Input collection"*: `all counts`
+>    - *"How should the elements to remove be determined"*: `Remove if identifiers are ABSENT from file`
+>        - *"Filter out identifiers absent from"*: `Search in textfiles on data XXX` (output of  **Search in textfiles** {% icon tool %})
 > 
 > 5. Rinominare entrambe le raccolte `untreated` (la raccolta filtrata) e `treated` (la raccolta scartata).
 > 
 > Ripeteremo lo stesso processo usando `single`
 > 
-> 6. {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} (grep) con i seguenti parametri:
->    - *"Seleziona linee da "*: `Extract element identifiers on data XXX` (output di **Estrai identificatori di elementi** {% icon tool %})
->    - *"che "*: `Match`
->    - *"Espressione regolare "*: `single`
+> 6. {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} (grep) with the following parameters:
+>    - *"Select lines from"*: `Extract element identifiers on data XXX` (output of  **Extract element identifiers** {% icon tool %})
+>    - *"that"*: `Match`
+>    - *"Regular Expression"*: `single`
 > 
 > 7. {% tool [Filter collecion](__FILTER_FROM_FILE__) %} con i seguenti parametri:
->    - *"Collezione di input "*: `all counts`
->    - *"Come si devono determinare gli elementi da rimuovere "*: `Remove if identifiers are ABSENT from file`
->        - *"Filtrare gli identificatori assenti da "*: `Search in textfiles on data XXX` (output di **Ricerca nei file di testo** {% icon tool %})
+>    - *"Input collection"*: `all counts`
+>    - *"How should the elements to remove be determined"*: `Remove if identifiers are ABSENT from file`
+>        - *"Filter out identifiers absent from"*: `Search in textfiles on data XXX` (output of  **Search in textfiles** {% icon tool %})
 > 
 > 8. Rinominare entrambe le raccolte `single` (la raccolta filtrata) e `paired` (la raccolta scartata).
 > 
@@ -1639,34 +1638,33 @@ Ora possiamo eseguire **DESeq2**:
 
 > <hands-on-title>Determinare le caratteristiche differenzialmente espresse</hands-on-title>
 > 
-> 1. {% tool [DESeq2](toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.8+galaxy0) %} con i seguenti parametri:
->    - *"come "*: `Select datasets per level`
->        - In *"Fattore "*:
->           - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Treatment`
->           - In *"1: Livello del fattore "*:
->               - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `treated`
->               - {% icon param-collection %} *"Conta i file "*: Selezionare la raccolta `treated`
->           - In *"2: Livello del fattore "*:
->               - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `untreated`
->               - {% icon param-collection %} *"Conta i file "*: Selezionare la raccolta `untreated`
->       - {% icon param-repeat %} *"Fattore di inserzione "*
->           - *"Specificare il nome di un fattore, ad esempio effects_drug_x o cancer_markers "*: `Sequencing`
->               - In *"Livello del fattore "*:
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `PE`
->                        - {% icon param-collection %} *"Conta i file "*: Selezionare la raccolta `paired`
->                    - {% icon param-repeat %} *"Livello del fattore di inserzione "*
->                        - *"Specificare un livello di fattore; i valori tipici potrebbero essere 'tumore', 'normale', 'trattato' o 'controllo'"*: `SE`
->                        - {% icon param-collection %} *"Conta i file "*: Selezionare la raccolta `single`
->    - *"I file hanno un'intestazione? "*: `Yes`
->    - *"Scelta dei dati di input "*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
->    - In *"Opzioni avanzate "*:
->        - *"Usa priori beta "*: `Yes`
->    - In *"Opzioni di output "*:
->        - *"Selettore di output "*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
-> 
+> 1. {% tool [DESeq2](toolshed.g2.bx.psu.edu/repos/iuc/deseq2/deseq2/2.11.40.8+galaxy0) %} with the following parameters:
+>    - *"how"*: `Select datasets per level`
+>        - In *"Factor"*:
+>           - *"Specify a factor name, e.g. effects_drug_x or cancer_markers"*: `Treatment`
+>           - In *"1: Factor level"*:
+>               - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `treated`
+>               - {% icon param-collection %} *"Count file(s)"*: Select the collection `treated`
+>           - In *"2: Factor level"*:
+>               - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `untreated`
+>               - {% icon param-collection %} *"Count file(s)"*: Select the collection `untreated`
+>       - {% icon param-repeat %} *"Insert Factor"*
+>           - *"Specify a factor name, e.g. effects_drug_x or cancer_markers"*: `Sequencing`
+>               - In *"Factor level"*:
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `PE`
+>                        - {% icon param-collection %} *"Count file(s)"*: Select the collection `paired`
+>                    - {% icon param-repeat %} *"Insert Factor level"*
+>                        - *"Specify a factor level, typical values could be 'tumor', 'normal', 'treated' or 'control'"*: `SE`
+>                        - {% icon param-collection %} *"Count file(s)"*: Select the collection `single`
+>    - *"Files have header?"*: `Yes`
+>    - *"Choice of Input data"*: `Count data (e.g. from HTSeq-count, featureCounts or StringTie)`
+>    - In *"Advanced options"*:
+>        - *"Use beta priors"*: `Yes`
+>    - In *"Output options"*:
+>        - *"Output selector"*: `Generate plots for visualizing the analysis results`, `Output normalised counts`
+>
 {: .hands_on}
-
 </div>
 
 **DESeq2** ha generato 3 risultati:
@@ -1690,26 +1688,29 @@ Ora possiamo eseguire **DESeq2**:
        > 
        {: .details}
 
-       mostra i campioni nel piano 2D delimitato dalle prime due componenti principali. Ogni replica è rappresentata come un singolo punto di dati. Questo tipo di grafico è utile per visualizzare l'effetto complessivo delle covariate sperimentali e degli effetti batch.
+       Mostra i campioni in un piano bidimensionale definito dalle prime due componenti principali.
+Ogni replicato è rappresentato come un singolo punto dati.
+Questo tipo di grafico è utile per visualizzare l’effetto complessivo delle variabili sperimentali e degli eventuali effetti di batch.
 
        > <question-title></question-title>
        > 
        > ![DESeq PCA](../../images/ref-based/deseq2_pca.png "Principal component plot of the samples")
        > 
-       > 1. Qual è la prima dimensione (PC1) che separa?
+       > 1. Cosa separa la prima dimensione (PC1)?
        > 2. E la seconda dimensione (PC2)?
-       > 3. Cosa possiamo concludere sul design DESeq (fattori, livelli) che abbiamo scelto?
+       > 3. Cosa possiamo concludere riguardo al design di DESeq (fattori e livelli) che abbiamo scelto?
        > 
        > > <solution-title></solution-title>
        > > 
-       > > 1. La prima dimensione è la separazione dei campioni trattati da quelli non trattati.
-       > > 2. La seconda dimensione consiste nel separare i dataset single-end da quelli paired-end.
-       > > 3. I set di dati sono raggruppati in base ai livelli dei due fattori. Non sembra esserci alcun effetto nascosto sui dati. Se nei dati è presente una variazione indesiderata (ad esempio, effetti batch), si raccomanda sempre di correggerla, cosa che può essere ottenuta in DESeq2 includendo nel disegno qualsiasi variabile batch nota. {: .solution} {: .question}
+       > > 1. La prima dimensione separa i campioni trattati da quelli non trattati.
+       > > 2. La seconda dimensione separa i dataset single-end da quelli paired-end.
+       > > 3. II dataset sono raggruppati in base ai livelli dei due fattori.
+Non sembra esserci alcun effetto nascosto nei dati.
+Se è presente una variazione indesiderata (ad esempio effetti di batch), è sempre consigliato correggerla, cosa che può essere fatta in DESeq2 includendo nel design eventuali variabili di batch note. {: .solution} {: .question}
 
-    2. Heatmap della matrice di distanza campione-campione (con clustering) basata sui conteggi normalizzati.
+    2. Heatmap della matrice delle distanze campione-campione (con clustering) basata sui conteggi normalizzati.
 
-       La mappa di calore fornisce una panoramica delle somiglianze e delle dissomiglianze tra i campioni: il colore rappresenta la distanza tra i campioni. Il blu scuro indica una distanza minore, ovvero campioni più vicini in base ai conteggi normalizzati.
-
+       La heatmap fornisce una panoramica delle somiglianze e delle differenze tra i campioni: il colore rappresenta la distanza tra i campioni. Il blu scuro indica una distanza minore, cioè campioni più simili in base ai conteggi normalizzati
        > <question-title></question-title>
        > 
        > ![Heatmap delle distanze campione-campione](../../images/ref-based/deseq2_sample_dample_distance_heatmap.png "Heatmap delle distanze campione-campione")
@@ -1723,22 +1724,23 @@ Ora possiamo eseguire **DESeq2**:
        > {: .solution} {: .question}
 
     3. Stime di dispersione: stime per gene (nero), valori adattati (rosso) e stime finali a posteriori massime utilizzate nei test (blu)
+Questo grafico di dispersione è tipico: le stime finali vengono rimpicciolite (shrunken) dalle stime gene-wise verso le stime fitted. Alcune stime gene-wise sono contrassegnate come outlier e non vengono rimpicciolite verso il valore adattato.
+L’entità del restringimento può essere maggiore o minore di quella mostrata qui, a seconda della dimensione del campione, del numero di coefficienti, della media delle righe e della variabilità delle stime gene-wise.
 
-       Questo grafico di dispersione è tipico, con le stime finali rimpicciolite dalle stime gene-wise verso le stime fitted. Alcune stime gene-wise sono contrassegnate come outlier e non vengono rimpicciolite verso il valore montato. L'entità del restringimento può essere maggiore o minore di quella vista qui, a seconda della dimensione del campione, del numero di coefficienti, della media delle righe e della variabilità delle stime gene-wise.
-
-    4. Istogramma dei valori di *p* per i geni nel confronto tra i 2 livelli del 1° fattore
+    4. Istogramma dei valori di p per i geni nel confronto tra i 2 livelli del 1° fattore
 
     5. Un [grafico MA](https://en.wikipedia.org/wiki/MA_plot):
 
-       Questo visualizza la vista globale della relazione tra la variazione di espressione delle condizioni (rapporti logici, M), l'intensità media di espressione dei geni (media, A) e la capacità dell'algoritmo di rilevare l'espressione genica differenziale. I geni che hanno superato la soglia di significatività (p-value aggiustato < 0,1) sono colorati in rosso.
+Questo grafico mostra una visione globale della relazione tra la variazione di espressione tra le condizioni (log fold change, M), l’intensità media di espressione dei geni (A) e la capacità dell’algoritmo di rilevare l’espressione genica differenziale.
+I geni che superano la soglia di significatività (p-value aggiustato < 0,1) sono evidenziati in rosso.
 
 - Un file di riepilogo con i seguenti valori per ciascun gene:
 
     1. Identificatori dei geni
     2. Media dei conteggi normalizzati, calcolata su tutti i campioni di entrambe le condizioni
-    3. Variazione di ripiegamento in log2 (logaritmo base 2)
+    3. Variazione di espressione in log₂ (log₂ fold change), cioè il logaritmo in base 2 del rapporto tra le medie di espressione nelle due condizioni
 
-       I cambiamenti di fold log2 si basano sul fattore primario di livello 1 rispetto al fattore di livello 2, quindi l'ordine di inserimento dei livelli dei fattori è importante. In questo caso, DESeq2 calcola le variazioni di ripiegamento dei campioni 'trattati' rispetto a quelli 'non trattati' dal primo fattore 'Trattamento', *cioè i valori corrispondono all'aumento o alla diminuzione della regolazione dei geni nei campioni trattati.
+I cambiamenti di fold log₂ si basano sul confronto tra il livello 1 e il livello 2 del fattore primario, pertanto l’ordine di inserimento dei livelli del fattore è importante. In questo caso, DESeq2 calcola le variazioni di espressione (log₂ fold change) dei campioni trattati rispetto a quelli non trattati per il primo fattore “Trattamento”. In altre parole, i valori ottenuti rappresentano l’aumento o la diminuzione dell’espressione genica nei campioni trattati rispetto ai non trattati.
 
     4. Stima dell'errore standard per la stima del cambiamento log2 fold
     5. Statistica [Wald](https://en.wikipedia.org/wiki/Wald_test)
@@ -1798,10 +1800,10 @@ L'ID di ogni gene è qualcosa come FBgn0003360, che è un ID del database corris
 >    ```
 > 
 > 2. {% tool [Annotate DESeq2/DEXSeq output tables](toolshed.g2.bx.psu.edu/repos/iuc/deg_annotate/deg_annotate/1.1.0) %} with:
->    - {% icon param-file %} *"Output tabellare di DESeq2/edgeR/limma/DEXSeq "*: il `DESeq2 result file` (output di **DESeq2** {% icon tool %})
->    - *"Tipo di file di input "*: `DESeq2/edgeR/limma`
->    - {% icon param-file %} *"Annotazione di riferimento in formato GFF/GTF "*: gtf importato `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
-> 
+>    - {% icon param-file %} *"Tabular output of DESeq2/edgeR/limma/DEXSeq"*: the `DESeq2 result file` (output of **DESeq2** {% icon tool %})
+>    - *"Input file type"*: `DESeq2/edgeR/limma`
+>    - {% icon param-file %} *"Reference annotation in GFF/GTF format"*: imported gtf `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+>
 {: .hands_on}
 
 L'output generato è un'estensione del file precedente:
@@ -1849,26 +1851,26 @@ La tabella annotata non contiene nomi di colonne, il che rende difficile la lett
 >    {% snippet faqs/galaxy-it/datasets_create_new_file.md name="header" format="tabular" %}
 > 
 > 2. {% tool [Concatenate datasets](cat1) %} per aggiungere questa riga di intestazione all'output **Annotate**:
->    - {% icon param-file %} *"Concatena il set di dati "*: il set di dati `header`
->    - *"Dataset "*
->       - Cliccare su {% icon param-repeat %} *"Inserisci set di dati "*
->         - {% icon param-file %} *"select "*: output di **Annotate** {% icon tool %}
-> 
+>    - {% icon param-file %} *"Concatenate Dataset"*: the `header` dataset
+>    - *"Dataset"*
+>       - Click on {% icon param-repeat %} *"Insert Dataset"*
+>         - {% icon param-file %} *"select"*: output of **Annotate** {% icon tool %}
+>
 > 3. Rinominare l'output in `Annotated DESeq2 results`
 > 
 {: .hands_on}
 
 ## Estrazione e annotazione dei geni espressi in modo differenziato
 
-Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con una variazione di ripiegamento > 2 (o < 1/2).
+Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con una variazione > 2 (o < 1/2).
 
-> <hands-on-title>Estrarre i geni più differenzialmente espressi</hands-on-title>
+> <hands-on-title>Estrarre i geni con la maggiore espressione differenziale</hands-on-title>
 > 
 > 1. {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un cambiamento significativo nell'espressione genica (valore *p* aggiustato inferiore a 0,05) tra i campioni trattati e non trattati:
->    - {% icon param-file %} *"Filtro "*: `Annotated DESeq2 results`
->    - *"Con le seguenti condizioni "*: `c7<0.05`
->    - *"Numero di righe di intestazione da saltare "*: `1`
-> 
+>    - {% icon param-file %} *"Filter"*: `Annotated DESeq2 results`
+>    - *"With following condition"*: `c7<0.05`
+>    - *"Number of header lines to skip"*: `1`
+>
 > 2. Rinominare l'output `Genes with significant adj p-value`.
 > 
 >    > <question-title></question-title>
@@ -1894,10 +1896,10 @@ Ora vorremmo estrarre i geni più differenzialmente espressi dal trattamento con
 > Selezioneremo ora solo i geni con un fold change (FC) > 2 o FC < 0,5. Si noti che il file di output di DESeq2 contiene $$log_{2} FC$$, piuttosto che FC stesso, quindi filtriamo per $$abs(log_{2} FC) > 1$$ (che implica FC > 2 o FC < 0,5).
 > 
 > 3. {% tool [Filtra i dati su qualsiasi colonna usando espressioni semplici](Filter1) %} per estrarre i geni con un $$abs(log_{2} FC) > 1$$:
->    - {% icon param-file %} *"Filtro "*: `Genes with significant adj p-value`
->    - *"Con le seguenti condizioni "*: `abs(c3)>1`
->    - *"Numero di righe di intestazione da saltare "*: `1`
-> 
+>    - {% icon param-file %} *"Filter"*: `Genes with significant adj p-value`
+>    - *"With following condition"*: `abs(c3)>1`
+>    - *"Number of header lines to skip"*: `1`
+>
 > 4. Rinominare l'output `Genes with significant adj p-value & abs(log2(FC)) > 1`.
 > 
 >    > <question-title></question-title>
@@ -1920,11 +1922,11 @@ Ora abbiamo una tabella con 113 righe e un'intestazione corrispondente ai geni p
 
 ## Visualizzazione dell'espressione dei geni differenzialmente espressi
 
-Potremmo tracciare il $$log_{2} FC$$ per i geni estratti, ma qui vorremmo osservare una mappa di calore dell'espressione di questi geni nei diversi campioni. Dobbiamo quindi estrarre i conteggi normalizzati per questi geni.
+Potremmo tracciare il $$log_{2} FC$$ per i geni estratti, ma qui vorremmo osservare una heatmap dell'espressione di questi geni nei diversi campioni. Dobbiamo quindi estrarre i conteggi normalizzati per questi geni.
 
 Procediamo in più fasi:
 
-- Estrarre e tracciare i conteggi normalizzati per questi geni per ciascun campione con una mappa di calore, utilizzando il file dei conteggi normalizzati generato da DESeq2
+- Estrarre e tracciare i conteggi normalizzati per questi geni per ciascun campione con una heatmap, utilizzando il file dei conteggi normalizzati generato da DESeq2
 - Calcolare, estrarre e tracciare il punteggio Z dei conteggi normalizzati
 
 > <comment-title>Tutorial avanzato sulla visualizzazione</comment-title>
@@ -1943,20 +1945,20 @@ Per estrarre i conteggi normalizzati per i geni interessanti, uniamo la tabella 
 > <hands-on-title>Estrarre i conteggi normalizzati dei geni più differenzialmente espressi</hands-on-title>
 > 
 > 1. {% tool [Join two Datasets side by side on a specified field](join1) %} con i seguenti parametri:
->    - {% icon param-file %} *"Join "*: il file `Normalized counts` (output di **DESeq2** {% icon tool %})
->    - *"usando la colonna "*: `Column: 1`
->    - {% icon param-file %} *"con "*: `Genes with significant adj p-value & abs(log2(FC)) > 1`
->    - *"e colonna "*: `Column: 1`
->    - *"Mantenere le linee del primo input che non si uniscono al secondo input "*: `No`
->    - *"Mantenere le righe di intestazione "*: `Yes`
-> 
+>    - {% icon param-file %} *"Join"*: the `Normalized counts` file (output of **DESeq2** {% icon tool %})
+>    - *"using column"*: `Column: 1`
+>    - {% icon param-file %} *"with"*: `Genes with significant adj p-value & abs(log2(FC)) > 1`
+>    - *"and column"*: `Column: 1`
+>    - *"Keep lines of first input that do not join with second input"*: `No`
+>    - *"Keep the header lines"*: `Yes`
+>
 >    Il file generato ha più colonne di quelle necessarie per la mappa di calore: conteggi medi normalizzati, $$log_{2} FC$$ e altre informazioni di annotazione. Dobbiamo rimuovere le colonne extra.
 > 
 > 2. {% tool [Cut](Cut1) %} colonne da una tabella con i seguenti parametri per estrarre le colonne con gli ID dei geni e i conteggi normalizzati:
->    - *"Tagliare le colonne "*: `c1-c8`
->    - *"Delimitato da "*: `Tab`
->    - {% icon param-file %} *"Da "*: il set di dati unito (risultato di **Join two Datasets** {% icon tool %})
-> 
+>    - *"Cut columns"*: `c1-c8`
+>    - *"Delimited by"*: `Tab`
+>    - {% icon param-file %} *"From"*: the joined dataset (output of **Join two Datasets** {% icon tool %})
+>
 > 3. Rinominare l'output in `Normalized counts for the most differentially expressed genes`
 > 
 {: .hands_on}
@@ -1965,13 +1967,13 @@ Ora abbiamo una tabella con 114 righe (i 113 geni più differenzialmente espress
 
 > <hands-on-title>Plottare la mappa di calore dei conteggi normalizzati di questi geni per i campioni</hands-on-title>
 > 
-> 1. {% tool [heatmap2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_heatmap2/ggplot2_heatmap2/3.1.3.1+galaxy0) %} per tracciare la mappa di calore:
->    - {% icon param-file %} *"L'input dovrebbe avere intestazioni di colonna "*: `Normalized counts for the most differentially expressed genes`
->    - *"Trasformazione dei dati "*: `Log2(value+1) transform my data`
->    - *"Abilita il raggruppamento dei dati "*: `Yes`
->    - *"Etichettatura di colonne e righe "*: `Label columns and not rows`
->    - *"Tipo di mappa di colore da utilizzare "*: `Gradient with 2 colors`
-> 
+> 1. {% tool [heatmap2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_heatmap2/ggplot2_heatmap2/3.1.3.1+galaxy0) %} per tracciare la heatmap:
+>    - {% icon param-file %} *"Input should have column headers"*: `Normalized counts for the most differentially expressed genes`
+>    - *"Data transformation"*: `Log2(value+1) transform my data`
+>    - *"Enable data clustering"*: `Yes`
+>    - *"Labeling columns and rows"*: `Label columns and not rows`
+>    - *"Type of colormap to use"*: `Gradient with 2 colors`
+>
 {: .hands_on}
 
 Si dovrebbe ottenere qualcosa di simile a:
@@ -1980,9 +1982,9 @@ Si dovrebbe ottenere qualcosa di simile a:
 
 > <question-title></question-title>
 > 
-> 1. Cosa rappresenta l'asse X della mappa di calore? E l'asse Y?
+> 1. Cosa rappresenta l'asse X della heatmap? E l'asse Y?
 > 2. Si osserva qualcosa nel raggruppamento dei campioni e dei geni?
-> 3. Cosa cambia se si rigenera la mappa di calore, questa volta selezionando `Plot the data as it is` in *"Trasformazione dei dati "*?
+> 3. Cosa cambia se si rigenera la heatmap, questa volta selezionando `Plot the data as it is` in *"Trasformazione dei dati "*?
 > 4. Perché non possiamo usare `Log2(value) transform my data` in *"Trasformazione dei dati "*?
 > 5. Come si può generare una heatmap dei conteggi normalizzati per tutti i geni up-regulated con fold change > 2?
 > 
@@ -2016,24 +2018,24 @@ Lo Z-score $$z_{i,j}$ per un gene $$i$$ in un campione $$j$$ dato il conteggio n
 > > <hands-on-title>Calcolo del punteggio Z di tutti i geni</hands-on-title>
 > > 
 > > 1. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy0) %} con i seguenti parametri per > sottrarre innanzitutto i valori medi per riga
-> >    - *"Input di tabelle singole o multiple "*: `Single Table`
-> >      - {% icon param-file %} *"Tabella "*: `Normalized counts file on data ... and others` (output di **DESeq2** {% icon tool %})
-> >      - *"Tipo di operazione della tabella "*: `Perform a full table operation`
-> >        - *"Operazione "*: `Custom`
-> >          - *"Espressione personalizzata su 'tabella', lungo 'asse' (0 o 1) "*: `table.sub(table.mean(1), 0)`
+> >    - *"Input Single or Multiple Tables"*: `Single Table`
+> >      - {% icon param-file %} *"Table"*: `Normalized counts file on data ... and others` (output of **DESeq2** {% icon tool %})
+> >      - *"Type of table operation"*: `Perform a full table operation`
+> >        - *"Operation"*: `Custom`
+> >          - *"Custom expression on 'table', along 'axis' (0 or 1)"*: `table.sub(table.mean(1), 0)``
 > > 
 > >            L'espressione `table.mean(1)` calcola la media per ogni riga (qui i geni) e `table.sub(table.mean(1), 0)` sottrae ogni valore dalla media della riga (calcolata con `table.mean(1)`)
 > > 
 > > 2. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy0) %} con i seguenti parametri:
-> >    - *"Input di tabelle singole o multiple "*: `Multiple Table`
-> >      - Fare clic su {% icon param-repeat %} *"Inserisci tabelle "*
-> >      - In *"1: Tabelle "*:
-> >        - {% icon param-file %} *"Tabella "*: `Normalized counts file on data ... and others` (output di **DESeq2** {% icon tool %})
-> >      - Fare clic su {% icon param-repeat %} *"Inserisci tabelle "*
-> >      - In *"2: Tabelle "*:
-> >        - {% icon param-file %} *"Table "*: output del primo **Table Compute** {% icon tool %}
-> >      - *"Espressione personalizzata su 'tabellaN'"*: `table2.div(table1.std(1),0)`
-> > 
+> >    - *"Input Single or Multiple Tables"*: `Multiple Table`
+> >      - Click on {% icon param-repeat %} *"Insert Tables"*
+> >      - In *"1: Tables"*:
+> >        - {% icon param-file %} *"Table"*: `Normalized counts file on data ... and others` (output of **DESeq2** {% icon tool %})
+> >      - Click on {% icon param-repeat %} *"Insert Tables"*
+> >      - In *"2: Tables"*:
+> >        - {% icon param-file %} *"Table"*: output of the first **Table Compute** {% icon tool %}
+> >      - *"Custom expression on 'tableN'"*: `table2.div(table1.std(1),0)`
+> >
 > >        L'espressione `table1.std(1)` calcola le deviazioni standard di ogni riga della prima tabella (conteggi normalizzati) e `table2.div` divide i valori della seconda tabella (precedentemente calcolati) per queste deviazioni standard.
 > > 
 > > 3. Rinominare l'output in `Z-scores`
@@ -2069,20 +2071,19 @@ Lo Z-score $$z_{i,j}$ per un gene $$i$$ in un campione $$j$$ dato il conteggio n
 > 
 {: .details}
 
-Ora vorremmo tracciare una mappa di calore per i punteggi Z:
+Ora vorremmo tracciare una heatmap per i punteggi Z:
 
 ![Heatmap con i conteggi Z-score per i geni più differenzialmente espressi](../../images/ref-based/z-score-heatmap.png "Z-scores for the most differentially expressed genes")
 
 > <hands-on-title>Plottare lo Z-score dei geni più differenzialmente espressi</hands-on-title>
 > 
-> 1. {% tool [heatmap2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_heatmap2/ggplot2_heatmap2/3.1.3.1+galaxy0) %} per tracciare la mappa di calore:
->    - {% icon param-file %} *"L'input dovrebbe avere intestazioni di colonna "*: `Normalized counts for the most differentially expressed genes`
->    - *"Trasformazione dei dati "*: `Plot the data as it is`
->    - *"Calcolo dei punteggi z prima del raggruppamento "*: `Compute on rows`
->    - *"Abilita il raggruppamento dei dati "*: `Yes`
->    - *"Etichettatura di colonne e righe "*: `Label columns and not rows`
->    - *"Tipo di mappa di colore da utilizzare "*: `Gradient with 3 colors`
-> 
+> 1. {% tool [heatmap2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_heatmap2/ggplot2_heatmap2/3.1.3.1+galaxy0) %} per tracciare la heatmap:
+>    - {% icon param-file %} *"Input should have column headers"*: `Normalized counts for the most differentially expressed genes`
+>    - *"Data transformation"*: `Plot the data as it is`
+>    - *"Compute z-scores prior to clustering"*: `Compute on rows`
+>    - *"Enable data clustering"*: `Yes`
+>    - *"Labeling columns and rows"*: `Label columns and not rows`
+>    - *"Type of colormap to use"*: `Gradient with 3 colors`
 {: .hands_on}
 
 # Analisi dell'arricchimento funzionale dei geni DE
@@ -2105,47 +2106,47 @@ L'analisi [Gene Ontology (GO)](http://www.geneontology.org/) è ampiamente utili
 > <hands-on-title>Preparare il primo set di dati per goseq</hands-on-title>
 > 
 > 1. {% tool [Compute](toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.0) %} su righe con i seguenti parametri:
->    - {% icon param-file %} *"File di input "*: il `DESeq2 result file` (output di **DESeq2** {% icon tool %})
->    - In *"Espressioni "*:
->      - {% icon param-text %} *"Aggiungi espressione "*: `bool(float(c7)<0.05)`
->      - {% icon param-select %} *"Modalità dell'operazione? "*: `Append`
->    - Sotto *"Gestione degli errori "*:
->      - {% icon param-toggle %} *"Rileva automaticamente i tipi di colonna "*: `No`
->      - {% icon param-select %} *"Se non è possibile calcolare un'espressione per una riga "*: `Fill in a replacement value`
->      - {% icon param-select %} *"Valore di sostituzione "*: `False`
+>    - {% icon param-file %} *"Input file"*: the `DESeq2 result file` (output of **DESeq2** {% icon tool %})
+>    - In *"Expressions"*:
+>      - {% icon param-text %} *"Add expression"*: `bool(float(c7)<0.05)`
+>      - {% icon param-select %} *"Mode of the operation?"*: `Append`
+>    - Under *"Error handling"*:
+>      - {% icon param-toggle %} *"Autodetect column types"*: `No`
+>      - {% icon param-select %} *"If an expression cannot be computed for a row"*: `Fill in a replacement value`
+>      - {% icon param-select %} *"Replacement value"*: `False
 > 
 > 2. {% tool [Cut](Cut1) %} colonne da una tabella con i seguenti parametri:
->    - *"Tagliare le colonne "*: `c1,c8`
->    - *"Delimitato da "*: `Tab`
->    - {% icon param-file %} *"Da "*: l'output di **Compute** {% icon tool %}
+>    - *"Cut columns"*: `c1,c8`
+>    - *"Delimited by"*: `Tab`
+>    - {% icon param-file %} *"From"*: the output of the **Compute** {% icon tool %}
 > 
 > 3. {% tool [Change Case](ChangeCase) %} con
->    - {% icon param-file %} *"Da "*: l'output del precedente **Taglio** {% icon tool %}
->    - *"Cambia il caso delle colonne "*: `c1`
->    - *"Delimitato da "*: `Tab`
->    - *"To "*: `Upper case`
+>    - {% icon param-file %} *"From"*: the output of the previous **Cut** {% icon tool %}
+>    - *"Change case of columns"*: `c1`
+>    - *"Delimited by"*: `Tab`
+>    - *"To"*: `Upper case`
 > 
 > 4. Rinominare l'output in `Gene IDs and differential expression`
 > 
 {: .hands_on}
 
-Abbiamo appena generato il primo input per **goseq**. Come secondo input per **goseq** abbiamo bisogno delle lunghezze dei geni. Possiamo usare le lunghezze dei geni generate da **featureCounts** o **Lunghezza del gene e contenuto GC** e formattare gli ID dei geni.
+Abbiamo appena generato il primo input per **goseq**. Come secondo input per **goseq** abbiamo bisogno delle lunghezze dei geni. Possiamo usare le lunghezze dei geni generate da **featureCounts** o **Gene length and GC content** e formattare gli ID dei geni.
 
 > <hands-on-title>Preparare il file della lunghezza dei geni</hands-on-title>
 > 
 > <div class="featureCounts" markdown="1">
-> 1. Copy the feature length collection previously generated by **featureCounts** {% icon tool %} into this history
+> 1. Copiare la raccolta delle lunghezze delle caratteristiche precedentemente generata da **featureCounts** {% icon tool %} in questa history
 > 
 > {% snippet faqs/galaxy-it/histories_copy_dataset.md %}
 > 
 > 2. {% tool [Extract Dataset](__EXTRACT_DATASET__) %} con:
->    - {% icon param-collection %} *"Elenco di input "*: `featureCounts on collection N: Feature lengths`
->    - *"Come dovrebbe essere selezionato un set di dati? "*: `The first dataset`
-> 
-> </div>
+>    - {% icon param-file %} *"From"*: <span class="featureCounts" markdown="1">`GSM461177_untreat_paired` (output of **Extract Dataset** {% icon tool %})</span><span class="STAR" markdown="1">`Gene length`</span>
+>    - *"Change case of columns"*: `c1`
+>    - *"Delimited by"*: `Tab`
+>    - *"To"*: `Upper case`
 > 
 > <div class="STAR" markdown="1">
-> 1. Copy the output of **Gene length and GC content** {% icon tool %} (`Gene length`) into this history
+> 1. Copiare l'output di **Gene length and GC content** {% icon tool %} (`Gene length`) in questa history
 > 
 > {% snippet faqs/galaxy-it/histories_copy_dataset.md %}
 > </div>
@@ -2153,9 +2154,9 @@ Abbiamo appena generato il primo input per **goseq**. Come secondo input per **g
 > 2. {% tool [Change Case](ChangeCase) %} con i seguenti parametri:
 > 
 >    - {% icon param-file %} *"Da "*: <span class="featureCounts" markdown="1">`GSM461177_untreat_paired` (output di **Extract Dataset** {% icon tool %})</span><span class="STAR" markdown="1">`Gene length`</span>
->    - *"Cambia il caso delle colonne "*: `c1`
->    - *"Delimitato da "*: `Tab`
->    - *"To "*: `Upper case`
+>    - *"Change case of columns"*: `c1`
+>    - *"Delimited by"*: `Tab`
+>    - *"To"*: `Upper case`
 > 
 > 3. Rinominare l'output in `Gene IDs and length`
 > 
@@ -2166,16 +2167,16 @@ Ora abbiamo i due file di input necessari per goseq.
 > <hands-on-title>Eseguire analisi GO</hands-on-title>
 > 
 > 1. {% tool [goseq](toolshed.g2.bx.psu.edu/repos/iuc/goseq/goseq/1.50.0+galaxy0) %} con
->    - *"File dei geni espressi differenzialmente "*: `Gene IDs and differential expression`
->    - *"File delle lunghezze dei geni "*: `Gene IDs and length`
->    - *"Categorie di geni "*: `Get categories`
->       - *"Selezionare un genoma da utilizzare "*: `Fruit fly (dm6)`
->       - *"Selezionare il formato ID Gene "*: `Ensembl Gene ID`
->       - *"Selezionare una o più categorie "*: `GO: Cellular Component`, `GO: Biological Process`, `GO: Molecular Function`
->    - In *"Opzioni di output "*
->      - *"Output Top GO terms plot? "*: `Yes`
->      - *"Estrarre i geni DE per le categorie (termini GO/KEGG)? "*: `Yes`
-> 
+>    - *"Differentially expressed genes file"*: `Gene IDs and differential expression`
+>    - *"Gene lengths file"*: `Gene IDs and length`
+>    - *"Gene categories"*: `Get categories`
+>       - *"Select a genome to use"*: `Fruit fly (dm6)`
+>       - *"Select Gene ID format"*: `Ensembl Gene ID`
+>       - *"Select one or more categories"*: `GO: Cellular Component`, `GO: Biological Process`, `GO: Molecular Function`
+>    - In *"Output Options"*
+>      - *"Output Top GO terms plot?"*: `Yes`
+>      - *"Extract the DE genes for the categories (GO/KEGG terms)?"*: `Yes`
+>
 {: .hands_on}
 
 **goseq** genera con questi parametri 3 output:
@@ -2243,18 +2244,19 @@ Per esempio, il percorso `dme00010` rappresenta il processo di glicolisi (conver
 
 > <hands-on-title>Eseguire l'analisi dei percorsi KEGG</hands-on-title>
 > 
-> 1. {% tool [goseq](toolshed.g2.bx.psu.edu/repos/iuc/goseq/goseq/1.50.0+galaxy0) %} con
->    - *"File dei geni espressi differenzialmente "*: `Gene IDs and differential expression`
->    - *"File delle lunghezze dei geni "*: `Gene IDs and length`
->    - *"Categorie di geni "*: `Get categories`
->       - *"Selezionare un genoma da utilizzare "*: `Fruit fly (dm6)`
->       - *"Selezionare il formato ID Gene "*: `Ensembl Gene ID`
->       - *"Selezionare una o più categorie "*: `KEGG`
->    - In *"Opzioni di output "*
->      - *"Output Top GO terms plot? "*: `No`
->      - *"Estrarre i geni DE per le categorie (termini GO/KEGG)? "*: `Yes`
-> 
+> 1. {% tool [goseq](toolshed.g2.bx.psu.edu/repos/iuc/goseq/goseq/1.50.0+galaxy0) %} with
+>    - *"Differentially expressed genes file"*: `Gene IDs and differential expression`
+>    - *"Gene lengths file"*: `Gene IDs and length`
+>    - *"Gene categories"*: `Get categories`
+>       - *"Select a genome to use"*: `Fruit fly (dm6)`
+>       - *"Select Gene ID format"*: `Ensembl Gene ID`
+>       - *"Select one or more categories"*: `KEGG`
+>    - In *"Output Options"*
+>      - *"Output Top GO terms plot?"*: `No`
+>      - *"Extract the DE genes for the categories (GO/KEGG terms)?"*: `Yes`
+>
 {: .hands_on}
+
 
 **goseq** genera con questi parametri 2 output:
 
@@ -2292,9 +2294,9 @@ Qui vorremmo visualizzare i 2 percorsi KEGG: il `00010` sovrarappresentato (Glic
 > <hands-on-title>Overlay log2FC su KEGG pathway</hands-on-title>
 > 
 > 1. {% tool [Cut](Cut1) %} colonne da una tabella con i seguenti parametri:
->    - *"Tagliare le colonne "*: `c1,c3`
->    - *"Delimitato da "*: `Tab`
->    - {% icon param-file %} *"Da "*: `Genes with significant adj p-value`
+>    - *"Cut columns"*: `c1,c3`
+>    - *"Delimited by"*: `Tab`
+>    - {% icon param-file %} *"From"*: `Genes with significant adj p-value`
 > 
 > 2. Rinominare in `Genes with significant adj p-value and their Log2 FC`
 > 
@@ -2307,21 +2309,21 @@ Qui vorremmo visualizzare i 2 percorsi KEGG: il `00010` sovrarappresentato (Glic
 >    03040
 >    ```
 > 
-> 4. {% tool [Pathview](toolshed.g2.bx.psu.edu/repos/iuc/pathview/pathview/1.34.0+galaxy0) %} con
->    - *"Numero di percorsi da tracciare "*: `Multiple`
->      - {% icon param-file %} *"KEGG pathways "*: `KEGG pathways to plot`
->      - *"Il file ha un'intestazione (una prima riga con i nomi delle colonne)? "*: `No`
->    - *"Specie da utilizzare "*: `Fly`
->    - *"Fornire un file di dati genetici? "*: `Yes`
->      - {% icon param-file %} *"Dati genici "*: `Genes with significant adj p-value and their Log2 FC`
->      - *"Il file ha un'intestazione (una prima riga con i nomi delle colonne)? "*: `Yes`
->      - *"Formato per i dati dei geni "*: `Ensembl Gene ID`
->    - *"Fornire un file di dati composto? "*: `No`
->    - In *"Opzioni di output "*
->      - *"Output per il percorso "*: `KEGG native`
->        - *"Tracciare sullo stesso livello? "*: `Yes`
-> 
+> 4. {% tool [Pathview](toolshed.g2.bx.psu.edu/repos/iuc/pathview/pathview/1.34.0+galaxy0) %} with
+>    - *"Number of pathways to plot"*: `Multiple`
+>      - {% icon param-file %} *"KEGG pathways"*: `KEGG pathways to plot`
+>      - *"Does the file have header (a first line with column names)?"*: `No`
+>    - *"Species to use"*: `Fly`
+>    - *"Provide a gene data file?"*: `Yes`
+>      - {% icon param-file %} *"Gene data"*: `Genes with significant adj p-value and their Log2 FC`
+>      - *"Does the file have header (a first line with column names)?"*: `Yes`
+>      - *"Format for gene data"*: `Ensembl Gene ID`
+>    - *"Provide a compound data file?"*: `No`
+>    - In *"Output Options"*
+>      - *"Output for pathway"*: `KEGG native`
+>        - *"Plot on same layer?"*: `Yes`
 {: .hands_on}
+
 
 **Pathview** genera una raccolta con la visualizzazione KEGG: un file per percorso.
 
@@ -2358,19 +2360,19 @@ Questo passaggio è simile a quello del [conteggio del numero di letture per gen
 > <hands-on-title>Conto del numero di letture per esone</hands-on-title>
 > 
 > 1. {% tool [DEXSeq-Count](toolshed.g2.bx.psu.edu/repos/iuc/dexseq/dexseq_count/1.28.1.0) %}: Usare il **DEXSeq-Count** per preparare le annotazioni di *Drosophila* per estrarre solo gli esoni con gli id genici corrispondenti
->     - *"Modalità di funzionamento "*: `Prepare annotation`
->       - {% icon param-file %} *"File GTF "*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
-> 
+>     - *"Mode of operation"*: `Prepare annotation`
+>       - {% icon param-file %} *"GTF file"*: `Drosophila_melanogaster.BDGP6.32.109_UCSC.gtf.gz`
+>         
 >    L'output è di nuovo un file GTF pronto per essere utilizzato per il conteggio
 > 
 > 2. {% tool [DEXSeq-Count](toolshed.g2.bx.psu.edu/repos/iuc/dexseq/dexseq_count/1.28.1.0) %}: Conta le letture usando **DEXSeq-Count** con
->     - *"Modalità di funzionamento "*: `Count reads`
->       - {% icon param-files %} *"File bam di input "*: i file `BAM` generati da **RNA STAR**
->       - {% icon param-file %} *"File GTF compatibile con DEXSeq "*: il file GTF generato da **DEXSeq-Count**
->       - *"La libreria è paired end? "*: `Yes`
->       - *"La libreria è specifica per i filamenti? `No`
->       - *"Salta tutte le letture con qualità di allineamento inferiore al valore minimo indicato "*: `10`
-> 
+>     - *"Mode of operation"*: `Count reads`
+>       - {% icon param-files %} *"Input bam file"*: the `BAM` files generated by **RNA STAR**
+>       - {% icon param-file %} *"DEXSeq compatible GTF file"*: the GTF file generated by **DEXSeq-Count**
+>       - *"Is library paired end?"*: `Yes`
+>       - *"Is library strand specific?*: `No`
+>       - *"Skip all reads with alignment quality lower than the given minimum value"*:  `10`
+>
 {: .hands_on}
 
 DEXSeq genera una tabella di conteggio simile a quella generata da featureCounts, ma con i conteggi per gli esoni.
@@ -2429,26 +2431,26 @@ Come per DESeq2, nella fase precedente, abbiamo contato solo le letture che mapp
 > 
 > 3. {% tool [DEXSeq](toolshed.g2.bx.psu.edu/repos/iuc/dexseq/dexseq/1.28.1+galaxy1) %}: Eseguire **DEXSeq** con
 >    - {% icon param-file %} *"File GTF creato dallo strumento DEXSeq-Count "*: `Drosophila_melanogaster.BDGP6.87.dexseq.gtf`
->    - In *"Fattore "*:
->       - In "1: Fattore"
->           - *"Specificare il nome di un fattore "*: `condition`
->           - In *"Livello del fattore "*:
->               - In *"1: Livello del fattore "*:
->                   - *"Specificare un livello di fattore "*: `treated`
->                   - {% icon param-files %} *"File di conteggio "*: i 3 file di conteggio degli esoni con `treated` nel nome
->               - In *"2: Livello del fattore "*:
->                   - *"Specificare un livello di fattore "*: `untreated`
->                   - {% icon param-files %} *"File di conteggio "*: i 4 file di conteggio degli esoni con `untreated` nel nome
->       - Fare clic su *"Fattore di inserimento "* (non su "Livello fattore di inserimento")
->       - In "2: Fattore"
->           - "Specificare il nome di un fattore" a `sequencing`
->           - In *"Livello del fattore "*:
->               - In *"1: Livello del fattore "*:
->                   - *"Specificare un livello di fattore "*: `PE`
->                   - {% icon param-files %} *"File di conteggio "*: i 4 file di conteggio degli esoni con `paired` nel nome
->               - In *"2: Livello del fattore "*:
->                   - *"Specificare un livello di fattore "*: `SE`
->                   - {% icon param-files %} *"File di conteggio "*: i 3 file di conteggio degli esoni con `single` nel nome
+>    - In *"Factor"*:
+>       - In "1: Factor"
+>           - *"Specify a factor name"*: `condition`
+>           - In *"Factor level"*:
+>               - In *"1: Factor level"*:
+>                   - *"Specify a factor level"*: `treated`
+>                   - {% icon param-files %} *"Counts file(s)"*: i 3 file di conteggio degli esoni con `treated` nel nome
+>               - In *"2: Factor level"*:
+>                   - *"Specify a factor level"*: `untreated`
+>                   - {% icon param-files %} *"Counts file(s)"*: i 4 file di conteggio degli esoni con `untreated` nel nome
+>       - Fare clic su *"Insert Factor"* (non su "Insert Factor level")
+>       - In "2: Factor"
+>           - "Specify a factor name" to `sequencing`
+>           - In *"Factor level"*:
+>               - In *"1: Factor level"*:
+>                   - *"Specify a factor level"*: `PE`
+>                   - {% icon param-files %} *"Counts file(s)"*:: i 4 file di conteggio degli esoni con `paired` nel nome
+>               - In *"2: Factor level"*:
+>                   - *"Specify a factor level"*: `SE`
+>                   - {% icon param-files %} *"Counts file(s)"*: i 3 file di conteggio degli esoni con `single` nel nome
 > 
 >    > <comment-title></comment-title>
 >    > 
