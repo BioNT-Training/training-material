@@ -390,23 +390,23 @@ A volte le sostanze chimiche usate durante il sequenziamento si esauriscono col 
 
 ## Punteggi di qualità per sequenza
 
-Traccia il punteggio medio di qualità sull'intera lunghezza di tutte le letture sull'asse delle ascisse e fornisce il numero totale di letture con questo punteggio sull'asse delle ordinate:
+Questo grafico riporta, sull’asse x, la qualità media su tutta la lunghezza delle singole letture e, sull’asse y, il numero totale di letture con quel punteggio:
 
 ![Punteggi di qualità per sequenza](../../images/quality-control/per_sequence_quality_scores-before.png "Punteggi di qualità per sequenza")
 
-La distribuzione della qualità media delle letture dovrebbe avere un picco stretto nell'intervallo superiore del grafico. Può anche segnalare se un sottoinsieme di sequenze ha valori di qualità universalmente bassi: ciò può accadere perché alcune sequenze sono scarsamente rappresentate (ai margini del campo visivo ecc.), tuttavia queste dovrebbero rappresentare solo una piccola percentuale delle sequenze totali.
+La distribuzione dovrebbe avere un picco stretto nell’intervallo alto. Può inoltre evidenziare un sottoinsieme di letture con qualità universalmente bassa (ad esempio letture ai margini del campo visivo), che comunque dovrebbe rappresentare solo una piccola percentuale del totale.
 
 ## Contenuto della sequenza per base
 
 ![Contenuto di sequenza per base](../../images/quality-control/per_base_sequence_content-before.png "Contenuto di sequenza per base per una libreria di DNA")
 
-"Per Base Sequence Content" traccia la percentuale di ciascuno dei quattro nucleotidi (T, C, A, G) in ciascuna posizione in tutte le letture del file di sequenza di input. Come per la qualità della sequenza per base, l'asse x è non uniforme.
+Il modulo "Per Base Sequence Content" traccia la percentuale dei quattro nucleotidi (A, C, G, T) in ciascuna posizione lungo tutte le letture del file in input. Come per la qualità per base, l’asse x può essere non uniforme (binning).
 
 In una libreria casuale ci si aspetterebbe una differenza minima o nulla tra le quattro basi. La proporzione di ciascuna delle quattro basi dovrebbe rimanere relativamente costante per tutta la lunghezza della lettura con `%A=%T` e `%G=%C`, e le linee in questo grafico dovrebbero essere parallele tra loro. Si tratta di dati di ampliconi, in cui il DNA 16S viene amplificato con la PCR e sequenziato, quindi ci aspettiamo che questo grafico abbia qualche distorsione e non mostri una distribuzione casuale.
 
-> <details-title>Biasi per tipo di biblioteca</details-title>
+> <details-title>Bias per tipo di libreria</details-title>
 > 
-> Vale la pena notare che alcuni tipi di librerie produrranno sempre una composizione di sequenza distorta, normalmente all'inizio della lettura. Le librerie prodotte mediante priming con esameri casuali (comprese quasi tutte le librerie RNA-Seq) e quelle frammentate mediante trasposasi conterranno un bias intrinseco nelle posizioni di inizio delle letture (le prime 10-12 basi). Questo bias non coinvolge una sequenza specifica, ma fornisce invece un arricchimento di un certo numero di K-mers diversi all'estremità 5' delle letture. Pur trattandosi di un vero e proprio bias tecnico, non è qualcosa che può essere corretto con il trimming e nella maggior parte dei casi non sembra influire negativamente sull'analisi a valle. Tuttavia, produrrà un avviso o un errore in questo modulo.
+> lcuni tipi di librerie presentano bias di composizione all’inizio della lettura. Le librerie prodotte mediante priming con esameri casuali (comprese quasi tutte le librerie RNA-Seq) e quelle frammentate mediante trasposasi conterranno un bias intrinseco nelle posizioni di inizio delle letture (le prime 10-12 basi). Questo bias non coinvolge una sequenza specifica, ma fornisce invece un arricchimento di un certo numero di K-mers diversi all'estremità 5' delle letture. Pur trattandosi di un vero e proprio bias tecnico, non è qualcosa che può essere corretto con il trimming e nella maggior parte dei casi non sembra influire negativamente sull'analisi a valle. Tuttavia, produrrà un avviso o un errore in questo modulo.
 > 
 > ![Contenuto di sequenza per base per dati RNA-seq](../../images/quality-control/per_base_sequence_content_rnaseq.png)
 > 
@@ -419,7 +419,7 @@ In una libreria casuale ci si aspetterebbe una differenza minima o nulla tra le 
 
 > <question-title></question-title>
 > 
-> Perché c'è un'avvertenza per i grafici del contenuto di sequenza per base?
+> Perché c’è un’avvertenza per i grafici del contenuto di sequenza per base?
 > 
 > > <solution-title></solution-title>
 > > All'inizio delle sequenze, il contenuto di sequenza per base non è molto buono e le percentuali non sono uguali, come ci si aspetta per i dati degli ampliconi 16S.
@@ -432,17 +432,17 @@ In una libreria casuale ci si aspetterebbe una differenza minima o nulla tra le 
 
 ![Contenuto GC per sequenza](../../images/quality-control/per_sequence_gc_content-before.png "Contenuto GC per sequenza")
 
-Questo grafico mostra il numero di letture rispetto alla percentuale di basi G e C per lettura. Viene confrontato con una distribuzione teorica che ipotizza un contenuto di GC uniforme per tutte le letture, previsto per il sequenziamento dell'intero genoma, dove il picco centrale corrisponde al contenuto complessivo di GC del genoma sottostante. Poiché il contenuto di GC del genoma non è noto, il contenuto modale di GC viene calcolato dai dati osservati e utilizzato per costruire una distribuzione di riferimento.
+Questo grafico mostra il numero di letture rispetto alla percentuale GC per lettura. È confrontato con una distribuzione teorica che presuppone uniformità GC per tutte le letture (scenario tipico WGS). Poiché il GC del genoma non è noto, il contenuto GC modale viene stimato dai dati e usato per costruire una distribuzione di riferimento.
 
-Una distribuzione dalla forma insolita potrebbe indicare una libreria contaminata o un altro tipo di sottoinsieme distorto. Una distribuzione normale spostata indica un bias sistematico, indipendente dalla posizione delle basi. Se c'è un bias sistematico che crea una distribuzione normale spostata, il modulo non lo segnalerà come errore, poiché non sa quale dovrebbe essere il contenuto di GC del genoma.
+Distribuzioni di forma insolita possono indicare contaminazione o sottoinsiemi distorti. Una distribuzione normale ma spostata indica un bias sistematico indipendente dalla posizione. Se è presente un bias sistematico, il modulo potrebbe non segnalarlo come errore (non conosce il GC “vero” del campione).
 
 Ma ci sono anche altre situazioni in cui può verificarsi una distribuzione di forma insolita. Ad esempio, nel caso del sequenziamento dell'RNA può verificarsi una maggiore o minore distribuzione del contenuto medio di GC tra i trascritti, che fa sì che il grafico osservato sia più ampio o più stretto di una distribuzione normale ideale.
 
 > <question-title></question-title>
 > 
-> Perché i grafici del contenuto di GC per sequenza sono falliti?
+> Perché i grafici del contenuto GC per sequenza risultano “fail”?
 > 
-> > <solution-title></solution-title> Ci sono più picchi. Questo può essere indicativo di una contaminazione inaspettata, come ad esempio adattatori, rRNA o sequenze sovrarappresentate. Oppure può essere normale se si tratta di dati di ampliconi o di trascritti RNA-seq molto abbondanti.
+> > <solution-title></solution-title> CSono presenti più picchi. Questo può indicare contaminazione inattesa (adattatori, rRNA, sequenze sovrarappresentate) oppure essere normale per ampliconi o trascritti RNA-Seq molto abbondanti.
 > {: .solution }
 {: .question}
 
@@ -463,13 +463,10 @@ Il grafico mostra in blu la percentuale di letture di una determinata sequenza n
 In una libreria eterogenea, la maggior parte delle sequenze si presenta una sola volta nell'insieme finale. Un basso livello di duplicazione può indicare un livello molto alto di copertura della sequenza target, ma un alto livello di duplicazione è più probabile che indichi un qualche tipo di bias di arricchimento.
 
 Si possono trovare due fonti di letture duplicate:
-- duplicazione PCR in cui i frammenti della libreria sono stati sovrarappresentati a causa di un arricchimento PCR distorto
+- Duplicazione PCR in cui i frammenti della libreria sono stati sovrarappresentati a causa di un arricchimento PCR distorto
+È un problema perché i duplicati della PCR rappresentano male la vera proporzione di sequenze in ingresso.
 
-  È un problema perché i duplicati della PCR rappresentano male la vera proporzione di sequenze in ingresso.
-
-- Sequenze veramente sovrarappresentate, come trascritti molto abbondanti in una libreria RNA-Seq o in dati di ampliconi (come questo campione)
-
-  è un caso atteso e non preoccupante perché rappresenta fedelmente l'input.
+- Sequenze veramente sovrarappresentate, come trascritti molto abbondanti in una libreria RNA-Seq o in dati di ampliconi (come questo campione). È un caso atteso e non preoccupante perché rappresenta fedelmente l'input.
 
 > <details-title>Maggiori dettagli sulla duplicazione</details-title>
 > 
@@ -479,7 +476,7 @@ Si possono trovare due fonti di letture duplicate:
 > 
 > Per i dati shotgun dell'intero genoma si prevede che quasi il 100% delle letture sia unico (appare solo una volta nei dati di sequenza). La maggior parte delle sequenze dovrebbe cadere all'estrema sinistra del grafico, sia nella linea rossa che in quella blu. Ciò indica una libreria altamente diversificata che non è stata sovra-sequenziata. Se la profondità di sequenziamento è estremamente elevata (ad esempio > 100 volte la dimensione del genoma) possono comparire alcune inevitabili duplicazioni di sequenze: in teoria esiste solo un numero finito di letture di sequenza completamente uniche che possono essere ottenute da un dato campione di DNA in ingresso.
 > 
-> arricchimenti più specifici di sottoinsiemi o la presenza di contaminanti a bassa complessità tenderanno a produrre picchi verso la destra del grafico. Questi picchi di duplicazione elevati appaiono spesso nella traccia blu, poiché costituiscono un'alta percentuale della libreria originale, ma di solito scompaiono nella traccia rossa, poiché costituiscono una percentuale insignificante dell'insieme deduplicato. Se i picchi persistono nella traccia rossa, ciò suggerisce la presenza di un gran numero di sequenze diverse altamente duplicate, che potrebbero indicare un set contaminante o una duplicazione tecnica molto grave.
+> Arricchimenti più specifici di sottoinsiemi o la presenza di contaminanti a bassa complessità tenderanno a produrre picchi verso la destra del grafico. Questi picchi di duplicazione elevati appaiono spesso nella traccia blu, poiché costituiscono un'alta percentuale della libreria originale, ma di solito scompaiono nella traccia rossa, poiché costituiscono una percentuale insignificante dell'insieme deduplicato. Se i picchi persistono nella traccia rossa, ciò suggerisce la presenza di un gran numero di sequenze diverse altamente duplicate, che potrebbero indicare un set contaminante o una duplicazione tecnica molto grave.
 > 
 > Di solito nel sequenziamento dell'RNA ci sono trascritti molto abbondanti e altri poco abbondanti. Si prevede che per i trascritti ad alta abbondanza si osservino letture duplicate:
 > 
@@ -541,42 +538,42 @@ Abbiamo cercato di spiegare qui i diversi rapporti di FastQC e alcuni casi d'uso
 
 > <details-title>Problema specifico per tipi di librerie alternativi</details-title>
 > 
-> #### Piccoli/micro RNA
+> #### Small/micro RNA
 > 
-> Nelle librerie di RNA di piccole dimensioni, in genere abbiamo un insieme relativamente piccolo di sequenze uniche e brevi. Le librerie di piccoli RNA non vengono tosate in modo casuale prima di aggiungere gli adattatori di sequenziamento alle loro estremità: tutte le letture per classi specifiche di microRNA saranno identiche. Il risultato sarà:
+> Nelle librerie di small RNA, in genere abbiamo un insieme relativamente piccolo di sequenze uniche e brevi. Le librerie di small RNA non vengono frammentate in modo casuale prima di aggiungere gli adattatori di sequenziamento alle estremità: di conseguenza, tutte le letture appartenenti a classi specifiche di microRNA risultano identiche. Il risultato sarà:
 > 
-> - contenuto di sequenza per base estremamente distorto
-> - distribuzione estremamente stretta del contenuto di GC
+> - Contenuto di sequenza per base estremamente distorto
+> - Distribuzione estremamente stretta del contenuto di GC
 > - Livelli molto elevati di duplicazione della sequenza
-> - abbondanza di sequenze sovrarappresentate
-> - lettura negli adattatori
+> - Abbondanza di sequenze sovrarappresentate
+> - Lettura negli adattatori
 > 
 > #### Amplicon
 > 
 > Le librerie di ampliconi sono preparate mediante amplificazione PCR di un bersaglio specifico. Ad esempio, la regione ipervariabile V4 del gene 16S rRNA batterico. Ci si aspetta che tutte le letture di questo tipo di libreria siano quasi identiche. Il risultato sarà:
 > 
-> - contenuto di sequenza per base estremamente distorto
-> - distribuzione estremamente stretta del contenuto di GC
+> - Contenuto di sequenza per base estremamente distorto
+> - Distribuzione estremamente stretta del contenuto di GC
 > - Livelli molto elevati di duplicazione della sequenza
-> - abbondanza di sequenze sovrarappresentate
+> - Abbondanza di sequenze sovrarappresentate
 > 
 > #### Sequenziamento con bisolfito o metilazione
 > 
 > Con il sequenziamento con bisolfito o metilazione, la maggior parte delle basi di citosina (C) viene convertita in timina (T). Il risultato sarà:
 > 
-> - contenuto di sequenza per base distorto
+> - Contenuto di sequenza per base distorto
 > - Contenuto di GC per sequenza distorto
 > 
 > #### Contaminazione del dimero adattatore
 > 
 > Qualsiasi tipo di libreria può contenere una piccolissima percentuale di frammenti dimer adattatore (cioè senza inserto). È più probabile che si trovino nelle librerie di ampliconi costruite interamente con la PCR (per la formazione di primer-dimeri PCR) che nelle librerie DNA-Seq o RNA-Seq costruite con la legatura dell'adattatore. Se una frazione sufficiente della libreria è costituita da dimeri di adattatori, ciò si noterà nel rapporto FastQC:
 > 
-> - calo della qualità della sequenza per base dopo la base 60
-> - possibile distribuzione bimodale dei punteggi di qualità per sequenza
+> - Calo della qualità della sequenza per base dopo la base 60
+> - Possibile distribuzione bimodale dei punteggi di qualità per sequenza
 > - Modello distinto osservato nel contenuto di sequenza per basi fino alla base 60
-> - picco nel contenuto di GC per sequenza
-> - adattatore di corrispondenza delle sequenze sovrarappresentato
-> - contenuto di adattatori > 0% a partire dalla base 1
+> - Picco nel contenuto di GC per sequenza
+> - Adattatore di corrispondenza delle sequenze sovrarappresentato
+> - Contenuto di adattatori > 0% a partire dalla base 1
 >
 {: .details}
 
@@ -602,27 +599,27 @@ Per svolgere questo compito utilizzeremo [Cutadapt](https://cutadapt.readthedocs
 
 - Rifilatura delle basi di bassa qualità dalle estremità. Il trimming della qualità viene eseguito prima di qualsiasi trimming dell'adattatore. Impostiamo la soglia di qualità a 20, una soglia comunemente usata, per saperne di più [nelle Phred Score FAQ di GATK] (https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores).
 - Ritagliare l'adattatore con Cutadapt. Per questo è necessario fornire la sequenza dell'adattatore. In questo esempio, Nextera è l'adattatore rilevato. Possiamo trovare la sequenza dell'adattatore Nextera sul [sito web Illumina] (https://support.illumina.com/bulletins/2016/12/what-sequences-do-i-use-for-adapter-trimming.html) `CTGTCTCTTATACACATCT`. Taglieremo questa sequenza dall'estremità 3' delle letture.
-- filtrare le sequenze con lunghezza < 20 dopo il trimming
+- Filtrare le sequenze con lunghezza < 20 dopo il trimming
 
 > <hands-on-title>Miglioramento della qualità della sequenza</hands-on-title>
 > 
 > 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.9+galaxy1) %} con i seguenti parametri
 >    - *"Letture single-end o paired-end? "*: ..`Single-end`..
 >       - {% icon param-file %} *"File FASTQ/A "*: `Reads` (set di dati di input)
-> 
->         > <tip-title>File non selezionabile?</tip-title>
+>        
+>          > <tip-title>Files not selectable?</tip-title>
 >         > Se il file FASTQ non può essere selezionato, si può controllare se il formato è FASTQ con valori di qualità scalati Sanger (`fastqsanger.gz`). È possibile modificare il tipo di dati facendo clic sul simbolo della matita.
 >         {: .tip}
 > 
->    - In *"Read 1 Adapters "*:
->       - *"1: Adattatori 3' (finali) "*:
->          - *"Fonte "*: `Enter custom sequence`
->          - *"Sequenza adattatore 3' personalizzata "*: `CTGTCTCTTATACACATCT`
->    - In *"Altre opzioni di ritaglio delle letture "*
->       - *"Cutoff di qualità (R1) "*: `20`
->    - In *"Opzioni di filtraggio della lettura "*
->       - *"Lunghezza minima (R1) "*: `20`
->    - {% icon param-select %} *"Output aggiuntivi da generare "*: `Report`
+   - In *"Read 1 Adapters"*:
+>       - *"1: 3' (End) Adapters"*:
+>          - *"Source"*: `Enter custom sequence`
+>          - *"Custom 3' adapter sequence"*: `CTGTCTCTTATACACATCT`
+>    - In *"Other Read Trimming Options"*
+>       - *"Quality cutoff(s) (R1)"*: `20`
+>    - In *"Read Filtering Options"*
+>       - *"Minimum length (R1)"*: `20`
+>    - {% icon param-select %} *"Additional outputs to generate"*: `Report`
 > 
 > 2. Ispezionare il file txt generato (`Report`)
 > 
@@ -695,8 +692,8 @@ Possiamo esaminare i nostri dati tagliati con FASTQE e/o FastQC.
 > <hands-on-title>Controllo della qualità dopo il trimming</hands-on-title>
 > 
 > 1. {% tool [FASTQE](toolshed.g2.bx.psu.edu/repos/iuc/fastqe/fastqe/0.3.1+galaxy0) %}: Eseguire nuovamente **FASTQE** con i seguenti parametri
->    - {% icon param-files %} *"Dati FastQ "*: `Cutadapt Read 1 Output`
->    - {% icon param-select %} *"Tipi di punteggio da mostrare "*: `Mean`
+>    - {% icon param-files %} *"FastQ data"*: `Cutadapt Read 1 Output`
+>    - {% icon param-select %} *"Score types to show"*: `Mean`
 > 
 > 2. Ispezionare il nuovo rapporto FASTQE
 > 
@@ -725,7 +722,7 @@ Possiamo anche, o invece, controllare i dati a qualità controllata con FastQC.
 > <hands-on-title>Controllo della qualità dopo il trimming</hands-on-title>
 > 
 > 1. {% tool [FASTQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0) %} con i seguenti parametri
->    - {% icon param-files %} *"Dati di lettura brevi dalla vostra storia attuale "*: `Cutadapt Read 1 Output`
+>    - {% icon param-files %} *"Short read data from your current history"*: `Cutadapt Read 1 Output`
 > 
 > 2. ispezionare il file HTML generato
 >
@@ -791,8 +788,8 @@ Con il sequenziamento paired-end, i frammenti vengono sequenziati da entrambi i 
 La distanza tra le due letture è nota e quindi è un'informazione aggiuntiva che può migliorare la mappatura delle letture.
 
 Il sequenziamento Paired-end genera 2 file FASTQ:
-- Un file con le sequenze corrispondenti all'orientamento **avanti** di tutti i frammenti
-- Un file con le sequenze corrispondenti all'orientamento **inverso** di tutti i frammenti
+- Un file con le sequenze corrispondenti all'orientamento **forward** di tutti i frammenti
+- Un file con le sequenze corrispondenti all'orientamento **REVERSE** di tutti i frammenti
 
 Di solito riconosciamo questi due file che appartengono a un campione dal nome che ha lo stesso identificatore per le letture ma un'estensione diversa, ad esempio `sampleA_R1.fastq` per le letture in avanti e `sampleA_R2.fastq` per le letture inverse. Può anche essere `_f` o `_1` per le letture in avanti e `_r` o `_2` per le letture inverse.
 
@@ -830,7 +827,7 @@ I dati analizzati nella fase precedente erano single-end, quindi importeremo un 
 > 
 > > <solution-title></solution-title>
 > > 
-> > 1. La qualità delle sequenze sembra peggiore per le letture inverse che per quelle in avanti:
+> > 1. La qualità delle sequenze sembra peggiore per le letture reverse che per quelle forward:
 > >     - Punteggi di qualità per sequenza: distribuzione più a sinistra, cioè qualità media delle sequenze più bassa
 > >     - Qualità della sequenza per base: curva meno regolare e diminuzione più marcata alla fine con un valore medio inferiore al 28
 > >     - Contenuto della sequenza per base: bias più forte all'inizio e nessuna distinzione chiara tra gruppi C-G e A-T
@@ -853,15 +850,15 @@ Dopo il trimming, le letture inverse saranno più corte a causa della loro quali
 > 
 >          L'ordine è importante!
 > 
->       - In *adattatori di lettura 1* o *adattatori di lettura 2*
+>       - In *Read 1 Adapters* or *Read 2 Adapters*
 > 
 >         Non sono stati trovati adattatori in questi set di dati. Quando si elaborano i propri dati e si sa quali sequenze di adattatori sono state utilizzate durante la preparazione della libreria, è necessario fornire le loro sequenze qui.
 > 
->    - In *"Altre opzioni di ritaglio delle letture "*
->       - *"Cutoff di qualità (R1) "*: `20`
->    - In *"Opzioni di filtraggio della lettura "*
->       - *"Lunghezza minima (R1) "*: `20`
->    - {% icon param-select %} *"Output aggiuntivi da generare "*: `Report`
+>    - In *"Other Read Trimming Options"*
+>       - *"Quality cutoff(s) (R1)"*: `20`
+>    - In *"Read Filtering Options"*
+>       - *"Minimum length (R1)"*: `20`
+>    - {%icon param-select%} *"Additional outputs to generate"*: `Report`
 > 
 > 2. Ispezionare il file txt generato (`Report`)
 > 
@@ -879,8 +876,8 @@ Dopo il trimming, le letture inverse saranno più corte a causa della loro quali
 {: .hands_on}
 
 Oltre al rapporto, Cutadapt genera 2 file:
-- Lettura 1 con le letture in avanti tagliate e filtrate
-- Lettura 2 con le letture inverse rifilate e filtrate
+- Lettura 1 con le letture forward tagliate e filtrate
+- Lettura 2 con le letture reverse rifilate e filtrate
 
 Questi set di dati possono essere utilizzati per l'analisi a valle, ad esempio la mappatura.
 
@@ -911,10 +908,10 @@ In caso di letture lunghe, possiamo controllare la qualità della sequenza con [
 >    ```
 > 
 > 3. {% tool [Nanoplot](toolshed.g2.bx.psu.edu/repos/iuc/nanoplot/nanoplot/1.41.0+galaxy0) %} con i seguenti parametri
->    - {% icon param-files %} *"file "*: `m64011_190830_220126.Q20.subsample.fastq.gz`
->    - *"Opzioni per la personalizzazione delle trame create "*
->        - {% icon param-select %} *"Specifica il formato bivariato dei grafici. "*: `dot`, `kde`
->        - {% icon param-select %} *"Mostra il segno N50 nell'istogramma della lunghezza della lettura. "*: `Yes`
+>    - {% icon param-files %} *"files"*: `m64011_190830_220126.Q20.subsample.fastq.gz`
+>    - *"Options for customizing the plots created"*
+>        - {% icon param-select %} *"Specify the bivariate format of the plots."*: `dot`, `kde`
+>        - {% icon param-select %} *"Show the N50 mark in the read length histogram."*: `Yes`
 > 
 > 4. Ispezione del file HTML generato
 {: .hands_on}
@@ -1064,9 +1061,9 @@ La lunghezza della lettura nel tempo dell'esperimento dovrebbe essere stabile. P
 
 ## Attività del canale nel tempo
 
-fornisce una panoramica dei pori disponibili, dell'utilizzo dei pori durante l'esperimento, dei pori inattivi e mostra se il carico della cella a flusso è buono (quasi tutti i pori sono utilizzati). In questo caso, la stragrande maggioranza dei canali/pori sono inattivi (bianchi) durante la corsa di sequenziamento, quindi la corsa può essere considerata negativa.
+Fornisce una panoramica dei pori disponibili, dell'utilizzo dei pori durante l'esperimento, dei pori inattivi e mostra se il carico della cella a flusso è buono (quasi tutti i pori sono utilizzati). In questo caso, la stragrande maggioranza dei canali/pori sono inattivi (bianchi) durante la corsa di sequenziamento, quindi la corsa può essere considerata negativa.
 
-Si spera in un grafico che sia scuro vicino all'asse X e che con valori Y più alti (aumento del tempo) non diventi troppo chiaro/bianco. A seconda che si scelga "Letture" o "Basi" a sinistra, il colore indica il numero di basi o di letture per intervallo di tempo
+Si spera in un grafico che sia scuro vicino all'asse X e che con valori Y più alti (aumento del tempo) non diventi troppo chiaro/bianco. A seconda che si scelga "Reads" o "Bases" a sinistra, il colore indica il numero di basi o di letture per intervallo di tempo
 
 ![Attività del canale nel tempo](../../images/quality-control/channel_activity_over_time-pycoqc.png "Attività del canale nel tempo")
 
