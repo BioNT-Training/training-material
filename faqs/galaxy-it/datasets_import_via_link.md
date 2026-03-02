@@ -12,6 +12,9 @@ contributors:
 - nomadscientist
 - nekrut
 - mblue9
+translation:
+- hvelab
+- unode
 optional_parameters:
   reset_form: Tell the user to reset the form first
   collection: Adds step to click the collection button

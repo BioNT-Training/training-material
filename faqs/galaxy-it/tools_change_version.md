@@ -5,6 +5,9 @@ box_type: tip
 layout: faq
 contributors:
 - shiltemann
+translation:
+- hvelab
+- unode
 ---
 
 

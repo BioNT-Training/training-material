@@ -13,6 +13,9 @@ contributors:
 - ajadi-abiola
 - lldelisle
 - nekrut
+translation:
+- hvelab
+- unode
 optional_parameters:
   datatype: A string representing the Galaxy datatype
 examples:

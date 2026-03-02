@@ -11,6 +11,9 @@ contributors:
 - hexylena
 - bebatut
 - lldelisle
+translation:
+- hvelab
+- unode
 ---
 
 

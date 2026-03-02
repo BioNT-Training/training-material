@@ -10,6 +10,9 @@ contributors:
 - shiltemann
 - hexylena
 - nekrut
+translation:
+- hvelab
+- unode
 ---
 
 

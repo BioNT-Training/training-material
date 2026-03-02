@@ -6,6 +6,9 @@ layout: faq
 contributors:
 - shiltemann
 - hexylena
+translation:
+- hvelab
+- unode
 ---
 
 

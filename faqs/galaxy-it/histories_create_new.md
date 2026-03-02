@@ -14,6 +14,9 @@ contributors:
 - nomadscientist
 - nsoranzo
 - nekrut
+translation:
+- hvelab
+- unode
 ---
 
 

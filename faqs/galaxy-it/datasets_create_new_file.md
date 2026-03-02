@@ -11,6 +11,9 @@ contributors:
 - wm75
 - hexylena
 - simonbray
+translation:
+- hvelab
+- unode
 optional_parameters:
   name: The name of the dataset
   format: The format of the dataset

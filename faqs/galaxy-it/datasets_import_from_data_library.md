@@ -9,6 +9,9 @@ contributors:
 - nsoranzo
 - hexylena
 - wm75
+translation:
+- hvelab
+- unode
 ---
 
 

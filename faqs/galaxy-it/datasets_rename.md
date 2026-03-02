@@ -9,6 +9,9 @@ contributors:
 - shiltemann
 - wm75
 - hexylena
+translation:
+- hvelab
+- unode
 optional_parameters:
   name: The new name for the dataset
 examples:

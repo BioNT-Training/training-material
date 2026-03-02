@@ -8,6 +8,9 @@ contributors:
 - wm75
 - hexylena
 - shiltemann
+translation:
+- hvelab
+- unode
 ---
 
 
