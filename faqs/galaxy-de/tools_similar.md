@@ -3,8 +3,14 @@ title: Multipile ähnliche Werkzeuge verfügbar
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
+contributions:
+  authorship:
+    - shiltemann
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

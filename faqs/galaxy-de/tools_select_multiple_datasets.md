@@ -3,11 +3,17 @@ title: Mehrere Datensätze auswählen
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- wm75
-- hexylena
-- shiltemann
+contributions:
+  authorship:
+    - bebatut
+    - wm75
+    - hexylena
+    - shiltemann
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

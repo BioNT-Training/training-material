@@ -5,14 +5,20 @@ description: Galaxy will try to autodetect the datatype of your files, but you m
 area: datasets
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- nsoranzo
-- hexylena
-- shiltemann
-- ajadi-abiola
-- lldelisle
-- nekrut
+contributions:
+  authorship:
+    - bebatut
+    - nsoranzo
+    - hexylena
+    - shiltemann
+    - ajadi-abiola
+    - lldelisle
+    - nekrut
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 optional_parameters:
   datatype: A string representing the Galaxy datatype
 examples:

@@ -3,9 +3,15 @@ title: Verwendung des Fenstermanagers zur Anzeige mehrerer Datensätze
 area: features
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

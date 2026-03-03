@@ -3,12 +3,18 @@ title: Importieren von Daten aus einer Datenbibliothek
 area: data upload
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- shiltemann
-- nsoranzo
-- hexylena
-- wm75
+contributions:
+  authorship:
+    - bebatut
+    - shiltemann
+    - nsoranzo
+    - hexylena
+    - wm75
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

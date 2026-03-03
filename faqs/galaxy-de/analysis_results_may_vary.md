@@ -3,9 +3,15 @@ title: Ergebnisse können variieren
 area: analysis
 box_type: comment
 layout: faq
-contributors:
-- shiltemann
-- annefou
+contributions:
+  authorship:
+    - shiltemann
+    - annefou
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

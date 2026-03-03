@@ -3,10 +3,16 @@ title: Erstellen einer gepaarten Sammlung
 area: collections
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
-- lldelisle
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+    - lldelisle
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

@@ -4,12 +4,18 @@ description: Explains how to rename a history
 area: histories
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- wm75
-- shiltemann
-- hexylena
-- nekrut
+contributions:
+  authorship:
+    - bebatut
+    - wm75
+    - shiltemann
+    - hexylena
+    - nekrut
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

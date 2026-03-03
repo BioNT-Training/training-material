@@ -3,9 +3,15 @@ title: Erstellen einer Datensatzsammlung
 area: collections
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

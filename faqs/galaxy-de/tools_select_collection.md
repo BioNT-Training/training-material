@@ -3,10 +3,16 @@ title: Auswählen einer Datensatzsammlung als Eingabe
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- shiltemann
-- hexylena
+contributions:
+  authorship:
+    - bebatut
+    - shiltemann
+    - hexylena
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 

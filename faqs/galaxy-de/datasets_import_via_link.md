@@ -3,15 +3,21 @@ title: Importieren über Links
 area: data upload
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- hexylena
-- mtekman
-- lecorguille
-- shiltemann
-- nomadscientist
-- nekrut
-- mblue9
+contributions:
+  authorship:
+    - bebatut
+    - hexylena
+    - mtekman
+    - lecorguille
+    - shiltemann
+    - nomadscientist
+    - nekrut
+    - mblue9
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 optional_parameters:
   reset_form: Tell the user to reset the form first
   collection: Adds step to click the collection button

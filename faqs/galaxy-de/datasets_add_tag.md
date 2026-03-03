@@ -4,12 +4,18 @@ description: Tags can help you to better organize your history and track dataset
 area: datasets
 layout: faq
 box_type: tip
-contributors:
-- bebatut
-- wm75
-- hexylena
-- shiltemann
-- nekrut
+contributions:
+  authorship:
+    - bebatut
+    - wm75
+    - hexylena
+    - shiltemann
+    - nekrut
+  translation:
+    - Tillsa
+    - unode
+  funding:
+    - biont
 ---
 
 
