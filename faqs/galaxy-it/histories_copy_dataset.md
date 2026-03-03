@@ -5,15 +5,20 @@ description: Sometimes you may want to use a dataset in multiple histories. You 
 area: histories
 box_type: tip
 layout: faq
-contributors:
-- lecorguille
-- shiltemann
-- hexylena
-- bebatut
-- lldelisle
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - lecorguille
+    - shiltemann
+    - hexylena
+    - bebatut
+    - lldelisle
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

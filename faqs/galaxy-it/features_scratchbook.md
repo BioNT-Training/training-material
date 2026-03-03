@@ -3,12 +3,17 @@ title: Usare la Gestione finestre per visualizzare più insiemi di dati
 area: features
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

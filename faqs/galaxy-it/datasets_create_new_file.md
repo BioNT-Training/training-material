@@ -5,15 +5,20 @@ description: Galaxy allows you to create new files from the upload menu. You can
 area: datasets
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- shiltemann
-- wm75
-- hexylena
-- simonbray
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - shiltemann
+    - wm75
+    - hexylena
+    - simonbray
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 optional_parameters:
   name: The name of the dataset
   format: The format of the dataset

@@ -3,10 +3,15 @@ title: Strumenti simili alla compilazione multipla disponibili
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-translation:
-- unode
+contributions:
+  authorship:
+    - shiltemann
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 

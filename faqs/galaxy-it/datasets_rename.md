@@ -3,15 +3,20 @@ title: Rinominare un set di dati
 area: datasets
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- nsoranzo
-- shiltemann
-- wm75
-- hexylena
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - nsoranzo
+    - shiltemann
+    - wm75
+    - hexylena
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 optional_parameters:
   name: The new name for the dataset
 examples:

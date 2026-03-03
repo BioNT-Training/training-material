@@ -3,11 +3,16 @@ title: Creare una raccolta di set di dati
 area: collections
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
-translation:
-- unode
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 

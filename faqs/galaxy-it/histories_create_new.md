@@ -6,17 +6,22 @@ description: Histories are an important part of Galaxy, most people use a new hi
 area: histories
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- wm75
-- shiltemann
-- hexylena
-- nomadscientist
-- nsoranzo
-- nekrut
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - wm75
+    - shiltemann
+    - hexylena
+    - nomadscientist
+    - nsoranzo
+    - nekrut
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

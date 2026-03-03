@@ -3,11 +3,16 @@ title: I risultati possono variare
 area: analysis
 box_type: comment
 layout: faq
-contributors:
-- shiltemann
-- annefou
-translation:
-- unode
+contributions:
+  authorship:
+    - shiltemann
+    - annefou
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 

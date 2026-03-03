@@ -3,12 +3,17 @@ title: Selezione di una raccolta di dati come input
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- shiltemann
-- hexylena
-translation:
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - shiltemann
+    - hexylena
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 

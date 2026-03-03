@@ -3,11 +3,16 @@ title: Cambiare la versione dello strumento
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - shiltemann
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

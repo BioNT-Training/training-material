@@ -3,15 +3,20 @@ title: Importare i dati da una libreria di dati
 area: data upload
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- shiltemann
-- nsoranzo
-- hexylena
-- wm75
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - shiltemann
+    - nsoranzo
+    - hexylena
+    - wm75
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

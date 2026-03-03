@@ -3,12 +3,17 @@ title: Creazione di una raccolta accoppiata
 area: collections
 box_type: tip
 layout: faq
-contributors:
-- shiltemann
-- hexylena
-- lldelisle
-translation:
-- unode
+contributions:
+  authorship:
+    - shiltemann
+    - hexylena
+    - lldelisle
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 

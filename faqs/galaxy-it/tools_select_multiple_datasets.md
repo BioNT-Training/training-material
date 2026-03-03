@@ -3,14 +3,19 @@ title: Selezionare più insiemi di dati
 area: tools
 box_type: tip
 layout: faq
-contributors:
-- bebatut
-- wm75
-- hexylena
-- shiltemann
-translation:
-- hvelab
-- unode
+contributions:
+  authorship:
+    - bebatut
+    - wm75
+    - hexylena
+    - shiltemann
+  translation:
+    - paladin
+    - silviadg87
+    - hvelab
+    - unode
+  funding:
+    - biont
 ---
 
 

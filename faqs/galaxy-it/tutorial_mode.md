@@ -5,11 +5,16 @@ description: Tutorial mode saves you screen space, finds the tools you need, and
 area: tools
 layout: faq
 box_type: tip
-contributors:
-- shiltemann
-- nomadscientist
-translation:
-- unode
+contributions:
+  authorship:
+    - shiltemann
+    - nomadscientist
+  translation:
+    - paladin
+    - silviadg87
+    - unode
+  funding:
+    - biont
 ---
 
 
